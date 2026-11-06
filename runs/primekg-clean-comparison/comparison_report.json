@@ -1,6 +1,5 @@
 {
-  "notice": "Synthetic fixture results check software behavior only; they are not evidence of real-world improvement.",
-  "fixture_name": "dataset",
+  "notice": "Exploratory results on an automatically generated split; not a benchmark claim.",
   "split_note": "Use benchmark-prescribed splits for real evaluation.",
   "config": {
     "hidden_dim": 256,
@@ -169485,5 +169484,6 @@
     },
     "checkpoint": "runs\\primekg-clean-comparison\\gog_best.pt"
   },
-  "elapsed_seconds": 738.2844841480255
+  "elapsed_seconds": 738.2844841480255,
+  "dataset_name": "PrimeKG"
 }

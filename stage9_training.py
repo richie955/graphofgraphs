@@ -541,9 +541,15 @@ def run_comparison(data: PreprocessedGoG, config: TrainingConfig, output_dir: st
     start = time.time()
     baseline = _run_one(data, config, "baseline", output)
     gog = _run_one(data, config, "gog", output)
+    dataset_name = data.report.get("dataset_name", "dataset")
+    notice = ("Exploratory results on an automatically generated split; not a benchmark claim."
+              if data.report.get("splits_generated") else
+              "Synthetic fixture results check software behavior only; they are not evidence of real-world improvement."
+              if "fixture" in dataset_name.lower() or "synthetic" in dataset_name.lower() else
+              "Results use the dataset's supplied split; review its evaluation protocol before making a benchmark claim.")
     result = {
-        "notice": "Synthetic fixture results check software behavior only; they are not evidence of real-world improvement.",
-        "fixture_name": data.report.get("fixture_name", "dataset"),
+        "notice": notice,
+        "dataset_name": dataset_name,
         "split_note": "Use benchmark-prescribed splits for real evaluation.",
         "config": asdict(config),
         "training_facts": [f["fact_id"] for f in data.facts if f["split"] == "train"],
