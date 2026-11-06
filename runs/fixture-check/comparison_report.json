@@ -1,0 +1,418 @@
+{
+  "notice": "Synthetic fixture results check software behavior only; they are not evidence of real-world improvement.",
+  "fixture_name": "dataset",
+  "split_note": "Use benchmark-prescribed splits for real evaluation.",
+  "config": {
+    "hidden_dim": 32,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": 2,
+    "negatives_per_side": 2,
+    "epochs": 10,
+    "patience": 4,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cpu"
+  },
+  "training_facts": [
+    "F001",
+    "F002",
+    "F004",
+    "F005",
+    "F006",
+    "F008",
+    "F009",
+    "F010",
+    "F011",
+    "F012",
+    "F013",
+    "F014",
+    "F015"
+  ],
+  "validation_facts": [
+    "F003"
+  ],
+  "test_facts": [
+    "F007"
+  ],
+  "baseline": {
+    "kind": "baseline",
+    "best_epoch": 3,
+    "best_validation_macro_filtered_mrr": 0.3333333333333333,
+    "loss_first": 1.5650291442871094,
+    "loss_last": 1.0461302995681763,
+    "loss_history": [
+      1.5650291442871094,
+      1.4306131601333618,
+      1.3767871856689453,
+      1.2529041767120361,
+      1.2208271026611328,
+      1.1510246992111206,
+      1.0461302995681763
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 1,
+      "tail": 2,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 2,
+          "mrr": 0.29166666666666663,
+          "mean_rank": 3.5,
+          "hits@1": 0.0,
+          "hits@3": 0.5,
+          "hits@10": 1.0
+        },
+        "filtered": {
+          "count": 2,
+          "mrr": 0.3333333333333333,
+          "mean_rank": 3.0,
+          "hits@1": 0.0,
+          "hits@3": 1.0,
+          "hits@10": 1.0
+        },
+        "total_queries": 2,
+        "unscorable_queries": 0,
+        "scorable_queries": 2
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.29166666666666663,
+          "macro_scope_mrr": 0.29166666666666663
+        },
+        "filtered": {
+          "micro": 0.3333333333333333,
+          "macro_scope_mrr": 0.3333333333333333
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "test": {
+      "root": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "internal": {
+        "raw": {
+          "count": 2,
+          "mrr": 0.625,
+          "mean_rank": 2.5,
+          "hits@1": 0.5,
+          "hits@3": 0.5,
+          "hits@10": 1.0
+        },
+        "filtered": {
+          "count": 2,
+          "mrr": 0.625,
+          "mean_rank": 2.5,
+          "hits@1": 0.5,
+          "hits@3": 0.5,
+          "hits@10": 1.0
+        },
+        "total_queries": 2,
+        "unscorable_queries": 0,
+        "scorable_queries": 2
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.625,
+          "macro_scope_mrr": 0.625
+        },
+        "filtered": {
+          "micro": 0.625,
+          "macro_scope_mrr": 0.625
+        }
+      },
+      "settings": {
+        "split": "test",
+        "filter_known_splits": [
+          "test",
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "checkpoint": "runs\\fixture-check\\baseline_best.pt"
+  },
+  "gog": {
+    "kind": "gog",
+    "best_epoch": 1,
+    "best_validation_macro_filtered_mrr": 0.41666666666666663,
+    "loss_first": 1.4585011005401611,
+    "loss_last": 1.2337136268615723,
+    "loss_history": [
+      1.4585011005401611,
+      1.445946216583252,
+      1.3121477365493774,
+      1.2923403978347778,
+      1.2337136268615723
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 1,
+      "tail": 2,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 2,
+          "mrr": 0.3333333333333333,
+          "mean_rank": 3.0,
+          "hits@1": 0.0,
+          "hits@3": 1.0,
+          "hits@10": 1.0
+        },
+        "filtered": {
+          "count": 2,
+          "mrr": 0.41666666666666663,
+          "mean_rank": 2.5,
+          "hits@1": 0.0,
+          "hits@3": 1.0,
+          "hits@10": 1.0
+        },
+        "total_queries": 2,
+        "unscorable_queries": 0,
+        "scorable_queries": 2
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.3333333333333333,
+          "macro_scope_mrr": 0.3333333333333333
+        },
+        "filtered": {
+          "micro": 0.41666666666666663,
+          "macro_scope_mrr": 0.41666666666666663
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "test": {
+      "root": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "internal": {
+        "raw": {
+          "count": 2,
+          "mrr": 0.375,
+          "mean_rank": 3.0,
+          "hits@1": 0.0,
+          "hits@3": 0.5,
+          "hits@10": 1.0
+        },
+        "filtered": {
+          "count": 2,
+          "mrr": 0.375,
+          "mean_rank": 3.0,
+          "hits@1": 0.0,
+          "hits@3": 0.5,
+          "hits@10": 1.0
+        },
+        "total_queries": 2,
+        "unscorable_queries": 0,
+        "scorable_queries": 2
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.375,
+          "macro_scope_mrr": 0.375
+        },
+        "filtered": {
+          "micro": 0.375,
+          "macro_scope_mrr": 0.375
+        }
+      },
+      "settings": {
+        "split": "test",
+        "filter_known_splits": [
+          "test",
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "checkpoint": "runs\\fixture-check\\gog_best.pt"
+  },
+  "elapsed_seconds": 6.980855941772461
+}

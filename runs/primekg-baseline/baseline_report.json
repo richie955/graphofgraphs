@@ -1,0 +1,238 @@
+{
+  "kind": "entity_only_baseline",
+  "notice": "Initial result on the provided split; not a benchmark claim.",
+  "dataset_name": "PrimeKG",
+  "split_note": "The PrimeKG GoG split is generated and should be treated as an initial pipeline check.",
+  "config": {
+    "hidden_dim": 256,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": 2,
+    "negatives_per_side": 2,
+    "epochs": 10,
+    "patience": 3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cuda",
+    "show_progress": true
+  },
+  "split_counts": {
+    "test": {
+      "root_to_root": 10041,
+      "same_internal_graph": 3837,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 3053
+    },
+    "train": {
+      "root_to_root": 79973,
+      "same_internal_graph": 31354,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 23942
+    },
+    "validation": {
+      "root_to_root": 9986,
+      "same_internal_graph": 3885,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 3005
+    }
+  },
+  "baseline": {
+    "kind": "baseline",
+    "best_epoch": 10,
+    "best_validation_macro_filtered_mrr": 0.39124929980812767,
+    "loss_first": 1.5910978317260742,
+    "loss_last": 0.7868754863739014,
+    "loss_history": [
+      1.5910978317260742,
+      1.2818695306777954,
+      1.1337645053863525,
+      1.0300638675689697,
+      0.9818417429924011,
+      0.9197509288787842,
+      0.875543475151062,
+      0.850752592086792,
+      0.8074827790260315,
+      0.7868754863739014
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 0,
+      "tail": 0,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 19972,
+          "mrr": 0.005415743218496424,
+          "mean_rank": 1179.1765972361306,
+          "hits@1": 0.0009012617664730623,
+          "hits@3": 0.002253154416182656,
+          "hits@10": 0.007260164229921891
+        },
+        "filtered": {
+          "count": 19972,
+          "mrr": 0.005521597527346124,
+          "mean_rank": 1161.9837772882036,
+          "hits@1": 0.0009012617664730623,
+          "hits@3": 0.002303224514320048,
+          "hits@10": 0.00766072501502103
+        },
+        "total_queries": 19972,
+        "unscorable_queries": 0,
+        "scorable_queries": 19972
+      },
+      "internal": {
+        "raw": {
+          "count": 7770,
+          "mrr": 0.2641838241520888,
+          "mean_rank": 19.71904761904762,
+          "hits@1": 0.146975546975547,
+          "hits@3": 0.28777348777348777,
+          "hits@10": 0.5028314028314028
+        },
+        "filtered": {
+          "count": 7770,
+          "mrr": 0.3783535417589812,
+          "mean_rank": 13.534749034749035,
+          "hits@1": 0.23809523809523808,
+          "hits@3": 0.44504504504504505,
+          "hits@10": 0.6485199485199485
+        },
+        "total_queries": 7770,
+        "unscorable_queries": 0,
+        "scorable_queries": 7770
+      },
+      "cross_context": {
+        "raw": {
+          "count": 6010,
+          "mrr": 0.7641222711095467,
+          "mean_rank": 2.8650582362728785,
+          "hits@1": 0.6549084858569052,
+          "hits@3": 0.8495840266222962,
+          "hits@10": 0.9467554076539102
+        },
+        "filtered": {
+          "count": 6010,
+          "mrr": 0.7898727601380557,
+          "mean_rank": 2.782029950083195,
+          "hits@1": 0.7009983361064892,
+          "hits@3": 0.8562396006655574,
+          "hits@10": 0.9475873544093179
+        },
+        "total_queries": 6010,
+        "unscorable_queries": 0,
+        "scorable_queries": 6010
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.2000843323829674,
+          "macro_scope_mrr": 0.34457394616004394
+        },
+        "filtered": {
+          "micro": 0.23101504070020018,
+          "macro_scope_mrr": 0.39124929980812767
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "test": {
+      "root": {
+        "raw": {
+          "count": 20082,
+          "mrr": 0.005964161405175466,
+          "mean_rank": 1167.5469574743552,
+          "hits@1": 0.0011453042525644856,
+          "hits@3": 0.003037546061149288,
+          "hits@10": 0.009112638183447864
+        },
+        "filtered": {
+          "count": 20082,
+          "mrr": 0.006088556053848776,
+          "mean_rank": 1148.6101981874315,
+          "hits@1": 0.0011453042525644856,
+          "hits@3": 0.00313713773528533,
+          "hits@10": 0.009112638183447864
+        },
+        "total_queries": 20082,
+        "unscorable_queries": 0,
+        "scorable_queries": 20082
+      },
+      "internal": {
+        "raw": {
+          "count": 7674,
+          "mrr": 0.2724978213157533,
+          "mean_rank": 19.086916862131872,
+          "hits@1": 0.15532968464946573,
+          "hits@3": 0.2954130831378681,
+          "hits@10": 0.5106854313265572
+        },
+        "filtered": {
+          "count": 7674,
+          "mrr": 0.42305021422025224,
+          "mean_rank": 12.647511076361742,
+          "hits@1": 0.29163408913213446,
+          "hits@3": 0.4775866562418556,
+          "hits@10": 0.6760489966119364
+        },
+        "total_queries": 7674,
+        "unscorable_queries": 0,
+        "scorable_queries": 7674
+      },
+      "cross_context": {
+        "raw": {
+          "count": 6106,
+          "mrr": 0.7797192345261461,
+          "mean_rank": 2.692597445135932,
+          "hits@1": 0.6780216180805765,
+          "hits@3": 0.857353422862758,
+          "hits@10": 0.948411398624304
+        },
+        "filtered": {
+          "count": 6106,
+          "mrr": 0.8064194894590608,
+          "mean_rank": 2.6103832296102194,
+          "hits@1": 0.7258434326891582,
+          "hits@3": 0.8617753029806747,
+          "hits@10": 0.9490664919751065
+        },
+        "total_queries": 6106,
+        "unscorable_queries": 0,
+        "scorable_queries": 6106
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.20589115280055734,
+          "macro_scope_mrr": 0.3527270724156916
+        },
+        "filtered": {
+          "micro": 0.24489856267310353,
+          "macro_scope_mrr": 0.41185275324438725
+        }
+      },
+      "settings": {
+        "split": "test",
+        "filter_known_splits": [
+          "test",
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "checkpoint": "runs\\primekg-baseline\\baseline_best.pt"
+  },
+  "elapsed_seconds": 414.03377771377563
+}

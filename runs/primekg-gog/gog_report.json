@@ -1,0 +1,233 @@
+{
+  "kind": "gog",
+  "notice": "Initial result on the provided split; compare against a baseline with matching settings.",
+  "dataset_name": "PrimeKG",
+  "split_note": "The PrimeKG GoG split is generated and should be treated as an initial pipeline check.",
+  "config": {
+    "hidden_dim": 256,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": 2,
+    "negatives_per_side": 2,
+    "training_batch_size": 1024,
+    "epochs": 10,
+    "patience": 3,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cuda",
+    "show_progress": true
+  },
+  "split_counts": {
+    "test": {
+      "root_to_root": 10041,
+      "same_internal_graph": 3837,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 3053
+    },
+    "train": {
+      "root_to_root": 79973,
+      "same_internal_graph": 31354,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 23942
+    },
+    "validation": {
+      "root_to_root": 9986,
+      "same_internal_graph": 3885,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 3005
+    }
+  },
+  "gog": {
+    "kind": "gog",
+    "best_epoch": 1,
+    "best_validation_macro_filtered_mrr": 0.17787852327384035,
+    "loss_first": 1.615286726049137,
+    "loss_last": 1.9300038310128875,
+    "loss_history": [
+      1.615286726049137,
+      1.5314477761869105,
+      2.4999249716732996,
+      1.9300038310128875
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 0,
+      "tail": 0,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 19972,
+          "mrr": 0.0023711144656594673,
+          "mean_rank": 2049.4593931504105,
+          "hits@1": 0.00035049068696174645,
+          "hits@3": 0.0009513318646104547,
+          "hits@10": 0.0023532946124574404
+        },
+        "filtered": {
+          "count": 19972,
+          "mrr": 0.0023858439840600014,
+          "mean_rank": 2034.3654616463048,
+          "hits@1": 0.00035049068696174645,
+          "hits@3": 0.0009513318646104547,
+          "hits@10": 0.002403364710594833
+        },
+        "total_queries": 19972,
+        "unscorable_queries": 0,
+        "scorable_queries": 19972
+      },
+      "internal": {
+        "raw": {
+          "count": 7770,
+          "mrr": 0.1804992085352727,
+          "mean_rank": 21.137194337194337,
+          "hits@1": 0.07014157014157014,
+          "hits@3": 0.18494208494208494,
+          "hits@10": 0.4117117117117117
+        },
+        "filtered": {
+          "count": 7770,
+          "mrr": 0.24143723927153724,
+          "mean_rank": 16.67966537966538,
+          "hits@1": 0.10952380952380952,
+          "hits@3": 0.26898326898326896,
+          "hits@10": 0.5150579150579151
+        },
+        "total_queries": 7770,
+        "unscorable_queries": 0,
+        "scorable_queries": 7770
+      },
+      "cross_context": {
+        "raw": {
+          "count": 6010,
+          "mrr": 0.2888066236025735,
+          "mean_rank": 12.178702163061564,
+          "hits@1": 0.15374376039933443,
+          "hits@3": 0.3144758735440932,
+          "hits@10": 0.5881863560732113
+        },
+        "filtered": {
+          "count": 6010,
+          "mrr": 0.2898124867124565,
+          "mean_rank": 12.101331114808652,
+          "hits@1": 0.15391014975041598,
+          "hits@3": 0.31663893510815305,
+          "hits@10": 0.5896838602329451
+        },
+        "total_queries": 6010,
+        "unscorable_queries": 0,
+        "scorable_queries": 6010
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.09438144572999188,
+          "macro_scope_mrr": 0.15722564886783522
+        },
+        "filtered": {
+          "micro": 0.10859772666305267,
+          "macro_scope_mrr": 0.17787852332268458
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "test": {
+      "root": {
+        "raw": {
+          "count": 20082,
+          "mrr": 0.0020824380294816197,
+          "mean_rank": 2026.6994323274573,
+          "hits@1": 9.959167413604223e-05,
+          "hits@3": 0.0005477542077482323,
+          "hits@10": 0.0021412209939249078
+        },
+        "filtered": {
+          "count": 20082,
+          "mrr": 0.002123102692856713,
+          "mean_rank": 2010.0609003087343,
+          "hits@1": 0.00014938751120406333,
+          "hits@3": 0.0005477542077482323,
+          "hits@10": 0.0021412209939249078
+        },
+        "total_queries": 20082,
+        "unscorable_queries": 0,
+        "scorable_queries": 20082
+      },
+      "internal": {
+        "raw": {
+          "count": 7674,
+          "mrr": 0.1927611547513437,
+          "mean_rank": 20.6486838676049,
+          "hits@1": 0.08235600729736774,
+          "hits@3": 0.19585613760750586,
+          "hits@10": 0.42663539223351576
+        },
+        "filtered": {
+          "count": 7674,
+          "mrr": 0.28094753295176017,
+          "mean_rank": 15.848970549908783,
+          "hits@1": 0.15454782382069324,
+          "hits@3": 0.3071409955694553,
+          "hits@10": 0.5362262183997915
+        },
+        "total_queries": 7674,
+        "unscorable_queries": 0,
+        "scorable_queries": 7674
+      },
+      "cross_context": {
+        "raw": {
+          "count": 6106,
+          "mrr": 0.2874023993369031,
+          "mean_rank": 12.21306911234851,
+          "hits@1": 0.15214543072387815,
+          "hits@3": 0.3142810350474943,
+          "hits@10": 0.5856534556174254
+        },
+        "filtered": {
+          "count": 6106,
+          "mrr": 0.2888950200513692,
+          "mean_rank": 12.129708483458893,
+          "hits@1": 0.1524729773992794,
+          "hits@3": 0.3182115951523092,
+          "hits@10": 0.5863085489682279
+        },
+        "total_queries": 6106,
+        "unscorable_queries": 0,
+        "scorable_queries": 6106
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.0967440692345695,
+          "macro_scope_mrr": 0.1607486640392428
+        },
+        "filtered": {
+          "micro": 0.11702263624663095,
+          "macro_scope_mrr": 0.19065521856532872
+        }
+      },
+      "settings": {
+        "split": "test",
+        "filter_known_splits": [
+          "test",
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)"
+      }
+    },
+    "checkpoint": "runs\\primekg-gog\\gog_best.pt"
+  },
+  "elapsed_seconds": 149.82175755500793
+}
