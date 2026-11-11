@@ -27,5 +27,5 @@ dist/
 .DS_Store
 Thumbs.db
 
-# Generated training runs and checkpoints
-/runs/
+# Generated model checkpoints; keep JSON reports under runs/
+/runs/**/*.pt

@@ -38,10 +38,10 @@ data = json.loads(Path("synthetic_gog_fixture.json").read_text())
 print(len(data["entities"]), len(data["graph_nodes"]), len(data["facts"]))
 ```
 
-To run the Stage 0 preprocessing code in a notebook, place `gog_preprocessing.py` beside the JSON file (or add its folder to `sys.path`):
+To run the Stage 0 preprocessing code in a notebook, place `gog_data` package on `PYTHONPATH` (the repository root when running from this project):
 
 ```python
-from gog_preprocessing import load_gog
+from gog_data.preprocessing import load_gog
 from gog_model import GoGEncoder
 
 prepared = load_gog("synthetic_gog_fixture.json")
@@ -57,16 +57,16 @@ print(states.h_graph.shape)       # [number of internal graphs, 256]
 Locally, the same implementation can be run as a CLI:
 
 ```text
-python gog_preprocessing.py docs/synthetic_gog_fixture.json
-python gog_preprocessing.py docs/synthetic_gog_fixture.json --output /content/preprocessed.json
+python -m gog_data.preprocessing docs/synthetic_gog_fixture.json
+python -m gog_data.preprocessing docs/synthetic_gog_fixture.json --output /content/preprocessed.json
 ```
 
-The preprocessing module uses only the Python standard library. Model stages are kept in separate files: `gog_model/stage1.py` through `gog_model/stage9.py`. `gog_model/__init__.py` is the simple entry point that joins them. The encoder requires PyTorch 2.x; Colab users can select a compatible PyTorch runtime. `python -m unittest -v` runs preprocessing and model checks.
+The preprocessing module uses only the Python standard library. Model stages are kept in separate files: `gog_model/stage1.py` through `gog_model/stage9.py`. `gog_model/__init__.py` is the simple entry point that joins them. The encoder requires PyTorch 2.x; Colab users can select a compatible PyTorch runtime. `python -m unittest discover -s tests -v` runs preprocessing and model checks.
 
 To check that link training and evaluation run, use a short fixture run:
 
 ```text
-python train_stage9.py docs/synthetic_gog_fixture.json --model compare --output-dir runs/fixture-check --epochs 10 --patience 4 --negatives 2 --hidden-dim 32 --device cpu
+python -m training.train docs/synthetic_gog_fixture.json --model compare --output-dir runs/fixture-check --epochs 10 --patience 4 --negatives 2 --hidden-dim 32 --device cpu
 ```
 
 The default command trains only the entity-and-type baseline. Add `--model compare` to train both that baseline and GoG. Comparison saves both checkpoints plus `comparison_report.json`; baseline-only mode saves `baseline_best.pt` and `baseline_report.json`. Fixture scores are only a software check, not evidence of model quality. For a real dataset in the Stage 0 JSON format, pass its path instead of the fixture path and use the dataset's prescribed split.

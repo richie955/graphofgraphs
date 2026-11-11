@@ -1,0 +1,3437 @@
+{
+  "notice": "Covered-entity pilot only; not a full PrimeKG benchmark result.",
+  "input_sha256": {
+    "gog": "a40aca95b605f2711aae2ee9e271f7d274d775cbfd3956ab6234837358570131",
+    "train": "2062b1f5dc14e48221c498f9baf8f260b405f3303dcaa3daff9a199f2cdb76d4",
+    "validation": "a291b32a4dabb3c4842e99b11fdca8ce7cfdfdc66818188b2b862f00401c5957",
+    "test": "5f2e391dda95debd8405d6ac0f7c31cebde148671332c3f2b1e35e82bcd3c526"
+  },
+  "audit": {
+    "source_counts": {
+      "train": 160000,
+      "validation": 20000,
+      "test": 20000
+    },
+    "covered_counts": {
+      "train": 2936,
+      "validation": 226,
+      "test": 256
+    },
+    "covered_pair_counts": {
+      "train": 1468,
+      "validation": 113,
+      "test": 128
+    },
+    "root_entities": 624,
+    "context_relations": 3345,
+    "root_context_relations": 1468,
+    "relation_labels": 22,
+    "train_derived_type_rules": {
+      "anatomy_protein_absent::expression absent": {
+        "head": [
+          "anatomy",
+          "gene/protein"
+        ],
+        "tail": [
+          "anatomy",
+          "gene/protein"
+        ]
+      },
+      "anatomy_protein_present::expression present": {
+        "head": [
+          "anatomy",
+          "gene/protein"
+        ],
+        "tail": [
+          "anatomy",
+          "gene/protein"
+        ]
+      },
+      "bioprocess_protein::interacts with": {
+        "head": [
+          "biological_process",
+          "gene/protein"
+        ],
+        "tail": [
+          "biological_process",
+          "gene/protein"
+        ]
+      },
+      "cellcomp_protein::interacts with": {
+        "head": [
+          "cellular_component",
+          "gene/protein"
+        ],
+        "tail": [
+          "cellular_component",
+          "gene/protein"
+        ]
+      },
+      "contraindication::contraindication": {
+        "head": [
+          "disease",
+          "drug"
+        ],
+        "tail": [
+          "disease",
+          "drug"
+        ]
+      },
+      "disease_disease::parent-child": {
+        "head": [
+          "disease"
+        ],
+        "tail": [
+          "disease"
+        ]
+      },
+      "disease_phenotype_positive::phenotype present": {
+        "head": [
+          "disease",
+          "effect/phenotype"
+        ],
+        "tail": [
+          "disease",
+          "effect/phenotype"
+        ]
+      },
+      "disease_protein::associated with": {
+        "head": [
+          "disease",
+          "gene/protein"
+        ],
+        "tail": [
+          "disease",
+          "gene/protein"
+        ]
+      },
+      "drug_drug::synergistic interaction": {
+        "head": [
+          "drug"
+        ],
+        "tail": [
+          "drug"
+        ]
+      },
+      "drug_effect::side effect": {
+        "head": [
+          "drug",
+          "effect/phenotype"
+        ],
+        "tail": [
+          "drug",
+          "effect/phenotype"
+        ]
+      },
+      "drug_protein::enzyme": {
+        "head": [
+          "drug",
+          "gene/protein"
+        ],
+        "tail": [
+          "drug",
+          "gene/protein"
+        ]
+      },
+      "drug_protein::target": {
+        "head": [
+          "drug",
+          "gene/protein"
+        ],
+        "tail": [
+          "drug",
+          "gene/protein"
+        ]
+      },
+      "drug_protein::transporter": {
+        "head": [
+          "drug",
+          "gene/protein"
+        ],
+        "tail": [
+          "drug",
+          "gene/protein"
+        ]
+      },
+      "indication::indication": {
+        "head": [
+          "disease",
+          "drug"
+        ],
+        "tail": [
+          "disease",
+          "drug"
+        ]
+      },
+      "molfunc_molfunc::parent-child": {
+        "head": [
+          "molecular_function"
+        ],
+        "tail": [
+          "molecular_function"
+        ]
+      },
+      "molfunc_protein::interacts with": {
+        "head": [
+          "gene/protein",
+          "molecular_function"
+        ],
+        "tail": [
+          "gene/protein",
+          "molecular_function"
+        ]
+      },
+      "off-label use::off-label use": {
+        "head": [
+          "disease",
+          "drug"
+        ],
+        "tail": [
+          "disease",
+          "drug"
+        ]
+      },
+      "pathway_pathway::parent-child": {
+        "head": [
+          "pathway"
+        ],
+        "tail": [
+          "pathway"
+        ]
+      },
+      "pathway_protein::interacts with": {
+        "head": [
+          "gene/protein",
+          "pathway"
+        ],
+        "tail": [
+          "gene/protein",
+          "pathway"
+        ]
+      },
+      "phenotype_phenotype::parent-child": {
+        "head": [
+          "effect/phenotype"
+        ],
+        "tail": [
+          "effect/phenotype"
+        ]
+      },
+      "phenotype_protein::associated with": {
+        "head": [
+          "effect/phenotype",
+          "gene/protein"
+        ],
+        "tail": [
+          "effect/phenotype",
+          "gene/protein"
+        ]
+      },
+      "protein_protein::ppi": {
+        "head": [
+          "gene/protein"
+        ],
+        "tail": [
+          "gene/protein"
+        ]
+      }
+    },
+    "test_relation_mix": {
+      "anatomy_protein_present": 32,
+      "cellcomp_protein": 10,
+      "contraindication": 8,
+      "disease_protein": 4,
+      "drug_drug": 180,
+      "drug_effect": 6,
+      "drug_protein": 10,
+      "protein_protein": 6
+    },
+    "split_pair_overlap": 0,
+    "context_held_out_pair_overlap": 0,
+    "automatic_gog_split": false
+  },
+  "settings": {
+    "config": {
+      "hidden_dim": 256,
+      "num_bases": 8,
+      "num_heads": 4,
+      "dropout": 0.2,
+      "num_rounds": 2,
+      "negatives_per_side": 10,
+      "training_batch_size": 4096,
+      "epochs": 100,
+      "patience": 15,
+      "learning_rate": 0.001,
+      "weight_decay": 0.0001,
+      "gradient_clip": 1.0,
+      "seed": 17,
+      "device": "auto",
+      "show_progress": true
+    },
+    "seeds": [
+      17,
+      23,
+      42,
+      73,
+      101
+    ],
+    "primary": "train-type-aware filtered MRR",
+    "secondary": "all-ROOT filtered MRR and Hits@1/3/10",
+    "negative_filter": "training positives only",
+    "evaluation_filter": "known positives from train, validation and test; evaluation only",
+    "decoder": "ComplEx shared architecture; independent weights per model and seed"
+  },
+  "models": {
+    "flat_root": [
+      {
+        "seed": 17,
+        "best_epoch": 10,
+        "parameter_count": 1416128,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.037935084295926264,
+          "hits_at_1": 0.00663716814159292,
+          "hits_at_3": 0.024336283185840708,
+          "hits_at_10": 0.08185840707964602,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.07098995895856303
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.017473018072406
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0774898047728799
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.04055020621073691
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.03139365187681268
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.07906082372426122
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.00425279114735724
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.03912310179969
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.0418801961897457,
+          "hits_at_1": 0.009765625,
+          "hits_at_3": 0.017578125,
+          "hits_at_10": 0.095703125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.07780355150538351
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.046566768440916846
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.02620578457352463
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.01230358116733355
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.03894611581231731
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.04616131291432381
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.015280719429686014
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.011318204821494295
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.012489566992065397
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.009587122208923132,
+          "hits_at_1": 0.001953125,
+          "hits_at_3": 0.00390625,
+          "hits_at_10": 0.017578125,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.014010050019433814
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.0034588299081525042
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.010702136284639653
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.002086374643634687
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.009013068838080892
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02546417154438069
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.009129144533510257
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.008044751214987602
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0021951196850594434
+            }
+          }
+        },
+        "report": "flat_root_seed17_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_root_seed17_best.pt"
+      },
+      {
+        "seed": 23,
+        "best_epoch": 6,
+        "parameter_count": 1416128,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04698846802370456,
+          "hits_at_1": 0.01327433628318584,
+          "hits_at_3": 0.035398230088495575,
+          "hits_at_10": 0.09070796460176991,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.13141454717623546
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.1160285680833626
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.030995325751202785
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1128235784086009
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.028648980224175075
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.016165656454095678
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.06432453416149068
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.0798354366565299
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.03261632249255014,
+          "hits_at_1": 0.001953125,
+          "hits_at_3": 0.015625,
+          "hits_at_10": 0.0625,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.08211733537557568
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.09122601783946474
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.049720485483882804
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.06747540041657689
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.021175694290068305
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02856307217055592
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.010575014194196078
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0036515971032358634
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.011198574857787934
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.007618587494179367,
+          "hits_at_1": 0,
+          "hits_at_3": 0,
+          "hits_at_10": 0.01171875,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.015928295620025595
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.014642402257227377
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0059859196876956376
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.01787565196590077
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.005953065956930459
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.005731774676770964
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0063640424330291614
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0026676826494288616
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.00210812094340958
+            }
+          }
+        },
+        "report": "flat_root_seed23_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_root_seed23_best.pt"
+      },
+      {
+        "seed": 42,
+        "best_epoch": 9,
+        "parameter_count": 1416128,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04373363142053762,
+          "hits_at_1": 0.015486725663716814,
+          "hits_at_3": 0.028761061946902654,
+          "hits_at_10": 0.08849557522123894,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.1121239304891134
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.010932916290059148
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.21297298715776977
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0462243302167789
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.029475916020161974
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1307281882749351
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.010529637542600587
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.024452029539147612
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.032380951649422396,
+          "hits_at_1": 0.001953125,
+          "hits_at_3": 0.015625,
+          "hits_at_10": 0.08203125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.08205604363787497
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.08859950751886667
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.033498586470506256
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.012782832777055709
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.022422443027090493
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.044757450129540924
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.010546646976584431
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.009985142193754489
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.00828120365424597
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.008197167874371213,
+          "hits_at_1": 0,
+          "hits_at_3": 0.005859375,
+          "hits_at_10": 0.013671875,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.0329587036305715
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.015833312963511842
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.010225542242573694
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0023615586652896746
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.003082833210791489
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02666801061775517
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.006741046449904602
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0070482323735984185
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0018783132380738438
+            }
+          }
+        },
+        "report": "flat_root_seed42_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_root_seed42_best.pt"
+      },
+      {
+        "seed": 73,
+        "best_epoch": 2,
+        "parameter_count": 1416128,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.050119653463773735,
+          "hits_at_1": 0.017699115044247787,
+          "hits_at_3": 0.03982300884955752,
+          "hits_at_10": 0.10398230088495575,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.154719357060424
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.13468567251461988
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.048683344461199325
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.034463973283149256
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.03715779216456756
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.007899326017834165
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.04709835988868239
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.03819649024822642
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.03742894181218791,
+          "hits_at_1": 0.005859375,
+          "hits_at_3": 0.0234375,
+          "hits_at_10": 0.078125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.08366285867310494
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.02742624994799133
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.01519977040164355
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.023159521480416678
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.03383115668701107
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02671256153242093
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.005136800544727869
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0063975253218000955
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.01872097498467943
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.015524670076213769,
+          "hits_at_1": 0.001953125,
+          "hits_at_3": 0.009765625,
+          "hits_at_10": 0.025390625,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.0571652298302861
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.013693590082042198
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.009250317445828252
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.004063164781565083
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.00997621808129632
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.010480342593462835
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0033795261917054717
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.004039404092708997
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.004020126252514127
+            }
+          }
+        },
+        "report": "flat_root_seed73_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_root_seed73_best.pt"
+      },
+      {
+        "seed": 101,
+        "best_epoch": 5,
+        "parameter_count": 1416128,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04645744148545531,
+          "hits_at_1": 0.015486725663716814,
+          "hits_at_3": 0.030973451327433628,
+          "hits_at_10": 0.09955752212389381,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.09810178765552333
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.09839916056823074
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.04091424326017465
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.029522372892341282
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.030655142611696194
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.07754103553919965
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.031907096723013166
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.11379675762372769
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.049852826593864086,
+          "hits_at_1": 0.013671875,
+          "hits_at_3": 0.037109375,
+          "hits_at_10": 0.103515625,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.12955819620233097
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.1405009502054698
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.02843942428255474
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.036873019508126034
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.030380126605843178
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1674048349479384
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.03491559302494035
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.010625553797074212
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.010502784112317013
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.02571741267628336,
+          "hits_at_1": 0.005859375,
+          "hits_at_3": 0.015625,
+          "hits_at_10": 0.04296875,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.017166981870091157
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.03468517465656705
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.008122573312666442
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.015863668769191368
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.025091997396708816
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1394815679154947
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.022483127629702743
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.007069215206997918
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0019291377982805491
+            }
+          }
+        },
+        "report": "flat_root_seed101_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_root_seed101_best.pt"
+      }
+    ],
+    "flat_context": [
+      {
+        "seed": 17,
+        "best_epoch": 4,
+        "parameter_count": 1416480,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04431043654051479,
+          "hits_at_1": 0.017699115044247787,
+          "hits_at_3": 0.030973451327433628,
+          "hits_at_10": 0.07300884955752213,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.10149225091102028
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.042704289040191766
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.02233823372310314
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1008243494861559
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.030923830806872155
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0661034152744516
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.04035296439399263
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.06838578258145298
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.037194621202126486,
+          "hits_at_1": 0.00390625,
+          "hits_at_3": 0.0234375,
+          "hits_at_10": 0.080078125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.08810071232341005
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.11046046278459141
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.05180745302976232
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.024559702254959997
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.02110961979684788
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.10464438309330006
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.042038226162761885
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.01759476131954987
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.047700663059632185
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.01578511448685496,
+          "hits_at_1": 0,
+          "hits_at_3": 0.005859375,
+          "hits_at_10": 0.0234375,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.019592519987466746
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.05816858459915757
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.047552670584504825
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.004323608401018282
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.01075006641162392
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.014205396574118961
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.040023416414820524
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.013260245038081632
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.011279144972083167
+            }
+          }
+        },
+        "report": "flat_context_seed17_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_context_seed17_best.pt"
+      },
+      {
+        "seed": 23,
+        "best_epoch": 8,
+        "parameter_count": 1416480,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04543670257853383,
+          "hits_at_1": 0.017699115044247787,
+          "hits_at_3": 0.02654867256637168,
+          "hits_at_10": 0.08185840707964602,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.18024217599462594
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.05721261548754727
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.04913067646550289
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.04788682088206302
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.025569393481984427
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1093633310030589
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.030776720968232356
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.023504726820854346
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.04471351800067722,
+          "hits_at_1": 0.009765625,
+          "hits_at_3": 0.02734375,
+          "hits_at_10": 0.107421875,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.10250630985732256
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.14639430684031743
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.013056826733233459
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.08475222693972694
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.031868474251963104
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.05282523369348846
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.011772909519630202
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.007277684314618909
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.016172781735088116
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.015745185858257408,
+          "hits_at_1": 0.005859375,
+          "hits_at_3": 0.005859375,
+          "hits_at_10": 0.0234375,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.03446551483365727
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.02420991367138446
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.003690716563805109
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0050870022859796455
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.013355323640297352
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.022175470440884193
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.008873857335038874
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.005210008386897775
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.002912712219287495
+            }
+          }
+        },
+        "report": "flat_context_seed23_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_context_seed23_best.pt"
+      },
+      {
+        "seed": 42,
+        "best_epoch": 3,
+        "parameter_count": 1416480,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04899982959862722,
+          "hits_at_1": 0.01991150442477876,
+          "hits_at_3": 0.033185840707964605,
+          "hits_at_10": 0.08185840707964602,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.14447040691141108
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.03234179574905381
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.025116086342257492
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.09456447685350036
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.038050069293737214
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0695639196888808
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.006626132286028419
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.014785425142495472
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.03591505256393195,
+          "hits_at_1": 0.0078125,
+          "hits_at_3": 0.015625,
+          "hits_at_10": 0.076171875,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.06373084481533622
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.012268311506925927
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.018988890682808193
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.08392162436112297
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.02895562131540185
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.19889832752415815
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0066069492074026775
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.004706441872576551
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.012819234162991187
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.010717346773368197,
+          "hits_at_1": 0,
+          "hits_at_3": 0.001953125,
+          "hits_at_10": 0.0234375,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.028713044233392184
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.0061313275483406305
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.004386951952468733
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.049561085523781453
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.0074475498973872924
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.022530433140177494
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.004168159660306913
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0036210649629376097
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.002306856289386379
+            }
+          }
+        },
+        "report": "flat_context_seed42_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_context_seed42_best.pt"
+      },
+      {
+        "seed": 73,
+        "best_epoch": 2,
+        "parameter_count": 1416480,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04614237206507481,
+          "hits_at_1": 0.017699115044247787,
+          "hits_at_3": 0.04424778761061947,
+          "hits_at_10": 0.0752212389380531,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.131166076082998
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.005717924760064878
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.032704024699822795
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.17353044491693917
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.032436052743404546
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.05459633643065045
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0036567085730144114
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.02777279142146677
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.04441233081403005,
+          "hits_at_1": 0.01171875,
+          "hits_at_3": 0.025390625,
+          "hits_at_10": 0.095703125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.11011485373473652
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.1309778066972866
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.04300288497095104
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0362415736734506
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.029526941466056663
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.07512993933527037
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.022506739060802947
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.005058106707114461
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.015219116940562325
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.02467426044010415,
+          "hits_at_1": 0.0078125,
+          "hits_at_3": 0.009765625,
+          "hits_at_10": 0.05078125,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.1011187622392132
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.08314782410195384
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.01559167340554257
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0176685739191687
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.009103957984498885
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.04065113778549599
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.016370059942137714
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.003064579735157809
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0057025756901823476
+            }
+          }
+        },
+        "report": "flat_context_seed73_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_context_seed73_best.pt"
+      },
+      {
+        "seed": 101,
+        "best_epoch": 1,
+        "parameter_count": 1416480,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.0420634472119979,
+          "hits_at_1": 0.015486725663716814,
+          "hits_at_3": 0.02654867256637168,
+          "hits_at_10": 0.08185840707964602,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.10738355550555266
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.03623613008590538
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.015691814673136104
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02965149474287952
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.03266800243550387
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.005848346857027794
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.18979559864839537
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.02941646556495858
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.03548050164530958,
+          "hits_at_1": 0.0078125,
+          "hits_at_3": 0.021484375,
+          "hits_at_10": 0.06640625,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.11553765006018545
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.0988665732017365
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0778732386542583
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.1401021630999643
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.016554210726771913
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.007864626045685809
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.011598639657834652
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.004909367397993147
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.014031631078384654
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.012762512373245532,
+          "hits_at_1": 0,
+          "hits_at_3": 0.009765625,
+          "hits_at_10": 0.02734375,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.07672244133576339
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.012359269701785042
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0063150130558204615
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.030911474871703076
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.002042628135995741
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0037257201607099662
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.008923489392093961
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.004097396822137348
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.00745270827178028
+            }
+          }
+        },
+        "report": "flat_context_seed101_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\flat_context_seed101_best.pt"
+      }
+    ],
+    "gog": [
+      {
+        "seed": 17,
+        "best_epoch": 5,
+        "parameter_count": 5183136,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.043471475517870006,
+          "hits_at_1": 0.01327433628318584,
+          "hits_at_3": 0.033185840707964605,
+          "hits_at_10": 0.08628318584070796,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.15926260961400565
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.15755761204863
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.03790486984420808
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.12988157037088155
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.02422219676602159
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.08168878410671859
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.0066136904069016185
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.017535742679982695
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.04284505427965435,
+          "hits_at_1": 0.0078125,
+          "hits_at_3": 0.03125,
+          "hits_at_10": 0.095703125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.0838343915283832
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.10972369737270612
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.24425815361089415
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.08091267508639734
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.01825594757273905
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.17265974381777854
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.0577307781205479
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.014677700730384234
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.01624163521643259
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.022528677107177986,
+          "hits_at_1": 0,
+          "hits_at_3": 0.009765625,
+          "hits_at_10": 0.04296875,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.01007612449921647
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.04949239669665695
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.08504639393584176
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.045481081606416854
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.017388496884491407
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.09662524277584429
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.032645352501674274
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.00969619170407881
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.01624163521643259
+            }
+          }
+        },
+        "report": "gog_seed17_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\gog_seed17_best.pt"
+      },
+      {
+        "seed": 23,
+        "best_epoch": 22,
+        "parameter_count": 5183136,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.04140356278756153,
+          "hits_at_1": 0.015486725663716814,
+          "hits_at_3": 0.028761061946902654,
+          "hits_at_10": 0.06637168141592921,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.12915350807502127
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.04754491540205826
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.022758462326563204
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.06276284151549044
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.01636365270819873
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.19546857754045
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.3914434523809524
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.016962402971687753
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.03585373102610483,
+          "hits_at_1": 0.00390625,
+          "hits_at_3": 0.017578125,
+          "hits_at_10": 0.078125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.04706076434570226
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.06303003334973466
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.24183676883316094
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.046598065677013044
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.01851926038031151
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.1387221280630067
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.07555660465306482
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.012029151593606659
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02115219325063902
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.012748351687712642,
+          "hits_at_1": 0,
+          "hits_at_3": 0.001953125,
+          "hits_at_10": 0.02734375,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.03075903539167107
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.026207770795893426
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.015413509994986307
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.004389027842671126
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.006426765567262372
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.02501087151628462
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.06051562651043222
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.008866854030627827
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.011267541480300824
+            }
+          }
+        },
+        "report": "gog_seed23_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\gog_seed23_best.pt"
+      },
+      {
+        "seed": 42,
+        "best_epoch": 20,
+        "parameter_count": 5183136,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.042920856080174784,
+          "hits_at_1": 0.017699115044247787,
+          "hits_at_3": 0.02654867256637168,
+          "hits_at_10": 0.07743362831858407,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.11044355535105492
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.009778915958583637
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.019164026142595422
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.058778835532873976
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.03260068477761818
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.05698568488042172
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.1976335609099997
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.010378994950706395
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.037637179380397866,
+          "hits_at_1": 0.0078125,
+          "hits_at_3": 0.017578125,
+          "hits_at_10": 0.080078125,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.06558826497981443
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.05981417457267745
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.06294612511458382
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.03171767172607632
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.016422828599211285
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.24418064665782718
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.21512418211521162
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0240875322997416
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.01955840985897842
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.017065366094937643,
+          "hits_at_1": 0.005859375,
+          "hits_at_3": 0.0078125,
+          "hits_at_10": 0.029296875,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.03399421335844134
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.0239483436069868
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.006101967178416708
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.002627938085021487
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.004778799209115113
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.19081050171004044
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.11703845779043172
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.013193864883863538
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.002394284500747023
+            }
+          }
+        },
+        "report": "gog_seed42_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\gog_seed42_best.pt"
+      },
+      {
+        "seed": 73,
+        "best_epoch": 10,
+        "parameter_count": 5183136,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.03694501076183714,
+          "hits_at_1": 0.00663716814159292,
+          "hits_at_3": 0.024336283185840708,
+          "hits_at_10": 0.07300884955752213,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.1357080195487684
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.05577499491973176
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.03915399819802529
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.06732129299252665
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.014592810246226752
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.16937085293225135
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.027618466380569764
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.0516528877451948
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.04215779798326217,
+          "hits_at_1": 0.009765625,
+          "hits_at_3": 0.033203125,
+          "hits_at_10": 0.091796875,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.10805323912935777
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.08049128319072803
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.19596697153149062
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.037322645294255705
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.019450216192474196
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.06990870978900043
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.10051935349384455
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.010957922671577287
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.01103193326102813
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.0195255187076276,
+          "hits_at_1": 0.001953125,
+          "hits_at_3": 0.013671875,
+          "hits_at_10": 0.0546875,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.1027132892652473
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.02777928398613823
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.07117464774741927
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.015074574171506845
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.0022540297680316143
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.017714808878760334
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.03246987515705153
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.0064561496137216555
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0032556170226468095
+            }
+          }
+        },
+        "report": "gog_seed73_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\gog_seed73_best.pt"
+      },
+      {
+        "seed": 101,
+        "best_epoch": 34,
+        "parameter_count": 5183136,
+        "validation_typed": {
+          "queries": 452,
+          "facts": 226,
+          "pairs": 113,
+          "mrr": 0.048809689036419204,
+          "hits_at_1": 0.01327433628318584,
+          "hits_at_3": 0.035398230088495575,
+          "hits_at_10": 0.09955752212389381,
+          "mean_candidates": 249.47787610619469,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 48,
+              "facts": 24,
+              "mrr": 0.10720009328721102
+            },
+            "bioprocess_protein::interacts with": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.07618684668989548
+            },
+            "contraindication::contraindication": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.01814101461212472
+            },
+            "disease_protein::associated with": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.06461564802368029
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 324,
+              "facts": 162,
+              "mrr": 0.04295222830904102
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.07095545033520881
+            },
+            "drug_protein::enzyme": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.05759182476997494
+            },
+            "protein_protein::ppi": {
+              "queries": 36,
+              "facts": 18,
+              "mrr": 0.01284415867841702
+            }
+          }
+        },
+        "test_typed": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.034843491410420376,
+          "hits_at_1": 0.00390625,
+          "hits_at_3": 0.021484375,
+          "hits_at_10": 0.083984375,
+          "mean_candidates": 255.4140625,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.1063374533491931
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.02630363548065345
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.01131419287436701
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.040059323671323116
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.01945722363751926
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.04677963673124964
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.04781091423339413
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.259656741108354
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.05309487169697465
+            }
+          }
+        },
+        "test_all_root": {
+          "queries": 512,
+          "facts": 256,
+          "pairs": 128,
+          "mrr": 0.011739562894694815,
+          "hits_at_1": 0,
+          "hits_at_3": 0.009765625,
+          "hits_at_10": 0.01953125,
+          "mean_candidates": 624,
+          "by_relation": {
+            "anatomy_protein_present::expression present": {
+              "queries": 64,
+              "facts": 32,
+              "mrr": 0.03681452312565557
+            },
+            "cellcomp_protein::interacts with": {
+              "queries": 20,
+              "facts": 10,
+              "mrr": 0.0032194927479872724
+            },
+            "contraindication::contraindication": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.003375378673527197
+            },
+            "disease_protein::associated with": {
+              "queries": 8,
+              "facts": 4,
+              "mrr": 0.004010974247477796
+            },
+            "drug_drug::synergistic interaction": {
+              "queries": 360,
+              "facts": 180,
+              "mrr": 0.0063354120472598205
+            },
+            "drug_effect::side effect": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.011965289049228693
+            },
+            "drug_protein::enzyme": {
+              "queries": 16,
+              "facts": 8,
+              "mrr": 0.03264306971320366
+            },
+            "drug_protein::target": {
+              "queries": 4,
+              "facts": 2,
+              "mrr": 0.1309478286151601
+            },
+            "protein_protein::ppi": {
+              "queries": 12,
+              "facts": 6,
+              "mrr": 0.0028025649041338962
+            }
+          }
+        },
+        "report": "gog_seed101_report.json",
+        "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\primekg-covered-pilot\\gog_seed101_best.pt"
+      }
+    ]
+  },
+  "model_aggregates": {
+    "flat_root": {
+      "mean_test_typed_mrr": 0.03883184774755405,
+      "mean_test_all_root_mrr": 0.013328992065994168,
+      "test_typed_mrr_by_seed": {
+        "17": 0.0418801961897457,
+        "23": 0.03261632249255014,
+        "42": 0.032380951649422396,
+        "73": 0.03742894181218791,
+        "101": 0.049852826593864086
+      },
+      "audited_heldout_negative_collisions": 24156
+    },
+    "flat_context": {
+      "mean_test_typed_mrr": 0.039543204845215056,
+      "mean_test_all_root_mrr": 0.01593688398636605,
+      "test_typed_mrr_by_seed": {
+        "17": 0.037194621202126486,
+        "23": 0.04471351800067722,
+        "42": 0.03591505256393195,
+        "73": 0.04441233081403005,
+        "101": 0.03548050164530958
+      },
+      "audited_heldout_negative_collisions": 20918
+    },
+    "gog": {
+      "mean_test_typed_mrr": 0.03866745081596792,
+      "mean_test_all_root_mrr": 0.016721495298430138,
+      "test_typed_mrr_by_seed": {
+        "17": 0.04284505427965435,
+        "23": 0.03585373102610483,
+        "42": 0.037637179380397866,
+        "73": 0.04215779798326217,
+        "101": 0.034843491410420376
+      },
+      "audited_heldout_negative_collisions": 37279
+    }
+  },
+  "paired_comparisons": [
+    {
+      "first": "gog",
+      "second": "flat_root",
+      "mean_typed_mrr_difference": -0.00016439693158612964,
+      "pair_bootstrap_95_percent_interval": [
+        -0.008460215125730619,
+        0.009483425954368659
+      ],
+      "independent_entity_pairs": 128,
+      "bootstrap_samples": 2000
+    },
+    {
+      "first": "gog",
+      "second": "flat_context",
+      "mean_typed_mrr_difference": -0.0008757540292471424,
+      "pair_bootstrap_95_percent_interval": [
+        -0.008634780445926629,
+        0.007565151115679942
+      ],
+      "independent_entity_pairs": 128,
+      "bootstrap_samples": 2000
+    }
+  ],
+  "evaluated_fact_ids": {
+    "validation": [
+      "cceb4404a041a8c5",
+      "b1aa9e3f4f73e2a5",
+      "9ae60ac6c0d3284e",
+      "735369bab912c79b",
+      "9ce2b9d4dccd0ab7",
+      "b49b96e69798ad84",
+      "7a60af57caf61180",
+      "357fb72e2a1a7f4c",
+      "2e8a91c0ce9eb0db",
+      "7126815959e41807",
+      "24f6b1789ff771d6",
+      "6bdd2c50b026b80e",
+      "d3830235361eb1b3",
+      "6d42be6a7164b7ef",
+      "11a3d37debb45ffb",
+      "bf476c59810a242c",
+      "8389727c0e088289",
+      "6b25eae21e83db1f",
+      "2fa705113aec7117",
+      "631ef0a06c62c5e2",
+      "faba7ee63a419245",
+      "d5d484220299034e",
+      "18a0ed74c3fc0127",
+      "931b7e89f8e3f6fc",
+      "c61673ac4c8122a1",
+      "f8837cc0dca679f8",
+      "51e612dc72b2c537",
+      "fc748725830cd49c",
+      "788dd7bb314cdcc3",
+      "c6e71ba0d283aa51",
+      "8ed13e62c6e1019f",
+      "9375c005cbbec70d",
+      "9ea61e8c076a3a70",
+      "4d898833ff3b46ca",
+      "407a4d7c306d26e0",
+      "f853f17578e81ce5",
+      "e4c786d094376a8d",
+      "a66afc49225d763c",
+      "4dbd1025d29166e0",
+      "f109b093a2dcb948",
+      "d8c3c4824911be77",
+      "af21dcee222606ac",
+      "52dbb50b3e8ca2bc",
+      "4664bbe2cf4bc89f",
+      "7284adcbb6b79157",
+      "0978b64c4064d873",
+      "f87e8be8f6afe0b7",
+      "bf7fd504b9a0fb8d",
+      "af4209e9fe1be9ea",
+      "2d97c47e4859abcc",
+      "040666acb5e46a44",
+      "150fcbc8dabba48e",
+      "e0480135dcf90912",
+      "965752c7c9d826ac",
+      "0f0981aac07f3829",
+      "5c8bdf6172aee858",
+      "f54980156b67be79",
+      "9dbb0084c3317d19",
+      "9b3b72179e44efce",
+      "27d094634600dfd6",
+      "b09784c2244795a9",
+      "f426d5f13f592729",
+      "9e19dcde19c9be11",
+      "e3f49d94d07974ff",
+      "72f6aafbf5f98be1",
+      "2c0398fa612b467a",
+      "e1b22c34affbd067",
+      "9593b9b9a845139a",
+      "eed909c57f7b71ce",
+      "b1b62c8e1ee0fe21",
+      "1aa805edf4b76b4c",
+      "84ffbed220b7474d",
+      "b47d8c228e84607e",
+      "b373b1dc8c2b7349",
+      "d1248a975dccf278",
+      "14fc0b6be7769cfc",
+      "727fb42016fffd73",
+      "56580584a9b2f292",
+      "7aaf2310e842480e",
+      "5df07d370f3e9aca",
+      "74e243b5bb4e009a",
+      "1416e252a8d1d62b",
+      "26b88ef08de5c6c1",
+      "396db5b335cca89b",
+      "d516403e0913c1a4",
+      "4461543fdb874cdc",
+      "1fd9770d8e03b490",
+      "568bec78e6eb4b34",
+      "f131813090395b13",
+      "4e585b82fbbd1e81",
+      "904befed9d220609",
+      "2a7c0dccea3ab644",
+      "930cc6091c39aeec",
+      "155d9c6979a0f154",
+      "628e1d73e0df5198",
+      "b7d6bac9cc281e65",
+      "0e26743e5b7996aa",
+      "94a13769e3bf9abd",
+      "b1067ea7aa661e37",
+      "9c461447f7381d9c",
+      "14f3ca94ebceeb10",
+      "1ce04f5d0290af01",
+      "ee768df89224fdd4",
+      "24d26974c4381fb2",
+      "2a516466560a1bf6",
+      "b7e658b0e14a337d",
+      "ee943b790e56f1e9",
+      "df0efe5e48a388e4",
+      "ba55412fd3a53633",
+      "ccde6b5dcb1b89ff",
+      "f08980c41529aa0a",
+      "961df5beb47ce8fe",
+      "2d1502464d09bc39",
+      "2209c9fb31386536",
+      "ed7a27b2c8e98f3f",
+      "d9d97f4744fd22fa",
+      "75296023790b5779",
+      "e6dfc79249f6c1a1",
+      "94feb0b6110f00b9",
+      "7b0e8ceac9c24923",
+      "4b22504ddbc97013",
+      "b69e0053651835e1",
+      "f5c96fbc7b544b70",
+      "87e71c4194b13eca",
+      "31f6dd58381ea7c7",
+      "17f5f64aea767598",
+      "4b278b2e1c3b65fe",
+      "132585c1560e9367",
+      "4ac3e9a98df0b72f",
+      "ce1c5d8c99f00218",
+      "e4161ee43d02c3e1",
+      "a37e5f4d4167070e",
+      "552084afc1360a6d",
+      "044f25386e357638",
+      "f4a199a5c0e635e8",
+      "14a44f38a464e232",
+      "88cc134f09ad5239",
+      "b7c201c6a216f9f9",
+      "054b29ea4a94dcbb",
+      "69378c350cbcf1f0",
+      "322b98059c8102f6",
+      "087544ef651e33a9",
+      "e8d28bcaab14cdb3",
+      "8e6981049112f21b",
+      "6ab9c16c6394dd4e",
+      "ca9734d270ce8235",
+      "023f7d8fb7b2d952",
+      "dc801a53d46793dc",
+      "6906c7aa24bad6a9",
+      "d1cf849c0c087647",
+      "e4bb8b15691df7d1",
+      "d1b15a85db963bff",
+      "def8166afcc7285a",
+      "3bdebc3b123e3e6a",
+      "7f1172d08e71aee9",
+      "f080c3d980dc41ee",
+      "d7813c5636790ce3",
+      "62d54b4d7063d756",
+      "9ee847160c70d3ca",
+      "ec95d9ed66570916",
+      "b267ad87879094a6",
+      "a770dd248a55e6e9",
+      "7749d143b0872ae6",
+      "3c8d09a275735ead",
+      "4c7d2cad071df254",
+      "ad64d083f09ba0b8",
+      "c25c0efeea8612db",
+      "f2077d30286bdbe8",
+      "ec8870db0397be77",
+      "919e0893f7e8e9ab",
+      "25f14cf57e57c6f6",
+      "f842434cbedc6c2f",
+      "59ad786d7dc6515e",
+      "8a40f5e0e478bef8",
+      "49e0dcabac057248",
+      "ecb4888e09f74327",
+      "c73afacf552caaa3",
+      "277cac8fba25a383",
+      "7eeed10064f1adb1",
+      "8ee094382f43f42c",
+      "a056bd95063bc3c7",
+      "832a962ce831138f",
+      "7de1129fbe8e23f3",
+      "8939ab555e41a164",
+      "0a85035b43e7b5df",
+      "4302ab28ee1e4d31",
+      "b0c873302bdb901e",
+      "0da707fae15fa4ff",
+      "ca83df32c809d686",
+      "16c9d4f06c9009ff",
+      "adc9ad6a62707d75",
+      "ac1e23f879ba50c8",
+      "716d0df75129186a",
+      "82575bca7b57daf4",
+      "9d4fda8558e592d9",
+      "a402c10aa1dd9010",
+      "6cf981cb99c6f844",
+      "962f1e166279ae68",
+      "c95a0cb1cbccb5ba",
+      "5bec80b167df408b",
+      "0f3d6628f27fb177",
+      "40434e5c1f1de189",
+      "b885f781d8677b79",
+      "f14495dc16d90423",
+      "44f86f669abdac6a",
+      "d10cce41235fd6d7",
+      "222b5e0376de5fbf",
+      "5c6803e6df63d49f",
+      "749398168f5abf24",
+      "ad15fc892ba73b3f",
+      "eae7c9420ae0277b",
+      "851faf63e8430cbe",
+      "6acca67f62d3915a",
+      "bb6cd8742fadb1c5",
+      "e4af8a715e987595",
+      "c4db4d8479297673",
+      "7d53a6344809c72d",
+      "e6c1bf63b134638f",
+      "92eb4087c19eba30",
+      "5e3802693c7c2f3a",
+      "c879c4ccec2d8462",
+      "3574544ccb9438ac",
+      "73e085b25f86b880",
+      "24a6066cff40c30b",
+      "dbfe691d1623a7fc",
+      "532657fd1042f10d"
+    ],
+    "test": [
+      "9d7e8e794f3f140a",
+      "6655c1535cadf583",
+      "5692c637ebca2ef8",
+      "ebb682ef35a9c53b",
+      "16823343d47b89ff",
+      "e9ca96f0968754bc",
+      "0802865d29f960eb",
+      "bbe22433a9c920ed",
+      "72fb3d85def1b808",
+      "3a818a1c2eb3e13c",
+      "557760b093631293",
+      "1a7ec01bfccad447",
+      "51e38b12e0db50a8",
+      "f55defa46f014bd5",
+      "f4774d800dab570f",
+      "fa23f7f7af86d2aa",
+      "a01f59c980656688",
+      "6e7a432e3b2da81e",
+      "c1e069c3b08ea02f",
+      "be25495cd2299757",
+      "676bde520246951d",
+      "d9ad17b4ddd20c29",
+      "db848c9e4507f2e3",
+      "a49c5f0089976861",
+      "97f3c942540162a5",
+      "9cd589b8a08e406d",
+      "cf06014cc0568185",
+      "a8c23893a28d7dd8",
+      "9e4d428a8c6d5ea7",
+      "035e80d595c584ef",
+      "8cc89687cc6a3e51",
+      "16bd91056fee4c0d",
+      "a85c4ade5cd1f1a0",
+      "90cf2f8eff70a962",
+      "ee561958024965e8",
+      "317b99e2691de80f",
+      "76eecfcccc91edef",
+      "76f5d833399b9d73",
+      "a1b36d627db29294",
+      "eb38e809b16bad56",
+      "7334ba97f30c3f65",
+      "6245f44c12a6c894",
+      "cba30141fef16e7f",
+      "5eebcc1772e8eaf4",
+      "664424b26d57d216",
+      "737c5fc5a649b47e",
+      "4d41dfc2371457fc",
+      "c6763e47cd7ddedb",
+      "00edfff6ca7d94fe",
+      "4b5968c4f6921f37",
+      "8dff95872d2fd94b",
+      "25fa9d09fa3bdfcf",
+      "7c061db8dcfb183b",
+      "eb8af348e9499c64",
+      "7fae3d5666493089",
+      "4f3ebeea99383d1a",
+      "88224bd513bd864e",
+      "89dfea6ff533c6f3",
+      "f5a3d644c6a1aa8e",
+      "c4aa6d2e4edb559e",
+      "bebb54382122b499",
+      "a55d52efed21758b",
+      "ca69b82a201fa490",
+      "0724252f4dd959a3",
+      "d9d86c84075c5b38",
+      "ec06e70882d6f620",
+      "4d69b60b2922236c",
+      "c0fbb83d9cbe12c9",
+      "c491bc877d645122",
+      "da1e6a4a29127969",
+      "16a077544e0e0ccb",
+      "a270ee64fb64ba1b",
+      "ece086d44e79ac8b",
+      "21bc347fb49e65f5",
+      "c60627d5ea2e7b82",
+      "a7cfe206219aecc6",
+      "1f0a8247d725602b",
+      "92db79623238f4b3",
+      "8d6b6f93be90efe2",
+      "18213af367b59ab5",
+      "285ef986fe176686",
+      "e3e6c0741a36581c",
+      "d304ef0f04e3f0cd",
+      "f433910b901585ad",
+      "6f30eed701f3fd74",
+      "3a4d264e5cbebf4d",
+      "5300e51b5bda7fe1",
+      "dd14a55d3c4ecb7f",
+      "168264c6fc3b2ea4",
+      "4b07684aa115fefa",
+      "c9189ebfc5c15af0",
+      "a206a5de4cc2d20b",
+      "4d47d2ac2a45fef4",
+      "3f0fa5deb664624b",
+      "22dad6de7c08fb6e",
+      "26cfe59b588a660f",
+      "dcf25b3cb7cdcae9",
+      "76dbac8a38878efe",
+      "58b5ffa667576055",
+      "fe688968d278a4a5",
+      "4ba8b00393701e59",
+      "cf1e9357df644203",
+      "a107cf9c46acca8b",
+      "eb04da9aeb7db170",
+      "3b007fb741f3c1a9",
+      "530c65f1c830f8f4",
+      "5565c099e1796afd",
+      "d866fd127ced2dbe",
+      "458ef598777f287c",
+      "1b55622c146399ae",
+      "19a8a35e6a52fc46",
+      "41ea4389d302c823",
+      "0416a3b1dc960cd5",
+      "520f9d508e1fa648",
+      "030194da33cc3ab6",
+      "d2c5600635c9834b",
+      "5aea0a2bb59b836a",
+      "85901834e14ceda3",
+      "684d1320ea562399",
+      "e590d9b27ed113fd",
+      "8227de38add1a8e7",
+      "8060afd52533b78e",
+      "748e0b96b67cf8b3",
+      "c52282828dd36a62",
+      "a27e47c48672835e",
+      "f79ea1691c291a03",
+      "8bc380f3ff4c47e3",
+      "928825d2bacb78d5",
+      "0571e73e578af36e",
+      "ec3f93881ac83f49",
+      "3c44c35bf058a271",
+      "5590e1375c77a956",
+      "ff783f8855b0b3c1",
+      "2190816244f79003",
+      "2ad3d8f68313a11a",
+      "f9358f6768a15e58",
+      "921d05d0837df583",
+      "00c11d2842cfccfb",
+      "81282634a2c76f9c",
+      "895991422a523717",
+      "ee4c2cd9a71f77cc",
+      "b141360449327c8e",
+      "dec96cd7a83576ae",
+      "1d387decf7816d86",
+      "80da56d79426add7",
+      "e98ec0f752441aec",
+      "fc0f30674bde23b7",
+      "44db496df4d8b99d",
+      "44e93bab33d8fc88",
+      "755bd0fe8ea4d497",
+      "e0048b05fac7dbf9",
+      "aa0c7ef81a806476",
+      "71999a9f5569dd90",
+      "11c3d21d8d3dd2da",
+      "f8af531e7f860aab",
+      "35037366a13c4280",
+      "d0e1d294f6eee373",
+      "d0e2f94948bcce4b",
+      "f214bbbf9d9a5326",
+      "40c98a7234ecd2b5",
+      "a55aa23673b2872a",
+      "e6c572c6f1604c5e",
+      "7d3b971817d8aa6a",
+      "16a98102c786453d",
+      "8d0071823ca76831",
+      "74d09086872add2e",
+      "98566880bb24eee6",
+      "560fe767f9b07111",
+      "d3de98fe9c7e0463",
+      "c8c410402d96c829",
+      "c2e0f7448fa5cd3b",
+      "9143e199f3295f25",
+      "2e27fc7952f14d37",
+      "b355c0c35b6d3619",
+      "931c5df491a6dbc1",
+      "72b353ac4e76005f",
+      "552f6315fdb43334",
+      "d81e418e0a0af26d",
+      "61749ea90d258044",
+      "4f9717a7559e5ef9",
+      "86927bddaa263c8d",
+      "41342c4e0b1257e6",
+      "0411420e6cf090e3",
+      "c24a3c6e8720827b",
+      "0744a97378ac2b87",
+      "bd459f7dc0952f9d",
+      "f07da3ba22689c04",
+      "acfa79540abff162",
+      "b291a82e852ba176",
+      "0c993523fb7206f5",
+      "f8a306eff72517be",
+      "9d64d903bbe1ae41",
+      "66e1448adb8d9f45",
+      "97912ffd2678213d",
+      "b0122279638bb96b",
+      "aa1088d94756754e",
+      "567b6e11e9d8023c",
+      "0087c9a1c7703f54",
+      "13f7f1d963d73ac3",
+      "34d61553eb025b1e",
+      "8f9810a569350455",
+      "e19234cfab268259",
+      "75d48225024d66b4",
+      "23a0006dac3f3a7e",
+      "f43658fb546079f6",
+      "36e10332e0fe7d2a",
+      "c4147b477f677939",
+      "b5c369e986dc8d6a",
+      "be13580b382a2fba",
+      "760bfc4af89dacb2",
+      "a6160894a9cf6243",
+      "4271aa3aece92488",
+      "c6fcbb67a5dd8dc2",
+      "552a4e82c234c13d",
+      "ea2439319dedba49",
+      "24ada3e5be6d3d59",
+      "03ff5266dd4269ec",
+      "b29629a9513f0017",
+      "ff1c4d8bca9f9331",
+      "9d1d9a5e25249351",
+      "7715ee868600ec11",
+      "e1c434c00ef96b80",
+      "0d1a56278bdb7f8b",
+      "1593f3a375a90ff2",
+      "b186919e0a88247b",
+      "8adce05da72b0b37",
+      "1aa100f8bd590ce6",
+      "01e517b5cb691d8d",
+      "0047b8b6d7ddff05",
+      "47becde7242527cb",
+      "d6009dbd46aed137",
+      "a57344f0be894a18",
+      "a6212b5e6573a889",
+      "12ecf2492fadda38",
+      "3292689087ad6918",
+      "326d5346e6a47f49",
+      "2d8ace9ee3c3841a",
+      "69d1464afb082faf",
+      "d15fcb379c309829",
+      "8fbd27bcc2ca7890",
+      "2248f205213463b9",
+      "95fde074c851828b",
+      "93c7664880807397",
+      "b5b757be2b05ad08",
+      "c676cdf02f6e95cd",
+      "31e85cfb47be715e",
+      "62c5d78d672b9161",
+      "2251fe987f1627b2",
+      "01947f274427a4ac",
+      "28a50b195e2f4136",
+      "707a6605d31f1b77",
+      "edc5f9c44cb6d7fa",
+      "ba533f2131cde0b3",
+      "79983d1b5a8f352c",
+      "491cb13dd53d71db",
+      "cd137722157f5a99"
+    ]
+  }
+}
