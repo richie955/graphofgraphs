@@ -1,0 +1,6 @@
+# Choose a PyTorch wheel appropriate for your CPU/CUDA environment first.
+torch>=2.2
+torch-geometric>=2.5
+# pandas is needed for the existing preprocessing test suite, not model inference.
+pandas>=2.0,<3
+numpy>=1.24

@@ -16,7 +16,7 @@ class Stage5GraphEntityFusion(nn.Module):
         self.dropout = nn.Dropout(dropout)
 
     def forward(self, z_cross: Tensor, h_graph: Tensor, owner_root_index: Tensor,
-                graph_nonempty: Tensor) -> tuple[Tensor, Tensor, Tensor]:
+                graph_nonempty: Tensor, downward: bool = True) -> tuple[Tensor, Tensor, Tensor]:
         device = z_cross.device
         owner = owner_root_index.to(device=device, dtype=torch.long)
         active = graph_nonempty.to(device=device, dtype=torch.bool)
@@ -36,10 +36,12 @@ class Stage5GraphEntityFusion(nn.Module):
         up_candidate = torch.tanh(self.up_candidate(up_input))
         up_gate = torch.sigmoid(self.up_gate(up_input))
         owner_up = self.up_norm(owner_state + self.dropout(up_gate * up_candidate))
-        down_input = torch.cat((graph_state, owner_up), dim=-1)
-        down_candidate = torch.tanh(self.down_candidate(down_input))
-        down_gate = torch.sigmoid(self.down_gate(down_input))
-        graph_down = self.down_norm(graph_state + self.dropout(down_gate * down_candidate))
+        graph_down = graph_state
+        if downward:
+            down_input = torch.cat((graph_state, owner_up), dim=-1)
+            down_candidate = torch.tanh(self.down_candidate(down_input))
+            down_gate = torch.sigmoid(self.down_gate(down_input))
+            graph_down = self.down_norm(graph_state + self.dropout(down_gate * down_candidate))
         z_owner_all = z_cross.index_copy(0, owner_rows, owner_up)
         h_fused = h_graph.index_copy(0, active_graphs, graph_down)
         owner_feedback = h_graph.new_zeros(h_graph.shape).index_copy(0, active_graphs, owner_up)

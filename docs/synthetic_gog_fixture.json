@@ -1,0 +1,83 @@
+{
+  "fixture_name": "synthetic_gog_pipeline_v1",
+  "description": "Small fictional fixture for GoG preprocessing, encoder, decoder, negative sampling, and leakage checks. Not biomedical evidence.",
+  "root_graph_id": "G_ROOT",
+  "entity_types": ["Protein", "Drug", "Disease", "Pathway", "Process"],
+  "relation_schema": {
+    "activates": {"head_types": ["Protein"], "tail_types": ["Protein"]},
+    "inhibits": {"head_types": ["Drug", "Protein"], "tail_types": ["Protein", "Process"]},
+    "targets": {"head_types": ["Drug"], "tail_types": ["Protein", "Pathway"]},
+    "treats": {"head_types": ["Drug"], "tail_types": ["Disease"]},
+    "associated_with": {"head_types": ["Protein", "Pathway", "Disease"], "tail_types": ["Protein", "Pathway", "Disease"]},
+    "participates_in": {"head_types": ["Protein"], "tail_types": ["Pathway", "Process"]}
+  },
+  "entities": [
+    {"entity_id": "E_MAPK", "name": "MAPK Pathway", "type_id": "Pathway"},
+    {"entity_id": "E_PI3K", "name": "PI3K Pathway", "type_id": "Pathway"},
+    {"entity_id": "E_DrugA", "name": "Compound A", "type_id": "Drug"},
+    {"entity_id": "E_DiseaseA", "name": "Condition A", "type_id": "Disease"},
+    {"entity_id": "E_RAF", "name": "RAF", "type_id": "Protein"},
+    {"entity_id": "E_MEK", "name": "MEK", "type_id": "Protein"},
+    {"entity_id": "E_ERK", "name": "ERK", "type_id": "Protein"},
+    {"entity_id": "E_AKT", "name": "AKT", "type_id": "Protein"},
+    {"entity_id": "E_PIK3", "name": "PIK3", "type_id": "Protein"},
+    {"entity_id": "E_PTEN", "name": "PTEN", "type_id": "Protein"},
+    {"entity_id": "E_APOPTOSIS", "name": "Apoptosis", "type_id": "Process"},
+    {"entity_id": "E_GROWTH", "name": "Cell Growth", "type_id": "Process"},
+    {"entity_id": "E_GENE_X", "name": "Gene X", "type_id": "Protein"}
+  ],
+  "graphs": [
+    {"graph_id": "G_ROOT", "kind": "root", "owner_entity_id": null},
+    {"graph_id": "G_MAPK", "kind": "internal", "owner_entity_id": "E_MAPK"},
+    {"graph_id": "G_PI3K", "kind": "internal", "owner_entity_id": "E_PI3K"}
+  ],
+  "graph_nodes": [
+    {"node_id": "N_MAPK_ROOT", "entity_id": "E_MAPK", "graph_id": "G_ROOT"},
+    {"node_id": "N_PI3K_ROOT", "entity_id": "E_PI3K", "graph_id": "G_ROOT"},
+    {"node_id": "N_DRUG_ROOT", "entity_id": "E_DrugA", "graph_id": "G_ROOT"},
+    {"node_id": "N_DISEASE_ROOT", "entity_id": "E_DiseaseA", "graph_id": "G_ROOT"},
+    {"node_id": "N_MEK_ROOT", "entity_id": "E_MEK", "graph_id": "G_ROOT"},
+    {"node_id": "N_RAF_MAPK", "entity_id": "E_RAF", "graph_id": "G_MAPK"},
+    {"node_id": "N_MEK_MAPK", "entity_id": "E_MEK", "graph_id": "G_MAPK"},
+    {"node_id": "N_ERK_MAPK", "entity_id": "E_ERK", "graph_id": "G_MAPK"},
+    {"node_id": "N_AKT_PI3K", "entity_id": "E_AKT", "graph_id": "G_PI3K"},
+    {"node_id": "N_PIK3_PI3K", "entity_id": "E_PIK3", "graph_id": "G_PI3K"},
+    {"node_id": "N_PTEN_PI3K", "entity_id": "E_PTEN", "graph_id": "G_PI3K"},
+    {"node_id": "N_GENE_X_PI3K", "entity_id": "E_GENE_X", "graph_id": "G_PI3K"},
+    {"node_id": "N_APOPTOSIS_MAPK", "entity_id": "E_APOPTOSIS", "graph_id": "G_MAPK"},
+    {"node_id": "N_GROWTH_PI3K", "entity_id": "E_GROWTH", "graph_id": "G_PI3K"}
+  ],
+  "facts": [
+    {"fact_id": "F001", "source_node_id": "N_DRUG_ROOT", "relation_type_id": "targets", "target_node_id": "N_MAPK_ROOT", "split": "train"},
+    {"fact_id": "F002", "source_node_id": "N_MAPK_ROOT", "relation_type_id": "associated_with", "target_node_id": "N_DISEASE_ROOT", "split": "train"},
+    {"fact_id": "F003", "source_node_id": "N_PI3K_ROOT", "relation_type_id": "associated_with", "target_node_id": "N_DISEASE_ROOT", "split": "validation"},
+    {"fact_id": "F004", "source_node_id": "N_RAF_MAPK", "relation_type_id": "activates", "target_node_id": "N_MEK_MAPK", "split": "train"},
+    {"fact_id": "F005", "source_node_id": "N_MEK_MAPK", "relation_type_id": "activates", "target_node_id": "N_ERK_MAPK", "split": "train"},
+    {"fact_id": "F006", "source_node_id": "N_PTEN_PI3K", "relation_type_id": "inhibits", "target_node_id": "N_AKT_PI3K", "split": "train"},
+    {"fact_id": "F007", "source_node_id": "N_PIK3_PI3K", "relation_type_id": "activates", "target_node_id": "N_AKT_PI3K", "split": "test"},
+    {"fact_id": "F008", "source_node_id": "N_DRUG_ROOT", "relation_type_id": "inhibits", "target_node_id": "N_MEK_MAPK", "split": "train"},
+    {"fact_id": "F009", "source_node_id": "N_MEK_MAPK", "relation_type_id": "associated_with", "target_node_id": "N_DISEASE_ROOT", "split": "train"},
+    {"fact_id": "F010", "source_node_id": "N_MAPK_ROOT", "relation_type_id": "associated_with", "target_node_id": "N_AKT_PI3K", "split": "train"},
+    {"fact_id": "F011", "source_node_id": "N_AKT_PI3K", "relation_type_id": "associated_with", "target_node_id": "N_RAF_MAPK", "split": "train"},
+    {"fact_id": "F012", "source_node_id": "N_MEK_ROOT", "relation_type_id": "inhibits", "target_node_id": "N_GROWTH_PI3K", "split": "train"},
+    {"fact_id": "F013", "source_node_id": "N_ERK_MAPK", "relation_type_id": "participates_in", "target_node_id": "N_APOPTOSIS_MAPK", "split": "train"},
+    {"fact_id": "F014", "source_node_id": "N_PIK3_PI3K", "relation_type_id": "participates_in", "target_node_id": "N_GROWTH_PI3K", "split": "train"},
+    {"fact_id": "F015", "source_node_id": "N_RAF_MAPK", "relation_type_id": "associated_with", "target_node_id": "N_AKT_PI3K", "split": "train"}
+  ],
+  "split_note": "Splits are hand-assigned only to exercise plumbing. F003 and F007 are held-out and must never enter encoder adjacency or generated reverse channels. Do not use these proportions as a benchmark split.",
+  "expected_scope_counts_all_facts": {
+    "root_to_root": 3,
+    "same_internal_graph": 6,
+    "root_to_internal": 3,
+    "internal_to_root": 1,
+    "internal_to_different_internal": 2
+  },
+  "edge_cases": [
+    "E_MEK has a ROOT occurrence and a G_MAPK occurrence: same global entity, distinct contexts.",
+    "Each entity occurs at most once in a given graph.",
+    "E_MAPK and E_PI3K each own one internal graph and have ROOT occurrences.",
+    "G_MAPK and G_PI3K contain several nodes, supporting attention pooling.",
+    "F003 and F007 are held out to test leakage exclusion.",
+    "No fact is a synthetic ownership edge; ownership is represented only by graph metadata."
+  ]
+}

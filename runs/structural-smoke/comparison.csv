@@ -1,0 +1,5 @@
+seed,model,optimizer_updates_this_run,total_budget_updates,best_epoch,elapsed_seconds,raw_mrr,raw_hits@1,raw_hits@3,raw_hits@10,raw_mean_rank,filtered_mrr,filtered_hits@1,filtered_hits@3,filtered_hits@10,filtered_mean_rank
+17,baseline_continuation,2,4,0,0.08243520000542048,0.75,0.5,1.0,1.0,1.5,0.75,0.5,1.0,1.0,1.5
+17,rgcn,4,4,3,2.7980568000057247,0.3333333333333333,0.0,1.0,1.0,3.0,0.41666666666666663,0.0,1.0,1.0,2.5
+17,gog_legacy,4,4,3,0.2400318999934825,0.75,0.5,1.0,1.0,1.5,1.0,1.0,1.0,1.0,1.0
+17,gog_structural,2,4,0,0.09339589999581221,0.75,0.5,1.0,1.0,1.5,0.75,0.5,1.0,1.0,1.5

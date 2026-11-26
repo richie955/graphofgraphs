@@ -16,6 +16,7 @@ from .stage6 import Stage6RootCompGCN
 from .stage7 import Stage7IdentitySync
 from .stage8 import Stage8ContextFeedback
 from .stage9 import ComplExDecoder
+from .structural import StructuralCategories, FamilyGraphReadout
 
 
 @dataclass
@@ -106,22 +107,50 @@ class GoGEncoder(nn.Module):
 
     def __init__(self, num_entities: int, num_types: int, num_relations: int,
                  hidden_dim: int = 256, num_bases: int = 8, num_heads: int = 4,
-                 dropout: float = 0.2, num_rounds: int = 2):
+                 dropout: float = 0.2, num_rounds: int | None = None,
+                 profile: str = "legacy", feature_mode: str = "auto",
+                 basis_init: str | None = None, composition: str | None = None,
+                 normalization: str | None = None, identity_residual: bool = True,
+                 local_enabled: bool = True, cross_enabled: bool = True,
+                 fusion_enabled: bool = True, root_enabled: bool = True,
+                 sync_enabled: bool = False, feedback_enabled: bool = False,
+                 family_readout: bool = True):
         super().__init__()
+        if profile not in {"legacy", "structural"}:
+            raise ValueError("profile must be legacy or structural")
+        num_rounds = num_rounds if num_rounds is not None else (2 if profile == "legacy" else 1)
         if num_rounds < 1:
             raise ValueError("num_rounds must be at least one")
+        if feature_mode not in {"auto", "id_type", "categorical"}:
+            raise ValueError("invalid feature_mode")
+        if profile == "structural" and ((sync_enabled and not feedback_enabled)
+                                         or ((sync_enabled or feedback_enabled) and num_rounds < 2)):
+            raise ValueError("synchronization requires feedback; refinement requires at least two rounds")
+        self.profile = profile
+        self.local_enabled, self.cross_enabled = local_enabled, cross_enabled
+        self.fusion_enabled, self.root_enabled = fusion_enabled, root_enabled
+        self.sync_enabled, self.feedback_enabled = sync_enabled, feedback_enabled
+        self.family_readout = family_readout
         self.hidden_dim = hidden_dim
         self.num_rounds = num_rounds
         self.initializer = Stage1Initializer(num_entities, num_types, hidden_dim)
         self.relation_embedding = nn.Embedding(num_relations, hidden_dim)
         nn.init.normal_(self.relation_embedding.weight, mean=0.0, std=0.02)
-        self.local = Stage2LocalCompGCN(num_relations, hidden_dim, num_bases, dropout)
+        message_options = dict(basis_init=basis_init or ("legacy" if profile == "legacy" else "per_matrix"),
+                               composition=composition or ("multiply" if profile == "legacy" else "residual"),
+                               normalization=normalization or ("global" if profile == "legacy" else "relation"))
+        self.local = Stage2LocalCompGCN(num_relations, hidden_dim, num_bases, dropout, **message_options)
         self.cross = Stage3CrossGraphAttention(num_relations, hidden_dim, num_heads, dropout=dropout)
         self.readout = Stage4GraphReadout(hidden_dim, dropout)
         self.fusion = Stage5GraphEntityFusion(hidden_dim, dropout)
-        self.root = Stage6RootCompGCN(num_relations, hidden_dim, num_bases, dropout)
+        self.root = Stage6RootCompGCN(num_relations, hidden_dim, num_bases, dropout, **message_options)
         self.sync = Stage7IdentitySync(hidden_dim)
         self.feedback = Stage8ContextFeedback(hidden_dim, dropout=dropout)
+        if profile == "structural":
+            self.chemistry = StructuralCategories(hidden_dim) if feature_mode != "id_type" else None
+            self.structural_readout = FamilyGraphReadout(hidden_dim, dropout) if family_readout else None
+            self.identity_scale = nn.Parameter(torch.zeros(num_types)) if identity_residual else None
+            self.feedback_scale = nn.Parameter(torch.tensor(0.1))
 
     @classmethod
     def from_preprocessed(cls, data: PreprocessedGoG, **kwargs: Any) -> "GoGEncoder":
@@ -152,7 +181,7 @@ class GoGEncoder(nn.Module):
         root_occ = torch.tensor([i for i, graph_idx in enumerate(data.graph_index_by_occurrence)
                                  if graph_idx == root_graph_index], dtype=torch.long, device=device)
         member_occ = [i for i, graph_idx in enumerate(data.graph_index_by_occurrence)
-                      if graph_to_internal[graph_idx].item() >= 0]
+                      if global_to_internal[graph_idx] >= 0]
         member_occ_tensor = torch.tensor(member_occ, dtype=torch.long, device=device)
         member_graph = graph_to_internal[graph_by_occ[member_occ_tensor]]
         owner_root = torch.tensor(data.owner_root_by_graph, dtype=torch.long, device=device)
@@ -165,8 +194,18 @@ class GoGEncoder(nn.Module):
             graph_nonempty[member_graph.unique()] = True
 
         b_entity, _, z = self.initializer(entity_types, entity_by_occ)
+        z_initial = z
+        if self.profile == "structural" and self.chemistry is not None:
+            b_entity = b_entity + self.chemistry(data)
+            z = self.initializer.occurrence_norm(b_entity[entity_by_occ])
+        entity_types_by_id = {e["entity_id"]: str(e.get("type", e.get("type_id", ""))).lower()
+                              for e in data.entities}
+        families = torch.tensor([{"drug": 0, "pathway": 1}.get(
+            entity_types_by_id[g["owner_entity_id"]], 2) for g in internal_graph_rows],
+            device=device, dtype=torch.long)
         h_graph = z.new_zeros((len(internal_graph_rows), self.hidden_dim))
         rounds: list[EncoderRoundOutput] = []
+        self.last_round_changes = []
         cross_edges = [*data.edge_lists["root_to_internal"], *data.edge_lists["internal_to_root"],
                        *data.edge_lists["internal_to_different_internal"]]
         root_edges = data.edge_lists["root_to_root"]
@@ -175,23 +214,56 @@ class GoGEncoder(nn.Module):
         cross_index, cross_type = self._edge_tensors(cross_edges, device)
         root_index, root_type = self._edge_tensors(root_edges, device)
 
-        for _ in range(self.num_rounds):
-            z_local, local_count = self.local(z, local_index, local_type, self.relation_embedding.weight,
+        for round_index in range(self.num_rounds):
+            z_local, local_count = (self.local(z, local_index, local_type, self.relation_embedding.weight,
                                               graph_by_occ, root_graph_index)
-            z_cross, cross_count, _ = self.cross(z_local, cross_index, cross_type,
-                                                 self.relation_embedding.weight, graph_by_occ, root_graph_index)
-            h_new, _, _ = self.readout(z_cross, member_graph, member_occ_tensor, h_graph)
-            z_owner, h_fused, _ = self.fusion(z_cross, h_new, owner_root, graph_nonempty)
-            z_root, root_count = self.root(z_owner, root_occ, root_index, root_type,
-                                           self.relation_embedding.weight)
-            b_new, _ = self.sync(b_entity, z_root, entity_by_occ)
-            z_next, _ = self.feedback(b_new, z_root, h_fused, entity_by_occ, graph_by_occ,
-                                      graph_to_internal, root_occ_by_entity, owned_graph_by_entity,
-                                      has_owned_graph, owner_root, has_owner_root, graph_nonempty,
-                                      root_graph_index)
+                                    if self.local_enabled else (z, 0))
+            if self.cross_enabled:
+                z_cross, cross_count, _ = self.cross(z_local, cross_index, cross_type,
+                                                     self.relation_embedding.weight, graph_by_occ, root_graph_index)
+            else:
+                z_cross, cross_count = z_local, 0
+            if self.profile == "structural" and self.structural_readout is not None:
+                h_new = self.structural_readout(z_cross, member_graph, member_occ_tensor, h_graph, families)
+            else:
+                h_new, _, _ = self.readout(z_cross, member_graph, member_occ_tensor, h_graph)
+            if self.fusion_enabled:
+                z_owner, h_fused, _ = self.fusion(z_cross, h_new, owner_root, graph_nonempty,
+                                                 downward=self.profile == "legacy" or self.feedback_enabled)
+            else:
+                z_owner, h_fused = z_cross, h_new
+            z_root, root_count = (self.root(z_owner, root_occ, root_index, root_type,
+                                            self.relation_embedding.weight)
+                                  if self.root_enabled else (z_owner, 0))
+            b_new, z_next = b_entity, z_root
+            if self.profile == "legacy" or (self.feedback_enabled and round_index + 1 < self.num_rounds):
+                if self.profile == "legacy" or self.sync_enabled:
+                    mask = None if self.profile == "legacy" else (torch.bincount(
+                        entity_by_occ, minlength=b_entity.shape[0])[entity_by_occ] > 1)
+                    b_new, _ = self.sync(b_entity, z_root, entity_by_occ, active_mask=mask)
+                candidate, _ = self.feedback(b_new, z_root, h_fused, entity_by_occ, graph_by_occ,
+                                             graph_to_internal, root_occ_by_entity, owned_graph_by_entity,
+                                             has_owned_graph, owner_root, has_owner_root, graph_nonempty,
+                                             root_graph_index)
+                z_next = (candidate if self.profile == "legacy" else
+                          z_root + self.feedback_scale * (candidate - z_root))
+            with torch.no_grad():
+                def change(before: Tensor, after: Tensor) -> float:
+                    return float((after - before).norm(dim=-1).mean()) if after.shape[0] else 0.0
+                self.last_round_changes.append({"local": change(z, z_local),
+                                                "cross": change(z_local, z_cross),
+                                                "readout": change(h_graph, h_new),
+                                                "owner": change(z_cross, z_owner),
+                                                "root": change(z_owner[root_occ], z_root[root_occ]),
+                                                "synchronization": change(b_entity, b_new),
+                                                "feedback": change(z_root, z_next)})
             rounds.append(EncoderRoundOutput(z_local, z_cross, h_new, z_owner, z_root, b_new,
                                              z_next, local_count, cross_count, root_count))
             b_entity, z, h_graph = b_new, z_next, h_fused
+        if self.profile == "structural" and self.identity_scale is not None:
+            scale = self.identity_scale[entity_types[entity_by_occ[root_occ]]][:, None]
+            decoded_root = z_initial[root_occ] + scale * (z[root_occ] - z_initial[root_occ])
+            z = z.index_copy(0, root_occ, decoded_root)
         return GoGEncoderOutput(b_entity, z, h_graph, rounds)
 
 

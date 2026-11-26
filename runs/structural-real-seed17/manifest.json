@@ -1,0 +1,59 @@
+{
+  "config": {
+    "hidden_dim": 128,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": null,
+    "negatives_per_side": 50,
+    "training_batch_size": 4096,
+    "epochs": 100,
+    "patience": 15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cuda",
+    "show_progress": true,
+    "encoder_profile": "structural",
+    "task_scope": "root",
+    "feature_mode": "auto",
+    "basis_init": null,
+    "composition": null,
+    "normalization": null,
+    "identity_residual": true,
+    "local_enabled": true,
+    "cross_enabled": true,
+    "fusion_enabled": true,
+    "root_enabled": true,
+    "sync_enabled": false,
+    "feedback_enabled": false,
+    "family_readout": true,
+    "embedding_learning_rate": null,
+    "encoder_learning_rate": null,
+    "decoder_learning_rate": null,
+    "init_checkpoint": null,
+    "early_stopping": false,
+    "update_offset": 0,
+    "evaluate_test": false,
+    "diagnostic_train_limit": 32
+  },
+  "seeds": [
+    17
+  ],
+  "warmup_updates": 80,
+  "continuation_updates": 80,
+  "ablations": [],
+  "fingerprints": {
+    "dataset": "4e333278b4de091af2da4b81d0053a6fd2f73c4ab587a160ae87882fba63c19d",
+    "candidates": "6dde2089fef45ae499e7d1414c7b5a56b6203cf73f63bb80166bad1b5d1676ad",
+    "queries": {
+      "train": "d1c94e6a1d38e545b852eb7a7ab7ee5bf2ad230c04725da20b3fc386b6c2978a",
+      "validation": "3117b85dc3f7656622d7250037a0d11f5255309af99f9fa890586ef8e0bb5997",
+      "test": "cf11d8348af927705c6fd7efb6871ada5eb00b97881d84344dd332b42cedab11"
+    }
+  },
+  "task": "ROOT positives and all ROOT candidates",
+  "test_evaluated": false,
+  "note": "All final configurations have the same maximum total update budget; warm-start branches share baseline pretraining and reset optimizers. Best validation checkpoints may precede the budget endpoint."
+}

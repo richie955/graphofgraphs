@@ -4,11 +4,12 @@ import torch
 from torch import Tensor, nn
 from torch.nn import functional as F
 
-from .relational_ops import aggregate_basis_messages
+from .relational_ops import initialize_messages, relational_aggregate, message_ratio
 
 
 class Stage6RootCompGCN(nn.Module):
-    def __init__(self, num_relations: int, hidden_dim: int = 256, num_bases: int = 8, dropout: float = 0.2):
+    def __init__(self, num_relations: int, hidden_dim: int = 256, num_bases: int = 8, dropout: float = 0.2,
+                 basis_init: str = "legacy", composition: str = "multiply", normalization: str = "global"):
         super().__init__()
         self.hidden_dim = hidden_dim
         self.basis = nn.Parameter(torch.empty(2, num_bases, hidden_dim, hidden_dim))
@@ -16,8 +17,11 @@ class Stage6RootCompGCN(nn.Module):
         self.self_linear = nn.Linear(hidden_dim, hidden_dim, bias=False)
         self.dropout = nn.Dropout(dropout)
         self.norm = nn.LayerNorm(hidden_dim)
-        nn.init.xavier_uniform_(self.basis)
-        nn.init.xavier_uniform_(self.coefficients)
+        if composition not in {"multiply", "residual"} or normalization not in {"global", "relation"}:
+            raise ValueError("invalid message composition or normalization")
+        self.composition, self.normalization = composition, normalization
+        self.last_message_self_ratio = 0.0
+        initialize_messages(self.basis, self.coefficients, basis_init)
 
     def forward(self, z_owner_all: Tensor, root_occurrence_indices: Tensor, root_edge_index_global: Tensor,
                 edge_type: Tensor, relation_vectors: Tensor) -> tuple[Tensor, int]:
@@ -42,19 +46,10 @@ class Stage6RootCompGCN(nn.Module):
         else:
             src = dst = edge_type
         z_root = z_owner_all[root_idx]
-        n_root = z_root.shape[0]
-        aggregate = z_root.new_zeros((n_root, self.hidden_dim))
-        degree = z_root.new_zeros((n_root, 1))
-        if edge_type.numel():
-            senders = torch.cat((src, dst))
-            receivers = torch.cat((dst, src))
-            rel_ids = torch.cat((edge_type, edge_type))
-            directions = torch.cat((torch.zeros_like(edge_type), torch.ones_like(edge_type)))
-            composed = z_root[senders] * rels[rel_ids]
-            aggregate_basis_messages(aggregate, receivers, composed, rel_ids, directions,
-                                     self.coefficients, self.basis)
-            degree.index_add_(0, receivers, z_root.new_ones((receivers.numel(), 1)))
-        aggregate = aggregate / degree.clamp_min(1.0)
-        update = F.relu(self.self_linear(z_root) + aggregate)
+        aggregate = relational_aggregate(z_root, src, dst, edge_type, rels, self.coefficients,
+                                         self.basis, self.composition, self.normalization)
+        self_term = self.self_linear(z_root)
+        self.last_message_self_ratio = message_ratio(aggregate, self_term)
+        update = F.relu(self_term + aggregate)
         z_root_new = self.norm(z_root + self.dropout(update))
         return z_owner_all.index_copy(0, root_idx, z_root_new), int(edge_type.numel() * 2)

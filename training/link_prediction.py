@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import hashlib
+import platform
 import random
 import time
 from collections import defaultdict
@@ -18,6 +20,8 @@ from gog_embedding import ComplExDecoder, GoGEncoder
 from baselines.rgcn import RGCNBaseline
 from gog_embedding.stage1 import Stage1Initializer
 from data_pipeline.preprocessing import PreprocessedGoG
+from .checkpoints import initialize_from_checkpoint
+from gog_embedding.structural import ELEMENTS, FRAGMENTS
 
 
 @dataclass(frozen=True)
@@ -26,7 +30,7 @@ class TrainingConfig:
     num_bases: int = 8
     num_heads: int = 4
     dropout: float = 0.2
-    num_rounds: int = 2
+    num_rounds: int | None = None
     negatives_per_side: int = 10
     training_batch_size: int = 4096
     epochs: int = 100
@@ -37,6 +41,73 @@ class TrainingConfig:
     seed: int = 17
     device: str = "auto"
     show_progress: bool = False
+    encoder_profile: str = "legacy"
+    task_scope: str | None = None
+    feature_mode: str = "auto"
+    basis_init: str | None = None
+    composition: str | None = None
+    normalization: str | None = None
+    identity_residual: bool = True
+    local_enabled: bool = True
+    cross_enabled: bool = True
+    fusion_enabled: bool = True
+    root_enabled: bool = True
+    sync_enabled: bool = False
+    feedback_enabled: bool = False
+    family_readout: bool = True
+    embedding_learning_rate: float | None = None
+    encoder_learning_rate: float | None = None
+    decoder_learning_rate: float | None = None
+    init_checkpoint: str | None = None
+    early_stopping: bool = True
+    update_offset: int = 0
+    evaluate_test: bool | None = None
+    diagnostic_train_limit: int = 32
+
+    def __post_init__(self) -> None:
+        if self.encoder_profile not in {"legacy", "structural"}:
+            raise ValueError("encoder_profile must be legacy or structural")
+        if self.task_scope is None:
+            object.__setattr__(self, "task_scope", "root" if self.encoder_profile == "structural" else "all")
+        if self.evaluate_test is None:
+            object.__setattr__(self, "evaluate_test", self.encoder_profile == "legacy")
+        if self.task_scope not in {"all", "root"}:
+            raise ValueError("task_scope must be all or root")
+
+
+def selected_facts(data: PreprocessedGoG, split: str, task_scope: str = "all") -> list[dict[str, Any]]:
+    if task_scope not in {"all", "root"}:
+        raise ValueError("task_scope must be all or root")
+    root = next(g["graph_id"] for g in data.graphs if g["kind"] == "root")
+    nodes = data.graph_node_by_id
+    return [f for f in data.facts if f["split"] == split and not f.get("derived_channel", False)
+            and f.get("supervised", True) and (task_scope == "all" or
+                (nodes[f["source_node_id"]]["graph_id"] == root and
+                 nodes[f["target_node_id"]]["graph_id"] == root))]
+
+
+def _fingerprint(value: Any) -> str:
+    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(",", ":"),
+                                     ensure_ascii=False).encode("utf-8")).hexdigest()
+
+
+def protocol_fingerprints(data: PreprocessedGoG, task_scope: str) -> dict[str, Any]:
+    root = next(g["graph_id"] for g in data.graphs if g["kind"] == "root")
+    def triples(split: str) -> list:
+        return sorted((f["source_node_id"], f["relation_type_id"], f["target_node_id"])
+                      for f in selected_facts(data, split, task_scope))
+    return {
+        "dataset": _fingerprint({"entities": sorted(data.entities, key=lambda r: r["entity_id"]),
+                                  "graphs": sorted(data.graphs, key=lambda r: r["graph_id"]),
+                                  "nodes": sorted(data.graph_nodes, key=lambda r: r["node_id"]),
+                                  "facts": sorted(data.facts, key=lambda r: r["fact_id"]),
+                                  "relation_schema": data.relation_schema}),
+        "candidates": _fingerprint({"nodes": sorted(n["node_id"] for n in data.graph_nodes
+                                                      if task_scope == "all" or n["graph_id"] == root),
+                                     "schema": data.relation_schema if task_scope == "all" else {},
+                                     "task_scope": task_scope}),
+        "queries": {s: _fingerprint(triples(s)) for s in ("train", "validation", "test")},
+    }
 
 
 class EntityOnlyBaseline(nn.Module):
@@ -117,7 +188,8 @@ def valid_candidate_nodes(data: PreprocessedGoG, fact: dict[str, Any], side: str
 def _sample_side_candidates(data: PreprocessedGoG, fact: dict[str, Any], side: str,
                             negatives_per_side: int, rng: random.Random,
                             known_by_head: dict[tuple[str, str, str, str], set[str]],
-                            known_by_tail: dict[tuple[str, str, str, str], set[str]]) -> list[int]:
+                            known_by_tail: dict[tuple[str, str, str, str], set[str]],
+                            all_candidates: bool = False) -> list[int]:
     """Sample negatives by graph index and rejection sampling, avoiding a full
     candidate scan for every training fact (especially useful for ROOT facts)."""
     if negatives_per_side <= 0:
@@ -126,7 +198,7 @@ def _sample_side_candidates(data: PreprocessedGoG, fact: dict[str, Any], side: s
     source_graph, target_graph = _fact_context(fact, node_by_id)
     required_graph = source_graph if side == "head" else target_graph
     relation = data.relation_schema.get(fact["relation_type_id"], {})
-    allowed_types = relation.get("head_types" if side == "head" else "tail_types")
+    allowed_types = None if all_candidates else relation.get("head_types" if side == "head" else "tail_types")
     if allowed_types:
         pool = sorted({index for entity_type in allowed_types
                        for index in data.candidate_node_indices_by_graph_type.get((required_graph, entity_type), [])})
@@ -164,11 +236,11 @@ def _sample_side_candidates(data: PreprocessedGoG, fact: dict[str, Any], side: s
     return sorted(selected)
 
 
-def sample_training_negatives(data: PreprocessedGoG, negatives_per_side: int, seed: int) -> tuple[list[tuple[int, str, int]], dict[str, int]]:
+def sample_training_negatives(data: PreprocessedGoG, negatives_per_side: int, seed: int,
+                              task_scope: str = "all") -> tuple[list[tuple[int, str, int]], dict[str, int]]:
     """Return (positive fact index, side, replacement node index) triples."""
     rng = random.Random(seed)
-    train_facts = [fact for fact in data.facts
-                   if fact["split"] == "train" and not fact.get("derived_channel", False)]
+    train_facts = selected_facts(data, "train", task_scope)
     train_known = known_fact_keys(data, {"train"})
     known_by_head: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
     known_by_tail: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
@@ -181,7 +253,7 @@ def sample_training_negatives(data: PreprocessedGoG, negatives_per_side: int, se
         found_side = False
         for side in ("head", "tail"):
             candidates = _sample_side_candidates(data, fact, side, negatives_per_side, rng,
-                                                 known_by_head, known_by_tail)
+                                                 known_by_head, known_by_tail, all_candidates=task_scope == "root")
             if candidates:
                 found_side = True
                 for candidate in candidates:
@@ -268,7 +340,8 @@ def _scope_group(scope: str) -> str:
 
 @torch.no_grad()
 def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: Tensor,
-             split: str, known_splits: set[str]) -> dict[str, Any]:
+             split: str, known_splits: set[str], task_scope: str = "all",
+             fact_limit: int | None = None) -> dict[str, Any]:
     """Rank candidates in query batches, projecting each node only once."""
     device = occurrence_states.device
     node_map = data.node_id_to_index
@@ -279,6 +352,15 @@ def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: 
     }
     unscorable = {group: 0 for group in ranks}
     total = {group: 0 for group in ranks}
+    breakdowns = {key: defaultdict(lambda: {"raw": [], "filtered": [], "total_queries": 0})
+                  for key in ("by_relation", "by_side", "by_owner")}
+    owners = {g["owner_entity_id"] for g in data.graphs if g["kind"] == "internal"}
+
+    def categories(fact: dict, side: str) -> dict[str, str]:
+        touches = any(node_by_id[fact[k]]["entity_id"] in owners
+                      for k in ("source_node_id", "target_node_id"))
+        return {"by_relation": fact["relation_type_id"], "by_side": side,
+                "by_owner": "owner_touching" if touches else "non_owner"}
     known_heads: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
     known_tails: dict[tuple[str, str, str, str], set[str]] = defaultdict(set)
     for head, relation, tail, source_graph, target_graph in known:
@@ -288,7 +370,10 @@ def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: 
     # Queries share candidate pools when relation and endpoint contexts match.
     query_groups: dict[tuple[Any, ...], list[dict[str, Any]]] = defaultdict(list)
     root_graph_id = next(g["graph_id"] for g in data.graphs if g["kind"] == "root")
-    for fact in (f for f in data.facts if f["split"] == split):
+    facts = selected_facts(data, split, task_scope)
+    if fact_limit is not None:
+        facts = sorted(facts, key=lambda f: f["fact_id"])[:fact_limit]
+    for fact in facts:
         source_graph, target_graph = _fact_context(fact, node_by_id)
         group = ("root" if source_graph == target_graph == root_graph_id else
                  "internal" if source_graph == target_graph else "cross_context")
@@ -298,7 +383,8 @@ def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: 
         for side in ("head", "tail"):
             required_graph = source_graph if side == "head" else target_graph
             relation = data.relation_schema.get(fact["relation_type_id"], {})
-            allowed_types = tuple(relation.get("head_types" if side == "head" else "tail_types", []))
+            allowed_types = (() if task_scope == "root" else
+                             tuple(relation.get("head_types" if side == "head" else "tail_types", [])))
             key = (side, relation_index, source_graph, target_graph, required_graph, allowed_types)
             query_groups[key].append({
                 "fact": fact, "group": group,
@@ -306,6 +392,8 @@ def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: 
                 "true_index": head_index if side == "head" else tail_index,
             })
             total[group] += 1
+            for category, label in categories(fact, side).items():
+                breakdowns[category][label]["total_queries"] += 1
 
     projected = decoder.project_for_ranking(occurrence_states)
     query_batch_size = 64
@@ -368,6 +456,9 @@ def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: 
             for row, raw_rank, filtered_rank in zip(batch, raw_values, filtered_values):
                 ranks[row["group"]]["raw"].append(float(raw_rank))
                 ranks[row["group"]]["filtered"].append(float(filtered_rank))
+                for category, label in categories(row["fact"], side).items():
+                    breakdowns[category][label]["raw"].append(float(raw_rank))
+                    breakdowns[category][label]["filtered"].append(float(filtered_rank))
 
     def summarize(values: list[float]) -> dict[str, float | int | None]:
         if not values:
@@ -389,11 +480,54 @@ def evaluate(data: PreprocessedGoG, decoder: ComplExDecoder, occurrence_states: 
             "macro_scope_mrr": sum(available) / len(available) if available else None,
         }
     result["settings"] = {"split": split, "filter_known_splits": sorted(known_splits),
-                          "rank_tie_rule": "optimistic (strictly greater scores rank above target)"}
+                          "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+                          "task_scope": task_scope, "fact_limit": fact_limit,
+                          "root_candidate_count": (len(data.candidate_node_indices_by_graph.get(root_graph_id, []))
+                                                   if task_scope == "root" else None),
+                          "candidates": "all ROOT occurrences" if task_scope == "root" else "graph/type-valid"}
+    result["breakdowns"] = {category: {label: {"raw": summarize(values["raw"]),
+                                                "filtered": summarize(values["filtered"]),
+                                                "total_queries": values["total_queries"],
+                                                "unscorable_queries": values["total_queries"] - len(values["raw"])}
+                                        for label, values in rows.items()}
+                             for category, rows in breakdowns.items()}
+    return result
+
+
+def _gradient_norms(encoder: nn.Module, decoder: nn.Module) -> dict[str, float]:
+    groups: dict[str, list[Tensor]] = defaultdict(list)
+    for name, parameter in encoder.named_parameters():
+        if parameter.grad is not None:
+            groups[name.split(".")[0]].append(parameter.grad.detach().norm())
+    groups["decoder"] = [p.grad.detach().norm() for p in decoder.parameters() if p.grad is not None]
+    return {key: float(torch.stack(values).norm()) if values else 0.0 for key, values in groups.items()}
+
+
+def _encoder_diagnostics(encoder: nn.Module, data: PreprocessedGoG, encoded: Any = None) -> dict[str, Any]:
+    result: dict[str, Any] = {}
+    for name in ("local", "root"):
+        module = getattr(encoder, name, None)
+        if module is not None:
+            result[name + "_message_self_ratio"] = module.last_message_self_ratio
+    scale = getattr(encoder, "identity_scale", None)
+    if scale is not None:
+        result["identity_scales"] = {key: float(scale[index].detach())
+                                     for key, index in data.type_id_to_index.items()}
+    if hasattr(encoder, "feedback_scale"):
+        result["feedback_scale"] = float(encoder.feedback_scale.detach())
+    if encoded is not None:
+        result["round_changes"] = encoder.last_round_changes
     return result
 
 
 def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_dir: Path) -> dict[str, Any]:
+    if config.epochs < 1 or config.update_offset < 0 or config.diagnostic_train_limit < 0:
+        raise ValueError("epochs must be positive; update offset and diagnostic limit must be nonnegative")
+    if config.early_stopping and config.patience < 1:
+        raise ValueError("patience must be positive when early stopping is enabled")
+    if config.gradient_clip <= 0 or config.weight_decay < 0:
+        raise ValueError("gradient clipping must be positive and weight decay nonnegative")
+    started = time.perf_counter()
     seed = config.seed
     random.seed(seed)
     torch.manual_seed(seed)
@@ -403,7 +537,14 @@ def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_di
     if kind == "gog":
         encoder: nn.Module = GoGEncoder.from_preprocessed(
             data, hidden_dim=config.hidden_dim, num_bases=config.num_bases,
-            num_heads=config.num_heads, dropout=config.dropout, num_rounds=config.num_rounds)
+            num_heads=config.num_heads, dropout=config.dropout, num_rounds=config.num_rounds,
+            profile=config.encoder_profile, feature_mode=config.feature_mode,
+            basis_init=config.basis_init, composition=config.composition,
+            normalization=config.normalization, identity_residual=config.identity_residual,
+            local_enabled=config.local_enabled, cross_enabled=config.cross_enabled,
+            fusion_enabled=config.fusion_enabled, root_enabled=config.root_enabled,
+            sync_enabled=config.sync_enabled, feedback_enabled=config.feedback_enabled,
+            family_readout=config.family_readout)
     elif kind == "baseline":
         encoder = EntityOnlyBaseline(len(data.entities), len(data.type_id_to_index), config.hidden_dim)
     elif kind == "rgcn":
@@ -415,11 +556,22 @@ def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_di
     decoder = ComplExDecoder(len(data.relation_id_to_index), config.hidden_dim)
     encoder.to(device)
     decoder.to(device)
-    optimizer = torch.optim.AdamW([*encoder.parameters(), *decoder.parameters()],
-                                  lr=config.learning_rate, weight_decay=config.weight_decay)
+    initialization = ({"mode": "random"} if config.init_checkpoint is None else
+                      initialize_from_checkpoint(encoder, decoder, data, config.init_checkpoint))
+    embedding_parameters = list(encoder.initializer.parameters())
+    embedding_ids = {id(p) for p in embedding_parameters}
+    encoder_parameters = [p for p in encoder.parameters() if id(p) not in embedding_ids]
+    optimizer_groups = [{"params": embedding_parameters, "lr": config.embedding_learning_rate
+                         if config.embedding_learning_rate is not None else config.learning_rate},
+                        {"params": encoder_parameters, "lr": config.encoder_learning_rate
+                         if config.encoder_learning_rate is not None else config.learning_rate},
+                        {"params": list(decoder.parameters()), "lr": config.decoder_learning_rate
+                         if config.decoder_learning_rate is not None else config.learning_rate}]
+    if any(group["lr"] <= 0 for group in optimizer_groups):
+        raise ValueError("learning rates must be positive")
+    optimizer = torch.optim.AdamW(optimizer_groups, weight_decay=config.weight_decay)
     node_map = data.node_id_to_index
-    train_facts = [fact for fact in data.facts
-                   if fact["split"] == "train" and not fact.get("derived_channel", False)]
+    train_facts = selected_facts(data, "train", config.task_scope)
     if not train_facts:
         raise ValueError("training split contains no facts")
     history: list[float] = []
@@ -427,44 +579,77 @@ def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_di
     best_state: dict[str, Any] | None = None
     best_epoch = 0
     stale = 0
+    diagnostics: list[dict[str, Any]] = []
+    negative_fingerprints: list[str] = []
+    fingerprints = protocol_fingerprints(data, config.task_scope)
+
+    def encode() -> tuple[Tensor, Any]:
+        if kind == "gog":
+            output = encoder(data)
+            return output.z_occurrence, output
+        return encoder(data)[1], None
+
+    def snapshot() -> dict[str, Any]:
+        return {"encoder": {k: v.detach().cpu().clone() for k, v in encoder.state_dict().items()},
+                "decoder": {k: v.detach().cpu().clone() for k, v in decoder.state_dict().items()}}
+
+    initial_validation = None
+    if config.init_checkpoint is not None:
+        encoder.eval()
+        decoder.eval()
+        with torch.no_grad():
+            states, _ = encode()
+            initial_validation = evaluate(data, decoder, states, "validation", {"train", "validation"},
+                                           config.task_scope)
+        score = initial_validation["aggregate"]["filtered"]["macro_scope_mrr"]
+        if score is not None:
+            best_mrr, best_state = float(score), snapshot()
     shortfalls = {"head": 0, "tail": 0, "no_negative_side": 0}
     for epoch in range(config.epochs):
         epoch_start = time.perf_counter()
         if config.show_progress:
             print(f"[{kind}] epoch {epoch + 1}/{config.epochs}: sampling negatives and training...", flush=True)
         negatives, shortfalls = sample_training_negatives(data, config.negatives_per_side,
-                                                          seed + epoch * 1009)
+                                                          seed + (config.update_offset + epoch) * 1009,
+                                                          config.task_scope)
+        negative_fingerprints.append(_fingerprint([(train_facts[i]["fact_id"], side,
+                                                    data.graph_nodes[node]["node_id"])
+                                                   for i, side, node in negatives]))
         encoder.train()
         decoder.train()
         optimizer.zero_grad(set_to_none=True)
-        if kind == "gog":
-            encoded = encoder(data)
-            occurrence_states = encoded.z_occurrence
-        else:
-            _, occurrence_states = encoder(data)
+        occurrence_states, encoded = encode()
         loss_value = _backward_in_fact_batches(
             data, decoder, occurrence_states, negatives, train_facts,
             node_map, data.relation_id_to_index, config.training_batch_size)
         if not torch.isfinite(torch.tensor(loss_value)):
             raise RuntimeError(f"non-finite training loss at epoch {epoch + 1}")
-        nn.utils.clip_grad_norm_([*encoder.parameters(), *decoder.parameters()], config.gradient_clip)
+        step_diagnostics = _encoder_diagnostics(encoder, data, encoded)
+        step_diagnostics["gradient_norms_before_clip"] = _gradient_norms(encoder, decoder)
+        clipped = nn.utils.clip_grad_norm_([*encoder.parameters(), *decoder.parameters()], config.gradient_clip,
+                                          error_if_nonfinite=True)
+        step_diagnostics["total_gradient_norm_before_clip"] = float(clipped)
         optimizer.step()
         history.append(loss_value)
 
         encoder.eval()
         decoder.eval()
         with torch.no_grad():
-            if kind == "gog":
-                val_states = encoder(data).z_occurrence
-            else:
-                _, val_states = encoder(data)
-            val_metrics = evaluate(data, decoder, val_states, "validation", {"train", "validation"})
+            val_states, _ = encode()
+            val_metrics = evaluate(data, decoder, val_states, "validation", {"train", "validation"},
+                                   config.task_scope)
+            if config.diagnostic_train_limit:
+                train_metrics = evaluate(data, decoder, val_states, "train", {"train"},
+                                         config.task_scope, fact_limit=config.diagnostic_train_limit)
+                step_diagnostics["training_ranking"] = train_metrics["aggregate"]
         score = val_metrics["aggregate"]["filtered"]["macro_scope_mrr"]
         score = float(score) if score is not None else -float("inf")
+        step_diagnostics.update(update=config.update_offset + epoch + 1, loss=loss_value,
+                                validation_filtered_mrr=score if score != -float("inf") else None)
+        diagnostics.append(step_diagnostics)
         if score > best_mrr:
             best_mrr, best_epoch, stale = score, epoch + 1, 0
-            best_state = {"encoder": {k: v.detach().cpu().clone() for k, v in encoder.state_dict().items()},
-                          "decoder": {k: v.detach().cpu().clone() for k, v in decoder.state_dict().items()}}
+            best_state = snapshot()
         else:
             stale += 1
         if config.show_progress:
@@ -472,7 +657,7 @@ def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_di
             print(f"[{kind}] epoch {epoch + 1}/{config.epochs} "
                   f"loss={history[-1]:.4f} validation_filtered_MRR={score:.4f} "
                   f"best_epoch={best_epoch} elapsed={elapsed:.1f}s", flush=True)
-        if stale >= config.patience:
+        if config.early_stopping and stale >= config.patience:
             break
     if best_state is None:
         raise RuntimeError("training did not produce a selectable validation checkpoint")
@@ -481,16 +666,18 @@ def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_di
     encoder.eval()
     decoder.eval()
     with torch.no_grad():
-        if kind == "gog":
-            final_states = encoder(data).z_occurrence
-        else:
-            _, final_states = encoder(data)
-        validation = evaluate(data, decoder, final_states, "validation", {"train", "validation"})
-        test = evaluate(data, decoder, final_states, "test", {"train", "validation", "test"})
+        final_states, _ = encode()
+        validation = evaluate(data, decoder, final_states, "validation", {"train", "validation"}, config.task_scope)
+        test = (evaluate(data, decoder, final_states, "test", {"train", "validation", "test"}, config.task_scope)
+                if config.evaluate_test else None)
     output_dir.mkdir(parents=True, exist_ok=True)
     checkpoint_path = output_dir / f"{kind}_best.pt"
     torch.save({"encoder": best_state["encoder"], "decoder": best_state["decoder"],
-                "config": asdict(config), "kind": kind,
+                "config": asdict(config), "kind": kind, "best_epoch": best_epoch,
+                "type_id_to_index": data.type_id_to_index, "fingerprints": fingerprints,
+                "feature_vocabularies": ({"elements": ELEMENTS, "fragments": FRAGMENTS}
+                                          if getattr(encoder, "chemistry", None) is not None else None),
+                "initialization": initialization, "optimizer_reset_on_initialization": True,
                 "entity_id_to_index": data.entity_id_to_index,
                 "node_id_to_index": data.node_id_to_index,
                 "relation_id_to_index": data.relation_id_to_index,
@@ -498,7 +685,13 @@ def _run_one(data: PreprocessedGoG, config: TrainingConfig, kind: str, output_di
     return {"kind": kind, "best_epoch": best_epoch, "best_validation_macro_filtered_mrr": best_mrr,
             "loss_first": history[0], "loss_last": history[-1], "loss_history": history,
             "negative_shortfalls_last_epoch": shortfalls,
-            "validation": validation, "test": test, "checkpoint": str(checkpoint_path)}
+            "validation": validation, "test": test, "checkpoint": str(checkpoint_path),
+            "optimizer_updates": len(history), "update_offset": config.update_offset,
+            "initial_validation": initial_validation, "initialization": initialization,
+            "fingerprints": fingerprints, "negative_sample_fingerprints": negative_fingerprints,
+            "diagnostics": diagnostics, "effective_rounds": getattr(encoder, "num_rounds", None),
+            "training_target_count": len(train_facts), "elapsed_seconds": time.perf_counter() - started,
+            "software": {"python": platform.python_version(), "torch": str(torch.__version__)}}
 
 
 def run_baseline(data: PreprocessedGoG, config: TrainingConfig, output_dir: str | Path) -> dict[str, Any]:
@@ -578,12 +771,11 @@ def run_comparison(data: PreprocessedGoG, config: TrainingConfig, output_dir: st
         "dataset_name": dataset_name,
         "split_note": "Use benchmark-prescribed splits for real evaluation.",
         "config": asdict(config),
-        "training_facts": [f["fact_id"] for f in data.facts
-                           if f["split"] == "train" and not f.get("derived_channel", False)],
+        "training_facts": [f["fact_id"] for f in selected_facts(data, "train", config.task_scope)],
         "derived_training_channels": sum(f["split"] == "train" and f.get("derived_channel", False)
                                          for f in data.facts),
-        "validation_facts": [f["fact_id"] for f in data.facts if f["split"] == "validation"],
-        "test_facts": [f["fact_id"] for f in data.facts if f["split"] == "test"],
+        "validation_facts": [f["fact_id"] for f in selected_facts(data, "validation", config.task_scope)],
+        "test_facts": [f["fact_id"] for f in selected_facts(data, "test", config.task_scope)],
         "baseline": baseline,
         "gog": gog,
         "elapsed_seconds": time.time() - start,

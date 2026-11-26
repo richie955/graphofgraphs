@@ -5,7 +5,7 @@ from torch import Tensor, nn
 
 
 class Stage4GraphReadout(nn.Module):
-    def __init__(self, hidden_dim: int = 256, dropout: float = 0.2):
+    def __init__(self, hidden_dim: int = 256, dropout: float = 0.2, count_sensitive: bool = False):
         super().__init__()
         self.hidden_dim = hidden_dim
         self.node_score = nn.Linear(hidden_dim, hidden_dim, bias=False)
@@ -16,6 +16,7 @@ class Stage4GraphReadout(nn.Module):
         self.gate = nn.Linear(2 * hidden_dim, hidden_dim)
         self.dropout = nn.Dropout(dropout)
         self.norm = nn.LayerNorm(hidden_dim)
+        self.summary_projection = nn.Linear(2 * hidden_dim + 1, hidden_dim) if count_sensitive else None
         nn.init.normal_(self.attention_vector, std=hidden_dim ** -0.5)
 
     def forward(self, z_cross: Tensor, member_graph_index: Tensor, member_occurrence_index: Tensor,
@@ -41,6 +42,11 @@ class Stage4GraphReadout(nn.Module):
         attention = weights / denom[graph_idx].clamp_min(torch.finfo(scores.dtype).tiny)
         pooled = z_cross.new_zeros((n_graphs, self.hidden_dim))
         pooled.index_add_(0, graph_idx, attention[:, None] * z)
+        if self.summary_projection is not None:
+            summed = torch.zeros_like(pooled)
+            summed.index_add_(0, graph_idx, z)
+            counts = torch.bincount(graph_idx, minlength=n_graphs).to(z.dtype)
+            pooled = self.summary_projection(torch.cat((pooled, summed, counts.log1p()[:, None]), dim=-1))
         active = torch.zeros(n_graphs, dtype=torch.bool, device=z_cross.device)
         active[graph_idx] = True
         joined = torch.cat((h_graph_prev, pooled), dim=-1)

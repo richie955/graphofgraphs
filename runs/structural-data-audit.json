@@ -1,0 +1,46 @@
+[
+  {
+    "file": "structural_gog\\gog\\gog_model_subset_coarse.json",
+    "validation": "passed",
+    "root_training_targets": 16462,
+    "message_passing_facts": 33742,
+    "root_validation_facts": 2000,
+    "root_test_facts": 2007,
+    "occurrence_shape": [
+      11917,
+      16
+    ],
+    "finite": true,
+    "root_message_self_ratio": 2.2215464115142822,
+    "sha256": "fe1d8a425131125c611f4f6eb2f0efece954b1f3c9084b5b9d7d7cbcf9115e72",
+    "file_unchanged": true
+  },
+  {
+    "file": "structural_gog\\gog\\gog_model_subset_rootonly.json",
+    "validation": "passed",
+    "root_training_targets": 16462,
+    "message_passing_facts": 16462,
+    "root_validation_facts": 2000,
+    "root_test_facts": 2007,
+    "sha256": "e9b380cf0e25720359988af6cc39d05adf81b6e6af88bc2e5409afdf6395239f",
+    "file_unchanged": true
+  },
+  {
+    "file": "structural_gog\\gog\\gog_model_balanced.json",
+    "validation": "passed",
+    "root_training_targets": 96045,
+    "message_passing_facts": 113325,
+    "root_validation_facts": 11820,
+    "root_test_facts": 11861,
+    "sha256": "ea300601dd1751dd63d1599b4537d92fb5dc44e730fbfbb503e7b09c55d79d4b",
+    "file_unchanged": true
+  },
+  {
+    "file": "structural_gog\\gog\\gog_model_subset.json",
+    "validation": "passed",
+    "root_training_targets": 16462,
+    "message_passing_facts": 33742,
+    "sha256": "140791d55cca4bd128d584ef6a651a69b95848a22b6075908b5f7d7d2aaf72cc",
+    "file_unchanged": true
+  }
+]

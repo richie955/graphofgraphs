@@ -29,3 +29,6 @@ Thumbs.db
 
 # Generated model checkpoints; keep JSON reports under runs/
 /runs/**/*.pt
+
+# Local structural GoG datasets and exports
+/structural_gog/gog/*.json

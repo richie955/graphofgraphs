@@ -4,13 +4,14 @@ import torch
 from torch import Tensor, nn
 from torch.nn import functional as F
 
-from .relational_ops import aggregate_basis_messages
+from .relational_ops import initialize_messages, relational_aggregate, message_ratio
 
 
 class Stage2LocalCompGCN(nn.Module):
     """Sparse relation-aware message passing within internal graphs only."""
 
-    def __init__(self, num_relations: int, hidden_dim: int = 256, num_bases: int = 8, dropout: float = 0.2):
+    def __init__(self, num_relations: int, hidden_dim: int = 256, num_bases: int = 8, dropout: float = 0.2,
+                 basis_init: str = "legacy", composition: str = "multiply", normalization: str = "global"):
         super().__init__()
         if hidden_dim < 1 or num_bases < 1 or num_relations < 1:
             raise ValueError("hidden_dim, num_bases, and num_relations must be positive")
@@ -21,8 +22,11 @@ class Stage2LocalCompGCN(nn.Module):
         self.coefficients = nn.Parameter(torch.empty(num_relations, 2, num_bases))
         self.self_linear = nn.Linear(hidden_dim, hidden_dim, bias=False)
         self.norm = nn.LayerNorm(hidden_dim)
-        nn.init.xavier_uniform_(self.basis)
-        nn.init.xavier_uniform_(self.coefficients)
+        if composition not in {"multiply", "residual"} or normalization not in {"global", "relation"}:
+            raise ValueError("invalid message composition or normalization")
+        self.composition, self.normalization = composition, normalization
+        self.last_message_self_ratio = 0.0
+        initialize_messages(self.basis, self.coefficients, basis_init)
 
     def forward(self, z_in: Tensor, edge_index: Tensor, edge_type: Tensor, relation_vectors: Tensor,
                 graph_index_by_occurrence: Tensor, root_graph_index: int) -> tuple[Tensor, int]:
@@ -45,20 +49,11 @@ class Stage2LocalCompGCN(nn.Module):
         if edge_type.numel() and (edge_type.min() < 0 or edge_type.max() >= rels.shape[0]):
             raise ValueError("Stage 2 relation index outside relation table")
 
-        aggregate = z_in.new_zeros((n_nodes, dim))
-        degree = z_in.new_zeros((n_nodes, 1))
-        if src.numel():
-            # Each stored directed fact produces one forward and one reverse computational channel.
-            senders = torch.cat((src, dst))
-            receivers = torch.cat((dst, src))
-            rel_ids = torch.cat((edge_type, edge_type))
-            directions = torch.cat((torch.zeros_like(edge_type), torch.ones_like(edge_type)))
-            composed = z_in[senders] * rels[rel_ids]
-            aggregate_basis_messages(aggregate, receivers, composed, rel_ids, directions,
-                                     self.coefficients, self.basis)
-            degree.index_add_(0, receivers, z_in.new_ones((receivers.numel(), 1)))
-        aggregate = aggregate / degree.clamp_min(1.0)
-        update = F.relu(self.self_linear(z_in) + aggregate)
+        aggregate = relational_aggregate(z_in, src, dst, edge_type, rels, self.coefficients,
+                                         self.basis, self.composition, self.normalization)
+        self_term = self.self_linear(z_in)
+        self.last_message_self_ratio = message_ratio(aggregate[internal_mask], self_term[internal_mask])
+        update = F.relu(self_term + aggregate)
         candidate = self.norm(z_in + self.dropout(update))
         z_local = torch.where(internal_mask[:, None], candidate, z_in)
         return z_local, int(src.numel() * 2)

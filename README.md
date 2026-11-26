@@ -26,3 +26,11 @@ This repository contains a staged GoG data pipeline, the GoG embedding model, tr
 - `construction/build_gog_from_split.py` is the source for the Colab builder that creates GoG data from the frozen training split.
 
 The flow is **split facts → construct GoG → validate model input → train/embed**. Run commands from the repository root. See [COLAB.md](COLAB.md) for the Colab workflow.
+
+## Structural embedding experiments
+
+The model now supports legacy and structural encoder profiles, baseline checkpoint
+transfer, ROOT-only supervision, and fixed-budget baseline/R-GCN/GoG comparisons.
+See [the embedding experiment guide](docs/structural_embedding_experiments.md) for
+CPU smoke checks, full comparison commands, ablations, and report definitions.
+This workflow reads existing GoG exports without changing their construction or splits.

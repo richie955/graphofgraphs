@@ -1,0 +1,482 @@
+{
+  "kind": "baseline",
+  "best_epoch": 0,
+  "best_validation_macro_filtered_mrr": 0.75,
+  "loss_first": 1.3460793495178223,
+  "loss_last": 1.2927286624908447,
+  "loss_history": [
+    1.3460793495178223,
+    1.2927286624908447
+  ],
+  "negative_shortfalls_last_epoch": {
+    "head": 0,
+    "tail": 0,
+    "no_negative_side": 0
+  },
+  "validation": {
+    "root": {
+      "raw": {
+        "count": 2,
+        "mrr": 0.75,
+        "mean_rank": 1.5,
+        "hits@1": 0.5,
+        "hits@3": 1.0,
+        "hits@10": 1.0
+      },
+      "filtered": {
+        "count": 2,
+        "mrr": 0.75,
+        "mean_rank": 1.5,
+        "hits@1": 0.5,
+        "hits@3": 1.0,
+        "hits@10": 1.0
+      },
+      "total_queries": 2,
+      "unscorable_queries": 0,
+      "scorable_queries": 2
+    },
+    "internal": {
+      "raw": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "filtered": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "total_queries": 0,
+      "unscorable_queries": 0,
+      "scorable_queries": 0
+    },
+    "cross_context": {
+      "raw": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "filtered": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "total_queries": 0,
+      "unscorable_queries": 0,
+      "scorable_queries": 0
+    },
+    "aggregate": {
+      "raw": {
+        "micro": 0.75,
+        "macro_scope_mrr": 0.75
+      },
+      "filtered": {
+        "micro": 0.75,
+        "macro_scope_mrr": 0.75
+      }
+    },
+    "settings": {
+      "split": "validation",
+      "filter_known_splits": [
+        "train",
+        "validation"
+      ],
+      "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+      "task_scope": "root",
+      "fact_limit": null,
+      "root_candidate_count": 5,
+      "candidates": "all ROOT occurrences"
+    },
+    "breakdowns": {
+      "by_relation": {
+        "associated_with": {
+          "raw": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 2,
+          "unscorable_queries": 0
+        }
+      },
+      "by_side": {
+        "head": {
+          "raw": {
+            "count": 1,
+            "mrr": 1.0,
+            "mean_rank": 1.0,
+            "hits@1": 1.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 1,
+            "mrr": 1.0,
+            "mean_rank": 1.0,
+            "hits@1": 1.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 1,
+          "unscorable_queries": 0
+        },
+        "tail": {
+          "raw": {
+            "count": 1,
+            "mrr": 0.5,
+            "mean_rank": 2.0,
+            "hits@1": 0.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 1,
+            "mrr": 0.5,
+            "mean_rank": 2.0,
+            "hits@1": 0.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 1,
+          "unscorable_queries": 0
+        }
+      },
+      "by_owner": {
+        "owner_touching": {
+          "raw": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 2,
+          "unscorable_queries": 0
+        }
+      }
+    }
+  },
+  "test": null,
+  "checkpoint": "runs\\structural-smoke\\seed_17\\baseline_continuation\\baseline_best.pt",
+  "optimizer_updates": 2,
+  "update_offset": 2,
+  "initial_validation": {
+    "root": {
+      "raw": {
+        "count": 2,
+        "mrr": 0.75,
+        "mean_rank": 1.5,
+        "hits@1": 0.5,
+        "hits@3": 1.0,
+        "hits@10": 1.0
+      },
+      "filtered": {
+        "count": 2,
+        "mrr": 0.75,
+        "mean_rank": 1.5,
+        "hits@1": 0.5,
+        "hits@3": 1.0,
+        "hits@10": 1.0
+      },
+      "total_queries": 2,
+      "unscorable_queries": 0,
+      "scorable_queries": 2
+    },
+    "internal": {
+      "raw": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "filtered": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "total_queries": 0,
+      "unscorable_queries": 0,
+      "scorable_queries": 0
+    },
+    "cross_context": {
+      "raw": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "filtered": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "total_queries": 0,
+      "unscorable_queries": 0,
+      "scorable_queries": 0
+    },
+    "aggregate": {
+      "raw": {
+        "micro": 0.75,
+        "macro_scope_mrr": 0.75
+      },
+      "filtered": {
+        "micro": 0.75,
+        "macro_scope_mrr": 0.75
+      }
+    },
+    "settings": {
+      "split": "validation",
+      "filter_known_splits": [
+        "train",
+        "validation"
+      ],
+      "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+      "task_scope": "root",
+      "fact_limit": null,
+      "root_candidate_count": 5,
+      "candidates": "all ROOT occurrences"
+    },
+    "breakdowns": {
+      "by_relation": {
+        "associated_with": {
+          "raw": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 2,
+          "unscorable_queries": 0
+        }
+      },
+      "by_side": {
+        "head": {
+          "raw": {
+            "count": 1,
+            "mrr": 1.0,
+            "mean_rank": 1.0,
+            "hits@1": 1.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 1,
+            "mrr": 1.0,
+            "mean_rank": 1.0,
+            "hits@1": 1.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 1,
+          "unscorable_queries": 0
+        },
+        "tail": {
+          "raw": {
+            "count": 1,
+            "mrr": 0.5,
+            "mean_rank": 2.0,
+            "hits@1": 0.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 1,
+            "mrr": 0.5,
+            "mean_rank": 2.0,
+            "hits@1": 0.0,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 1,
+          "unscorable_queries": 0
+        }
+      },
+      "by_owner": {
+        "owner_touching": {
+          "raw": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "filtered": {
+            "count": 2,
+            "mrr": 0.75,
+            "mean_rank": 1.5,
+            "hits@1": 0.5,
+            "hits@3": 1.0,
+            "hits@10": 1.0
+          },
+          "total_queries": 2,
+          "unscorable_queries": 0
+        }
+      }
+    }
+  },
+  "initialization": {
+    "path": "runs\\structural-smoke\\seed_17\\pretraining\\baseline_best.pt",
+    "mode": "baseline_transfer",
+    "entities_copied": 13,
+    "types_copied": 6,
+    "relations_copied": 6,
+    "source_best_epoch": 2,
+    "optimizer_reset": true
+  },
+  "fingerprints": {
+    "dataset": "7797d13d788c0c0ebf7b7656a24f5f49af30bd8252f61165ba1809bc1bdbffe9",
+    "candidates": "068308ade3eecf92a9d8ff323e529e23eaa0c28932b3f2010a22876516aba159",
+    "queries": {
+      "train": "284f3d40f2fa00b369ac844534ddf0087f2dd846abb77998b43d3e2efd6b9ad1",
+      "validation": "c8019293c38f2952e7380900a627b1a797092f91ce58f7c751c7ade98be67491",
+      "test": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "negative_sample_fingerprints": [
+    "76b53f7476e55e2d6e1eb91f1b79e926810c236bfba8020b27436c4766cad805",
+    "30d33733d445e3b519f0fca7286bf40200a575f74ffeb0724576a6758dc705bd"
+  ],
+  "diagnostics": [
+    {
+      "gradient_norms_before_clip": {
+        "initializer": 8.553664207458496,
+        "decoder": 1.4483808279037476
+      },
+      "total_gradient_norm_before_clip": 8.675423622131348,
+      "training_ranking": {
+        "raw": {
+          "micro": 0.6875,
+          "macro_scope_mrr": 0.6875
+        },
+        "filtered": {
+          "micro": 0.6875,
+          "macro_scope_mrr": 0.6875
+        }
+      },
+      "update": 3,
+      "loss": 1.3460793495178223,
+      "validation_filtered_mrr": 0.75
+    },
+    {
+      "gradient_norms_before_clip": {
+        "initializer": 7.750786781311035,
+        "decoder": 1.5012511014938354
+      },
+      "total_gradient_norm_before_clip": 7.894836902618408,
+      "training_ranking": {
+        "raw": {
+          "micro": 0.75,
+          "macro_scope_mrr": 0.75
+        },
+        "filtered": {
+          "micro": 0.75,
+          "macro_scope_mrr": 0.75
+        }
+      },
+      "update": 4,
+      "loss": 1.2927286624908447,
+      "validation_filtered_mrr": 0.75
+    }
+  ],
+  "effective_rounds": null,
+  "training_target_count": 2,
+  "elapsed_seconds": 0.08243520000542048,
+  "software": {
+    "python": "3.12.10",
+    "torch": "2.5.1+cu121"
+  },
+  "config": {
+    "hidden_dim": 16,
+    "num_bases": 2,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": 2,
+    "negatives_per_side": 2,
+    "training_batch_size": 4,
+    "epochs": 2,
+    "patience": 15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cpu",
+    "show_progress": true,
+    "encoder_profile": "legacy",
+    "task_scope": "root",
+    "feature_mode": "id_type",
+    "basis_init": null,
+    "composition": null,
+    "normalization": null,
+    "identity_residual": false,
+    "local_enabled": true,
+    "cross_enabled": true,
+    "fusion_enabled": true,
+    "root_enabled": true,
+    "sync_enabled": false,
+    "feedback_enabled": false,
+    "family_readout": false,
+    "embedding_learning_rate": null,
+    "encoder_learning_rate": null,
+    "decoder_learning_rate": null,
+    "init_checkpoint": "runs\\structural-smoke\\seed_17\\pretraining\\baseline_best.pt",
+    "early_stopping": false,
+    "update_offset": 2,
+    "evaluate_test": false,
+    "diagnostic_train_limit": 32
+  },
+  "total_budget_updates": 4,
+  "shared_pretraining_updates": 2
+}
