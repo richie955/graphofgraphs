@@ -1,0 +1,11 @@
+pandas>=2.0
+numpy>=1.24
+networkx>=3.1
+requests>=2.31
+tqdm>=4.66
+PyYAML>=6.0
+rdkit>=2023.9.1
+
+# Model stage (install when you get to Phase 7; torch first, matched to your CUDA)
+# torch>=2.2
+# torch-geometric>=2.5

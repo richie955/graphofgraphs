@@ -1,0 +1,36 @@
+# Single source of truth for paths and thresholds.
+# Every script reads this; never hardcode a limit in a script.
+
+paths:
+  primekg_csv: data/raw/kg.csv       # https://dataverse.harvard.edu/dataset.xhtml?persistentId=doi:10.7910/DVN/IXA7BM
+  cache_dir: data/cache              # HTTP response cache (PubChem, Reactome)
+  interim_dir: data/interim          # coverage reports, id maps
+  out_dir: data/out                  # final JSON artefacts
+
+subset:
+  max_heavy_atoms: 150               # Phase 2 limit; drops biologics
+  max_pathway_nodes: 200             # Phase 3 upper limit
+  min_pathway_nodes: 10              # below this an internal graph adds no structure
+  pathway_species_prefix: R-HSA      # human only
+  root_hops: 1                       # neighbourhood radius around seed nodes
+  keep_largest_component: true
+  # Hub relations are not walked during expansion (they would pull in most of
+  # PrimeKG on hop 1); their edges are still kept when both endpoints survive.
+  hub_relations: [drug_drug, protein_protein, anatomy_protein_present]
+
+coverage:
+  drug_sample: 300                   # 0 = all drugs (slow: PubChem is 5 req/s)
+  pathway_sample: 80                 # 0 = all pathways
+  seed: 20251125
+
+http:
+  pubchem_min_interval: 0.22         # seconds between PubChem calls (<=5/s)
+  reactome_min_interval: 0.05
+  timeout: 30
+  max_retries: 4
+
+sources:
+  # PrimeKG x_source / y_source values we trust for each node type.
+  drug: [DrugBank]
+  pathway: [REACTOME]
+  protein: [NCBI]
