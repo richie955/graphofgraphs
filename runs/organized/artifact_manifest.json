@@ -1,0 +1,230 @@
+[
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/pretraining/baseline_best.pt",
+    "organized_path": "local/seed_17/baseline80_pretraining/baseline_best.pt",
+    "bytes": 5932998,
+    "sha256": "1aba828a874332db2b570581235dafde40f08fc0a8b9f2b32d27a515c782288b"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/baseline_continuation/baseline_best.pt",
+    "organized_path": "local/seed_17/baseline80_plus_baseline80/baseline_best.pt",
+    "bytes": 5933254,
+    "sha256": "bcc3cf5b494f3f90eac2670dc319600db3bec8ad14c37b815151b4af84cace4a"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/baseline_continuation/report.json",
+    "organized_path": "local/seed_17/baseline80_plus_baseline80/report.json",
+    "bytes": 91524,
+    "sha256": "7deba804100b1be1a0d9d60a3c90edc6bc08a5ea1cd5605ea4b76a7cacafd295"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/baseline_continuation/test_results.json",
+    "organized_path": "local/seed_17/baseline80_plus_baseline80/test_results.json",
+    "bytes": 17396,
+    "sha256": "579e230c00084b410fe1711e7fdd9acf0fe22b7347eeb83229ef37c32ee5527c"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/rgcn/report.json",
+    "organized_path": "local/seed_17/rgcn160_scratch/report.json",
+    "bytes": 156650,
+    "sha256": "56f2af1ac036dfc84c0a4f42ee60515597ccbc8bee0fedc80260c463978ccd73"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/rgcn/rgcn_best.pt",
+    "organized_path": "local/seed_17/rgcn160_scratch/rgcn_best.pt",
+    "bytes": 7123339,
+    "sha256": "71d1cf381437c77094935b98ac2c1084ec18f70d6c0cc2503060706ca7a93677"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/rgcn/test_results.json",
+    "organized_path": "local/seed_17/rgcn160_scratch/test_results.json",
+    "bytes": 17508,
+    "sha256": "2595badbacbd01c350e962b3d33a4065e639a4b04cbdf97e0d54a5816160dae8"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/gog_structural_warm80_20261127_040630/gog_best.pt",
+    "organized_path": "local/seed_17/baseline80_plus_gog80/gog_best.pt",
+    "bytes": 12623300,
+    "sha256": "03e782c5729392972a07002de6fe311bcc98bdaa1c53dbae245b1212d1a7b53c"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/gog_structural_warm80_20261127_040630/gog_report.json",
+    "organized_path": "local/seed_17/baseline80_plus_gog80/gog_report.json",
+    "bytes": 225827,
+    "sha256": "4b52bb91da8ef28e14b172ad65cc99452924cdf90a3c3ed17814cdf828666701"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/gog_structural_warm80_20261127_040630/validation_graph_contribution.json",
+    "organized_path": "local/seed_17/baseline80_plus_gog80/validation_graph_contribution.json",
+    "bytes": 1084,
+    "sha256": "2e8b0031258a4641e0e1ad68cada707fc39ec63b7ad7e6c255be3ef282f01631"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/rgcn_warm80_20261127_041939/rgcn_best.pt",
+    "organized_path": "local/seed_17/baseline80_plus_rgcn80/rgcn_best.pt",
+    "bytes": 7123595,
+    "sha256": "15b2c4c5cfa4290e6bfc83965aed479fab8a4e404a2dcd68198b37286221de6d"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/seed_17/rgcn_warm80_20261127_041939/rgcn_report.json",
+    "organized_path": "local/seed_17/baseline80_plus_rgcn80/rgcn_report.json",
+    "bytes": 129088,
+    "sha256": "02920b998735bbdde0a19a27ea58a8593f59114c52e2ee2619e66c08969d105d"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/baseline_80_20261126_221304/baseline_best.pt",
+    "organized_path": "colab/seed_17/baseline80_scratch/baseline_best.pt",
+    "bytes": 5933407,
+    "sha256": "82443483ee62d72186e9436590bf250d7bb8e934cbfbab406fcbc3d70e37229e"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/baseline_80_20261126_221304/baseline_report.json",
+    "organized_path": "colab/seed_17/baseline80_scratch/baseline_report.json",
+    "bytes": 95340,
+    "sha256": "001fbf9dcb6894cc61bfcb2e37a7c46074738dd8afa605c8b2a37b5ae5a472f3"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/gog_only_80_20261126_215709/gog_best.pt",
+    "organized_path": "colab/seed_17/gog80_full_context_scratch/gog_best.pt",
+    "bytes": 12623443,
+    "sha256": "078ff34174bbf5c5170b9633f8d0d1362102d62f8722a3a41d38384d950a72a8"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/gog_only_80_20261126_215709/gog_report.json",
+    "organized_path": "colab/seed_17/gog80_full_context_scratch/gog_report.json",
+    "bytes": 184967,
+    "sha256": "169d7bc6de54af846c622b4585d38b6a1e952c3be5a4a29e6a90710fa49d359d"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/gog_only_80_20261126_215709/gog_test_evaluation.json",
+    "organized_path": "colab/seed_17/gog80_full_context_scratch/gog_test_evaluation.json",
+    "bytes": 15104,
+    "sha256": "022bd1946dfe55ca761c033e527385f7bc812c92a5a293927cb9262e5dd8254d"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/gog_only_80_20261126_215709/training.log",
+    "organized_path": "colab/seed_17/gog80_full_context_scratch/training.log",
+    "bytes": 11782,
+    "sha256": "e19e0d7190ecb42e996ab183031664bc4fde945348f6d02ccc002706c8da0330"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/rootonly_scratch80_20261126_224539/gog_best.pt",
+    "organized_path": "colab/seed_17/gog80_root_graph_scratch/gog_best.pt",
+    "bytes": 8253971,
+    "sha256": "410f39c6160efd1a862f08971ccb6fc85b3711720ba5c3e8e0e62710fb17f1e6"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup/gog_runs/rootonly_scratch80_20261126_224539/gog_report.json",
+    "organized_path": "colab/seed_17/gog80_root_graph_scratch/gog_report.json",
+    "bytes": 165684,
+    "sha256": "fd0e4ad3fa4c5c7f458c22300c419e50250187b859a22363cac72aa71f292ae7"
+  },
+  {
+    "original_path": "runs/structural-smoke/comparison.csv",
+    "organized_path": "smoke/comparison_suite/comparison.csv",
+    "bytes": 591,
+    "sha256": "4016dfe2ce2768e1346a99b6bd93f8703cc49328293b7e5d69f23c21b348bad5"
+  },
+  {
+    "original_path": "runs/structural-smoke/comparison.json",
+    "organized_path": "smoke/comparison_suite/comparison.json",
+    "bytes": 75334,
+    "sha256": "004f65d8912d5a7b261bf49bc3338b0d404d76b3ddd00497c3b8b03f8d1dec82"
+  },
+  {
+    "original_path": "runs/structural-smoke/manifest.json",
+    "organized_path": "smoke/comparison_suite/manifest.json",
+    "bytes": 1926,
+    "sha256": "65b71acc7cbdebc45d4f2c375506369459a2792fc20b122590fee456ff0c39fd"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/baseline_continuation/baseline_best.pt",
+    "organized_path": "smoke/comparison_suite/seed_17/baseline_continuation/baseline_best.pt",
+    "bytes": 8390,
+    "sha256": "b1605acd68e8b31ca768ff33a0c702d80c9b27857fda6682bc94881a932f15ee"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/baseline_continuation/report.json",
+    "organized_path": "smoke/comparison_suite/seed_17/baseline_continuation/report.json",
+    "bytes": 12111,
+    "sha256": "fd69e8eb43bafddae38a7c53cc10fbc7eca31d2182b542219d54088c816f327c"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/gog_legacy/gog_best.pt",
+    "organized_path": "smoke/comparison_suite/seed_17/gog_legacy/gog_best.pt",
+    "bytes": 87432,
+    "sha256": "02eff3503992b837806d4da5610bfca295ea383ce2a447375dbd8545e7692636"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/gog_legacy/report.json",
+    "organized_path": "smoke/comparison_suite/seed_17/gog_legacy/report.json",
+    "bytes": 13338,
+    "sha256": "365925b61bc0a91443afc31dab02001eeaebbe1aa77fb94f6dd491ea4c16d9e3"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/gog_structural/gog_best.pt",
+    "organized_path": "smoke/comparison_suite/seed_17/gog_structural/gog_best.pt",
+    "bytes": 138628,
+    "sha256": "8de7a56b14d4f3650dfd8db805c6d719c5bf6c0a13e2647e312894287a6e3735"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/gog_structural/report.json",
+    "organized_path": "smoke/comparison_suite/seed_17/gog_structural/report.json",
+    "bytes": 14068,
+    "sha256": "a63b2fb0dd7857047fb32b50ecd4a83f873ccdb5848ddea7a3e9fd85bbf5cb56"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/pretraining/baseline_best.pt",
+    "organized_path": "smoke/comparison_suite/seed_17/pretraining/baseline_best.pt",
+    "bytes": 8198,
+    "sha256": "ad1d5a490f1cd777b5ae445c9d83e700e53ba0602e62f86f05e727ffbd768bb6"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/rgcn/report.json",
+    "organized_path": "smoke/comparison_suite/seed_17/rgcn/report.json",
+    "bytes": 9930,
+    "sha256": "b14108a24c064dcaadbc4ef11608bd2297c1c1cefbf25409fb0a58e75a7e862b"
+  },
+  {
+    "original_path": "runs/structural-smoke/seed_17/rgcn/rgcn_best.pt",
+    "organized_path": "smoke/comparison_suite/seed_17/rgcn/rgcn_best.pt",
+    "bytes": 17995,
+    "sha256": "810550c812124781745d3c2353d69eee597e4049ab1b3a26158f933be34938da"
+  },
+  {
+    "original_path": "runs/structural-cli-smoke/gog_best.pt",
+    "organized_path": "smoke/single_model_cli/gog_best.pt",
+    "bytes": 138372,
+    "sha256": "e665bb6e935b5f0475f9dec26b92691a0b00658e47881be5e92972fb34ba34d2"
+  },
+  {
+    "original_path": "runs/structural-cli-smoke/gog_report.json",
+    "organized_path": "smoke/single_model_cli/gog_report.json",
+    "bytes": 11296,
+    "sha256": "49c17b714f21ccc30b085341723fa5f6e7ad2547004ae798d99d679b397a1302"
+  },
+  {
+    "original_path": "runs/structural-real-seed17/manifest.json",
+    "organized_path": "support/local_comparison_manifest.json",
+    "bytes": 1934,
+    "sha256": "4b6563ca4b5d2d1797f0b3ef02b005c5f3ca670d5a455bb063563874687a6d61"
+  },
+  {
+    "original_path": "runs/structural-data-audit.json",
+    "organized_path": "support/structural-data-audit.json",
+    "bytes": 1490,
+    "sha256": "883e6e3145d782c7a4790f80338a2b929ae72593d8ddadc4a8667ece11d94321"
+  },
+  {
+    "original_path": "runs/colab/gog_embedding_updated.zip",
+    "organized_path": "support/colab_source/gog_embedding_updated.zip",
+    "bytes": 69024,
+    "sha256": "e889c8157c8b4f91a00e9af580d8c2c56a144b8989c2943084c5bd696f9e3d59"
+  },
+  {
+    "original_path": "structural_gog/gog/gog_runs_backup.zip",
+    "organized_path": "support/original_archives/gog_runs_backup.zip",
+    "bytes": 23234918,
+    "sha256": "c545580c450e700e140ff22399b6bd69aacfcd82141493989381d2f268381d22"
+  }
+]

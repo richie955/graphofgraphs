@@ -1,0 +1,5286 @@
+{
+  "kind": "gog",
+  "notice": "Initial result on the provided split; compare against a baseline with matching settings.",
+  "dataset_name": "PrimeKG + PubChem/RDKit + Reactome structural GoG",
+  "split_note": "The PrimeKG GoG split is generated and should be treated as an initial pipeline check.",
+  "config": {
+    "hidden_dim": 128,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": 1,
+    "negatives_per_side": 50,
+    "training_batch_size": 4096,
+    "epochs": 80,
+    "patience": 15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cuda",
+    "show_progress": true,
+    "encoder_profile": "structural",
+    "task_scope": "root",
+    "feature_mode": "categorical",
+    "basis_init": null,
+    "composition": null,
+    "normalization": null,
+    "identity_residual": true,
+    "local_enabled": true,
+    "cross_enabled": true,
+    "fusion_enabled": true,
+    "root_enabled": true,
+    "sync_enabled": false,
+    "feedback_enabled": false,
+    "family_readout": true,
+    "embedding_learning_rate": null,
+    "encoder_learning_rate": null,
+    "decoder_learning_rate": null,
+    "init_checkpoint": null,
+    "early_stopping": false,
+    "update_offset": 0,
+    "evaluate_test": false,
+    "diagnostic_train_limit": 32
+  },
+  "split_counts": {
+    "test": {
+      "root_to_root": 2007,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    },
+    "train": {
+      "root_to_root": 16462,
+      "same_internal_graph": 12575,
+      "root_to_internal": 4705,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    },
+    "validation": {
+      "root_to_root": 2000,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    }
+  },
+  "gog": {
+    "kind": "gog",
+    "best_epoch": 79,
+    "best_validation_macro_filtered_mrr": 0.1814060955111666,
+    "loss_first": 1.5471288613452756,
+    "loss_last": 0.0727240723230659,
+    "loss_history": [
+      1.5471288613452756,
+      1.3299292393174469,
+      1.20432140825441,
+      1.119073995088636,
+      1.0543208283448824,
+      0.9989746924000484,
+      0.9480545800665782,
+      0.9020334856070747,
+      0.8540053597604239,
+      0.8054669638940651,
+      0.7560668241541755,
+      0.7069565646487068,
+      0.6614059782914555,
+      0.6210421855156252,
+      0.5889138069206129,
+      0.5593497788119673,
+      0.529952769319453,
+      0.5027992630798549,
+      0.47883413236553396,
+      0.45910651488504584,
+      0.4400422335062061,
+      0.42242362630742386,
+      0.40743686903103815,
+      0.3927388177500535,
+      0.3810110138218916,
+      0.368489250734443,
+      0.3544325117474844,
+      0.3429985598730818,
+      0.33169064903705353,
+      0.321016982688372,
+      0.3091604313805795,
+      0.2989501407551687,
+      0.29064311704648943,
+      0.2806286308654182,
+      0.2710289003970397,
+      0.2625665195750634,
+      0.25296338505399374,
+      0.24479194484219316,
+      0.23724796791446556,
+      0.22910099265396114,
+      0.22159706999140105,
+      0.2145855864916142,
+      0.20782374538949216,
+      0.2006337031072146,
+      0.19451544562459006,
+      0.18821597974256357,
+      0.182884359554175,
+      0.17714651816055793,
+      0.17153880949110759,
+      0.16659708778394153,
+      0.16174710319559538,
+      0.1571558637859291,
+      0.15190231491230102,
+      0.1471256350068996,
+      0.1428829254950256,
+      0.13870845414637478,
+      0.13517843521773892,
+      0.1311455673355188,
+      0.12777137049759973,
+      0.12394972940943767,
+      0.12043103940134102,
+      0.11669752639465467,
+      0.114250592528043,
+      0.11103453089057305,
+      0.10763306270996517,
+      0.10520457655061075,
+      0.10171642437325605,
+      0.09936545485642626,
+      0.09737663011662567,
+      0.09420145002579924,
+      0.09222104927576294,
+      0.08916579691376146,
+      0.08717156521674568,
+      0.08519823180450267,
+      0.08317788632306218,
+      0.08115587678780142,
+      0.07875937156993844,
+      0.0770462473985448,
+      0.07500568114365022,
+      0.0727240723230659
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 0,
+      "tail": 0,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 4000,
+          "mrr": 0.06920788334732364,
+          "mean_rank": 170.8795,
+          "hits@1": 0.01525,
+          "hits@3": 0.04975,
+          "hits@10": 0.16975
+        },
+        "filtered": {
+          "count": 4000,
+          "mrr": 0.1814060955111666,
+          "mean_rank": 150.32775,
+          "hits@1": 0.09125,
+          "hits@3": 0.19725,
+          "hits@10": 0.36525
+        },
+        "total_queries": 4000,
+        "unscorable_queries": 0,
+        "scorable_queries": 4000
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.06920788334732364,
+          "macro_scope_mrr": 0.06920788334732364
+        },
+        "filtered": {
+          "micro": 0.1814060955111666,
+          "macro_scope_mrr": 0.1814060955111666
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+        "task_scope": "root",
+        "fact_limit": null,
+        "root_candidate_count": 2534,
+        "candidates": "all ROOT occurrences"
+      },
+      "breakdowns": {
+        "by_relation": {
+          "disease_protein::associated with": {
+            "raw": {
+              "count": 922,
+              "mrr": 0.05688507705213907,
+              "mean_rank": 108.22776572668113,
+              "hits@1": 0.0032537960954446853,
+              "hits@3": 0.03796095444685466,
+              "hits@10": 0.1442516268980477
+            },
+            "filtered": {
+              "count": 922,
+              "mrr": 0.21964176055517703,
+              "mean_rank": 84.84924078091106,
+              "hits@1": 0.11171366594360087,
+              "hits@3": 0.25054229934924077,
+              "hits@10": 0.4316702819956616
+            },
+            "total_queries": 922,
+            "unscorable_queries": 0
+          },
+          "contraindication::contraindication": {
+            "raw": {
+              "count": 226,
+              "mrr": 0.10231106457782835,
+              "mean_rank": 128.25221238938053,
+              "hits@1": 0.017699115044247787,
+              "hits@3": 0.11946902654867257,
+              "hits@10": 0.2610619469026549
+            },
+            "filtered": {
+              "count": 226,
+              "mrr": 0.22038789954932606,
+              "mean_rank": 107.79646017699115,
+              "hits@1": 0.11061946902654868,
+              "hits@3": 0.25663716814159293,
+              "hits@10": 0.43805309734513276
+            },
+            "total_queries": 226,
+            "unscorable_queries": 0
+          },
+          "protein_protein::ppi": {
+            "raw": {
+              "count": 1236,
+              "mrr": 0.052881727453086495,
+              "mean_rank": 217.72815533980582,
+              "hits@1": 0.009708737864077669,
+              "hits@3": 0.03155339805825243,
+              "hits@10": 0.13754045307443366
+            },
+            "filtered": {
+              "count": 1236,
+              "mrr": 0.14342041127585556,
+              "mean_rank": 192.8559870550162,
+              "hits@1": 0.0703883495145631,
+              "hits@3": 0.156957928802589,
+              "hits@10": 0.28559870550161814
+            },
+            "total_queries": 1236,
+            "unscorable_queries": 0
+          },
+          "drug_drug::synergistic interaction": {
+            "raw": {
+              "count": 358,
+              "mrr": 0.09911838558548512,
+              "mean_rank": 28.522346368715084,
+              "hits@1": 0.030726256983240222,
+              "hits@3": 0.05865921787709497,
+              "hits@10": 0.2206703910614525
+            },
+            "filtered": {
+              "count": 358,
+              "mrr": 0.25703336016511896,
+              "mean_rank": 12.916201117318435,
+              "hits@1": 0.12569832402234637,
+              "hits@3": 0.2569832402234637,
+              "hits@10": 0.5977653631284916
+            },
+            "total_queries": 358,
+            "unscorable_queries": 0
+          },
+          "drug_effect::side effect": {
+            "raw": {
+              "count": 388,
+              "mrr": 0.06881403597709214,
+              "mean_rank": 110.20618556701031,
+              "hits@1": 0.010309278350515464,
+              "hits@3": 0.02577319587628866,
+              "hits@10": 0.2268041237113402
+            },
+            "filtered": {
+              "count": 388,
+              "mrr": 0.2088884982959251,
+              "mean_rank": 74.5721649484536,
+              "hits@1": 0.08762886597938144,
+              "hits@3": 0.23195876288659795,
+              "hits@10": 0.4690721649484536
+            },
+            "total_queries": 388,
+            "unscorable_queries": 0
+          },
+          "pathway_protein::interacts with": {
+            "raw": {
+              "count": 232,
+              "mrr": 0.12857071489998556,
+              "mean_rank": 292.33620689655174,
+              "hits@1": 0.05172413793103448,
+              "hits@3": 0.14224137931034483,
+              "hits@10": 0.2543103448275862
+            },
+            "filtered": {
+              "count": 232,
+              "mrr": 0.2651804797811755,
+              "mean_rank": 281.3448275862069,
+              "hits@1": 0.1939655172413793,
+              "hits@3": 0.29310344827586204,
+              "hits@10": 0.3922413793103448
+            },
+            "total_queries": 232,
+            "unscorable_queries": 0
+          },
+          "drug_protein::enzyme": {
+            "raw": {
+              "count": 52,
+              "mrr": 0.12743902041087554,
+              "mean_rank": 112.59615384615384,
+              "hits@1": 0.038461538461538464,
+              "hits@3": 0.1346153846153846,
+              "hits@10": 0.3076923076923077
+            },
+            "filtered": {
+              "count": 52,
+              "mrr": 0.16106437134627669,
+              "mean_rank": 107.01923076923077,
+              "hits@1": 0.038461538461538464,
+              "hits@3": 0.19230769230769232,
+              "hits@10": 0.4230769230769231
+            },
+            "total_queries": 52,
+            "unscorable_queries": 0
+          },
+          "drug_protein::target": {
+            "raw": {
+              "count": 78,
+              "mrr": 0.08993558591024339,
+              "mean_rank": 203.1153846153846,
+              "hits@1": 0.02564102564102564,
+              "hits@3": 0.07692307692307693,
+              "hits@10": 0.1794871794871795
+            },
+            "filtered": {
+              "count": 78,
+              "mrr": 0.12730576219318976,
+              "mean_rank": 198.7948717948718,
+              "hits@1": 0.038461538461538464,
+              "hits@3": 0.1282051282051282,
+              "hits@10": 0.3076923076923077
+            },
+            "total_queries": 78,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_positive::phenotype present": {
+            "raw": {
+              "count": 256,
+              "mrr": 0.060188015591059026,
+              "mean_rank": 194.48828125,
+              "hits@1": 0.01953125,
+              "hits@3": 0.04296875,
+              "hits@10": 0.109375
+            },
+            "filtered": {
+              "count": 256,
+              "mrr": 0.09724081243214837,
+              "mean_rank": 186.85546875,
+              "hits@1": 0.05078125,
+              "hits@3": 0.0859375,
+              "hits@10": 0.15234375
+            },
+            "total_queries": 256,
+            "unscorable_queries": 0
+          },
+          "disease_disease::parent-child": {
+            "raw": {
+              "count": 64,
+              "mrr": 0.014565402794638152,
+              "mean_rank": 415.984375,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.03125
+            },
+            "filtered": {
+              "count": 64,
+              "mrr": 0.01464769587574381,
+              "mean_rank": 415.0625,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.03125
+            },
+            "total_queries": 64,
+            "unscorable_queries": 0
+          },
+          "indication::indication": {
+            "raw": {
+              "count": 38,
+              "mrr": 0.03579891480852078,
+              "mean_rank": 393.6842105263158,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.13157894736842105
+            },
+            "filtered": {
+              "count": 38,
+              "mrr": 0.041524421398827775,
+              "mean_rank": 390.2105263157895,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.13157894736842105
+            },
+            "total_queries": 38,
+            "unscorable_queries": 0
+          },
+          "drug_protein::transporter": {
+            "raw": {
+              "count": 32,
+              "mrr": 0.16219111118954044,
+              "mean_rank": 114.875,
+              "hits@1": 0.09375,
+              "hits@3": 0.15625,
+              "hits@10": 0.3125
+            },
+            "filtered": {
+              "count": 32,
+              "mrr": 0.17973499079471797,
+              "mean_rank": 111.0625,
+              "hits@1": 0.09375,
+              "hits@3": 0.15625,
+              "hits@10": 0.40625
+            },
+            "total_queries": 32,
+            "unscorable_queries": 0
+          },
+          "phenotype_phenotype::parent-child": {
+            "raw": {
+              "count": 24,
+              "mrr": 0.010366761781513136,
+              "mean_rank": 914.625,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 24,
+              "mrr": 0.010393802635508447,
+              "mean_rank": 913.875,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 24,
+            "unscorable_queries": 0
+          },
+          "phenotype_protein::associated with": {
+            "raw": {
+              "count": 66,
+              "mrr": 0.08880194189600313,
+              "mean_rank": 155.13636363636363,
+              "hits@1": 0.030303030303030304,
+              "hits@3": 0.06060606060606061,
+              "hits@10": 0.21212121212121213
+            },
+            "filtered": {
+              "count": 66,
+              "mrr": 0.1286304370962139,
+              "mean_rank": 149.53030303030303,
+              "hits@1": 0.06060606060606061,
+              "hits@3": 0.12121212121212122,
+              "hits@10": 0.25757575757575757
+            },
+            "total_queries": 66,
+            "unscorable_queries": 0
+          },
+          "off-label use::off-label use": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.0018281027056867452,
+              "mean_rank": 783.75,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.001842744269900727,
+              "mean_rank": 781.75,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "pathway_pathway::parent-child": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.10093095093466496,
+              "mean_rank": 214.66666666666666,
+              "hits@1": 0.08333333333333333,
+              "hits@3": 0.08333333333333333,
+              "hits@10": 0.16666666666666666
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.10105019785670893,
+              "mean_rank": 213.33333333333334,
+              "hits@1": 0.08333333333333333,
+              "hits@3": 0.08333333333333333,
+              "hits@10": 0.16666666666666666
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "drug_protein::carrier": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.0006653697328831019,
+              "mean_rank": 1620.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.0006653697328831019,
+              "mean_rank": 1620.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_negative::phenotype absent": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.004988040371040196,
+              "mean_rank": 342.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.004991217798594848,
+              "mean_rank": 341.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          }
+        },
+        "by_side": {
+          "head": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.06519569905399179,
+              "mean_rank": 173.449,
+              "hits@1": 0.0115,
+              "hits@3": 0.0415,
+              "hits@10": 0.1705
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.18001695349702881,
+              "mean_rank": 153.273,
+              "hits@1": 0.086,
+              "hits@3": 0.199,
+              "hits@10": 0.3605
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          },
+          "tail": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.07322006764065549,
+              "mean_rank": 168.31,
+              "hits@1": 0.019,
+              "hits@3": 0.058,
+              "hits@10": 0.169
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.18279523752530435,
+              "mean_rank": 147.3825,
+              "hits@1": 0.0965,
+              "hits@3": 0.1955,
+              "hits@10": 0.37
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          }
+        },
+        "by_owner": {
+          "non_owner": {
+            "raw": {
+              "count": 2592,
+              "mrr": 0.05564960179865849,
+              "mean_rank": 185.32908950617283,
+              "hits@1": 0.009259259259259259,
+              "hits@3": 0.03587962962962963,
+              "hits@10": 0.13618827160493827
+            },
+            "filtered": {
+              "count": 2592,
+              "mrr": 0.1629454778714885,
+              "mean_rank": 164.1585648148148,
+              "hits@1": 0.08217592592592593,
+              "hits@3": 0.17939814814814814,
+              "hits@10": 0.31635802469135804
+            },
+            "total_queries": 2592,
+            "unscorable_queries": 0
+          },
+          "owner_touching": {
+            "raw": {
+              "count": 1408,
+              "mrr": 0.0941674471073663,
+              "mean_rank": 144.2791193181818,
+              "hits@1": 0.026278409090909092,
+              "hits@3": 0.07528409090909091,
+              "hits@10": 0.2315340909090909
+            },
+            "filtered": {
+              "count": 1408,
+              "mrr": 0.21539041434784673,
+              "mean_rank": 124.86647727272727,
+              "hits@1": 0.10795454545454546,
+              "hits@3": 0.23011363636363635,
+              "hits@10": 0.4552556818181818
+            },
+            "total_queries": 1408,
+            "unscorable_queries": 0
+          }
+        }
+      }
+    },
+    "test": null,
+    "checkpoint": "/content/drive/MyDrive/gog_runs/gog_only_80_20261126_215709/gog_best.pt",
+    "optimizer_updates": 80,
+    "update_offset": 0,
+    "initial_validation": null,
+    "initialization": {
+      "mode": "random"
+    },
+    "fingerprints": {
+      "dataset": "4e333278b4de091af2da4b81d0053a6fd2f73c4ab587a160ae87882fba63c19d",
+      "candidates": "6dde2089fef45ae499e7d1414c7b5a56b6203cf73f63bb80166bad1b5d1676ad",
+      "queries": {
+        "train": "d1c94e6a1d38e545b852eb7a7ab7ee5bf2ad230c04725da20b3fc386b6c2978a",
+        "validation": "3117b85dc3f7656622d7250037a0d11f5255309af99f9fa890586ef8e0bb5997",
+        "test": "cf11d8348af927705c6fd7efb6871ada5eb00b97881d84344dd332b42cedab11"
+      }
+    },
+    "negative_sample_fingerprints": [
+      "b1c4e101c329036d8e7d2d82d24982377a52d96f5b605001305f21494fb72784",
+      "b7aab6dd21dfbd6713ce41e0ea442e6e6c50a3d8d344289cf641df8fb31298f0",
+      "d7612e942a865fb032f6b31df05c76695dfa994453dcc7acd76e6620677fbc69",
+      "73b37fea3f25d78d8fc3ca918fdb9729dd866c58b11606cdfdc3f8f42e08c12e",
+      "003afdda811509657495051a5bd762d01f45de8a01a3e3548a510b18f47ec069",
+      "5a33486866ed5f90ed278d0baa11c43467ba54cbea6c168d3578713150f6655c",
+      "8fcec8e10f6f3ff0ec413444d9359947bb946e61d2eb5bae7ed10a4643b770f8",
+      "cfa3854451cf4550f9adf18ee88a6b90d0d29d464795ecffac23f63602ab02ae",
+      "d7f77454570a1f33e99af02ec74dc5c8fb24578ddfd1def75a08cce8d4520e0e",
+      "78b3813d0be0dbcb1c384671b39129b46b2dca8b84f84115f77bcd049ed8c1d0",
+      "a5668f13175d6966649cf3353a611291aea5aa0d7b15e5ba24c01ba4de3ee194",
+      "83449ca334c47e83664544b5a824949371364c7aad4538a8072911b531f21a94",
+      "46212ff3f5d78389361b7a9d4309f954ef48456d32c80cf4937254114b96d0eb",
+      "eecce86a836ecdfe23365394070abc5370994f5a8ef354b360d055f39a763635",
+      "59cca43d8364db77ba1a9092971bd886427a5dd9cab08caa31fb599020b2ab0a",
+      "40b224db606ce3860d3d4cf3f95531403112b0704cd90946a165bb3135af2c32",
+      "1ff9dd663f6fbf0ad015dd796dceeec8ea3212ee455b2b03fdb3ea77e55f5973",
+      "b4d9cba435a01d90e5b135de7821a2d2185598da9567c8cc702f08b917a22e8b",
+      "ab911ffb2bf6a99cbba3bab2dea2e6a832728a12adfe3223260197de17f59960",
+      "7d8662f14c72c705675b93f16921d2efdcf42c46e1f165349065308ebba8e1af",
+      "2f00d8385571e2eac5c38c01213ef9e29caaea84cbd64e90f44890b4f272a63f",
+      "a6f45fbf5e0cbb6479f4898e7dc419f16a4c7bb340d74b4e3534d380af7b0efe",
+      "e226114b284f7c276d354c157b7f8d4942289267a8c7cf0a7c30c7cc5307941b",
+      "f23fe6b752fcd50630e59654e577c8dc6616f1e722dd3c3e7766c69fc55dd072",
+      "6246ab02ff52801b6e73fb8d5d4923c354311e7915b11ccb639c554ff7e9a988",
+      "f55b85e523f2caae0763721c2678092627d79e45d20797c0abdf8522e666ac9b",
+      "e00bfe86058db072f99afaf27da9588d6e1d8c91a687cb03c7588c5a46d20bfb",
+      "6b17ad9bcb05ef765e7f273d2ca4d6b819cd48b50ab8d9b3f2edc1aace4f537e",
+      "2a14084368fe752ce486f117139856bfe4626b929be09e4861616c585f90bd34",
+      "9f8ade235ab3da443aebe32d50f3991f5c41643c8e409e6e27d4c41004725920",
+      "b0627492a39fc6779f01ddd179700a2d335e5b27aac45f28b5f5138aae6f7416",
+      "eebae3d8425f5f721d58ab92c8fe1df97ce785f1f62d5dda1311c0277cc2a675",
+      "49c447f179487d9e3b45a58658ad854ad039db9ac539bb8fde0403f62ac8c064",
+      "46d3f139d6f581fd2ca95647f755fab62f84d1c45fdb3f9fe6b34bbf1d9fde7b",
+      "cf3b640cdcb70841e893d073d317e92c2d46649d9ce302415d2985ce9b7c0155",
+      "ca5d4b7bbac6c514243daf479f581e5ca24f80d9b8bb4fb0696ae754e7d56f05",
+      "5cba131b486594365d4b434ad7e9029182fab61cb69c0ee08dd9c00db025a59b",
+      "c207d59fbb3ccbcbf60e621126ba7005178871610398be7c5aad27ab806d1ac8",
+      "1996a0ed16db32065388ca8b1b2396f7ac07ea32ca623ba8d806efbdb121980c",
+      "13d1b279d9485f873964d5e52636178ee9254fd86a5c56476e8d189859176df1",
+      "273692d78a2d93805e8186a39efc44e27cc159ac10428a20de12bd2191df6b54",
+      "0f5c0f1b859121ac47652afbeccbce8ed23910a042fd0c90fc28b786046ddff4",
+      "9a51eb51e998af621e8ecd924f3852a4b643e8377cc6371df6d0124fd5a72496",
+      "f40916c046544e56c771baf79c67564dae44d397ff4b7b0962dcc28baadfaeab",
+      "92e4269d8756a8091031ec1edc1c66b28dcd6e841e8dec02d611ae7b4f5c895b",
+      "e2abe052dd54c67636ebbb369ade6376fbec2a849b1c63ca7eca3d10c3dbd28b",
+      "3853613334c8402b683661b9d122657309c8ecf72ceb5df6f398f03efb4fac0f",
+      "76602f51c894ac1a0de9e2cc12d6ed4196ba5343b3180c15742303e669c883c8",
+      "db0edf33afcc45f8a117bb60fd1a680bb04a344e8801eeec19753511f0954297",
+      "a62aa72afd1fe7a9c2b37a7ba3ff72e24e43f33fa20106bade1d63f75112b707",
+      "25bace0f6496d765bc706c00a31aef70fe3b4c01acf38f256bc50cfb14a382ed",
+      "da64d2855174ebd7d842ada4f9329cb2a7ed838bc351dd04dfe34071ff990164",
+      "a4d528407f8d3202e63103a4f0323e2c78a3cdbd0d5006f08112c34b1c9ccdae",
+      "1fa5e2940be99c19015b034c47f3edabc6bc07f561725da5428c33e76c130f23",
+      "1ffba962582972c425d4ad87ae19af852fe21c0091047bc8f88dea7a1e80bbc6",
+      "a2d924d4564d57521345357a042db22ef38ecaa0dde7248b1934668474d89e9e",
+      "4cb4009916c7c197377d5e5a70e56fb665a877210678640bcd09d66d0d3dc4bf",
+      "d7e23602ade0629a46ce55bb6630c5e2204601bbe073301308a4c04d030cf0e9",
+      "b22d4528954b8b33892678279a31a761dd2bcc8d8d5cf32749c04ef7eccb5e32",
+      "0ef625014a1f7f9c11b61b386a1807170bb901ba1e88d529f2878d9271252985",
+      "47c6de709244e3a6a8f279b966a3e8664d7f066fe4462ee2c4561c19e7fe4e07",
+      "02843ea984d48ce2109f8db14c9c825bdf0fdc66b832709c8a589f47d4d6a6a9",
+      "5fffe833a5afb623f9c26da96e1e7bbd1c72cac32fbdbb42d75c8c2d400ae756",
+      "44b6dbaec7838fe1eea7068dbe41c6bf3881584909909be66557aedf0fc7a131",
+      "c3da6282ceb316888a22541363fe61fecef6ae414f53848b3d9f0be77ebd8da6",
+      "a1e33590fd34ca1e57a41c1bcfed300654b66600933e0e2beef9aaf2bfa95e6c",
+      "0c9a6f149f4e3a7b0434e0288e4412382c7d031e7547720a75c4a8802ca28cc5",
+      "8456db9f4df3a531c6649658f9790a3826fc599b979e7edca96a974622cd1fc7",
+      "89cdb0084941d81f47ea1e579ae68f03a27f074f6545a0ed737d0ad22d3e1529",
+      "8a205d4ed2dae8ff8f5c1bafacad1e44aea169b3e2408ece4c3227f382358c45",
+      "c0bd0d474dc06769fab585e333286e7b57b5d2a03f211e2cc3122befdcb60720",
+      "073c618ca9ba87c4735b38999bf55fb57a7b5b5cd87a341bae4cc851a8f0fcf8",
+      "a4120c76f595986b5813378db523b34f9f827ca27d4df2d826cdac4ddf1988ac",
+      "d12d22ebe8cd8ac5d2c9c396604443c7ab122db6d2fe8b3eb3f32418eacfc318",
+      "07f2ffda3912c005f00d5ace166fbc79e710c510ae9ca2c232b616f41dc33228",
+      "cfe339a7e172bb672fa6b0d8e80a18a23483ad49de163f6cba6a6b21b3b6fd59",
+      "d78811a39cec7e6fa38e0e79145df9d9af759698d8222a078003484c4182eae7",
+      "58d00061651b83add43eff935318e1bf59111244de27c3c0ad77bc693f17bf44",
+      "9ff0c02d65c997f766eda3cba6c05822400aa8b2cb8bff397914783936f8d8dd",
+      "9fbe47b23b3743252e7dc0c7ec1122d735ffc2036523fbf9fc61b216f03cb7d9"
+    ],
+    "diagnostics": [
+      {
+        "local_message_self_ratio": 2.0973939895629883,
+        "root_message_self_ratio": 2.157477855682373,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0,
+          "drug": 0.0,
+          "effect/phenotype": 0.0,
+          "gene/protein": 0.0,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.292083740234375,
+            "cross": 0.7705137729644775,
+            "readout": 11.313166618347168,
+            "owner": 0.08915150165557861,
+            "root": 8.321165084838867,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.10270988941192627,
+          "initializer": 3.224679470062256,
+          "relation_embedding": 0.0,
+          "local": 0.0,
+          "cross": 0.0,
+          "fusion": 0.0,
+          "root": 0.0,
+          "chemistry": 0.0,
+          "structural_readout": 0.0,
+          "decoder": 1.5100430250167847
+        },
+        "total_gradient_norm_before_clip": 3.5622096061706543,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.006438200822591937,
+            "macro_scope_mrr": 0.006438200822591937
+          },
+          "filtered": {
+            "micro": 0.007003067619094628,
+            "macro_scope_mrr": 0.007003067619094628
+          }
+        },
+        "update": 1,
+        "loss": 1.5471288613452756,
+        "validation_filtered_mrr": 0.008785324113578219
+      },
+      {
+        "local_message_self_ratio": 2.097278356552124,
+        "root_message_self_ratio": 2.1555593013763428,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.000999998301267624,
+          "drug": -0.0009999966714531183,
+          "effect/phenotype": 0.0009999987669289112,
+          "gene/protein": 0.000999999581836164,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0009999929461628199,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.284116268157959,
+            "cross": 0.7674858570098877,
+            "readout": 11.313170433044434,
+            "owner": 0.08985921740531921,
+            "root": 8.323677062988281,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03675704449415207,
+          "initializer": 1.755385160446167,
+          "relation_embedding": 2.259041866636835e-05,
+          "local": 3.046408346563112e-05,
+          "cross": 0.00010489419946679845,
+          "fusion": 0.00012826474267058074,
+          "root": 0.0003306014114059508,
+          "chemistry": 8.019883534871042e-05,
+          "structural_readout": 0.00014001586532685906,
+          "decoder": 0.8117295503616333
+        },
+        "total_gradient_norm_before_clip": 1.9343301057815552,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.018242004551537905,
+            "macro_scope_mrr": 0.018242004551537905
+          },
+          "filtered": {
+            "micro": 0.021387981945055316,
+            "macro_scope_mrr": 0.021387981945055316
+          }
+        },
+        "update": 2,
+        "loss": 1.3299292393174469,
+        "validation_filtered_mrr": 0.01814044832222697
+      },
+      {
+        "local_message_self_ratio": 2.0896122455596924,
+        "root_message_self_ratio": 2.160353899002075,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.001469841692596674,
+          "drug": -0.0018763167317956686,
+          "effect/phenotype": 0.0020007251296192408,
+          "gene/protein": 0.0018871529027819633,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0019229153404012322,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.272526264190674,
+            "cross": 0.7751683592796326,
+            "readout": 11.317252159118652,
+            "owner": 0.09438783675432205,
+            "root": 8.33191967010498,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.059213779866695404,
+          "initializer": 1.2274160385131836,
+          "relation_embedding": 2.841155946953222e-05,
+          "local": 2.8653163099079393e-05,
+          "cross": 0.0001256590912817046,
+          "fusion": 0.00016541738295927644,
+          "root": 0.0004110841837245971,
+          "chemistry": 7.597058720421046e-05,
+          "structural_readout": 0.00013523917004931718,
+          "decoder": 0.522585928440094
+        },
+        "total_gradient_norm_before_clip": 1.335347294807434,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.028416874317939864,
+            "macro_scope_mrr": 0.028416874317939864
+          },
+          "filtered": {
+            "micro": 0.03347536337246834,
+            "macro_scope_mrr": 0.03347536337246834
+          }
+        },
+        "update": 3,
+        "loss": 1.20432140825441,
+        "validation_filtered_mrr": 0.024238105461199422
+      },
+      {
+        "local_message_self_ratio": 2.086684465408325,
+        "root_message_self_ratio": 2.1684887409210205,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0018956108251586556,
+          "drug": -0.0027026080060750246,
+          "effect/phenotype": 0.002986631589010358,
+          "gene/protein": 0.002766474150121212,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.002812404651194811,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.283848762512207,
+            "cross": 0.787946343421936,
+            "readout": 11.327590942382812,
+            "owner": 0.10252439230680466,
+            "root": 8.370580673217773,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06689885258674622,
+          "initializer": 1.0945945978164673,
+          "relation_embedding": 3.178518090862781e-05,
+          "local": 2.8480502805905417e-05,
+          "cross": 0.0001548505388200283,
+          "fusion": 0.00017943554848898202,
+          "root": 0.0004790476814378053,
+          "chemistry": 7.043466757750139e-05,
+          "structural_readout": 0.00011717825691448525,
+          "decoder": 0.45275378227233887
+        },
+        "total_gradient_norm_before_clip": 1.1864228248596191,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.05644833465836107,
+            "macro_scope_mrr": 0.05644833465836107
+          },
+          "filtered": {
+            "micro": 0.06595566112125864,
+            "macro_scope_mrr": 0.06595566112125864
+          }
+        },
+        "update": 4,
+        "loss": 1.119073995088636,
+        "validation_filtered_mrr": 0.029221939817459446
+      },
+      {
+        "local_message_self_ratio": 2.091815948486328,
+        "root_message_self_ratio": 2.1950767040252686,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0025472191628068686,
+          "drug": -0.0035827334504574537,
+          "effect/phenotype": 0.003973114769905806,
+          "gene/protein": 0.0036730861756950617,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.003725436283275485,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.30665922164917,
+            "cross": 0.8078341484069824,
+            "readout": 11.339957237243652,
+            "owner": 0.1102563887834549,
+            "root": 8.445501327514648,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.054853569716215134,
+          "initializer": 1.0062127113342285,
+          "relation_embedding": 3.2214156817644835e-05,
+          "local": 2.6642310331226327e-05,
+          "cross": 0.0001832435082178563,
+          "fusion": 0.00017148774350062013,
+          "root": 0.0005262924823909998,
+          "chemistry": 4.717538831755519e-05,
+          "structural_readout": 0.0001054813910741359,
+          "decoder": 0.42515167593955994
+        },
+        "total_gradient_norm_before_clip": 1.093721628189087,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.07794608739518769,
+            "macro_scope_mrr": 0.07794608739518769
+          },
+          "filtered": {
+            "micro": 0.0980519698836123,
+            "macro_scope_mrr": 0.0980519698836123
+          }
+        },
+        "update": 5,
+        "loss": 1.0543208283448824,
+        "validation_filtered_mrr": 0.03352737239243927
+      },
+      {
+        "local_message_self_ratio": 2.097477912902832,
+        "root_message_self_ratio": 2.2198474407196045,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0033203151542693377,
+          "drug": -0.004502256866544485,
+          "effect/phenotype": 0.004967729561030865,
+          "gene/protein": 0.004608288872987032,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.004669575951993465,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.332694053649902,
+            "cross": 0.8322741389274597,
+            "readout": 11.352682113647461,
+            "owner": 0.11769110709428787,
+            "root": 8.510396003723145,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.04054369032382965,
+          "initializer": 0.9337366819381714,
+          "relation_embedding": 3.371051570866257e-05,
+          "local": 2.7152207621838897e-05,
+          "cross": 0.0002081953571178019,
+          "fusion": 0.00017918404773809016,
+          "root": 0.0005791084840893745,
+          "chemistry": 5.122197762830183e-05,
+          "structural_readout": 0.00012139589671278372,
+          "decoder": 0.401980459690094
+        },
+        "total_gradient_norm_before_clip": 1.0173970460891724,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08733396858004223,
+            "macro_scope_mrr": 0.08733396858004223
+          },
+          "filtered": {
+            "micro": 0.10655089480896557,
+            "macro_scope_mrr": 0.10655089480896557
+          }
+        },
+        "update": 6,
+        "loss": 0.9989746924000484,
+        "validation_filtered_mrr": 0.03848958555439127
+      },
+      {
+        "local_message_self_ratio": 2.1035637855529785,
+        "root_message_self_ratio": 2.2419326305389404,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.004152453504502773,
+          "drug": -0.005413098726421595,
+          "effect/phenotype": 0.00597141170874238,
+          "gene/protein": 0.00556430546566844,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.005632257089018822,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.375086307525635,
+            "cross": 0.8624624013900757,
+            "readout": 11.363740921020508,
+            "owner": 0.12248969823122025,
+            "root": 8.529303550720215,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03032856434583664,
+          "initializer": 0.8804003000259399,
+          "relation_embedding": 3.878468487528153e-05,
+          "local": 2.9351349439821206e-05,
+          "cross": 0.0002259203465655446,
+          "fusion": 0.00022271164925768971,
+          "root": 0.0006549517274834216,
+          "chemistry": 4.55888693977613e-05,
+          "structural_readout": 0.00013434721040539443,
+          "decoder": 0.3829900622367859
+        },
+        "total_gradient_norm_before_clip": 0.960576057434082,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1005977162259107,
+            "macro_scope_mrr": 0.1005977162259107
+          },
+          "filtered": {
+            "micro": 0.12680123314648123,
+            "macro_scope_mrr": 0.12680123314648123
+          }
+        },
+        "update": 7,
+        "loss": 0.9480545800665782,
+        "validation_filtered_mrr": 0.042675972495951696
+      },
+      {
+        "local_message_self_ratio": 2.110481023788452,
+        "root_message_self_ratio": 2.2723541259765625,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.005036454182118177,
+          "drug": -0.006233661901205778,
+          "effect/phenotype": 0.006979190744459629,
+          "gene/protein": 0.006530662998557091,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.006600377149879932,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.422274589538574,
+            "cross": 0.8899851441383362,
+            "readout": 11.373015403747559,
+            "owner": 0.12663781642913818,
+            "root": 8.552714347839355,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.026536675170063972,
+          "initializer": 0.842648983001709,
+          "relation_embedding": 4.7671412175986916e-05,
+          "local": 3.0624338251072913e-05,
+          "cross": 0.00023642242013011128,
+          "fusion": 0.0002840570523403585,
+          "root": 0.0007791508105583489,
+          "chemistry": 6.0359499912010506e-05,
+          "structural_readout": 0.00015310918388422579,
+          "decoder": 0.3750515282154083
+        },
+        "total_gradient_norm_before_clip": 0.9227274656295776,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.10427665352872761,
+            "macro_scope_mrr": 0.10427665352872761
+          },
+          "filtered": {
+            "micro": 0.1311485570018588,
+            "macro_scope_mrr": 0.1311485570018588
+          }
+        },
+        "update": 8,
+        "loss": 0.9020334856070747,
+        "validation_filtered_mrr": 0.046382107946293806
+      },
+      {
+        "local_message_self_ratio": 2.118100166320801,
+        "root_message_self_ratio": 2.2934327125549316,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.005958600901067257,
+          "drug": -0.006889508571475744,
+          "effect/phenotype": 0.007982960902154446,
+          "gene/protein": 0.0074833896942436695,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0075759124010801315,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.48759651184082,
+            "cross": 0.9099396467208862,
+            "readout": 11.380306243896484,
+            "owner": 0.12907077372074127,
+            "root": 8.50900936126709,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.021750494837760925,
+          "initializer": 0.8129781484603882,
+          "relation_embedding": 5.730000339099206e-05,
+          "local": 3.674132312880829e-05,
+          "cross": 0.0002729297848418355,
+          "fusion": 0.00033088793861679733,
+          "root": 0.0009146226802840829,
+          "chemistry": 6.29104397376068e-05,
+          "structural_readout": 0.00017593872325960547,
+          "decoder": 0.37728971242904663
+        },
+        "total_gradient_norm_before_clip": 0.8965239524841309,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1018509590057965,
+            "macro_scope_mrr": 0.1018509590057965
+          },
+          "filtered": {
+            "micro": 0.13781492418962205,
+            "macro_scope_mrr": 0.13781492418962205
+          }
+        },
+        "update": 9,
+        "loss": 0.8540053597604239,
+        "validation_filtered_mrr": 0.05123218329686325
+      },
+      {
+        "local_message_self_ratio": 2.126152753829956,
+        "root_message_self_ratio": 2.3162293434143066,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.006884853821247816,
+          "drug": -0.007397763431072235,
+          "effect/phenotype": 0.008979598060250282,
+          "gene/protein": 0.0083926385268569,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.008567553013563156,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.551436424255371,
+            "cross": 0.9221056699752808,
+            "readout": 11.386497497558594,
+            "owner": 0.13088858127593994,
+            "root": 8.478331565856934,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.015786971896886826,
+          "initializer": 0.7994924187660217,
+          "relation_embedding": 6.668471178272739e-05,
+          "local": 4.139437442063354e-05,
+          "cross": 0.0003203837259206921,
+          "fusion": 0.0003601442149374634,
+          "root": 0.0010611426550894976,
+          "chemistry": 5.250132016954012e-05,
+          "structural_readout": 0.00017657055286690593,
+          "decoder": 0.38752293586730957
+        },
+        "total_gradient_norm_before_clip": 0.888601541519165,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.10305648993018351,
+            "macro_scope_mrr": 0.10305648993018351
+          },
+          "filtered": {
+            "micro": 0.13451032585870357,
+            "macro_scope_mrr": 0.13451032585870357
+          }
+        },
+        "update": 10,
+        "loss": 0.8054669638940651,
+        "validation_filtered_mrr": 0.05620167813752027
+      },
+      {
+        "local_message_self_ratio": 2.1337549686431885,
+        "root_message_self_ratio": 2.3347251415252686,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.00776656623929739,
+          "drug": -0.007816988974809647,
+          "effect/phenotype": 0.009967437945306301,
+          "gene/protein": 0.009221035055816174,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.009576366282999516,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.604896068572998,
+            "cross": 0.9266096949577332,
+            "readout": 11.392404556274414,
+            "owner": 0.13321959972381592,
+            "root": 8.408929824829102,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.016030844300985336,
+          "initializer": 0.759663999080658,
+          "relation_embedding": 6.819942791480571e-05,
+          "local": 4.291522782295942e-05,
+          "cross": 0.00032146016019396484,
+          "fusion": 0.00036537673440761864,
+          "root": 0.0011172713711857796,
+          "chemistry": 4.156610884820111e-05,
+          "structural_readout": 0.0001653826329857111,
+          "decoder": 0.387042760848999
+        },
+        "total_gradient_norm_before_clip": 0.8527308702468872,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.10672696286630529,
+            "macro_scope_mrr": 0.10672696286630529
+          },
+          "filtered": {
+            "micro": 0.1373403091619307,
+            "macro_scope_mrr": 0.1373403091619307
+          }
+        },
+        "update": 11,
+        "loss": 0.7560668241541755,
+        "validation_filtered_mrr": 0.06033552580268999
+      },
+      {
+        "local_message_self_ratio": 2.141373872756958,
+        "root_message_self_ratio": 2.363755941390991,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.008527378551661968,
+          "drug": -0.008244537748396397,
+          "effect/phenotype": 0.010940797626972198,
+          "gene/protein": 0.009961312636733055,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.010600973851978779,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.660408973693848,
+            "cross": 0.9245430827140808,
+            "readout": 11.398155212402344,
+            "owner": 0.1355409473180771,
+            "root": 8.360915184020996,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.030751701444387436,
+          "initializer": 0.66228187084198,
+          "relation_embedding": 6.286690768320113e-05,
+          "local": 3.9512964576715603e-05,
+          "cross": 0.0002971365174744278,
+          "fusion": 0.0003522920305840671,
+          "root": 0.0010515693575143814,
+          "chemistry": 3.730297612491995e-05,
+          "structural_readout": 0.00017123237194027752,
+          "decoder": 0.36168232560157776
+        },
+        "total_gradient_norm_before_clip": 0.7552340030670166,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.10497953974243711,
+            "macro_scope_mrr": 0.10497953974243711
+          },
+          "filtered": {
+            "micro": 0.1303045374014887,
+            "macro_scope_mrr": 0.1303045374014887
+          }
+        },
+        "update": 12,
+        "loss": 0.7069565646487068,
+        "validation_filtered_mrr": 0.06600158623438258
+      },
+      {
+        "local_message_self_ratio": 2.1490092277526855,
+        "root_message_self_ratio": 2.3815977573394775,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.009178884327411652,
+          "drug": -0.00876548234373331,
+          "effect/phenotype": 0.011888922192156315,
+          "gene/protein": 0.010630386881530285,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.01163649931550026,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.714476108551025,
+            "cross": 0.9185764789581299,
+            "readout": 11.404502868652344,
+            "owner": 0.1370263546705246,
+            "root": 8.303460121154785,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.044597480446100235,
+          "initializer": 0.5430369973182678,
+          "relation_embedding": 5.298734686220996e-05,
+          "local": 3.6652541894000024e-05,
+          "cross": 0.00029202253790572286,
+          "fusion": 0.0003153165162075311,
+          "root": 0.0009407027391716838,
+          "chemistry": 2.9453422030201182e-05,
+          "structural_readout": 0.00015044996689539403,
+          "decoder": 0.3211750388145447
+        },
+        "total_gradient_norm_before_clip": 0.6324813365936279,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09445582323784318,
+            "macro_scope_mrr": 0.09445582323784318
+          },
+          "filtered": {
+            "micro": 0.12133266504484577,
+            "macro_scope_mrr": 0.12133266504484577
+          }
+        },
+        "update": 13,
+        "loss": 0.6614059782914555,
+        "validation_filtered_mrr": 0.06889701545058322
+      },
+      {
+        "local_message_self_ratio": 2.155144214630127,
+        "root_message_self_ratio": 2.4001805782318115,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.009736171923577785,
+          "drug": -0.009401757270097733,
+          "effect/phenotype": 0.01277787797152996,
+          "gene/protein": 0.011252570897340775,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.012622770853340626,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.775407314300537,
+            "cross": 0.911198616027832,
+            "readout": 11.411575317382812,
+            "owner": 0.13978490233421326,
+            "root": 8.245391845703125,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.05528024956583977,
+          "initializer": 0.4445255994796753,
+          "relation_embedding": 5.5331354815280065e-05,
+          "local": 3.46550477843266e-05,
+          "cross": 0.00027424204745329916,
+          "fusion": 0.00031329720513895154,
+          "root": 0.0009372144122608006,
+          "chemistry": 2.7452017093310133e-05,
+          "structural_readout": 0.00012197428441140801,
+          "decoder": 0.28720271587371826
+        },
+        "total_gradient_norm_before_clip": 0.5321140289306641,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08235576405722336,
+            "macro_scope_mrr": 0.08235576405722336
+          },
+          "filtered": {
+            "micro": 0.11818112546913775,
+            "macro_scope_mrr": 0.11818112546913775
+          }
+        },
+        "update": 14,
+        "loss": 0.6210421855156252,
+        "validation_filtered_mrr": 0.07188913150422245
+      },
+      {
+        "local_message_self_ratio": 2.161574363708496,
+        "root_message_self_ratio": 2.4092226028442383,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.01019341591745615,
+          "drug": -0.010139252059161663,
+          "effect/phenotype": 0.013525671325623989,
+          "gene/protein": 0.011828796938061714,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.013379518873989582,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.817881107330322,
+            "cross": 0.9070777893066406,
+            "readout": 11.419824600219727,
+            "owner": 0.14285540580749512,
+            "root": 8.197898864746094,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.058390047401189804,
+          "initializer": 0.4839395582675934,
+          "relation_embedding": 7.737116538919508e-05,
+          "local": 4.023355359095149e-05,
+          "cross": 0.00031627449789084494,
+          "fusion": 0.0003686202398966998,
+          "root": 0.0011575731914490461,
+          "chemistry": 5.144510942045599e-05,
+          "structural_readout": 0.0001739615690894425,
+          "decoder": 0.297075092792511
+        },
+        "total_gradient_norm_before_clip": 0.5708433389663696,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08964837215969734,
+            "macro_scope_mrr": 0.08964837215969734
+          },
+          "filtered": {
+            "micro": 0.11817296457636892,
+            "macro_scope_mrr": 0.11817296457636892
+          }
+        },
+        "update": 15,
+        "loss": 0.5889138069206129,
+        "validation_filtered_mrr": 0.07400543704759943
+      },
+      {
+        "local_message_self_ratio": 2.167142868041992,
+        "root_message_self_ratio": 2.4174304008483887,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.010467630811035633,
+          "drug": -0.010952713899314404,
+          "effect/phenotype": 0.014049394056200981,
+          "gene/protein": 0.012344268150627613,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.013708912767469883,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.857802391052246,
+            "cross": 0.903314471244812,
+            "readout": 11.426626205444336,
+            "owner": 0.14512814581394196,
+            "root": 8.132343292236328,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.059891413897275925,
+          "initializer": 0.5412344932556152,
+          "relation_embedding": 9.416068496648222e-05,
+          "local": 4.755605186801404e-05,
+          "cross": 0.0003377929388079792,
+          "fusion": 0.0004313420504331589,
+          "root": 0.001345884520560503,
+          "chemistry": 7.343675679294392e-05,
+          "structural_readout": 0.0002544622402638197,
+          "decoder": 0.30372652411460876
+        },
+        "total_gradient_norm_before_clip": 0.6235172748565674,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09425041807338086,
+            "macro_scope_mrr": 0.09425041807338086
+          },
+          "filtered": {
+            "micro": 0.11891535420861987,
+            "macro_scope_mrr": 0.11891535420861987
+          }
+        },
+        "update": 16,
+        "loss": 0.5593497788119673,
+        "validation_filtered_mrr": 0.07784473772916757
+      },
+      {
+        "local_message_self_ratio": 2.172006607055664,
+        "root_message_self_ratio": 2.4225172996520996,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.010479066520929337,
+          "drug": -0.011823334731161594,
+          "effect/phenotype": 0.014352424070239067,
+          "gene/protein": 0.012777703814208508,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.013668705709278584,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.897475719451904,
+            "cross": 0.9021183848381042,
+            "readout": 11.431685447692871,
+            "owner": 0.14602909982204437,
+            "root": 8.074468612670898,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06200968846678734,
+          "initializer": 0.4975854158401489,
+          "relation_embedding": 9.199656778946519e-05,
+          "local": 4.356326098786667e-05,
+          "cross": 0.00029129115864634514,
+          "fusion": 0.0004335228877607733,
+          "root": 0.0013010561233386397,
+          "chemistry": 5.199711085879244e-05,
+          "structural_readout": 0.00019041115592699498,
+          "decoder": 0.271685928106308
+        },
+        "total_gradient_norm_before_clip": 0.5703084468841553,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09496504569985147,
+            "macro_scope_mrr": 0.09496504569985147
+          },
+          "filtered": {
+            "micro": 0.11585684364136849,
+            "macro_scope_mrr": 0.11585684364136849
+          }
+        },
+        "update": 17,
+        "loss": 0.529952769319453,
+        "validation_filtered_mrr": 0.08212536969007031
+      },
+      {
+        "local_message_self_ratio": 2.1777491569519043,
+        "root_message_self_ratio": 2.4347879886627197,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.010240480303764343,
+          "drug": -0.012741053476929665,
+          "effect/phenotype": 0.014510326087474823,
+          "gene/protein": 0.01311180368065834,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.013403725810348988,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.932650089263916,
+            "cross": 0.9012751579284668,
+            "readout": 11.436114311218262,
+            "owner": 0.14622996747493744,
+            "root": 8.005402565002441,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06173820048570633,
+          "initializer": 0.41172075271606445,
+          "relation_embedding": 8.148183405864984e-05,
+          "local": 5.518011312233284e-05,
+          "cross": 0.0003039826697204262,
+          "fusion": 0.00036435038782656193,
+          "root": 0.001166324713267386,
+          "chemistry": 3.467648275545798e-05,
+          "structural_readout": 0.00019135838374495506,
+          "decoder": 0.23539157211780548
+        },
+        "total_gradient_norm_before_clip": 0.4782639443874359,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08757761855681528,
+            "macro_scope_mrr": 0.08757761855681528
+          },
+          "filtered": {
+            "micro": 0.12016135225362444,
+            "macro_scope_mrr": 0.12016135225362444
+          }
+        },
+        "update": 18,
+        "loss": 0.5027992630798549,
+        "validation_filtered_mrr": 0.08732078962975845
+      },
+      {
+        "local_message_self_ratio": 2.1848909854888916,
+        "root_message_self_ratio": 2.4541122913360596,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.009835375472903252,
+          "drug": -0.013698199763894081,
+          "effect/phenotype": 0.014606446959078312,
+          "gene/protein": 0.013332633301615715,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.013026690110564232,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 6.978078842163086,
+            "cross": 0.9020926356315613,
+            "readout": 11.441973686218262,
+            "owner": 0.14803586900234222,
+            "root": 7.939742088317871,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06008752062916756,
+          "initializer": 0.29181402921676636,
+          "relation_embedding": 6.059188672224991e-05,
+          "local": 4.431531124282628e-05,
+          "cross": 0.00026461060042493045,
+          "fusion": 0.0002721947093959898,
+          "root": 0.0008972849464043975,
+          "chemistry": 1.6460444385302253e-05,
+          "structural_readout": 0.00012712569150608033,
+          "decoder": 0.20026260614395142
+        },
+        "total_gradient_norm_before_clip": 0.3589875102043152,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08714041250621393,
+            "macro_scope_mrr": 0.08714041250621393
+          },
+          "filtered": {
+            "micro": 0.11313065212493047,
+            "macro_scope_mrr": 0.11313065212493047
+          }
+        },
+        "update": 19,
+        "loss": 0.47883413236553396,
+        "validation_filtered_mrr": 0.09024398164591085
+      },
+      {
+        "local_message_self_ratio": 2.1919283866882324,
+        "root_message_self_ratio": 2.462841510772705,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.00935323629528284,
+          "drug": -0.014688066206872463,
+          "effect/phenotype": 0.014693526551127434,
+          "gene/protein": 0.013467599637806416,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.012611834332346916,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.020751953125,
+            "cross": 0.9043301343917847,
+            "readout": 11.448530197143555,
+            "owner": 0.15013191103935242,
+            "root": 7.885293960571289,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.05566222593188286,
+          "initializer": 0.34198370575904846,
+          "relation_embedding": 5.500642873812467e-05,
+          "local": 4.266462565283291e-05,
+          "cross": 0.0002782447845675051,
+          "fusion": 0.0002829389995895326,
+          "root": 0.0008336892351508141,
+          "chemistry": 2.1456462491187267e-05,
+          "structural_readout": 0.0001428458490408957,
+          "decoder": 0.22115011513233185
+        },
+        "total_gradient_norm_before_clip": 0.41104671359062195,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08501948919903977,
+            "macro_scope_mrr": 0.08501948919903977
+          },
+          "filtered": {
+            "micro": 0.1095014207407275,
+            "macro_scope_mrr": 0.1095014207407275
+          }
+        },
+        "update": 20,
+        "loss": 0.45910651488504584,
+        "validation_filtered_mrr": 0.09396152752593634
+      },
+      {
+        "local_message_self_ratio": 2.198176860809326,
+        "root_message_self_ratio": 2.475693464279175,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.008888628333806992,
+          "drug": -0.015701396390795708,
+          "effect/phenotype": 0.014788114465773106,
+          "gene/protein": 0.013545379973948002,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.012200932018458843,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.056552410125732,
+            "cross": 0.9046788215637207,
+            "readout": 11.454475402832031,
+            "owner": 0.15260909497737885,
+            "root": 7.823907852172852,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.04673296585679054,
+          "initializer": 0.41250431537628174,
+          "relation_embedding": 6.0782218497479334e-05,
+          "local": 4.694381641456857e-05,
+          "cross": 0.00030785499257035553,
+          "fusion": 0.00030538655119016767,
+          "root": 0.0009270830196328461,
+          "chemistry": 2.5337170882266946e-05,
+          "structural_readout": 0.00013741555449087173,
+          "decoder": 0.22775909304618835
+        },
+        "total_gradient_norm_before_clip": 0.4735177755355835,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08391235799592156,
+            "macro_scope_mrr": 0.08391235799592156
+          },
+          "filtered": {
+            "micro": 0.10872236552816282,
+            "macro_scope_mrr": 0.10872236552816282
+          }
+        },
+        "update": 21,
+        "loss": 0.4400422335062061,
+        "validation_filtered_mrr": 0.09505239380845407
+      },
+      {
+        "local_message_self_ratio": 2.205310821533203,
+        "root_message_self_ratio": 2.4964609146118164,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.008487500250339508,
+          "drug": -0.016723230481147766,
+          "effect/phenotype": 0.014891072176396847,
+          "gene/protein": 0.013599500991404057,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.011804883368313313,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.093140125274658,
+            "cross": 0.9080767631530762,
+            "readout": 11.461295127868652,
+            "owner": 0.1562727391719818,
+            "root": 7.80195951461792,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.04169362783432007,
+          "initializer": 0.39721807837486267,
+          "relation_embedding": 6.250748265301809e-05,
+          "local": 4.2193303670501336e-05,
+          "cross": 0.0002964162267744541,
+          "fusion": 0.00031630886951461434,
+          "root": 0.0009118736488744617,
+          "chemistry": 2.105551538988948e-05,
+          "structural_readout": 0.0001223821600433439,
+          "decoder": 0.20660309493541718
+        },
+        "total_gradient_norm_before_clip": 0.44967371225357056,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08290840759018861,
+            "macro_scope_mrr": 0.08290840759018861
+          },
+          "filtered": {
+            "micro": 0.10722747216368773,
+            "macro_scope_mrr": 0.10722747216368773
+          }
+        },
+        "update": 22,
+        "loss": 0.42242362630742386,
+        "validation_filtered_mrr": 0.0954892188484624
+      },
+      {
+        "local_message_self_ratio": 2.214059591293335,
+        "root_message_self_ratio": 2.49927020072937,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.008121436461806297,
+          "drug": -0.01774478517472744,
+          "effect/phenotype": 0.01499228272587061,
+          "gene/protein": 0.013624541461467743,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.011417709290981293,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.132615566253662,
+            "cross": 0.9108008146286011,
+            "readout": 11.469402313232422,
+            "owner": 0.16060976684093475,
+            "root": 7.783339500427246,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03787644952535629,
+          "initializer": 0.2800759971141815,
+          "relation_embedding": 5.70898519072216e-05,
+          "local": 4.3610965803964064e-05,
+          "cross": 0.0002677644370123744,
+          "fusion": 0.00027146321372129023,
+          "root": 0.0007507650298066437,
+          "chemistry": 1.4890782040311024e-05,
+          "structural_readout": 0.00012208305997774005,
+          "decoder": 0.14945024251937866
+        },
+        "total_gradient_norm_before_clip": 0.3197081387042999,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08385550611741105,
+            "macro_scope_mrr": 0.08385550611741105
+          },
+          "filtered": {
+            "micro": 0.11597151415754442,
+            "macro_scope_mrr": 0.11597151415754442
+          }
+        },
+        "update": 23,
+        "loss": 0.40743686903103815,
+        "validation_filtered_mrr": 0.09630874389397792
+      },
+      {
+        "local_message_self_ratio": 2.223390579223633,
+        "root_message_self_ratio": 2.5028343200683594,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.007739167660474777,
+          "drug": -0.018757425248622894,
+          "effect/phenotype": 0.015068477019667625,
+          "gene/protein": 0.013558957725763321,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.011006451211869717,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.165901184082031,
+            "cross": 0.9090331792831421,
+            "readout": 11.476594924926758,
+            "owner": 0.16314654052257538,
+            "root": 7.768290042877197,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03726423904299736,
+          "initializer": 0.2741856276988983,
+          "relation_embedding": 6.0569513152586296e-05,
+          "local": 5.467805385706015e-05,
+          "cross": 0.00032676057890057564,
+          "fusion": 0.0002507262979634106,
+          "root": 0.000808799231890589,
+          "chemistry": 1.754213917593006e-05,
+          "structural_readout": 0.00014310168626252562,
+          "decoder": 0.13302527368068695
+        },
+        "total_gradient_norm_before_clip": 0.30702272057533264,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08272515148638263,
+            "macro_scope_mrr": 0.08272515148638263
+          },
+          "filtered": {
+            "micro": 0.11757100061265871,
+            "macro_scope_mrr": 0.11757100061265871
+          }
+        },
+        "update": 24,
+        "loss": 0.3927388177500535,
+        "validation_filtered_mrr": 0.09630735284227941
+      },
+      {
+        "local_message_self_ratio": 2.2322311401367188,
+        "root_message_self_ratio": 2.502549171447754,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0072952196933329105,
+          "drug": -0.019755903631448746,
+          "effect/phenotype": 0.015078042633831501,
+          "gene/protein": 0.013380118645727634,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.010523056611418724,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.19419527053833,
+            "cross": 0.902226448059082,
+            "readout": 11.482126235961914,
+            "owner": 0.1653091013431549,
+            "root": 7.732352256774902,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03439807519316673,
+          "initializer": 0.36054563522338867,
+          "relation_embedding": 6.797792593715712e-05,
+          "local": 4.148882726440206e-05,
+          "cross": 0.00029934063786640763,
+          "fusion": 0.0002847262076102197,
+          "root": 0.0009721915703266859,
+          "chemistry": 2.4565675630583428e-05,
+          "structural_readout": 0.00015783806156832725,
+          "decoder": 0.18819357454776764
+        },
+        "total_gradient_norm_before_clip": 0.4081597328186035,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08888370848048663,
+            "macro_scope_mrr": 0.08888370848048663
+          },
+          "filtered": {
+            "micro": 0.12745787503238237,
+            "macro_scope_mrr": 0.12745787503238237
+          }
+        },
+        "update": 25,
+        "loss": 0.3810110138218916,
+        "validation_filtered_mrr": 0.09722165733856099
+      },
+      {
+        "local_message_self_ratio": 2.241219997406006,
+        "root_message_self_ratio": 2.5075550079345703,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.006788850761950016,
+          "drug": -0.020733356475830078,
+          "effect/phenotype": 0.014986271038651466,
+          "gene/protein": 0.013115623034536839,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.009961607865989208,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.230109691619873,
+            "cross": 0.8898022174835205,
+            "readout": 11.486221313476562,
+            "owner": 0.1673102080821991,
+            "root": 7.682050704956055,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03283858671784401,
+          "initializer": 0.35134774446487427,
+          "relation_embedding": 6.677603960270062e-05,
+          "local": 3.906098936568014e-05,
+          "cross": 0.00026217670529149473,
+          "fusion": 0.00026491362950764596,
+          "root": 0.0009596679592505097,
+          "chemistry": 2.564307396824006e-05,
+          "structural_readout": 0.00015783950220793486,
+          "decoder": 0.18468020856380463
+        },
+        "total_gradient_norm_before_clip": 0.3982856571674347,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08011044821096265,
+            "macro_scope_mrr": 0.08011044821096265
+          },
+          "filtered": {
+            "micro": 0.12132416055137078,
+            "macro_scope_mrr": 0.12132416055137078
+          }
+        },
+        "update": 26,
+        "loss": 0.368489250734443,
+        "validation_filtered_mrr": 0.09761064618190263
+      },
+      {
+        "local_message_self_ratio": 2.250037431716919,
+        "root_message_self_ratio": 2.506648302078247,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.006232728715986013,
+          "drug": -0.021687820553779602,
+          "effect/phenotype": 0.014813569374382496,
+          "gene/protein": 0.012759055942296982,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.009333135560154915,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.256679534912109,
+            "cross": 0.8799169659614563,
+            "readout": 11.487547874450684,
+            "owner": 0.16840244829654694,
+            "root": 7.654763698577881,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0333244614303112,
+          "initializer": 0.27559876441955566,
+          "relation_embedding": 5.2277006034273654e-05,
+          "local": 4.949280992150307e-05,
+          "cross": 0.00031940508051775396,
+          "fusion": 0.0001949556899489835,
+          "root": 0.000751556595787406,
+          "chemistry": 1.5866104149608873e-05,
+          "structural_readout": 0.00017638239660300314,
+          "decoder": 0.14343759417533875
+        },
+        "total_gradient_norm_before_clip": 0.31247442960739136,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08812908770178204,
+            "macro_scope_mrr": 0.08812908770178204
+          },
+          "filtered": {
+            "micro": 0.13528679666589802,
+            "macro_scope_mrr": 0.13528679666589802
+          }
+        },
+        "update": 27,
+        "loss": 0.3544325117474844,
+        "validation_filtered_mrr": 0.09954998343337008
+      },
+      {
+        "local_message_self_ratio": 2.259042263031006,
+        "root_message_self_ratio": 2.5170934200286865,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.00564337894320488,
+          "drug": -0.022625435143709183,
+          "effect/phenotype": 0.014601407572627068,
+          "gene/protein": 0.012309052981436253,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.008676162920892239,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.292797088623047,
+            "cross": 0.8703442215919495,
+            "readout": 11.488410949707031,
+            "owner": 0.16959615051746368,
+            "root": 7.61550235748291,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03087553195655346,
+          "initializer": 0.25918078422546387,
+          "relation_embedding": 4.374916898086667e-05,
+          "local": 2.628275797178503e-05,
+          "cross": 0.00022110027202870697,
+          "fusion": 0.00016006978694349527,
+          "root": 0.0006207199185155332,
+          "chemistry": 9.669257451605517e-06,
+          "structural_readout": 7.645895675523207e-05,
+          "decoder": 0.13595989346504211
+        },
+        "total_gradient_norm_before_clip": 0.2943017780780792,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.10637449643194322,
+            "macro_scope_mrr": 0.10637449643194322
+          },
+          "filtered": {
+            "micro": 0.1408304141962895,
+            "macro_scope_mrr": 0.1408304141962895
+          }
+        },
+        "update": 28,
+        "loss": 0.3429985598730818,
+        "validation_filtered_mrr": 0.10090953585990829
+      },
+      {
+        "local_message_self_ratio": 2.268799066543579,
+        "root_message_self_ratio": 2.506488561630249,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.005025876220315695,
+          "drug": -0.02355031669139862,
+          "effect/phenotype": 0.014387974515557289,
+          "gene/protein": 0.011839136481285095,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.008019551634788513,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.3197126388549805,
+            "cross": 0.8638321161270142,
+            "readout": 11.491559982299805,
+            "owner": 0.1720563918352127,
+            "root": 7.556843280792236,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028546156361699104,
+          "initializer": 0.31217318773269653,
+          "relation_embedding": 5.245854117674753e-05,
+          "local": 2.9294062187545933e-05,
+          "cross": 0.00023687563952989876,
+          "fusion": 0.00019412465917412192,
+          "root": 0.0007173549383878708,
+          "chemistry": 1.6915242667892016e-05,
+          "structural_readout": 8.63958484842442e-05,
+          "decoder": 0.16036145389080048
+        },
+        "total_gradient_norm_before_clip": 0.3521127700805664,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.11829354795084379,
+            "macro_scope_mrr": 0.11829354795084379
+          },
+          "filtered": {
+            "micro": 0.1601371671037396,
+            "macro_scope_mrr": 0.1601371671037396
+          }
+        },
+        "update": 29,
+        "loss": 0.33169064903705353,
+        "validation_filtered_mrr": 0.10259876770808961
+      },
+      {
+        "local_message_self_ratio": 2.279240846633911,
+        "root_message_self_ratio": 2.5094339847564697,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0043899076990783215,
+          "drug": -0.024460751563310623,
+          "effect/phenotype": 0.014183458872139454,
+          "gene/protein": 0.01137660350650549,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.007383194286376238,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.347114086151123,
+            "cross": 0.8597354888916016,
+            "readout": 11.496566772460938,
+            "owner": 0.17537155747413635,
+            "root": 7.509349346160889,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.027551455423235893,
+          "initializer": 0.33916211128234863,
+          "relation_embedding": 5.3480358474189416e-05,
+          "local": 3.429935168242082e-05,
+          "cross": 0.0002717133902478963,
+          "fusion": 0.00019149802392348647,
+          "root": 0.0007389883976429701,
+          "chemistry": 1.7021307940012775e-05,
+          "structural_readout": 9.113040141528472e-05,
+          "decoder": 0.1667957901954651
+        },
+        "total_gradient_norm_before_clip": 0.37896111607551575,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.12903432925950328,
+            "macro_scope_mrr": 0.12903432925950328
+          },
+          "filtered": {
+            "micro": 0.1713203201329307,
+            "macro_scope_mrr": 0.1713203201329307
+          }
+        },
+        "update": 30,
+        "loss": 0.321016982688372,
+        "validation_filtered_mrr": 0.1054720487774733
+      },
+      {
+        "local_message_self_ratio": 2.2903690338134766,
+        "root_message_self_ratio": 2.5125513076782227,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0037459873128682375,
+          "drug": -0.025356771424412727,
+          "effect/phenotype": 0.01398809440433979,
+          "gene/protein": 0.010920424945652485,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0067677805200219154,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.366387367248535,
+            "cross": 0.8587360382080078,
+            "readout": 11.502613067626953,
+            "owner": 0.1782725602388382,
+            "root": 7.457346439361572,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.030043575912714005,
+          "initializer": 0.28841713070869446,
+          "relation_embedding": 4.1297571442555636e-05,
+          "local": 3.0393573979381472e-05,
+          "cross": 0.0002040300314547494,
+          "fusion": 0.0001381546608172357,
+          "root": 0.0005876375362277031,
+          "chemistry": 8.505592631991021e-06,
+          "structural_readout": 9.671102452557534e-05,
+          "decoder": 0.13319405913352966
+        },
+        "total_gradient_norm_before_clip": 0.31910520792007446,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1397734644520149,
+            "macro_scope_mrr": 0.1397734644520149
+          },
+          "filtered": {
+            "micro": 0.17957552398054047,
+            "macro_scope_mrr": 0.17957552398054047
+          }
+        },
+        "update": 31,
+        "loss": 0.3091604313805795,
+        "validation_filtered_mrr": 0.10640652358560858
+      },
+      {
+        "local_message_self_ratio": 2.2994186878204346,
+        "root_message_self_ratio": 2.5083141326904297,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.003096659667789936,
+          "drug": -0.02624564990401268,
+          "effect/phenotype": 0.013788892887532711,
+          "gene/protein": 0.01046863291412592,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.00616037379950285,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.384040832519531,
+            "cross": 0.8596728444099426,
+            "readout": 11.507116317749023,
+            "owner": 0.18159285187721252,
+            "root": 7.41945219039917,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03147174417972565,
+          "initializer": 0.21165326237678528,
+          "relation_embedding": 4.002652713097632e-05,
+          "local": 2.3040127416606992e-05,
+          "cross": 0.00016365911869797856,
+          "fusion": 0.00013174631749279797,
+          "root": 0.0005311021232046187,
+          "chemistry": 1.176753721665591e-05,
+          "structural_readout": 8.785123645793647e-05,
+          "decoder": 0.10264979302883148
+        },
+        "total_gradient_norm_before_clip": 0.2373286634683609,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.14569978581880505,
+            "macro_scope_mrr": 0.14569978581880505
+          },
+          "filtered": {
+            "micro": 0.1873341809307466,
+            "macro_scope_mrr": 0.1873341809307466
+          }
+        },
+        "update": 32,
+        "loss": 0.2989501407551687,
+        "validation_filtered_mrr": 0.1080707225395946
+      },
+      {
+        "local_message_self_ratio": 2.3063812255859375,
+        "root_message_self_ratio": 2.509462356567383,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.002423817990347743,
+          "drug": -0.027130061760544777,
+          "effect/phenotype": 0.013554190285503864,
+          "gene/protein": 0.01004570908844471,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0055435579270124435,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.398617744445801,
+            "cross": 0.8640767931938171,
+            "readout": 11.510149002075195,
+            "owner": 0.1845533400774002,
+            "root": 7.354459762573242,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0304555743932724,
+          "initializer": 0.3449990153312683,
+          "relation_embedding": 6.171938730403781e-05,
+          "local": 2.277453495480586e-05,
+          "cross": 0.00019870858523063362,
+          "fusion": 0.00020766942179761827,
+          "root": 0.0008083884022198617,
+          "chemistry": 1.7254591512028128e-05,
+          "structural_readout": 0.00010919044871116057,
+          "decoder": 0.1511164754629135
+        },
+        "total_gradient_norm_before_clip": 0.3778740465641022,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1404774145399873,
+            "macro_scope_mrr": 0.1404774145399873
+          },
+          "filtered": {
+            "micro": 0.1954756579694576,
+            "macro_scope_mrr": 0.1954756579694576
+          }
+        },
+        "update": 33,
+        "loss": 0.29064311704648943,
+        "validation_filtered_mrr": 0.11079557606290728
+      },
+      {
+        "local_message_self_ratio": 2.311225652694702,
+        "root_message_self_ratio": 2.5069034099578857,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0017010103911161423,
+          "drug": -0.02800380066037178,
+          "effect/phenotype": 0.01326211728155613,
+          "gene/protein": 0.009690994396805763,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.004901614040136337,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.412835597991943,
+            "cross": 0.8685463070869446,
+            "readout": 11.514664649963379,
+            "owner": 0.1858750283718109,
+            "root": 7.28572940826416,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.027596572414040565,
+          "initializer": 0.28548458218574524,
+          "relation_embedding": 4.86306962557137e-05,
+          "local": 2.8758708140230738e-05,
+          "cross": 0.00018367043230682611,
+          "fusion": 0.00015815009828656912,
+          "root": 0.000641144928522408,
+          "chemistry": 8.238243026426062e-06,
+          "structural_readout": 7.109625585144386e-05,
+          "decoder": 0.14302480220794678
+        },
+        "total_gradient_norm_before_clip": 0.3204990029335022,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.14777283572231273,
+            "macro_scope_mrr": 0.14777283572231273
+          },
+          "filtered": {
+            "micro": 0.20841118490416746,
+            "macro_scope_mrr": 0.20841118490416746
+          }
+        },
+        "update": 34,
+        "loss": 0.2806286308654182,
+        "validation_filtered_mrr": 0.11323683001063671
+      },
+      {
+        "local_message_self_ratio": 2.3142874240875244,
+        "root_message_self_ratio": 2.515043020248413,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.0009398022084496915,
+          "drug": -0.028861822560429573,
+          "effect/phenotype": 0.012923411093652248,
+          "gene/protein": 0.009395242668688297,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0042393868789076805,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.416738510131836,
+            "cross": 0.8721018433570862,
+            "readout": 11.51672077178955,
+            "owner": 0.1876337081193924,
+            "root": 7.255839824676514,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.025328978896141052,
+          "initializer": 0.19147458672523499,
+          "relation_embedding": 2.6323516067350283e-05,
+          "local": 2.399250297457911e-05,
+          "cross": 0.00016347381460946053,
+          "fusion": 0.00011654284753603861,
+          "root": 0.000386846688343212,
+          "chemistry": 8.964669177657925e-06,
+          "structural_readout": 6.702086102450266e-05,
+          "decoder": 0.0971534252166748
+        },
+        "total_gradient_norm_before_clip": 0.21620142459869385,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1473659932295859,
+            "macro_scope_mrr": 0.1473659932295859
+          },
+          "filtered": {
+            "micro": 0.2142729690778269,
+            "macro_scope_mrr": 0.2142729690778269
+          }
+        },
+        "update": 35,
+        "loss": 0.2710289003970397,
+        "validation_filtered_mrr": 0.11695335848076681
+      },
+      {
+        "local_message_self_ratio": 2.315364360809326,
+        "root_message_self_ratio": 2.5055198669433594,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": 0.00016054876323323697,
+          "drug": -0.02970355935394764,
+          "effect/phenotype": 0.012564500793814659,
+          "gene/protein": 0.009115796536207199,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0035615486558526754,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.426018714904785,
+            "cross": 0.8734445571899414,
+            "readout": 11.521137237548828,
+            "owner": 0.18980760872364044,
+            "root": 7.175568103790283,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.021542929112911224,
+          "initializer": 0.27735698223114014,
+          "relation_embedding": 4.9253550969297066e-05,
+          "local": 2.0239904188201763e-05,
+          "cross": 0.00017612673400435597,
+          "fusion": 0.00019403581973165274,
+          "root": 0.0006469371146522462,
+          "chemistry": 1.2301640708756167e-05,
+          "structural_readout": 9.821023559197783e-05,
+          "decoder": 0.12940096855163574
+        },
+        "total_gradient_norm_before_clip": 0.30681610107421875,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.15094169854185296,
+            "macro_scope_mrr": 0.15094169854185296
+          },
+          "filtered": {
+            "micro": 0.22914968077734602,
+            "macro_scope_mrr": 0.22914968077734602
+          }
+        },
+        "update": 36,
+        "loss": 0.2625665195750634,
+        "validation_filtered_mrr": 0.11998302203390565
+      },
+      {
+        "local_message_self_ratio": 2.3156723976135254,
+        "root_message_self_ratio": 2.5021650791168213,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0006195155438035727,
+          "drug": -0.030523229390382767,
+          "effect/phenotype": 0.012205533683300018,
+          "gene/protein": 0.008844557218253613,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0028785550966858864,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.425251007080078,
+            "cross": 0.8741185665130615,
+            "readout": 11.525124549865723,
+            "owner": 0.1914273500442505,
+            "root": 7.126993179321289,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02291562780737877,
+          "initializer": 0.24193862080574036,
+          "relation_embedding": 4.400915713631548e-05,
+          "local": 1.772012001310941e-05,
+          "cross": 0.0001411765842931345,
+          "fusion": 0.00016487737593706697,
+          "root": 0.000589221715927124,
+          "chemistry": 9.034908543981146e-06,
+          "structural_readout": 7.081653893692419e-05,
+          "decoder": 0.12716640532016754
+        },
+        "total_gradient_norm_before_clip": 0.27428293228149414,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1572912206365219,
+            "macro_scope_mrr": 0.1572912206365219
+          },
+          "filtered": {
+            "micro": 0.24025911797755664,
+            "macro_scope_mrr": 0.24025911797755664
+          }
+        },
+        "update": 37,
+        "loss": 0.25296338505399374,
+        "validation_filtered_mrr": 0.12275539510800595
+      },
+      {
+        "local_message_self_ratio": 2.3150699138641357,
+        "root_message_self_ratio": 2.4985766410827637,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0014044973067939281,
+          "drug": -0.03132665902376175,
+          "effect/phenotype": 0.011851619929075241,
+          "gene/protein": 0.008569352328777313,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.002197528025135398,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.42863655090332,
+            "cross": 0.8738914728164673,
+            "readout": 11.528952598571777,
+            "owner": 0.1922566145658493,
+            "root": 7.037177085876465,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.024276500567793846,
+          "initializer": 0.21919123828411102,
+          "relation_embedding": 2.5021898181876168e-05,
+          "local": 1.866990714916028e-05,
+          "cross": 0.00016419355233665556,
+          "fusion": 9.720878733787686e-05,
+          "root": 0.0003579602052923292,
+          "chemistry": 5.918399438087363e-06,
+          "structural_readout": 4.516736953519285e-05,
+          "decoder": 0.11812612414360046
+        },
+        "total_gradient_norm_before_clip": 0.2501761317253113,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1654845742640125,
+            "macro_scope_mrr": 0.1654845742640125
+          },
+          "filtered": {
+            "micro": 0.2517192083912833,
+            "macro_scope_mrr": 0.2517192083912833
+          }
+        },
+        "update": 38,
+        "loss": 0.24479194484219316,
+        "validation_filtered_mrr": 0.12489250716675623
+      },
+      {
+        "local_message_self_ratio": 2.3135578632354736,
+        "root_message_self_ratio": 2.490898609161377,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0022005417849868536,
+          "drug": -0.03211857005953789,
+          "effect/phenotype": 0.011493220925331116,
+          "gene/protein": 0.008297093212604523,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.001511520124040544,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.421819686889648,
+            "cross": 0.8720126748085022,
+            "readout": 11.530709266662598,
+            "owner": 0.19404873251914978,
+            "root": 6.943436145782471,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0275876484811306,
+          "initializer": 0.1870645433664322,
+          "relation_embedding": 3.928490696125664e-05,
+          "local": 1.584705569257494e-05,
+          "cross": 0.00011141505092382431,
+          "fusion": 0.00011670372623484582,
+          "root": 0.000509626348502934,
+          "chemistry": 7.554279363830574e-06,
+          "structural_readout": 4.6189295971998945e-05,
+          "decoder": 0.10185931622982025
+        },
+        "total_gradient_norm_before_clip": 0.2147785723209381,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.16428035966195226,
+            "macro_scope_mrr": 0.16428035966195226
+          },
+          "filtered": {
+            "micro": 0.27021352599142034,
+            "macro_scope_mrr": 0.27021352599142034
+          }
+        },
+        "update": 39,
+        "loss": 0.23724796791446556,
+        "validation_filtered_mrr": 0.12596280639537147
+      },
+      {
+        "local_message_self_ratio": 2.311089277267456,
+        "root_message_self_ratio": 2.482715606689453,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0030128643848001957,
+          "drug": -0.032907627522945404,
+          "effect/phenotype": 0.01111256331205368,
+          "gene/protein": 0.00801590271294117,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.0008171491208486259,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.419073104858398,
+            "cross": 0.8674520254135132,
+            "readout": 11.533958435058594,
+            "owner": 0.19557732343673706,
+            "root": 6.9005937576293945,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028834408149123192,
+          "initializer": 0.2150711864233017,
+          "relation_embedding": 5.06351534568239e-05,
+          "local": 1.595636786078103e-05,
+          "cross": 0.0001154833662440069,
+          "fusion": 0.00014497069059871137,
+          "root": 0.0006448653875850141,
+          "chemistry": 9.241759471478872e-06,
+          "structural_readout": 5.442483234219253e-05,
+          "decoder": 0.11598081141710281
+        },
+        "total_gradient_norm_before_clip": 0.24604684114456177,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.16784795785208229,
+            "macro_scope_mrr": 0.16784795785208229
+          },
+          "filtered": {
+            "micro": 0.2694525672957196,
+            "macro_scope_mrr": 0.2694525672957196
+          }
+        },
+        "update": 40,
+        "loss": 0.22910099265396114,
+        "validation_filtered_mrr": 0.12775916176338392
+      },
+      {
+        "local_message_self_ratio": 2.30769944190979,
+        "root_message_self_ratio": 2.4699347019195557,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0038359761238098145,
+          "drug": -0.03369654342532158,
+          "effect/phenotype": 0.010698703117668629,
+          "gene/protein": 0.00770703237503767,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": 0.00010857250890694559,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.411713600158691,
+            "cross": 0.8625958561897278,
+            "readout": 11.537657737731934,
+            "owner": 0.1964724212884903,
+            "root": 6.802347183227539,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02891681343317032,
+          "initializer": 0.1772131621837616,
+          "relation_embedding": 2.4101647795760073e-05,
+          "local": 1.5492294551222585e-05,
+          "cross": 0.0001200261467602104,
+          "fusion": 7.984720286913216e-05,
+          "root": 0.0003277312498539686,
+          "chemistry": 4.5177289393905085e-06,
+          "structural_readout": 2.641069659148343e-05,
+          "decoder": 0.09976299107074738
+        },
+        "total_gradient_norm_before_clip": 0.20541049540042877,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.17452054958340735,
+            "macro_scope_mrr": 0.17452054958340735
+          },
+          "filtered": {
+            "micro": 0.261961727226475,
+            "macro_scope_mrr": 0.261961727226475
+          }
+        },
+        "update": 41,
+        "loss": 0.22159706999140105,
+        "validation_filtered_mrr": 0.13083991217634527
+      },
+      {
+        "local_message_self_ratio": 2.3032779693603516,
+        "root_message_self_ratio": 2.4677765369415283,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.004671251866966486,
+          "drug": -0.034484539180994034,
+          "effect/phenotype": 0.010260266251862049,
+          "gene/protein": 0.007350054103881121,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.0006176314782351255,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.4050397872924805,
+            "cross": 0.8566054105758667,
+            "readout": 11.538690567016602,
+            "owner": 0.19657574594020844,
+            "root": 6.723024368286133,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.027286352589726448,
+          "initializer": 0.15951812267303467,
+          "relation_embedding": 3.5052613384323195e-05,
+          "local": 1.3776419109490234e-05,
+          "cross": 9.162841161014512e-05,
+          "fusion": 0.00013653333007823676,
+          "root": 0.00046029197983443737,
+          "chemistry": 1.3804835361952428e-05,
+          "structural_readout": 6.262181705096737e-05,
+          "decoder": 0.09324157238006592
+        },
+        "total_gradient_norm_before_clip": 0.18677476048469543,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1858397413080397,
+            "macro_scope_mrr": 0.1858397413080397
+          },
+          "filtered": {
+            "micro": 0.27239723064041704,
+            "macro_scope_mrr": 0.27239723064041704
+          }
+        },
+        "update": 42,
+        "loss": 0.2145855864916142,
+        "validation_filtered_mrr": 0.13408942939613125
+      },
+      {
+        "local_message_self_ratio": 2.2985761165618896,
+        "root_message_self_ratio": 2.4492833614349365,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.005528030451387167,
+          "drug": -0.03526801988482475,
+          "effect/phenotype": 0.009816793724894524,
+          "gene/protein": 0.006963272113353014,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.0013616651995107532,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.402082920074463,
+            "cross": 0.8474916815757751,
+            "readout": 11.539650917053223,
+            "owner": 0.19683076441287994,
+            "root": 6.619299411773682,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.026635024696588516,
+          "initializer": 0.19506484270095825,
+          "relation_embedding": 4.284548413124867e-05,
+          "local": 1.2477365999075118e-05,
+          "cross": 0.00010013850260293111,
+          "fusion": 0.0001463776861783117,
+          "root": 0.0005637284484691918,
+          "chemistry": 1.0100885447172914e-05,
+          "structural_readout": 4.653202631743625e-05,
+          "decoder": 0.09948277473449707
+        },
+        "total_gradient_norm_before_clip": 0.22058306634426117,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.17894013993273541,
+            "macro_scope_mrr": 0.17894013993273541
+          },
+          "filtered": {
+            "micro": 0.28191251349086466,
+            "macro_scope_mrr": 0.28191251349086466
+          }
+        },
+        "update": 43,
+        "loss": 0.20782374538949216,
+        "validation_filtered_mrr": 0.1370015115479435
+      },
+      {
+        "local_message_self_ratio": 2.2944071292877197,
+        "root_message_self_ratio": 2.4543652534484863,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.006398897152394056,
+          "drug": -0.0360475555062294,
+          "effect/phenotype": 0.00937605183571577,
+          "gene/protein": 0.006559594068676233,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.002111592562869191,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.395779609680176,
+            "cross": 0.840133011341095,
+            "readout": 11.540032386779785,
+            "owner": 0.19777168333530426,
+            "root": 6.549574851989746,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02791418693959713,
+          "initializer": 0.10703925788402557,
+          "relation_embedding": 2.06015301955631e-05,
+          "local": 9.88836745818844e-06,
+          "cross": 7.114837353583425e-05,
+          "fusion": 6.547851080540568e-05,
+          "root": 0.0002846409915946424,
+          "chemistry": 3.5681853205460357e-06,
+          "structural_readout": 2.2116555555840023e-05,
+          "decoder": 0.0769023671746254
+        },
+        "total_gradient_norm_before_clip": 0.1347244381904602,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.18048355618901116,
+            "macro_scope_mrr": 0.18048355618901116
+          },
+          "filtered": {
+            "micro": 0.28877138062131785,
+            "macro_scope_mrr": 0.28877138062131785
+          }
+        },
+        "update": 44,
+        "loss": 0.2006337031072146,
+        "validation_filtered_mrr": 0.13916773342136565
+      },
+      {
+        "local_message_self_ratio": 2.29042649269104,
+        "root_message_self_ratio": 2.4537103176116943,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.007274213712662458,
+          "drug": -0.0368272066116333,
+          "effect/phenotype": 0.008930900134146214,
+          "gene/protein": 0.006123884115368128,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.002859759144484997,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.390811920166016,
+            "cross": 0.833868682384491,
+            "readout": 11.541330337524414,
+            "owner": 0.19801932573318481,
+            "root": 6.508550643920898,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029276439920067787,
+          "initializer": 0.1543225347995758,
+          "relation_embedding": 2.7660691557684913e-05,
+          "local": 1.1767880096158478e-05,
+          "cross": 9.021775622386485e-05,
+          "fusion": 9.154120925813913e-05,
+          "root": 0.00035837781615555286,
+          "chemistry": 9.789215255295858e-06,
+          "structural_readout": 4.8006968427216634e-05,
+          "decoder": 0.08313391357660294
+        },
+        "total_gradient_norm_before_clip": 0.17771874368190765,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.17675129739152545,
+            "macro_scope_mrr": 0.17675129739152545
+          },
+          "filtered": {
+            "micro": 0.291601240063859,
+            "macro_scope_mrr": 0.291601240063859
+          }
+        },
+        "update": 45,
+        "loss": 0.19451544562459006,
+        "validation_filtered_mrr": 0.13965544119290077
+      },
+      {
+        "local_message_self_ratio": 2.2860586643218994,
+        "root_message_self_ratio": 2.441396951675415,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.008150274865329266,
+          "drug": -0.03761069104075432,
+          "effect/phenotype": 0.008472816087305546,
+          "gene/protein": 0.00565343676134944,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.0036028586328029633,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.39619779586792,
+            "cross": 0.825861930847168,
+            "readout": 11.543354034423828,
+            "owner": 0.1989443451166153,
+            "root": 6.448078632354736,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02756362035870552,
+          "initializer": 0.16607096791267395,
+          "relation_embedding": 4.4684635213343427e-05,
+          "local": 1.0881733942369465e-05,
+          "cross": 7.334924157476053e-05,
+          "fusion": 0.00013863916683476418,
+          "root": 0.0005751540302298963,
+          "chemistry": 1.382801838190062e-05,
+          "structural_readout": 6.305763236014172e-05,
+          "decoder": 0.09128643572330475
+        },
+        "total_gradient_norm_before_clip": 0.1915016919374466,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1851328570169527,
+            "macro_scope_mrr": 0.1851328570169527
+          },
+          "filtered": {
+            "micro": 0.2985121326388668,
+            "macro_scope_mrr": 0.2985121326388668
+          }
+        },
+        "update": 46,
+        "loss": 0.18821597974256357,
+        "validation_filtered_mrr": 0.1414909456548087
+      },
+      {
+        "local_message_self_ratio": 2.2819418907165527,
+        "root_message_self_ratio": 2.438047170639038,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.00902676023542881,
+          "drug": -0.03839381784200668,
+          "effect/phenotype": 0.007994937710464,
+          "gene/protein": 0.005171113181859255,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.004341896157711744,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.384387969970703,
+            "cross": 0.8197826147079468,
+            "readout": 11.545516014099121,
+            "owner": 0.19959817826747894,
+            "root": 6.383597373962402,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02471259981393814,
+          "initializer": 0.1156536415219307,
+          "relation_embedding": 2.242327536805533e-05,
+          "local": 9.30546684685396e-06,
+          "cross": 6.064027547836304e-05,
+          "fusion": 7.034894224489108e-05,
+          "root": 0.00030412664636969566,
+          "chemistry": 7.620295946253464e-06,
+          "structural_readout": 3.6845805880147964e-05,
+          "decoder": 0.0738024190068245
+        },
+        "total_gradient_norm_before_clip": 0.13940365612506866,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2086507545563305,
+            "macro_scope_mrr": 0.2086507545563305
+          },
+          "filtered": {
+            "micro": 0.30242637756660595,
+            "macro_scope_mrr": 0.30242637756660595
+          }
+        },
+        "update": 47,
+        "loss": 0.182884359554175,
+        "validation_filtered_mrr": 0.14272011226512654
+      },
+      {
+        "local_message_self_ratio": 2.278268575668335,
+        "root_message_self_ratio": 2.4354000091552734,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.009912049397826195,
+          "drug": -0.0391688197851181,
+          "effect/phenotype": 0.007503800094127655,
+          "gene/protein": 0.004692905116826296,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.005071262363344431,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.3841400146484375,
+            "cross": 0.8135161399841309,
+            "readout": 11.550759315490723,
+            "owner": 0.20119965076446533,
+            "root": 6.349529266357422,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02325480245053768,
+          "initializer": 0.1313142627477646,
+          "relation_embedding": 3.122603811789304e-05,
+          "local": 7.19694889994571e-06,
+          "cross": 5.5854292440926656e-05,
+          "fusion": 0.00010452067363075912,
+          "root": 0.0003946646465919912,
+          "chemistry": 3.8619577935605776e-06,
+          "structural_readout": 2.9343762435019016e-05,
+          "decoder": 0.07349055260419846
+        },
+        "total_gradient_norm_before_clip": 0.15226706862449646,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.21165293450534073,
+            "macro_scope_mrr": 0.21165293450534073
+          },
+          "filtered": {
+            "micro": 0.31215380538341964,
+            "macro_scope_mrr": 0.31215380538341964
+          }
+        },
+        "update": 48,
+        "loss": 0.17714651816055793,
+        "validation_filtered_mrr": 0.144862906218214
+      },
+      {
+        "local_message_self_ratio": 2.2749037742614746,
+        "root_message_self_ratio": 2.4362590312957764,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.010805414989590645,
+          "drug": -0.03993278741836548,
+          "effect/phenotype": 0.007013518363237381,
+          "gene/protein": 0.0042149219661951065,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.005797663237899542,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.384061336517334,
+            "cross": 0.8075811862945557,
+            "readout": 11.553853988647461,
+            "owner": 0.20186325907707214,
+            "root": 6.33712100982666,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02478680945932865,
+          "initializer": 0.14375007152557373,
+          "relation_embedding": 4.0450911910738796e-05,
+          "local": 6.952734565857099e-06,
+          "cross": 5.7564986491343006e-05,
+          "fusion": 0.0001278059062315151,
+          "root": 0.0005189855583012104,
+          "chemistry": 4.089194590051193e-06,
+          "structural_readout": 3.092639599344693e-05,
+          "decoder": 0.0768057182431221
+        },
+        "total_gradient_norm_before_clip": 0.16485713422298431,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.21779135618230094,
+            "macro_scope_mrr": 0.21779135618230094
+          },
+          "filtered": {
+            "micro": 0.31952311319262516,
+            "macro_scope_mrr": 0.31952311319262516
+          }
+        },
+        "update": 49,
+        "loss": 0.17153880949110759,
+        "validation_filtered_mrr": 0.14598010794371766
+      },
+      {
+        "local_message_self_ratio": 2.2722620964050293,
+        "root_message_self_ratio": 2.4260003566741943,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.01170938927680254,
+          "drug": -0.04069167375564575,
+          "effect/phenotype": 0.006521407514810562,
+          "gene/protein": 0.0037460061721503735,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.006517256144434214,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.376436233520508,
+            "cross": 0.8004905581474304,
+            "readout": 11.559171676635742,
+            "owner": 0.20392467081546783,
+            "root": 6.301074504852295,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.027892475947737694,
+          "initializer": 0.10133394598960876,
+          "relation_embedding": 2.2798807549406774e-05,
+          "local": 6.148088232293958e-06,
+          "cross": 4.647660898626782e-05,
+          "fusion": 5.896063521504402e-05,
+          "root": 0.00029526493744924664,
+          "chemistry": 1.6393180430895882e-06,
+          "structural_readout": 1.909373895614408e-05,
+          "decoder": 0.06521199643611908
+        },
+        "total_gradient_norm_before_clip": 0.1236901730298996,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.20768263135392628,
+            "macro_scope_mrr": 0.20768263135392628
+          },
+          "filtered": {
+            "micro": 0.3245661698638966,
+            "macro_scope_mrr": 0.3245661698638966
+          }
+        },
+        "update": 50,
+        "loss": 0.16659708778394153,
+        "validation_filtered_mrr": 0.14775489768676958
+      },
+      {
+        "local_message_self_ratio": 2.270134210586548,
+        "root_message_self_ratio": 2.413691997528076,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.01263207383453846,
+          "drug": -0.041454169899225235,
+          "effect/phenotype": 0.006019808351993561,
+          "gene/protein": 0.0032858322374522686,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.007226864341646433,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.3746185302734375,
+            "cross": 0.7986612915992737,
+            "readout": 11.564018249511719,
+            "owner": 0.20476967096328735,
+            "root": 6.278832912445068,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0297923032194376,
+          "initializer": 0.11622500419616699,
+          "relation_embedding": 3.160975393257104e-05,
+          "local": 6.536674845847301e-06,
+          "cross": 4.834241553908214e-05,
+          "fusion": 8.53200035635382e-05,
+          "root": 0.0003647893317975104,
+          "chemistry": 3.014963567693485e-06,
+          "structural_readout": 2.4445947929052636e-05,
+          "decoder": 0.06690438091754913
+        },
+        "total_gradient_norm_before_clip": 0.13737602531909943,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2170726770159607,
+            "macro_scope_mrr": 0.2170726770159607
+          },
+          "filtered": {
+            "micro": 0.3478611512732147,
+            "macro_scope_mrr": 0.3478611512732147
+          }
+        },
+        "update": 51,
+        "loss": 0.16174710319559538,
+        "validation_filtered_mrr": 0.14939900572749193
+      },
+      {
+        "local_message_self_ratio": 2.268375873565674,
+        "root_message_self_ratio": 2.4230399131774902,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.01357518881559372,
+          "drug": -0.04222474619746208,
+          "effect/phenotype": 0.005499529652297497,
+          "gene/protein": 0.002830943325534463,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.00792849063873291,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.381968021392822,
+            "cross": 0.7951942682266235,
+            "readout": 11.571030616760254,
+            "owner": 0.20636239647865295,
+            "root": 6.271991729736328,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029408898204565048,
+          "initializer": 0.1217472031712532,
+          "relation_embedding": 3.971427940996364e-05,
+          "local": 6.6057414187525865e-06,
+          "cross": 5.3476505854632705e-05,
+          "fusion": 0.00011393520253477618,
+          "root": 0.0004651194321922958,
+          "chemistry": 2.5436891064600786e-06,
+          "structural_readout": 2.0600957213900983e-05,
+          "decoder": 0.06806804239749908
+        },
+        "total_gradient_norm_before_clip": 0.14255088567733765,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22339294752907793,
+            "macro_scope_mrr": 0.22339294752907793
+          },
+          "filtered": {
+            "micro": 0.3589787664295137,
+            "macro_scope_mrr": 0.3589787664295137
+          }
+        },
+        "update": 52,
+        "loss": 0.1571558637859291,
+        "validation_filtered_mrr": 0.1502502094541614
+      },
+      {
+        "local_message_self_ratio": 2.2668752670288086,
+        "root_message_self_ratio": 2.413285970687866,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.014536714181303978,
+          "drug": -0.04300177842378616,
+          "effect/phenotype": 0.004964190069586039,
+          "gene/protein": 0.0023835187312215567,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.008626439608633518,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.377891540527344,
+            "cross": 0.7916758060455322,
+            "readout": 11.575533866882324,
+            "owner": 0.2064507007598877,
+            "root": 6.275710105895996,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028162522241473198,
+          "initializer": 0.07393082231283188,
+          "relation_embedding": 1.891302781587001e-05,
+          "local": 5.076587967778323e-06,
+          "cross": 3.698414366226643e-05,
+          "fusion": 4.846584488404915e-05,
+          "root": 0.00022704980801790953,
+          "chemistry": 1.211237190545944e-06,
+          "structural_readout": 1.4766057574888691e-05,
+          "decoder": 0.056925345212221146
+        },
+        "total_gradient_norm_before_clip": 0.09746509790420532,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22616252170168272,
+            "macro_scope_mrr": 0.22616252170168272
+          },
+          "filtered": {
+            "micro": 0.36211927932142013,
+            "macro_scope_mrr": 0.36211927932142013
+          }
+        },
+        "update": 53,
+        "loss": 0.15190231491230102,
+        "validation_filtered_mrr": 0.15212487843678069
+      },
+      {
+        "local_message_self_ratio": 2.265634298324585,
+        "root_message_self_ratio": 2.4180984497070312,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.015513035468757153,
+          "drug": -0.0437815859913826,
+          "effect/phenotype": 0.00442271213978529,
+          "gene/protein": 0.0019390374654904008,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.009319900535047054,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.378227233886719,
+            "cross": 0.7890914082527161,
+            "readout": 11.580394744873047,
+            "owner": 0.20689862966537476,
+            "root": 6.2975945472717285,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.025315841659903526,
+          "initializer": 0.10667382925748825,
+          "relation_embedding": 2.866954127966892e-05,
+          "local": 4.687431101046968e-06,
+          "cross": 4.098053977941163e-05,
+          "fusion": 8.099153637886047e-05,
+          "root": 0.00036450967309065163,
+          "chemistry": 1.4078211734158685e-06,
+          "structural_readout": 2.024541754508391e-05,
+          "decoder": 0.0657901018857956
+        },
+        "total_gradient_norm_before_clip": 0.12786194682121277,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22921366001920368,
+            "macro_scope_mrr": 0.22921366001920368
+          },
+          "filtered": {
+            "micro": 0.3704853575276851,
+            "macro_scope_mrr": 0.3704853575276851
+          }
+        },
+        "update": 54,
+        "loss": 0.1471256350068996,
+        "validation_filtered_mrr": 0.1534657530922114
+      },
+      {
+        "local_message_self_ratio": 2.264791488647461,
+        "root_message_self_ratio": 2.4199488162994385,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.016506558284163475,
+          "drug": -0.04455523192882538,
+          "effect/phenotype": 0.0038857203908264637,
+          "gene/protein": 0.001499535166658461,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.010011537000536919,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.3898749351501465,
+            "cross": 0.7863136529922485,
+            "readout": 11.586432456970215,
+            "owner": 0.2084430754184723,
+            "root": 6.33878755569458,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.025001084432005882,
+          "initializer": 0.09632884711027145,
+          "relation_embedding": 2.7642681743600406e-05,
+          "local": 5.226063876762055e-06,
+          "cross": 4.270151839591563e-05,
+          "fusion": 8.558779518352821e-05,
+          "root": 0.0003581627970561385,
+          "chemistry": 1.7119047015512479e-06,
+          "structural_readout": 2.5215618734364398e-05,
+          "decoder": 0.06090548634529114
+        },
+        "total_gradient_norm_before_clip": 0.11667869240045547,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.241868066617775,
+            "macro_scope_mrr": 0.241868066617775
+          },
+          "filtered": {
+            "micro": 0.3812319400744233,
+            "macro_scope_mrr": 0.3812319400744233
+          }
+        },
+        "update": 55,
+        "loss": 0.1428829254950256,
+        "validation_filtered_mrr": 0.15455483318143848
+      },
+      {
+        "local_message_self_ratio": 2.2643027305603027,
+        "root_message_self_ratio": 2.42343807220459,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.01751910150051117,
+          "drug": -0.04532153904438019,
+          "effect/phenotype": 0.003348118392750621,
+          "gene/protein": 0.0010617546504363418,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.010704032145440578,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.389715671539307,
+            "cross": 0.7856956124305725,
+            "readout": 11.591875076293945,
+            "owner": 0.2101587951183319,
+            "root": 6.352356910705566,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.027405258268117905,
+          "initializer": 0.06531887501478195,
+          "relation_embedding": 1.8847065803129226e-05,
+          "local": 5.057722319179447e-06,
+          "cross": 3.737454244401306e-05,
+          "fusion": 5.171678276383318e-05,
+          "root": 0.0002373206807533279,
+          "chemistry": 1.3596688859252026e-06,
+          "structural_readout": 1.2675441212195437e-05,
+          "decoder": 0.05109124258160591
+        },
+        "total_gradient_norm_before_clip": 0.08733829855918884,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26417525931573516,
+            "macro_scope_mrr": 0.26417525931573516
+          },
+          "filtered": {
+            "micro": 0.3943847773163802,
+            "macro_scope_mrr": 0.3943847773163802
+          }
+        },
+        "update": 56,
+        "loss": 0.13870845414637478,
+        "validation_filtered_mrr": 0.15513202484797523
+      },
+      {
+        "local_message_self_ratio": 2.2641894817352295,
+        "root_message_self_ratio": 2.4228267669677734,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.018557574599981308,
+          "drug": -0.04608699306845665,
+          "effect/phenotype": 0.0027980816084891558,
+          "gene/protein": 0.0006256629130803049,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.011401758529245853,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.391372203826904,
+            "cross": 0.7852582931518555,
+            "readout": 11.596131324768066,
+            "owner": 0.21153582632541656,
+            "root": 6.382622718811035,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029034962877631187,
+          "initializer": 0.09444265812635422,
+          "relation_embedding": 2.5132532755378634e-05,
+          "local": 5.861842055310262e-06,
+          "cross": 4.345214256318286e-05,
+          "fusion": 6.50828005746007e-05,
+          "root": 0.0003116853768005967,
+          "chemistry": 1.2833852451876737e-06,
+          "structural_readout": 1.5083454854902811e-05,
+          "decoder": 0.056567855179309845
+        },
+        "total_gradient_norm_before_clip": 0.1138528436422348,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26587993727105264,
+            "macro_scope_mrr": 0.26587993727105264
+          },
+          "filtered": {
+            "micro": 0.39783056617689183,
+            "macro_scope_mrr": 0.39783056617689183
+          }
+        },
+        "update": 57,
+        "loss": 0.13517843521773892,
+        "validation_filtered_mrr": 0.1574079444803422
+      },
+      {
+        "local_message_self_ratio": 2.264146089553833,
+        "root_message_self_ratio": 2.42629337310791,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0196238923817873,
+          "drug": -0.04685600847005844,
+          "effect/phenotype": 0.0022286735475063324,
+          "gene/protein": 0.00019626703578978777,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.012101388536393642,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.399384021759033,
+            "cross": 0.7849048376083374,
+            "readout": 11.600747108459473,
+            "owner": 0.21276892721652985,
+            "root": 6.418475151062012,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.030264675617218018,
+          "initializer": 0.08519015461206436,
+          "relation_embedding": 2.9078000807203352e-05,
+          "local": 5.0863741307694e-06,
+          "cross": 4.508563506533392e-05,
+          "fusion": 7.65066288295202e-05,
+          "root": 0.00034191005397588015,
+          "chemistry": 1.3219651009421796e-06,
+          "structural_readout": 1.1205042028450407e-05,
+          "decoder": 0.05237889662384987
+        },
+        "total_gradient_norm_before_clip": 0.10448439419269562,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26753178358680413,
+            "macro_scope_mrr": 0.26753178358680413
+          },
+          "filtered": {
+            "micro": 0.40973564422190584,
+            "macro_scope_mrr": 0.40973564422190584
+          }
+        },
+        "update": 58,
+        "loss": 0.1311455673355188,
+        "validation_filtered_mrr": 0.15874642855773155
+      },
+      {
+        "local_message_self_ratio": 2.2643322944641113,
+        "root_message_self_ratio": 2.42842960357666,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.020714357495307922,
+          "drug": -0.04763244464993477,
+          "effect/phenotype": 0.0016433380078524351,
+          "gene/protein": -0.00022956352040637285,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.012804039753973484,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.399065971374512,
+            "cross": 0.7848467826843262,
+            "readout": 11.604978561401367,
+            "owner": 0.21356435120105743,
+            "root": 6.477218151092529,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029782624915242195,
+          "initializer": 0.09175192564725876,
+          "relation_embedding": 2.5343664674437605e-05,
+          "local": 4.9949221647693776e-06,
+          "cross": 4.008320684079081e-05,
+          "fusion": 5.3865838708588853e-05,
+          "root": 0.0003006122133228928,
+          "chemistry": 1.3205591358200763e-06,
+          "structural_readout": 1.2312082617427222e-05,
+          "decoder": 0.054390039294958115
+        },
+        "total_gradient_norm_before_clip": 0.1107420101761818,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2778546510651379,
+            "macro_scope_mrr": 0.2778546510651379
+          },
+          "filtered": {
+            "micro": 0.4227245447083876,
+            "macro_scope_mrr": 0.4227245447083876
+          }
+        },
+        "update": 59,
+        "loss": 0.12777137049759973,
+        "validation_filtered_mrr": 0.15994736862371195
+      },
+      {
+        "local_message_self_ratio": 2.264685869216919,
+        "root_message_self_ratio": 2.445664405822754,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.021826036274433136,
+          "drug": -0.04841478541493416,
+          "effect/phenotype": 0.00105859839823097,
+          "gene/protein": -0.0006552488775923848,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.013511891476809978,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.406639099121094,
+            "cross": 0.7846313118934631,
+            "readout": 11.610678672790527,
+            "owner": 0.2149641215801239,
+            "root": 6.559239387512207,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029048742726445198,
+          "initializer": 0.09886424243450165,
+          "relation_embedding": 2.6995083317160606e-05,
+          "local": 4.73203635920072e-06,
+          "cross": 3.9935530367074534e-05,
+          "fusion": 6.64707476971671e-05,
+          "root": 0.0003557419404387474,
+          "chemistry": 1.273741986551613e-06,
+          "structural_readout": 1.4096835002419539e-05,
+          "decoder": 0.05580582097172737
+        },
+        "total_gradient_norm_before_clip": 0.11718527972698212,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2829287419029467,
+            "macro_scope_mrr": 0.2829287419029467
+          },
+          "filtered": {
+            "micro": 0.42159926256811536,
+            "macro_scope_mrr": 0.42159926256811536
+          }
+        },
+        "update": 60,
+        "loss": 0.12394972940943767,
+        "validation_filtered_mrr": 0.16134890207770872
+      },
+      {
+        "local_message_self_ratio": 2.265155076980591,
+        "root_message_self_ratio": 2.446786642074585,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.022959452122449875,
+          "drug": -0.04919964447617531,
+          "effect/phenotype": 0.00047550402814522386,
+          "gene/protein": -0.0010804920457303524,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.01422473881393671,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.409536838531494,
+            "cross": 0.7854198813438416,
+            "readout": 11.615872383117676,
+            "owner": 0.2158309668302536,
+            "root": 6.609988212585449,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.027775291353464127,
+          "initializer": 0.05785682052373886,
+          "relation_embedding": 1.8797809389070608e-05,
+          "local": 4.891554908681428e-06,
+          "cross": 3.874713002005592e-05,
+          "fusion": 4.423948121257126e-05,
+          "root": 0.0002477505477145314,
+          "chemistry": 1.2382739669192233e-06,
+          "structural_readout": 1.1898539014509879e-05,
+          "decoder": 0.046044718474149704
+        },
+        "total_gradient_norm_before_clip": 0.078987717628479,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.28045142050506516,
+            "macro_scope_mrr": 0.28045142050506516
+          },
+          "filtered": {
+            "micro": 0.42061433110150104,
+            "macro_scope_mrr": 0.42061433110150104
+          }
+        },
+        "update": 61,
+        "loss": 0.12043103940134102,
+        "validation_filtered_mrr": 0.1631389160605824
+      },
+      {
+        "local_message_self_ratio": 2.265592098236084,
+        "root_message_self_ratio": 2.449043035507202,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.024111680686473846,
+          "drug": -0.04998240992426872,
+          "effect/phenotype": -0.00011117789108539,
+          "gene/protein": -0.0015059313736855984,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.014942447654902935,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.420562267303467,
+            "cross": 0.7890880703926086,
+            "readout": 11.618903160095215,
+            "owner": 0.2169019728899002,
+            "root": 6.678358554840088,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028310265392065048,
+          "initializer": 0.06432752311229706,
+          "relation_embedding": 2.2143667592899874e-05,
+          "local": 5.940423761785496e-06,
+          "cross": 4.17902811022941e-05,
+          "fusion": 5.449435775517486e-05,
+          "root": 0.0002842992835212499,
+          "chemistry": 9.326563485956285e-07,
+          "structural_readout": 1.871781023510266e-05,
+          "decoder": 0.0474337600171566
+        },
+        "total_gradient_norm_before_clip": 0.08479121327400208,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.27962876053376134,
+            "macro_scope_mrr": 0.27962876053376134
+          },
+          "filtered": {
+            "micro": 0.4187783361450641,
+            "macro_scope_mrr": 0.4187783361450641
+          }
+        },
+        "update": 62,
+        "loss": 0.11669752639465467,
+        "validation_filtered_mrr": 0.16519983291633064
+      },
+      {
+        "local_message_self_ratio": 2.2660481929779053,
+        "root_message_self_ratio": 2.461594820022583,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.025282928720116615,
+          "drug": -0.050764050334692,
+          "effect/phenotype": -0.0007109143771231174,
+          "gene/protein": -0.001934373751282692,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.015663715079426765,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.421048641204834,
+            "cross": 0.7900769710540771,
+            "readout": 11.623809814453125,
+            "owner": 0.21760019659996033,
+            "root": 6.752499580383301,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02846165932714939,
+          "initializer": 0.09855249524116516,
+          "relation_embedding": 2.6473289835848846e-05,
+          "local": 7.27781161913299e-06,
+          "cross": 4.7395100409630686e-05,
+          "fusion": 6.771584594389424e-05,
+          "root": 0.0003331723273731768,
+          "chemistry": 1.216757709698868e-06,
+          "structural_readout": 2.3792694264557213e-05,
+          "decoder": 0.052666518837213516
+        },
+        "total_gradient_norm_before_clip": 0.11531062424182892,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2913003577217893,
+            "macro_scope_mrr": 0.2913003577217893
+          },
+          "filtered": {
+            "micro": 0.4322316994266922,
+            "macro_scope_mrr": 0.4322316994266922
+          }
+        },
+        "update": 63,
+        "loss": 0.114250592528043,
+        "validation_filtered_mrr": 0.16669983204612845
+      },
+      {
+        "local_message_self_ratio": 2.2665390968322754,
+        "root_message_self_ratio": 2.4670944213867188,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.026477942243218422,
+          "drug": -0.05154325067996979,
+          "effect/phenotype": -0.0013241057749837637,
+          "gene/protein": -0.0023693295661360025,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.016391269862651825,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.431337356567383,
+            "cross": 0.7929540872573853,
+            "readout": 11.628101348876953,
+            "owner": 0.2197456955909729,
+            "root": 6.83015251159668,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028999829664826393,
+          "initializer": 0.07380125671625137,
+          "relation_embedding": 2.3405453248415142e-05,
+          "local": 7.266985903697787e-06,
+          "cross": 4.790314051206224e-05,
+          "fusion": 6.0467704315669835e-05,
+          "root": 0.00030605640495195985,
+          "chemistry": 1.0820458555826917e-06,
+          "structural_readout": 2.415203198324889e-05,
+          "decoder": 0.04572229087352753
+        },
+        "total_gradient_norm_before_clip": 0.09153274446725845,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.28927857667244833,
+            "macro_scope_mrr": 0.28927857667244833
+          },
+          "filtered": {
+            "micro": 0.4326696118197856,
+            "macro_scope_mrr": 0.4326696118197856
+          }
+        },
+        "update": 64,
+        "loss": 0.11103453089057305,
+        "validation_filtered_mrr": 0.168409500399581
+      },
+      {
+        "local_message_self_ratio": 2.267251491546631,
+        "root_message_self_ratio": 2.4789810180664062,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.027694761753082275,
+          "drug": -0.05232234671711922,
+          "effect/phenotype": -0.0019406023202463984,
+          "gene/protein": -0.0028138458728790283,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.017125209793448448,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.4389801025390625,
+            "cross": 0.7975749969482422,
+            "readout": 11.63139820098877,
+            "owner": 0.22070617973804474,
+            "root": 6.922459125518799,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029877621680498123,
+          "initializer": 0.07968014478683472,
+          "relation_embedding": 2.4780785679467954e-05,
+          "local": 7.537885267083766e-06,
+          "cross": 5.105622039991431e-05,
+          "fusion": 5.577910633292049e-05,
+          "root": 0.00032022135565057397,
+          "chemistry": 1.0032417776528746e-06,
+          "structural_readout": 2.0003961253678426e-05,
+          "decoder": 0.04728266969323158
+        },
+        "total_gradient_norm_before_clip": 0.09735172241926193,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.27478084183304613,
+            "macro_scope_mrr": 0.27478084183304613
+          },
+          "filtered": {
+            "micro": 0.4257971736767882,
+            "macro_scope_mrr": 0.4257971736767882
+          }
+        },
+        "update": 65,
+        "loss": 0.10763306270996517,
+        "validation_filtered_mrr": 0.1691212125368349
+      },
+      {
+        "local_message_self_ratio": 2.267972946166992,
+        "root_message_self_ratio": 2.486522912979126,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.02892858162522316,
+          "drug": -0.0531051941215992,
+          "effect/phenotype": -0.0025534327141940594,
+          "gene/protein": -0.003270353889092803,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.017866777256131172,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.438792705535889,
+            "cross": 0.802793025970459,
+            "readout": 11.63675308227539,
+            "owner": 0.22227805852890015,
+            "root": 6.984990119934082,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03057442046701908,
+          "initializer": 0.06991796940565109,
+          "relation_embedding": 2.3598815459990874e-05,
+          "local": 6.1485184232878964e-06,
+          "cross": 4.55154076917097e-05,
+          "fusion": 5.238599260337651e-05,
+          "root": 0.0002804089745040983,
+          "chemistry": 1.0684537983252085e-06,
+          "structural_readout": 1.6925379895837978e-05,
+          "decoder": 0.0438300222158432
+        },
+        "total_gradient_norm_before_clip": 0.08800268173217773,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.273623206709238,
+            "macro_scope_mrr": 0.273623206709238
+          },
+          "filtered": {
+            "micro": 0.4312228813898918,
+            "macro_scope_mrr": 0.4312228813898918
+          }
+        },
+        "update": 66,
+        "loss": 0.10520457655061075,
+        "validation_filtered_mrr": 0.1699371284580637
+      },
+      {
+        "local_message_self_ratio": 2.268915891647339,
+        "root_message_self_ratio": 2.5031235218048096,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.030179401859641075,
+          "drug": -0.05389314144849777,
+          "effect/phenotype": -0.003170062555000186,
+          "gene/protein": -0.003734382800757885,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.018616758286952972,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.45512056350708,
+            "cross": 0.8097212314605713,
+            "readout": 11.640678405761719,
+            "owner": 0.22414077818393707,
+            "root": 7.097224235534668,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.030619151890277863,
+          "initializer": 0.06277717649936676,
+          "relation_embedding": 2.647653855092358e-05,
+          "local": 6.74151624480146e-06,
+          "cross": 4.6667704737046733e-05,
+          "fusion": 6.314081110758707e-05,
+          "root": 0.0003122714988421649,
+          "chemistry": 2.200054041168187e-06,
+          "structural_readout": 2.1686548279831186e-05,
+          "decoder": 0.041067615151405334
+        },
+        "total_gradient_norm_before_clip": 0.08102567493915558,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.27638811431377086,
+            "macro_scope_mrr": 0.27638811431377086
+          },
+          "filtered": {
+            "micro": 0.43981193693969434,
+            "macro_scope_mrr": 0.43981193693969434
+          }
+        },
+        "update": 67,
+        "loss": 0.10171642437325605,
+        "validation_filtered_mrr": 0.1699080660384522
+      },
+      {
+        "local_message_self_ratio": 2.2697865962982178,
+        "root_message_self_ratio": 2.51693058013916,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.031445108354091644,
+          "drug": -0.054685335606336594,
+          "effect/phenotype": -0.003796736942604184,
+          "gene/protein": -0.004208914935588837,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.019375888630747795,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.461533546447754,
+            "cross": 0.8191013336181641,
+            "readout": 11.647350311279297,
+            "owner": 0.22438432276248932,
+            "root": 7.174766540527344,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028894543647766113,
+          "initializer": 0.05207422748208046,
+          "relation_embedding": 2.209927697549574e-05,
+          "local": 7.809834642102942e-06,
+          "cross": 5.2627856348408386e-05,
+          "fusion": 4.772061947733164e-05,
+          "root": 0.0002804660180117935,
+          "chemistry": 1.5689197425672319e-06,
+          "structural_readout": 1.4453078620135784e-05,
+          "decoder": 0.037997905164957047
+        },
+        "total_gradient_norm_before_clip": 0.07064378261566162,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.279293549227777,
+            "macro_scope_mrr": 0.279293549227777
+          },
+          "filtered": {
+            "micro": 0.44546392350608194,
+            "macro_scope_mrr": 0.44546392350608194
+          }
+        },
+        "update": 68,
+        "loss": 0.09936545485642626,
+        "validation_filtered_mrr": 0.1705183419705238
+      },
+      {
+        "local_message_self_ratio": 2.2706520557403564,
+        "root_message_self_ratio": 2.517855644226074,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.03272984176874161,
+          "drug": -0.05547333136200905,
+          "effect/phenotype": -0.004427500534802675,
+          "gene/protein": -0.004699851851910353,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.020137237384915352,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.471424579620361,
+            "cross": 0.8274363279342651,
+            "readout": 11.649298667907715,
+            "owner": 0.226007878780365,
+            "root": 7.258041858673096,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028343042358756065,
+          "initializer": 0.05624300241470337,
+          "relation_embedding": 2.2445326976594515e-05,
+          "local": 9.580597179592587e-06,
+          "cross": 5.944164513493888e-05,
+          "fusion": 5.1380233344389126e-05,
+          "root": 0.00029251459636725485,
+          "chemistry": 3.244054141759989e-06,
+          "structural_readout": 2.284628317283932e-05,
+          "decoder": 0.039812106639146805
+        },
+        "total_gradient_norm_before_clip": 0.07450973987579346,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2789161404052673,
+            "macro_scope_mrr": 0.2789161404052673
+          },
+          "filtered": {
+            "micro": 0.444734958347906,
+            "macro_scope_mrr": 0.444734958347906
+          }
+        },
+        "update": 69,
+        "loss": 0.09737663011662567,
+        "validation_filtered_mrr": 0.1708219756924911
+      },
+      {
+        "local_message_self_ratio": 2.2715508937835693,
+        "root_message_self_ratio": 2.538097858428955,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.03402893245220184,
+          "drug": -0.056255850940942764,
+          "effect/phenotype": -0.00506376288831234,
+          "gene/protein": -0.005210020113736391,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.0208967924118042,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.485753059387207,
+            "cross": 0.8409518003463745,
+            "readout": 11.6547269821167,
+            "owner": 0.2282385379076004,
+            "root": 7.342188358306885,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029106665402650833,
+          "initializer": 0.04727328568696976,
+          "relation_embedding": 2.268294701934792e-05,
+          "local": 9.613810107111931e-06,
+          "cross": 6.0561473219422624e-05,
+          "fusion": 5.246486034593545e-05,
+          "root": 0.0002986871113535017,
+          "chemistry": 1.202477392325818e-06,
+          "structural_readout": 2.0779720216523856e-05,
+          "decoder": 0.037015896290540695
+        },
+        "total_gradient_norm_before_clip": 0.06672506779432297,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.27830768574233067,
+            "macro_scope_mrr": 0.27830768574233067
+          },
+          "filtered": {
+            "micro": 0.45099850798138336,
+            "macro_scope_mrr": 0.45099850798138336
+          }
+        },
+        "update": 70,
+        "loss": 0.09420145002579924,
+        "validation_filtered_mrr": 0.17214929002363255
+      },
+      {
+        "local_message_self_ratio": 2.2722907066345215,
+        "root_message_self_ratio": 2.544989824295044,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.03533926606178284,
+          "drug": -0.0570363886654377,
+          "effect/phenotype": -0.005704840179532766,
+          "gene/protein": -0.005741954315453768,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.021663030609488487,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.493438720703125,
+            "cross": 0.8553118109703064,
+            "readout": 11.65898609161377,
+            "owner": 0.2291126698255539,
+            "root": 7.457171440124512,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.029881345108151436,
+          "initializer": 0.04525534808635712,
+          "relation_embedding": 2.2277898096945137e-05,
+          "local": 1.0489608030184172e-05,
+          "cross": 6.407117325579748e-05,
+          "fusion": 5.077513196738437e-05,
+          "root": 0.0002786638215184212,
+          "chemistry": 1.0435784361106926e-06,
+          "structural_readout": 2.0980694898753427e-05,
+          "decoder": 0.03629971295595169
+        },
+        "total_gradient_norm_before_clip": 0.0652586817741394,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2821573847998534,
+            "macro_scope_mrr": 0.2821573847998534
+          },
+          "filtered": {
+            "micro": 0.45426919638776253,
+            "macro_scope_mrr": 0.45426919638776253
+          }
+        },
+        "update": 71,
+        "loss": 0.09222104927576294,
+        "validation_filtered_mrr": 0.1731869755421079
+      },
+      {
+        "local_message_self_ratio": 2.2729501724243164,
+        "root_message_self_ratio": 2.561373710632324,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.03665771707892418,
+          "drug": -0.05781817063689232,
+          "effect/phenotype": -0.0063508725725114346,
+          "gene/protein": -0.006300203036516905,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.02243601158261299,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.506406307220459,
+            "cross": 0.8753737211227417,
+            "readout": 11.663366317749023,
+            "owner": 0.23019729554653168,
+            "root": 7.576827526092529,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03047763742506504,
+          "initializer": 0.046926915645599365,
+          "relation_embedding": 2.3542155759059824e-05,
+          "local": 1.2773261914844625e-05,
+          "cross": 7.822524639777839e-05,
+          "fusion": 5.2911498642060906e-05,
+          "root": 0.00029110355535522103,
+          "chemistry": 8.587039133090002e-07,
+          "structural_readout": 1.7263926565647125e-05,
+          "decoder": 0.03579748049378395
+        },
+        "total_gradient_norm_before_clip": 0.06642722338438034,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.28838580327190716,
+            "macro_scope_mrr": 0.28838580327190716
+          },
+          "filtered": {
+            "micro": 0.46463851742217405,
+            "macro_scope_mrr": 0.46463851742217405
+          }
+        },
+        "update": 72,
+        "loss": 0.08916579691376146,
+        "validation_filtered_mrr": 0.1743012523393332
+      },
+      {
+        "local_message_self_ratio": 2.273812770843506,
+        "root_message_self_ratio": 2.57354474067688,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.037979163229465485,
+          "drug": -0.05860382318496704,
+          "effect/phenotype": -0.00700529757887125,
+          "gene/protein": -0.0068889218382537365,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.02321731671690941,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.515063762664795,
+            "cross": 0.8959164023399353,
+            "readout": 11.668559074401855,
+            "owner": 0.23136475682258606,
+            "root": 7.6696929931640625,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.030535614117980003,
+          "initializer": 0.043077319860458374,
+          "relation_embedding": 2.338290687475819e-05,
+          "local": 1.29498721435084e-05,
+          "cross": 8.388094283873215e-05,
+          "fusion": 5.2620052883867174e-05,
+          "root": 0.00028322450816631317,
+          "chemistry": 8.009277507881052e-07,
+          "structural_readout": 1.5630965208401904e-05,
+          "decoder": 0.03568074107170105
+        },
+        "total_gradient_norm_before_clip": 0.0637282133102417,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2921180869416252,
+            "macro_scope_mrr": 0.2921180869416252
+          },
+          "filtered": {
+            "micro": 0.46717298828729753,
+            "macro_scope_mrr": 0.46717298828729753
+          }
+        },
+        "update": 73,
+        "loss": 0.08717156521674568,
+        "validation_filtered_mrr": 0.17554254314890783
+      },
+      {
+        "local_message_self_ratio": 2.274796724319458,
+        "root_message_self_ratio": 2.590965986251831,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.039307355880737305,
+          "drug": -0.059391845017671585,
+          "effect/phenotype": -0.007663465570658445,
+          "gene/protein": -0.007510115392506123,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.024005288258194923,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.533213138580322,
+            "cross": 0.9232134222984314,
+            "readout": 11.674776077270508,
+            "owner": 0.2327190786600113,
+            "root": 7.805578231811523,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.030015544965863228,
+          "initializer": 0.05125224217772484,
+          "relation_embedding": 2.3586728275404312e-05,
+          "local": 1.7714392015477642e-05,
+          "cross": 0.00010591762838885188,
+          "fusion": 5.52398050785996e-05,
+          "root": 0.000312783318804577,
+          "chemistry": 1.0047373280031024e-06,
+          "structural_readout": 1.531592533865478e-05,
+          "decoder": 0.03550368547439575
+        },
+        "total_gradient_norm_before_clip": 0.06919790804386139,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31165078050168865,
+            "macro_scope_mrr": 0.31165078050168865
+          },
+          "filtered": {
+            "micro": 0.4869478611666112,
+            "macro_scope_mrr": 0.4869478611666112
+          }
+        },
+        "update": 74,
+        "loss": 0.08519823180450267,
+        "validation_filtered_mrr": 0.17606564539995856
+      },
+      {
+        "local_message_self_ratio": 2.2761478424072266,
+        "root_message_self_ratio": 2.6023402214050293,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.04064551368355751,
+          "drug": -0.06017753481864929,
+          "effect/phenotype": -0.00832843966782093,
+          "gene/protein": -0.008171063847839832,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.024798722937703133,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.5525102615356445,
+            "cross": 0.9536980986595154,
+            "readout": 11.67927074432373,
+            "owner": 0.23322086036205292,
+            "root": 7.896162033081055,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02950556017458439,
+          "initializer": 0.049005117267370224,
+          "relation_embedding": 2.4753448087722063e-05,
+          "local": 1.955885272764135e-05,
+          "cross": 0.00011968710896326229,
+          "fusion": 5.740765482187271e-05,
+          "root": 0.0003278785152360797,
+          "chemistry": 1.0496446520846803e-06,
+          "structural_readout": 1.5432202417287044e-05,
+          "decoder": 0.036376554518938065
+        },
+        "total_gradient_norm_before_clip": 0.06778982281684875,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.30569059960498407,
+            "macro_scope_mrr": 0.30569059960498407
+          },
+          "filtered": {
+            "micro": 0.48621102490345913,
+            "macro_scope_mrr": 0.48621102490345913
+          }
+        },
+        "update": 75,
+        "loss": 0.08317788632306218,
+        "validation_filtered_mrr": 0.17763484535120433
+      },
+      {
+        "local_message_self_ratio": 2.2777953147888184,
+        "root_message_self_ratio": 2.6180288791656494,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.041995011270046234,
+          "drug": -0.060956623405218124,
+          "effect/phenotype": -0.009001798927783966,
+          "gene/protein": -0.008878746069967747,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.025598090142011642,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.570574760437012,
+            "cross": 0.9896079301834106,
+            "readout": 11.687450408935547,
+            "owner": 0.23565828800201416,
+            "root": 8.031572341918945,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02990960329771042,
+          "initializer": 0.042801886796951294,
+          "relation_embedding": 2.345972097828053e-05,
+          "local": 2.2312733563012443e-05,
+          "cross": 0.0001339033478870988,
+          "fusion": 4.933490345138125e-05,
+          "root": 0.00028934303554706275,
+          "chemistry": 9.57904717324709e-07,
+          "structural_readout": 1.6016194422263652e-05,
+          "decoder": 0.03398841246962547
+        },
+        "total_gradient_norm_before_clip": 0.06230492144823074,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31000205753680016,
+            "macro_scope_mrr": 0.31000205753680016
+          },
+          "filtered": {
+            "micro": 0.49837380501443007,
+            "macro_scope_mrr": 0.49837380501443007
+          }
+        },
+        "update": 76,
+        "loss": 0.08115587678780142,
+        "validation_filtered_mrr": 0.1784432797987986
+      },
+      {
+        "local_message_self_ratio": 2.2795917987823486,
+        "root_message_self_ratio": 2.6356916427612305,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.0433507077395916,
+          "drug": -0.06173151358962059,
+          "effect/phenotype": -0.009684647433459759,
+          "gene/protein": -0.009639461524784565,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.026397040113806725,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.595242500305176,
+            "cross": 1.0307937860488892,
+            "readout": 11.693845748901367,
+            "owner": 0.23768925666809082,
+            "root": 8.170360565185547,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03067506104707718,
+          "initializer": 0.05202549323439598,
+          "relation_embedding": 2.5267330784117803e-05,
+          "local": 2.784136995614972e-05,
+          "cross": 0.000155874207848683,
+          "fusion": 5.218870137468912e-05,
+          "root": 0.00029616252868436277,
+          "chemistry": 8.642924171908817e-07,
+          "structural_readout": 1.588274972164072e-05,
+          "decoder": 0.03197786957025528
+        },
+        "total_gradient_norm_before_clip": 0.06833967566490173,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.32304341032228706,
+            "macro_scope_mrr": 0.32304341032228706
+          },
+          "filtered": {
+            "micro": 0.5050858990886564,
+            "macro_scope_mrr": 0.5050858990886564
+          }
+        },
+        "update": 77,
+        "loss": 0.07875937156993844,
+        "validation_filtered_mrr": 0.1798012227320353
+      },
+      {
+        "local_message_self_ratio": 2.2817413806915283,
+        "root_message_self_ratio": 2.647151231765747,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.04470838978886604,
+          "drug": -0.06250476092100143,
+          "effect/phenotype": -0.01037612184882164,
+          "gene/protein": -0.010463954880833626,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.027198493480682373,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.623704433441162,
+            "cross": 1.0726979970932007,
+            "readout": 11.699567794799805,
+            "owner": 0.2394060343503952,
+            "root": 8.318899154663086,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.032492250204086304,
+          "initializer": 0.05381659418344498,
+          "relation_embedding": 2.766758007055614e-05,
+          "local": 2.9013965104240924e-05,
+          "cross": 0.00017082312842831016,
+          "fusion": 5.7093475334113464e-05,
+          "root": 0.000320612161885947,
+          "chemistry": 1.3664840707861003e-06,
+          "structural_readout": 1.4296520021161996e-05,
+          "decoder": 0.03454437106847763
+        },
+        "total_gradient_norm_before_clip": 0.07173159718513489,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.32175087270979574,
+            "macro_scope_mrr": 0.32175087270979574
+          },
+          "filtered": {
+            "micro": 0.5071032330108617,
+            "macro_scope_mrr": 0.5071032330108617
+          }
+        },
+        "update": 78,
+        "loss": 0.0770462473985448,
+        "validation_filtered_mrr": 0.1810182520613609
+      },
+      {
+        "local_message_self_ratio": 2.2842869758605957,
+        "root_message_self_ratio": 2.66888427734375,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.046069297939538956,
+          "drug": -0.06328123062849045,
+          "effect/phenotype": -0.011074160225689411,
+          "gene/protein": -0.011360906064510345,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.02800079807639122,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.648675441741943,
+            "cross": 1.1191195249557495,
+            "readout": 11.70449161529541,
+            "owner": 0.24171388149261475,
+            "root": 8.498069763183594,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03352919965982437,
+          "initializer": 0.04639258235692978,
+          "relation_embedding": 2.625176784931682e-05,
+          "local": 3.4020406019408256e-05,
+          "cross": 0.00019513120059855282,
+          "fusion": 5.438901644083671e-05,
+          "root": 0.00031880338792689145,
+          "chemistry": 1.002107978820277e-06,
+          "structural_readout": 1.4836012269370258e-05,
+          "decoder": 0.033053427934646606
+        },
+        "total_gradient_norm_before_clip": 0.06609956920146942,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3117723663568201,
+            "macro_scope_mrr": 0.3117723663568201
+          },
+          "filtered": {
+            "micro": 0.5034540466386683,
+            "macro_scope_mrr": 0.5034540466386683
+          }
+        },
+        "update": 79,
+        "loss": 0.07500568114365022,
+        "validation_filtered_mrr": 0.1814060955111666
+      },
+      {
+        "local_message_self_ratio": 2.2863967418670654,
+        "root_message_self_ratio": 2.682157278060913,
+        "identity_scales": {
+          "atom": 0.0,
+          "complex_state": 0.0,
+          "disease": -0.04743412882089615,
+          "drug": -0.06405849754810333,
+          "effect/phenotype": -0.011779875494539738,
+          "gene/protein": -0.01235143281519413,
+          "molecular_fragment": 0.0,
+          "molecular_state": 0.0,
+          "pathway": -0.02880316972732544,
+          "reaction_event": 0.0,
+          "set_state": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 7.6775336265563965,
+            "cross": 1.1597814559936523,
+            "readout": 11.710923194885254,
+            "owner": 0.2421671748161316,
+            "root": 8.626065254211426,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03332561254501343,
+          "initializer": 0.04376578330993652,
+          "relation_embedding": 2.647801738930866e-05,
+          "local": 3.194353121216409e-05,
+          "cross": 0.0001877146860351786,
+          "fusion": 5.825375410495326e-05,
+          "root": 0.0003333605418447405,
+          "chemistry": 1.047665364239947e-06,
+          "structural_readout": 1.611360494280234e-05,
+          "decoder": 0.0308826956897974
+        },
+        "total_gradient_norm_before_clip": 0.06308670341968536,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3032108362683871,
+            "macro_scope_mrr": 0.3032108362683871
+          },
+          "filtered": {
+            "micro": 0.4915097489316239,
+            "macro_scope_mrr": 0.4915097489316239
+          }
+        },
+        "update": 80,
+        "loss": 0.0727240723230659,
+        "validation_filtered_mrr": 0.18126145765273924
+      }
+    ],
+    "effective_rounds": 1,
+    "training_target_count": 16462,
+    "elapsed_seconds": 546.0412397810005,
+    "software": {
+      "python": "3.13.16",
+      "torch": "2.14.1+cu130"
+    }
+  },
+  "elapsed_seconds": 546.1397640705109
+}

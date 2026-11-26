@@ -151,7 +151,7 @@ def main() -> None:
         torch.set_num_threads(args.threads)
     options = model_config_options(args)
     if (options["init_checkpoint"] is not None or options["task_scope"] != "root"
-            or options["encoder_profile"] != "structural"):
+            or options["encoder_profile"] != "structural" or options["update_offset"] != 0):
         parser.error("the suite owns initialization and requires the structural profile and ROOT-only targets")
     config = TrainingConfig(hidden_dim=args.hidden_dim, negatives_per_side=args.negatives,
                             training_batch_size=args.batch_size, learning_rate=args.learning_rate,

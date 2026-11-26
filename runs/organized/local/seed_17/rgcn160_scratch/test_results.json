@@ -1,0 +1,551 @@
+{
+  "kind": "rgcn",
+  "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\structural-real-seed17\\seed_17\\rgcn\\rgcn_best.pt",
+  "best_epoch": 158,
+  "fingerprints": {
+    "dataset": "4e333278b4de091af2da4b81d0053a6fd2f73c4ab587a160ae87882fba63c19d",
+    "candidates": "6dde2089fef45ae499e7d1414c7b5a56b6203cf73f63bb80166bad1b5d1676ad",
+    "queries": {
+      "train": "d1c94e6a1d38e545b852eb7a7ab7ee5bf2ad230c04725da20b3fc386b6c2978a",
+      "validation": "3117b85dc3f7656622d7250037a0d11f5255309af99f9fa890586ef8e0bb5997",
+      "test": "cf11d8348af927705c6fd7efb6871ada5eb00b97881d84344dd332b42cedab11"
+    }
+  },
+  "test": {
+    "root": {
+      "raw": {
+        "count": 4014,
+        "mrr": 0.083247729897835,
+        "mean_rank": 159.64349775784754,
+        "hits@1": 0.0229197807673144,
+        "hits@3": 0.06851021425012456,
+        "hits@10": 0.19681116093672146
+      },
+      "filtered": {
+        "count": 4014,
+        "mrr": 0.23352114812574837,
+        "mean_rank": 137.87917289486796,
+        "hits@1": 0.1397608370702541,
+        "hits@3": 0.2526158445440957,
+        "hits@10": 0.42700548081714
+      },
+      "total_queries": 4014,
+      "unscorable_queries": 0,
+      "scorable_queries": 4014
+    },
+    "internal": {
+      "raw": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "filtered": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "total_queries": 0,
+      "unscorable_queries": 0,
+      "scorable_queries": 0
+    },
+    "cross_context": {
+      "raw": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "filtered": {
+        "count": 0,
+        "mrr": null,
+        "mean_rank": null,
+        "hits@1": null,
+        "hits@3": null,
+        "hits@10": null
+      },
+      "total_queries": 0,
+      "unscorable_queries": 0,
+      "scorable_queries": 0
+    },
+    "aggregate": {
+      "raw": {
+        "micro": 0.083247729897835,
+        "macro_scope_mrr": 0.083247729897835
+      },
+      "filtered": {
+        "micro": 0.23352114812574837,
+        "macro_scope_mrr": 0.23352114812574837
+      }
+    },
+    "settings": {
+      "split": "test",
+      "filter_known_splits": [
+        "test",
+        "train",
+        "validation"
+      ],
+      "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+      "task_scope": "root",
+      "fact_limit": null,
+      "root_candidate_count": 2534,
+      "candidates": "all ROOT occurrences"
+    },
+    "breakdowns": {
+      "by_relation": {
+        "drug_drug::synergistic interaction": {
+          "raw": {
+            "count": 360,
+            "mrr": 0.11657245215029495,
+            "mean_rank": 26.502777777777776,
+            "hits@1": 0.03333333333333333,
+            "hits@3": 0.09166666666666666,
+            "hits@10": 0.2777777777777778
+          },
+          "filtered": {
+            "count": 360,
+            "mrr": 0.37015365905914616,
+            "mean_rank": 10.488888888888889,
+            "hits@1": 0.21666666666666667,
+            "hits@3": 0.42777777777777776,
+            "hits@10": 0.6777777777777778
+          },
+          "total_queries": 360,
+          "unscorable_queries": 0
+        },
+        "contraindication::contraindication": {
+          "raw": {
+            "count": 232,
+            "mrr": 0.08523560591318155,
+            "mean_rank": 139.81034482758622,
+            "hits@1": 0.021551724137931036,
+            "hits@3": 0.06896551724137931,
+            "hits@10": 0.21120689655172414
+          },
+          "filtered": {
+            "count": 232,
+            "mrr": 0.17551257564944714,
+            "mean_rank": 118.74568965517241,
+            "hits@1": 0.07327586206896551,
+            "hits@3": 0.17672413793103448,
+            "hits@10": 0.40086206896551724
+          },
+          "total_queries": 232,
+          "unscorable_queries": 0
+        },
+        "disease_protein::associated with": {
+          "raw": {
+            "count": 922,
+            "mrr": 0.07376095121043102,
+            "mean_rank": 120.07375271149675,
+            "hits@1": 0.013015184381778741,
+            "hits@3": 0.055314533622559656,
+            "hits@10": 0.175704989154013
+          },
+          "filtered": {
+            "count": 922,
+            "mrr": 0.31976666008613086,
+            "mean_rank": 95.32863340563992,
+            "hits@1": 0.22234273318872017,
+            "hits@3": 0.33731019522776573,
+            "hits@10": 0.5238611713665944
+          },
+          "total_queries": 922,
+          "unscorable_queries": 0
+        },
+        "protein_protein::ppi": {
+          "raw": {
+            "count": 1236,
+            "mrr": 0.06217814945606865,
+            "mean_rank": 200.9425566343042,
+            "hits@1": 0.014563106796116505,
+            "hits@3": 0.0412621359223301,
+            "hits@10": 0.1553398058252427
+          },
+          "filtered": {
+            "count": 1236,
+            "mrr": 0.16524740718127867,
+            "mean_rank": 175.85922330097088,
+            "hits@1": 0.07766990291262135,
+            "hits@3": 0.18932038834951456,
+            "hits@10": 0.33414239482200647
+          },
+          "total_queries": 1236,
+          "unscorable_queries": 0
+        },
+        "disease_phenotype_positive::phenotype present": {
+          "raw": {
+            "count": 260,
+            "mrr": 0.06636814766904468,
+            "mean_rank": 169.4269230769231,
+            "hits@1": 0.023076923076923078,
+            "hits@3": 0.046153846153846156,
+            "hits@10": 0.13846153846153847
+          },
+          "filtered": {
+            "count": 260,
+            "mrr": 0.10514999376744773,
+            "mean_rank": 160.57692307692307,
+            "hits@1": 0.05,
+            "hits@3": 0.09230769230769231,
+            "hits@10": 0.2230769230769231
+          },
+          "total_queries": 260,
+          "unscorable_queries": 0
+        },
+        "pathway_protein::interacts with": {
+          "raw": {
+            "count": 236,
+            "mrr": 0.1688178309516016,
+            "mean_rank": 216.72457627118644,
+            "hits@1": 0.06779661016949153,
+            "hits@3": 0.19915254237288135,
+            "hits@10": 0.3432203389830508
+          },
+          "filtered": {
+            "count": 236,
+            "mrr": 0.4199122083177419,
+            "mean_rank": 202.41525423728814,
+            "hits@1": 0.3516949152542373,
+            "hits@3": 0.4364406779661017,
+            "hits@10": 0.5466101694915254
+          },
+          "total_queries": 236,
+          "unscorable_queries": 0
+        },
+        "drug_protein::transporter": {
+          "raw": {
+            "count": 22,
+            "mrr": 0.17193580183259713,
+            "mean_rank": 214.0909090909091,
+            "hits@1": 0.045454545454545456,
+            "hits@3": 0.18181818181818182,
+            "hits@10": 0.4090909090909091
+          },
+          "filtered": {
+            "count": 22,
+            "mrr": 0.315726028465951,
+            "mean_rank": 210.95454545454547,
+            "hits@1": 0.22727272727272727,
+            "hits@3": 0.36363636363636365,
+            "hits@10": 0.5
+          },
+          "total_queries": 22,
+          "unscorable_queries": 0
+        },
+        "drug_effect::side effect": {
+          "raw": {
+            "count": 394,
+            "mrr": 0.06282574385149431,
+            "mean_rank": 130.9289340101523,
+            "hits@1": 0.01015228426395939,
+            "hits@3": 0.04568527918781726,
+            "hits@10": 0.16751269035532995
+          },
+          "filtered": {
+            "count": 394,
+            "mrr": 0.19378191527511762,
+            "mean_rank": 90.51522842639594,
+            "hits@1": 0.09137055837563451,
+            "hits@3": 0.20304568527918782,
+            "hits@10": 0.43147208121827413
+          },
+          "total_queries": 394,
+          "unscorable_queries": 0
+        },
+        "indication::indication": {
+          "raw": {
+            "count": 44,
+            "mrr": 0.16727956198112306,
+            "mean_rank": 98.27272727272727,
+            "hits@1": 0.09090909090909091,
+            "hits@3": 0.18181818181818182,
+            "hits@10": 0.3181818181818182
+          },
+          "filtered": {
+            "count": 44,
+            "mrr": 0.18481148567825034,
+            "mean_rank": 95.6590909090909,
+            "hits@1": 0.09090909090909091,
+            "hits@3": 0.22727272727272727,
+            "hits@10": 0.3409090909090909
+          },
+          "total_queries": 44,
+          "unscorable_queries": 0
+        },
+        "phenotype_protein::associated with": {
+          "raw": {
+            "count": 68,
+            "mrr": 0.11134981412140434,
+            "mean_rank": 169.39705882352942,
+            "hits@1": 0.04411764705882353,
+            "hits@3": 0.11764705882352941,
+            "hits@10": 0.23529411764705882
+          },
+          "filtered": {
+            "count": 68,
+            "mrr": 0.14257105351194926,
+            "mean_rank": 163.60294117647058,
+            "hits@1": 0.07352941176470588,
+            "hits@3": 0.1323529411764706,
+            "hits@10": 0.3088235294117647
+          },
+          "total_queries": 68,
+          "unscorable_queries": 0
+        },
+        "drug_protein::carrier": {
+          "raw": {
+            "count": 6,
+            "mrr": 0.17249279284781513,
+            "mean_rank": 762.6666666666666,
+            "hits@1": 0.16666666666666666,
+            "hits@3": 0.16666666666666666,
+            "hits@10": 0.16666666666666666
+          },
+          "filtered": {
+            "count": 6,
+            "mrr": 0.17605679081900658,
+            "mean_rank": 760.1666666666666,
+            "hits@1": 0.16666666666666666,
+            "hits@3": 0.16666666666666666,
+            "hits@10": 0.16666666666666666
+          },
+          "total_queries": 6,
+          "unscorable_queries": 0
+        },
+        "disease_disease::parent-child": {
+          "raw": {
+            "count": 64,
+            "mrr": 0.04770015479407168,
+            "mean_rank": 436.875,
+            "hits@1": 0.0,
+            "hits@3": 0.03125,
+            "hits@10": 0.171875
+          },
+          "filtered": {
+            "count": 64,
+            "mrr": 0.05018349634567608,
+            "mean_rank": 436.078125,
+            "hits@1": 0.0,
+            "hits@3": 0.046875,
+            "hits@10": 0.171875
+          },
+          "total_queries": 64,
+          "unscorable_queries": 0
+        },
+        "off-label use::off-label use": {
+          "raw": {
+            "count": 12,
+            "mrr": 0.047055730154500354,
+            "mean_rank": 192.25,
+            "hits@1": 0.0,
+            "hits@3": 0.08333333333333333,
+            "hits@10": 0.08333333333333333
+          },
+          "filtered": {
+            "count": 12,
+            "mrr": 0.05346695601313537,
+            "mean_rank": 189.41666666666666,
+            "hits@1": 0.0,
+            "hits@3": 0.08333333333333333,
+            "hits@10": 0.16666666666666666
+          },
+          "total_queries": 12,
+          "unscorable_queries": 0
+        },
+        "drug_protein::enzyme": {
+          "raw": {
+            "count": 54,
+            "mrr": 0.19944724811123316,
+            "mean_rank": 212.96296296296296,
+            "hits@1": 0.07407407407407407,
+            "hits@3": 0.2222222222222222,
+            "hits@10": 0.48148148148148145
+          },
+          "filtered": {
+            "count": 54,
+            "mrr": 0.3037901257863118,
+            "mean_rank": 208.27777777777777,
+            "hits@1": 0.18518518518518517,
+            "hits@3": 0.35185185185185186,
+            "hits@10": 0.5740740740740741
+          },
+          "total_queries": 54,
+          "unscorable_queries": 0
+        },
+        "drug_protein::target": {
+          "raw": {
+            "count": 68,
+            "mrr": 0.14873232933054584,
+            "mean_rank": 203.69117647058823,
+            "hits@1": 0.08823529411764706,
+            "hits@3": 0.14705882352941177,
+            "hits@10": 0.3088235294117647
+          },
+          "filtered": {
+            "count": 68,
+            "mrr": 0.20544603966339925,
+            "mean_rank": 199.08823529411765,
+            "hits@1": 0.11764705882352941,
+            "hits@3": 0.22058823529411764,
+            "hits@10": 0.39705882352941174
+          },
+          "total_queries": 68,
+          "unscorable_queries": 0
+        },
+        "pathway_pathway::parent-child": {
+          "raw": {
+            "count": 10,
+            "mrr": 0.056685755284997516,
+            "mean_rank": 339.5,
+            "hits@1": 0.0,
+            "hits@3": 0.1,
+            "hits@10": 0.1
+          },
+          "filtered": {
+            "count": 10,
+            "mrr": 0.0570329831301139,
+            "mean_rank": 337.9,
+            "hits@1": 0.0,
+            "hits@3": 0.1,
+            "hits@10": 0.1
+          },
+          "total_queries": 10,
+          "unscorable_queries": 0
+        },
+        "phenotype_phenotype::parent-child": {
+          "raw": {
+            "count": 24,
+            "mrr": 0.033315830503536495,
+            "mean_rank": 363.8333333333333,
+            "hits@1": 0.0,
+            "hits@3": 0.0,
+            "hits@10": 0.16666666666666666
+          },
+          "filtered": {
+            "count": 24,
+            "mrr": 0.03352922748439787,
+            "mean_rank": 362.5833333333333,
+            "hits@1": 0.0,
+            "hits@3": 0.0,
+            "hits@10": 0.16666666666666666
+          },
+          "total_queries": 24,
+          "unscorable_queries": 0
+        },
+        "disease_phenotype_negative::phenotype absent": {
+          "raw": {
+            "count": 2,
+            "mrr": 0.04414335664335665,
+            "mean_rank": 50.5,
+            "hits@1": 0.0,
+            "hits@3": 0.0,
+            "hits@10": 0.0
+          },
+          "filtered": {
+            "count": 2,
+            "mrr": 0.04420866489832007,
+            "mean_rank": 50.0,
+            "hits@1": 0.0,
+            "hits@3": 0.0,
+            "hits@10": 0.0
+          },
+          "total_queries": 2,
+          "unscorable_queries": 0
+        }
+      },
+      "by_side": {
+        "head": {
+          "raw": {
+            "count": 2007,
+            "mrr": 0.08043671669935185,
+            "mean_rank": 155.2421524663677,
+            "hits@1": 0.0229197807673144,
+            "hits@3": 0.0622820129546587,
+            "hits@10": 0.18834080717488788
+          },
+          "filtered": {
+            "count": 2007,
+            "mrr": 0.23260865851704432,
+            "mean_rank": 133.56601893373193,
+            "hits@1": 0.13502740408570005,
+            "hits@3": 0.24962630792227206,
+            "hits@10": 0.43796711509715996
+          },
+          "total_queries": 2007,
+          "unscorable_queries": 0
+        },
+        "tail": {
+          "raw": {
+            "count": 2007,
+            "mrr": 0.08605874309631814,
+            "mean_rank": 164.04484304932734,
+            "hits@1": 0.0229197807673144,
+            "hits@3": 0.07473841554559044,
+            "hits@10": 0.20528151469855505
+          },
+          "filtered": {
+            "count": 2007,
+            "mrr": 0.23443363773445244,
+            "mean_rank": 142.19232685600397,
+            "hits@1": 0.14449427005480817,
+            "hits@3": 0.2556053811659193,
+            "hits@10": 0.41604384653712007
+          },
+          "total_queries": 2007,
+          "unscorable_queries": 0
+        }
+      },
+      "by_owner": {
+        "owner_touching": {
+          "raw": {
+            "count": 1420,
+            "mrr": 0.11165116433653241,
+            "mean_rank": 131.87042253521128,
+            "hits@1": 0.03732394366197183,
+            "hits@3": 0.10422535211267606,
+            "hits@10": 0.2563380281690141
+          },
+          "filtered": {
+            "count": 1420,
+            "mrr": 0.2769028517078051,
+            "mean_rank": 110.3169014084507,
+            "hits@1": 0.16901408450704225,
+            "hits@3": 0.302112676056338,
+            "hits@10": 0.5049295774647887
+          },
+          "total_queries": 1420,
+          "unscorable_queries": 0
+        },
+        "non_owner": {
+          "raw": {
+            "count": 2594,
+            "mrr": 0.06769920372090737,
+            "mean_rank": 174.84695451040864,
+            "hits@1": 0.015034695451040863,
+            "hits@3": 0.048959136468774096,
+            "hits@10": 0.16422513492675406
+          },
+          "filtered": {
+            "count": 2594,
+            "mrr": 0.2097732610453627,
+            "mean_rank": 152.96723207401695,
+            "hits@1": 0.12374710871241326,
+            "hits@3": 0.22552043176561296,
+            "hits@10": 0.3843484965304549
+          },
+          "total_queries": 2594,
+          "unscorable_queries": 0
+        }
+      }
+    }
+  },
+  "optimizer_updates": 0
+}

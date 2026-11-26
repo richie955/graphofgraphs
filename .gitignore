@@ -32,3 +32,7 @@ Thumbs.db
 
 # Local structural GoG datasets and exports
 /structural_gog/gog/*.json
+
+# Local archives and generated dataset
+*.zip
+/data/processed/primekg_gog_30000.json

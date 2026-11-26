@@ -1,0 +1,3800 @@
+{
+  "kind": "rgcn",
+  "notice": "Exploratory result on the provided split; not a benchmark claim.",
+  "dataset_name": "PrimeKG + PubChem/RDKit + Reactome structural GoG",
+  "config": {
+    "hidden_dim": 128,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": null,
+    "negatives_per_side": 50,
+    "training_batch_size": 4096,
+    "epochs": 80,
+    "patience": 15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cuda",
+    "show_progress": true,
+    "encoder_profile": "legacy",
+    "task_scope": "root",
+    "feature_mode": "auto",
+    "basis_init": null,
+    "composition": null,
+    "normalization": null,
+    "identity_residual": true,
+    "local_enabled": true,
+    "cross_enabled": true,
+    "fusion_enabled": true,
+    "root_enabled": true,
+    "sync_enabled": false,
+    "feedback_enabled": false,
+    "family_readout": true,
+    "embedding_learning_rate": null,
+    "encoder_learning_rate": null,
+    "decoder_learning_rate": null,
+    "init_checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\structural-real-seed17\\seed_17\\pretraining\\baseline_best.pt",
+    "early_stopping": false,
+    "update_offset": 80,
+    "evaluate_test": true,
+    "diagnostic_train_limit": 32
+  },
+  "split_counts": {
+    "test": {
+      "root_to_root": 2007,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    },
+    "train": {
+      "root_to_root": 16462,
+      "same_internal_graph": 12575,
+      "root_to_internal": 4705,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    },
+    "validation": {
+      "root_to_root": 2000,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    }
+  },
+  "rgcn": {
+    "kind": "rgcn",
+    "best_epoch": 80,
+    "best_validation_macro_filtered_mrr": 0.18399707425612988,
+    "loss_first": 0.7803628042479678,
+    "loss_last": 0.042100945208595066,
+    "loss_history": [
+      0.7803628042479678,
+      0.6127304408055234,
+      0.5397673182260975,
+      0.40773880693895415,
+      0.376405595476696,
+      0.3938387255704268,
+      0.3473536968303616,
+      0.2868594847100862,
+      0.271988163925205,
+      0.26575275330508175,
+      0.25849135690566155,
+      0.2306996967863912,
+      0.21232103744220537,
+      0.21500707824607332,
+      0.19998989321310456,
+      0.1862780105323957,
+      0.17968483143574904,
+      0.17706031845879142,
+      0.16891849680770113,
+      0.16064670146626817,
+      0.15348314576175925,
+      0.14701247383997545,
+      0.1457228915230238,
+      0.13805254456730717,
+      0.13110278253168023,
+      0.12909729182068452,
+      0.12531442278906724,
+      0.11950739016710024,
+      0.11465561648262995,
+      0.11295333030359697,
+      0.10967904791397046,
+      0.1058202298162789,
+      0.10244048323358716,
+      0.10107708481302125,
+      0.09680258647528878,
+      0.09698675503625483,
+      0.09245351317814206,
+      0.09044041418968407,
+      0.08791839801903817,
+      0.0876222922094551,
+      0.08511853349692564,
+      0.0827164701667566,
+      0.0804915233501512,
+      0.07960114991689507,
+      0.07674440772315304,
+      0.07537496505053302,
+      0.07423024401910511,
+      0.07239432047358725,
+      0.07097841955765732,
+      0.07023642723491683,
+      0.06877898596486957,
+      0.06665622273238486,
+      0.065949224164616,
+      0.0641861419910693,
+      0.06279917536732232,
+      0.061340525292847656,
+      0.061124463350779236,
+      0.05980052831346811,
+      0.059488003359083094,
+      0.0574890458418907,
+      0.05699585060947808,
+      0.05543519836586716,
+      0.05452308763380242,
+      0.05340521324839153,
+      0.05287730815157234,
+      0.052383294191685324,
+      0.050963711289976565,
+      0.05075783568783253,
+      0.049588962861673615,
+      0.048472247485538945,
+      0.048595522430467074,
+      0.04753216150878788,
+      0.04658358309758765,
+      0.04611848034720463,
+      0.044989232879977026,
+      0.044452637078267895,
+      0.04382071135534636,
+      0.04341526690957874,
+      0.04184663059175659,
+      0.042100945208595066
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 0,
+      "tail": 0,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 4000,
+          "mrr": 0.059592799912075674,
+          "mean_rank": 182.89175,
+          "hits@1": 0.0075,
+          "hits@3": 0.0415,
+          "hits@10": 0.1465
+        },
+        "filtered": {
+          "count": 4000,
+          "mrr": 0.18399707425612988,
+          "mean_rank": 160.54425,
+          "hits@1": 0.0895,
+          "hits@3": 0.204,
+          "hits@10": 0.38575
+        },
+        "total_queries": 4000,
+        "unscorable_queries": 0,
+        "scorable_queries": 4000
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.059592799912075674,
+          "macro_scope_mrr": 0.059592799912075674
+        },
+        "filtered": {
+          "micro": 0.18399707425612988,
+          "macro_scope_mrr": 0.18399707425612988
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+        "task_scope": "root",
+        "fact_limit": null,
+        "root_candidate_count": 2534,
+        "candidates": "all ROOT occurrences"
+      },
+      "breakdowns": {
+        "by_relation": {
+          "disease_protein::associated with": {
+            "raw": {
+              "count": 922,
+              "mrr": 0.05576294173632121,
+              "mean_rank": 126.3763557483731,
+              "hits@1": 0.0032537960954446853,
+              "hits@3": 0.03253796095444685,
+              "hits@10": 0.13774403470715835
+            },
+            "filtered": {
+              "count": 922,
+              "mrr": 0.2632358276028659,
+              "mean_rank": 101.26030368763557,
+              "hits@1": 0.14642082429501085,
+              "hits@3": 0.30151843817787416,
+              "hits@10": 0.5119305856832972
+            },
+            "total_queries": 922,
+            "unscorable_queries": 0
+          },
+          "contraindication::contraindication": {
+            "raw": {
+              "count": 226,
+              "mrr": 0.07925886348901033,
+              "mean_rank": 162.2787610619469,
+              "hits@1": 0.004424778761061947,
+              "hits@3": 0.084070796460177,
+              "hits@10": 0.20353982300884957
+            },
+            "filtered": {
+              "count": 226,
+              "mrr": 0.19093703328740577,
+              "mean_rank": 139.05752212389382,
+              "hits@1": 0.09292035398230089,
+              "hits@3": 0.20353982300884957,
+              "hits@10": 0.40707964601769914
+            },
+            "total_queries": 226,
+            "unscorable_queries": 0
+          },
+          "protein_protein::ppi": {
+            "raw": {
+              "count": 1236,
+              "mrr": 0.03935917559631796,
+              "mean_rank": 242.0566343042071,
+              "hits@1": 0.0016181229773462784,
+              "hits@3": 0.0186084142394822,
+              "hits@10": 0.10275080906148867
+            },
+            "filtered": {
+              "count": 1236,
+              "mrr": 0.12928665981242832,
+              "mean_rank": 215.22087378640776,
+              "hits@1": 0.05825242718446602,
+              "hits@3": 0.14320388349514562,
+              "hits@10": 0.27184466019417475
+            },
+            "total_queries": 1236,
+            "unscorable_queries": 0
+          },
+          "drug_drug::synergistic interaction": {
+            "raw": {
+              "count": 358,
+              "mrr": 0.10241268309272618,
+              "mean_rank": 26.243016759776538,
+              "hits@1": 0.025139664804469275,
+              "hits@3": 0.08100558659217877,
+              "hits@10": 0.22905027932960895
+            },
+            "filtered": {
+              "count": 358,
+              "mrr": 0.2965623111706311,
+              "mean_rank": 10.131284916201118,
+              "hits@1": 0.13966480446927373,
+              "hits@3": 0.31843575418994413,
+              "hits@10": 0.664804469273743
+            },
+            "total_queries": 358,
+            "unscorable_queries": 0
+          },
+          "drug_effect::side effect": {
+            "raw": {
+              "count": 388,
+              "mrr": 0.041749555867207085,
+              "mean_rank": 145.92268041237114,
+              "hits@1": 0.002577319587628866,
+              "hits@3": 0.01804123711340206,
+              "hits@10": 0.09020618556701031
+            },
+            "filtered": {
+              "count": 388,
+              "mrr": 0.1472879353416635,
+              "mean_rank": 105.06701030927834,
+              "hits@1": 0.041237113402061855,
+              "hits@3": 0.17525773195876287,
+              "hits@10": 0.37628865979381443
+            },
+            "total_queries": 388,
+            "unscorable_queries": 0
+          },
+          "pathway_protein::interacts with": {
+            "raw": {
+              "count": 232,
+              "mrr": 0.10656166281456664,
+              "mean_rank": 289.1551724137931,
+              "hits@1": 0.017241379310344827,
+              "hits@3": 0.1206896551724138,
+              "hits@10": 0.27155172413793105
+            },
+            "filtered": {
+              "count": 232,
+              "mrr": 0.2463465443106811,
+              "mean_rank": 277.5,
+              "hits@1": 0.15517241379310345,
+              "hits@3": 0.2801724137931034,
+              "hits@10": 0.4482758620689655
+            },
+            "total_queries": 232,
+            "unscorable_queries": 0
+          },
+          "drug_protein::enzyme": {
+            "raw": {
+              "count": 52,
+              "mrr": 0.11448680018595672,
+              "mean_rank": 60.25,
+              "hits@1": 0.019230769230769232,
+              "hits@3": 0.1346153846153846,
+              "hits@10": 0.28846153846153844
+            },
+            "filtered": {
+              "count": 52,
+              "mrr": 0.17768481925920793,
+              "mean_rank": 54.21153846153846,
+              "hits@1": 0.057692307692307696,
+              "hits@3": 0.19230769230769232,
+              "hits@10": 0.4230769230769231
+            },
+            "total_queries": 52,
+            "unscorable_queries": 0
+          },
+          "drug_protein::target": {
+            "raw": {
+              "count": 78,
+              "mrr": 0.06108215092239991,
+              "mean_rank": 144.8846153846154,
+              "hits@1": 0.01282051282051282,
+              "hits@3": 0.038461538461538464,
+              "hits@10": 0.16666666666666666
+            },
+            "filtered": {
+              "count": 78,
+              "mrr": 0.10524012796323112,
+              "mean_rank": 140.43589743589743,
+              "hits@1": 0.05128205128205128,
+              "hits@3": 0.07692307692307693,
+              "hits@10": 0.21794871794871795
+            },
+            "total_queries": 78,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_positive::phenotype present": {
+            "raw": {
+              "count": 256,
+              "mrr": 0.047339852695645966,
+              "mean_rank": 216.703125,
+              "hits@1": 0.00390625,
+              "hits@3": 0.0234375,
+              "hits@10": 0.10546875
+            },
+            "filtered": {
+              "count": 256,
+              "mrr": 0.10214983688655595,
+              "mean_rank": 208.6171875,
+              "hits@1": 0.0390625,
+              "hits@3": 0.1015625,
+              "hits@10": 0.22265625
+            },
+            "total_queries": 256,
+            "unscorable_queries": 0
+          },
+          "disease_disease::parent-child": {
+            "raw": {
+              "count": 64,
+              "mrr": 0.05888646071979568,
+              "mean_rank": 387.578125,
+              "hits@1": 0.015625,
+              "hits@3": 0.046875,
+              "hits@10": 0.15625
+            },
+            "filtered": {
+              "count": 64,
+              "mrr": 0.06929249416200944,
+              "mean_rank": 386.65625,
+              "hits@1": 0.03125,
+              "hits@3": 0.0625,
+              "hits@10": 0.15625
+            },
+            "total_queries": 64,
+            "unscorable_queries": 0
+          },
+          "indication::indication": {
+            "raw": {
+              "count": 38,
+              "mrr": 0.13369471139668243,
+              "mean_rank": 259.13157894736844,
+              "hits@1": 0.05263157894736842,
+              "hits@3": 0.13157894736842105,
+              "hits@10": 0.3157894736842105
+            },
+            "filtered": {
+              "count": 38,
+              "mrr": 0.2027388244002889,
+              "mean_rank": 255.6578947368421,
+              "hits@1": 0.13157894736842105,
+              "hits@3": 0.21052631578947367,
+              "hits@10": 0.34210526315789475
+            },
+            "total_queries": 38,
+            "unscorable_queries": 0
+          },
+          "drug_protein::transporter": {
+            "raw": {
+              "count": 32,
+              "mrr": 0.11080595255654677,
+              "mean_rank": 91.4375,
+              "hits@1": 0.03125,
+              "hits@3": 0.03125,
+              "hits@10": 0.375
+            },
+            "filtered": {
+              "count": 32,
+              "mrr": 0.14838552794816745,
+              "mean_rank": 87.6875,
+              "hits@1": 0.03125,
+              "hits@3": 0.09375,
+              "hits@10": 0.46875
+            },
+            "total_queries": 32,
+            "unscorable_queries": 0
+          },
+          "phenotype_phenotype::parent-child": {
+            "raw": {
+              "count": 24,
+              "mrr": 0.024249947117384856,
+              "mean_rank": 848.4166666666666,
+              "hits@1": 0.0,
+              "hits@3": 0.041666666666666664,
+              "hits@10": 0.041666666666666664
+            },
+            "filtered": {
+              "count": 24,
+              "mrr": 0.02436249332014796,
+              "mean_rank": 847.6666666666666,
+              "hits@1": 0.0,
+              "hits@3": 0.041666666666666664,
+              "hits@10": 0.041666666666666664
+            },
+            "total_queries": 24,
+            "unscorable_queries": 0
+          },
+          "phenotype_protein::associated with": {
+            "raw": {
+              "count": 66,
+              "mrr": 0.1003068335332987,
+              "mean_rank": 76.81818181818181,
+              "hits@1": 0.045454545454545456,
+              "hits@3": 0.06060606060606061,
+              "hits@10": 0.22727272727272727
+            },
+            "filtered": {
+              "count": 66,
+              "mrr": 0.12741295049660256,
+              "mean_rank": 70.9090909090909,
+              "hits@1": 0.045454545454545456,
+              "hits@3": 0.15151515151515152,
+              "hits@10": 0.2878787878787879
+            },
+            "total_queries": 66,
+            "unscorable_queries": 0
+          },
+          "off-label use::off-label use": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.0066222936362968525,
+              "mean_rank": 409.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.006637930602301824,
+              "mean_rank": 407.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "pathway_pathway::parent-child": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.02297788799130322,
+              "mean_rank": 607.0833333333334,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.08333333333333333
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.023545008045120858,
+              "mean_rank": 605.75,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.08333333333333333
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "drug_protein::carrier": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.003343552711696025,
+              "mean_rank": 313.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.003343552711696025,
+              "mean_rank": 313.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_negative::phenotype absent": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.008331741787624141,
+              "mean_rank": 174.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.008345358345358347,
+              "mean_rank": 173.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          }
+        },
+        "by_side": {
+          "head": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.05613876886392788,
+              "mean_rank": 177.6285,
+              "hits@1": 0.0055,
+              "hits@3": 0.0355,
+              "hits@10": 0.136
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.18153315772305686,
+              "mean_rank": 155.8185,
+              "hits@1": 0.0815,
+              "hits@3": 0.205,
+              "hits@10": 0.3905
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          },
+          "tail": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.0630468309602235,
+              "mean_rank": 188.155,
+              "hits@1": 0.0095,
+              "hits@3": 0.0475,
+              "hits@10": 0.157
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.1864609907892029,
+              "mean_rank": 165.27,
+              "hits@1": 0.0975,
+              "hits@3": 0.203,
+              "hits@10": 0.381
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          }
+        },
+        "by_owner": {
+          "non_owner": {
+            "raw": {
+              "count": 2592,
+              "mrr": 0.0485481173766629,
+              "mean_rank": 202.38503086419752,
+              "hits@1": 0.0038580246913580245,
+              "hits@3": 0.027391975308641976,
+              "hits@10": 0.12114197530864197
+            },
+            "filtered": {
+              "count": 2592,
+              "mrr": 0.1729293851992925,
+              "mean_rank": 179.59375,
+              "hits@1": 0.08680555555555555,
+              "hits@3": 0.19444444444444445,
+              "hits@10": 0.35030864197530864
+            },
+            "total_queries": 2592,
+            "unscorable_queries": 0
+          },
+          "owner_touching": {
+            "raw": {
+              "count": 1408,
+              "mrr": 0.07992505639772195,
+              "mean_rank": 147.00639204545453,
+              "hits@1": 0.014204545454545454,
+              "hits@3": 0.06747159090909091,
+              "hits@10": 0.19318181818181818
+            },
+            "filtered": {
+              "count": 1408,
+              "mrr": 0.20437168365621686,
+              "mean_rank": 125.47585227272727,
+              "hits@1": 0.09446022727272728,
+              "hits@3": 0.2215909090909091,
+              "hits@10": 0.4509943181818182
+            },
+            "total_queries": 1408,
+            "unscorable_queries": 0
+          }
+        }
+      }
+    },
+    "test": {
+      "root": {
+        "raw": {
+          "count": 4014,
+          "mrr": 0.0638956317783544,
+          "mean_rank": 189.11733931240659,
+          "hits@1": 0.008968609865470852,
+          "hits@3": 0.04509217737917289,
+          "hits@10": 0.1619332336821126
+        },
+        "filtered": {
+          "count": 4014,
+          "mrr": 0.234395645990489,
+          "mean_rank": 166.3542600896861,
+          "hits@1": 0.14798206278026907,
+          "hits@3": 0.257847533632287,
+          "hits@10": 0.4055804683607374
+        },
+        "total_queries": 4014,
+        "unscorable_queries": 0,
+        "scorable_queries": 4014
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.0638956317783544,
+          "macro_scope_mrr": 0.0638956317783544
+        },
+        "filtered": {
+          "micro": 0.234395645990489,
+          "macro_scope_mrr": 0.234395645990489
+        }
+      },
+      "settings": {
+        "split": "test",
+        "filter_known_splits": [
+          "test",
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+        "task_scope": "root",
+        "fact_limit": null,
+        "root_candidate_count": 2534,
+        "candidates": "all ROOT occurrences"
+      },
+      "breakdowns": {
+        "by_relation": {
+          "drug_drug::synergistic interaction": {
+            "raw": {
+              "count": 360,
+              "mrr": 0.09288925303029506,
+              "mean_rank": 32.291666666666664,
+              "hits@1": 0.016666666666666666,
+              "hits@3": 0.06111111111111111,
+              "hits@10": 0.23333333333333334
+            },
+            "filtered": {
+              "count": 360,
+              "mrr": 0.36916425184354107,
+              "mean_rank": 15.502777777777778,
+              "hits@1": 0.21666666666666667,
+              "hits@3": 0.425,
+              "hits@10": 0.6472222222222223
+            },
+            "total_queries": 360,
+            "unscorable_queries": 0
+          },
+          "contraindication::contraindication": {
+            "raw": {
+              "count": 232,
+              "mrr": 0.07544651567662101,
+              "mean_rank": 184.1293103448276,
+              "hits@1": 0.008620689655172414,
+              "hits@3": 0.07327586206896551,
+              "hits@10": 0.1896551724137931
+            },
+            "filtered": {
+              "count": 232,
+              "mrr": 0.20672832034789745,
+              "mean_rank": 163.47844827586206,
+              "hits@1": 0.10775862068965517,
+              "hits@3": 0.22844827586206898,
+              "hits@10": 0.4353448275862069
+            },
+            "total_queries": 232,
+            "unscorable_queries": 0
+          },
+          "disease_protein::associated with": {
+            "raw": {
+              "count": 922,
+              "mrr": 0.06091626298427996,
+              "mean_rank": 127.31344902386117,
+              "hits@1": 0.006507592190889371,
+              "hits@3": 0.03579175704989154,
+              "hits@10": 0.14642082429501085
+            },
+            "filtered": {
+              "count": 922,
+              "mrr": 0.34151222686466653,
+              "mean_rank": 101.09978308026031,
+              "hits@1": 0.24945770065075923,
+              "hits@3": 0.37310195227765725,
+              "hits@10": 0.5238611713665944
+            },
+            "total_queries": 922,
+            "unscorable_queries": 0
+          },
+          "protein_protein::ppi": {
+            "raw": {
+              "count": 1236,
+              "mrr": 0.045620070887462644,
+              "mean_rank": 236.53398058252426,
+              "hits@1": 0.0016181229773462784,
+              "hits@3": 0.024271844660194174,
+              "hits@10": 0.12944983818770225
+            },
+            "filtered": {
+              "count": 1236,
+              "mrr": 0.1835020237903872,
+              "mean_rank": 210.54611650485438,
+              "hits@1": 0.11488673139158576,
+              "hits@3": 0.19579288025889968,
+              "hits@10": 0.3179611650485437
+            },
+            "total_queries": 1236,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_positive::phenotype present": {
+            "raw": {
+              "count": 260,
+              "mrr": 0.04695298612789562,
+              "mean_rank": 145.05,
+              "hits@1": 0.0038461538461538464,
+              "hits@3": 0.023076923076923078,
+              "hits@10": 0.11538461538461539
+            },
+            "filtered": {
+              "count": 260,
+              "mrr": 0.09291377997304094,
+              "mean_rank": 135.66538461538462,
+              "hits@1": 0.026923076923076925,
+              "hits@3": 0.1,
+              "hits@10": 0.20384615384615384
+            },
+            "total_queries": 260,
+            "unscorable_queries": 0
+          },
+          "pathway_protein::interacts with": {
+            "raw": {
+              "count": 236,
+              "mrr": 0.12322148695985286,
+              "mean_rank": 289.79661016949154,
+              "hits@1": 0.03389830508474576,
+              "hits@3": 0.13559322033898305,
+              "hits@10": 0.288135593220339
+            },
+            "filtered": {
+              "count": 236,
+              "mrr": 0.3710209477695759,
+              "mean_rank": 275.04661016949154,
+              "hits@1": 0.3050847457627119,
+              "hits@3": 0.4110169491525424,
+              "hits@10": 0.4661016949152542
+            },
+            "total_queries": 236,
+            "unscorable_queries": 0
+          },
+          "drug_protein::transporter": {
+            "raw": {
+              "count": 22,
+              "mrr": 0.16577699772963697,
+              "mean_rank": 249.95454545454547,
+              "hits@1": 0.09090909090909091,
+              "hits@3": 0.18181818181818182,
+              "hits@10": 0.3181818181818182
+            },
+            "filtered": {
+              "count": 22,
+              "mrr": 0.2066599729635146,
+              "mean_rank": 247.0,
+              "hits@1": 0.09090909090909091,
+              "hits@3": 0.2727272727272727,
+              "hits@10": 0.45454545454545453
+            },
+            "total_queries": 22,
+            "unscorable_queries": 0
+          },
+          "drug_effect::side effect": {
+            "raw": {
+              "count": 394,
+              "mrr": 0.04878449821092024,
+              "mean_rank": 187.9289340101523,
+              "hits@1": 0.005076142131979695,
+              "hits@3": 0.030456852791878174,
+              "hits@10": 0.12436548223350254
+            },
+            "filtered": {
+              "count": 394,
+              "mrr": 0.15976776578092217,
+              "mean_rank": 144.9746192893401,
+              "hits@1": 0.0583756345177665,
+              "hits@3": 0.1802030456852792,
+              "hits@10": 0.38071065989847713
+            },
+            "total_queries": 394,
+            "unscorable_queries": 0
+          },
+          "indication::indication": {
+            "raw": {
+              "count": 44,
+              "mrr": 0.16611836514763834,
+              "mean_rank": 92.29545454545455,
+              "hits@1": 0.06818181818181818,
+              "hits@3": 0.13636363636363635,
+              "hits@10": 0.36363636363636365
+            },
+            "filtered": {
+              "count": 44,
+              "mrr": 0.22259042930199088,
+              "mean_rank": 89.72727272727273,
+              "hits@1": 0.13636363636363635,
+              "hits@3": 0.2727272727272727,
+              "hits@10": 0.4090909090909091
+            },
+            "total_queries": 44,
+            "unscorable_queries": 0
+          },
+          "phenotype_protein::associated with": {
+            "raw": {
+              "count": 68,
+              "mrr": 0.04885383475020161,
+              "mean_rank": 232.19117647058823,
+              "hits@1": 0.0,
+              "hits@3": 0.04411764705882353,
+              "hits@10": 0.16176470588235295
+            },
+            "filtered": {
+              "count": 68,
+              "mrr": 0.0677350725730306,
+              "mean_rank": 225.52941176470588,
+              "hits@1": 0.0,
+              "hits@3": 0.07352941176470588,
+              "hits@10": 0.22058823529411764
+            },
+            "total_queries": 68,
+            "unscorable_queries": 0
+          },
+          "drug_protein::carrier": {
+            "raw": {
+              "count": 6,
+              "mrr": 0.08876806874317816,
+              "mean_rank": 1234.1666666666667,
+              "hits@1": 0.0,
+              "hits@3": 0.16666666666666666,
+              "hits@10": 0.16666666666666666
+            },
+            "filtered": {
+              "count": 6,
+              "mrr": 0.09352164256293462,
+              "mean_rank": 1231.1666666666667,
+              "hits@1": 0.0,
+              "hits@3": 0.16666666666666666,
+              "hits@10": 0.16666666666666666
+            },
+            "total_queries": 6,
+            "unscorable_queries": 0
+          },
+          "disease_disease::parent-child": {
+            "raw": {
+              "count": 64,
+              "mrr": 0.041803745285951224,
+              "mean_rank": 513.359375,
+              "hits@1": 0.0,
+              "hits@3": 0.046875,
+              "hits@10": 0.125
+            },
+            "filtered": {
+              "count": 64,
+              "mrr": 0.05119940407935322,
+              "mean_rank": 512.546875,
+              "hits@1": 0.015625,
+              "hits@3": 0.0625,
+              "hits@10": 0.140625
+            },
+            "total_queries": 64,
+            "unscorable_queries": 0
+          },
+          "off-label use::off-label use": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.013071846075235849,
+              "mean_rank": 548.9166666666666,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.013307335260449372,
+              "mean_rank": 546.0833333333334,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "drug_protein::enzyme": {
+            "raw": {
+              "count": 54,
+              "mrr": 0.1005796629077236,
+              "mean_rank": 171.24074074074073,
+              "hits@1": 0.0,
+              "hits@3": 0.05555555555555555,
+              "hits@10": 0.3888888888888889
+            },
+            "filtered": {
+              "count": 54,
+              "mrr": 0.1692918126665237,
+              "mean_rank": 165.12962962962962,
+              "hits@1": 0.05555555555555555,
+              "hits@3": 0.14814814814814814,
+              "hits@10": 0.4444444444444444
+            },
+            "total_queries": 54,
+            "unscorable_queries": 0
+          },
+          "drug_protein::target": {
+            "raw": {
+              "count": 68,
+              "mrr": 0.1261870871223032,
+              "mean_rank": 202.01470588235293,
+              "hits@1": 0.058823529411764705,
+              "hits@3": 0.1323529411764706,
+              "hits@10": 0.22058823529411764
+            },
+            "filtered": {
+              "count": 68,
+              "mrr": 0.15650446841010285,
+              "mean_rank": 197.76470588235293,
+              "hits@1": 0.07352941176470588,
+              "hits@3": 0.17647058823529413,
+              "hits@10": 0.36764705882352944
+            },
+            "total_queries": 68,
+            "unscorable_queries": 0
+          },
+          "pathway_pathway::parent-child": {
+            "raw": {
+              "count": 10,
+              "mrr": 0.015379360746350943,
+              "mean_rank": 330.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 10,
+              "mrr": 0.01566686484580699,
+              "mean_rank": 328.9,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 10,
+            "unscorable_queries": 0
+          },
+          "phenotype_phenotype::parent-child": {
+            "raw": {
+              "count": 24,
+              "mrr": 0.024962483573165484,
+              "mean_rank": 675.7083333333334,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.041666666666666664
+            },
+            "filtered": {
+              "count": 24,
+              "mrr": 0.029357511826400493,
+              "mean_rank": 674.4583333333334,
+              "hits@1": 0.0,
+              "hits@3": 0.041666666666666664,
+              "hits@10": 0.125
+            },
+            "total_queries": 24,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_negative::phenotype absent": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.03240577668193026,
+              "mean_rank": 92.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.03242381289865344,
+              "mean_rank": 91.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          }
+        },
+        "by_side": {
+          "head": {
+            "raw": {
+              "count": 2007,
+              "mrr": 0.05986552110341324,
+              "mean_rank": 184.24763328350772,
+              "hits@1": 0.006975585450921774,
+              "hits@3": 0.03587443946188341,
+              "hits@10": 0.15246636771300448
+            },
+            "filtered": {
+              "count": 2007,
+              "mrr": 0.23682781994067487,
+              "mean_rank": 161.49975087194818,
+              "hits@1": 0.1489785749875436,
+              "hits@3": 0.2571001494768311,
+              "hits@10": 0.4175386148480319
+            },
+            "total_queries": 2007,
+            "unscorable_queries": 0
+          },
+          "tail": {
+            "raw": {
+              "count": 2007,
+              "mrr": 0.06792574245329557,
+              "mean_rank": 193.98704534130542,
+              "hits@1": 0.01096163428001993,
+              "hits@3": 0.05430991529646238,
+              "hits@10": 0.17140009965122072
+            },
+            "filtered": {
+              "count": 2007,
+              "mrr": 0.23196347204030313,
+              "mean_rank": 171.208769307424,
+              "hits@1": 0.1469855505729945,
+              "hits@3": 0.2585949177877429,
+              "hits@10": 0.3936223218734429
+            },
+            "total_queries": 2007,
+            "unscorable_queries": 0
+          }
+        },
+        "by_owner": {
+          "owner_touching": {
+            "raw": {
+              "count": 1420,
+              "mrr": 0.08725569351914077,
+              "mean_rank": 171.18732394366197,
+              "hits@1": 0.019014084507042252,
+              "hits@3": 0.07394366197183098,
+              "hits@10": 0.21338028169014084
+            },
+            "filtered": {
+              "count": 1420,
+              "mrr": 0.2564279863028284,
+              "mean_rank": 148.68591549295775,
+              "hits@1": 0.15,
+              "hits@3": 0.2887323943661972,
+              "hits@10": 0.4697183098591549
+            },
+            "total_queries": 1420,
+            "unscorable_queries": 0
+          },
+          "non_owner": {
+            "raw": {
+              "count": 2594,
+              "mrr": 0.05110793414076126,
+              "mean_rank": 198.9325366229761,
+              "hits@1": 0.003469545104086353,
+              "hits@3": 0.029298380878951428,
+              "hits@10": 0.13377023901310717
+            },
+            "filtered": {
+              "count": 2594,
+              "mrr": 0.22233476578866865,
+              "mean_rank": 176.02621434078642,
+              "hits@1": 0.1468774094063223,
+              "hits@3": 0.24094063222821896,
+              "hits@10": 0.37047031611410947
+            },
+            "total_queries": 2594,
+            "unscorable_queries": 0
+          }
+        }
+      }
+    },
+    "checkpoint": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\structural-real-seed17\\seed_17\\rgcn_warm80_20261127_041939\\rgcn_best.pt",
+    "optimizer_updates": 80,
+    "update_offset": 80,
+    "initial_validation": {
+      "root": {
+        "raw": {
+          "count": 4000,
+          "mrr": 0.04324883964808226,
+          "mean_rank": 356.652,
+          "hits@1": 0.01175,
+          "hits@3": 0.03125,
+          "hits@10": 0.09275
+        },
+        "filtered": {
+          "count": 4000,
+          "mrr": 0.07377361180900846,
+          "mean_rank": 338.848,
+          "hits@1": 0.03025,
+          "hits@3": 0.07,
+          "hits@10": 0.15525
+        },
+        "total_queries": 4000,
+        "unscorable_queries": 0,
+        "scorable_queries": 4000
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.04324883964808226,
+          "macro_scope_mrr": 0.04324883964808226
+        },
+        "filtered": {
+          "micro": 0.07377361180900846,
+          "macro_scope_mrr": 0.07377361180900846
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+        "task_scope": "root",
+        "fact_limit": null,
+        "root_candidate_count": 2534,
+        "candidates": "all ROOT occurrences"
+      },
+      "breakdowns": {
+        "by_relation": {
+          "disease_protein::associated with": {
+            "raw": {
+              "count": 922,
+              "mrr": 0.039387316204133105,
+              "mean_rank": 272.2689804772234,
+              "hits@1": 0.006507592190889371,
+              "hits@3": 0.027114967462039046,
+              "hits@10": 0.09219088937093275
+            },
+            "filtered": {
+              "count": 922,
+              "mrr": 0.07574043403814786,
+              "mean_rank": 253.2060737527115,
+              "hits@1": 0.026030368763557483,
+              "hits@3": 0.07483731019522777,
+              "hits@10": 0.1616052060737527
+            },
+            "total_queries": 922,
+            "unscorable_queries": 0
+          },
+          "contraindication::contraindication": {
+            "raw": {
+              "count": 226,
+              "mrr": 0.06060221912550499,
+              "mean_rank": 362.96902654867256,
+              "hits@1": 0.02654867256637168,
+              "hits@3": 0.05752212389380531,
+              "hits@10": 0.11946902654867257
+            },
+            "filtered": {
+              "count": 226,
+              "mrr": 0.08358785611506553,
+              "mean_rank": 346.10176991150445,
+              "hits@1": 0.03982300884955752,
+              "hits@3": 0.0752212389380531,
+              "hits@10": 0.19469026548672566
+            },
+            "total_queries": 226,
+            "unscorable_queries": 0
+          },
+          "protein_protein::ppi": {
+            "raw": {
+              "count": 1236,
+              "mrr": 0.037137448250849546,
+              "mean_rank": 442.2135922330097,
+              "hits@1": 0.009708737864077669,
+              "hits@3": 0.025889967637540454,
+              "hits@10": 0.08171521035598706
+            },
+            "filtered": {
+              "count": 1236,
+              "mrr": 0.07217946486227819,
+              "mean_rank": 419.0040453074434,
+              "hits@1": 0.03478964401294499,
+              "hits@3": 0.07686084142394822,
+              "hits@10": 0.13915857605177995
+            },
+            "total_queries": 1236,
+            "unscorable_queries": 0
+          },
+          "drug_drug::synergistic interaction": {
+            "raw": {
+              "count": 358,
+              "mrr": 0.045333230676280735,
+              "mean_rank": 107.99720670391062,
+              "hits@1": 0.0111731843575419,
+              "hits@3": 0.0223463687150838,
+              "hits@10": 0.09497206703910614
+            },
+            "filtered": {
+              "count": 358,
+              "mrr": 0.06272825024943168,
+              "mean_rank": 94.44134078212291,
+              "hits@1": 0.0111731843575419,
+              "hits@3": 0.036312849162011177,
+              "hits@10": 0.16759776536312848
+            },
+            "total_queries": 358,
+            "unscorable_queries": 0
+          },
+          "drug_effect::side effect": {
+            "raw": {
+              "count": 388,
+              "mrr": 0.06738731482549404,
+              "mean_rank": 159.90463917525773,
+              "hits@1": 0.015463917525773196,
+              "hits@3": 0.04381443298969072,
+              "hits@10": 0.15979381443298968
+            },
+            "filtered": {
+              "count": 388,
+              "mrr": 0.13122897466192407,
+              "mean_rank": 130.88144329896906,
+              "hits@1": 0.05412371134020619,
+              "hits@3": 0.11855670103092783,
+              "hits@10": 0.30670103092783507
+            },
+            "total_queries": 388,
+            "unscorable_queries": 0
+          },
+          "pathway_protein::interacts with": {
+            "raw": {
+              "count": 232,
+              "mrr": 0.04656876927179324,
+              "mean_rank": 493.37931034482756,
+              "hits@1": 0.008620689655172414,
+              "hits@3": 0.05172413793103448,
+              "hits@10": 0.11206896551724138
+            },
+            "filtered": {
+              "count": 232,
+              "mrr": 0.07724489272335909,
+              "mean_rank": 483.38793103448273,
+              "hits@1": 0.034482758620689655,
+              "hits@3": 0.08189655172413793,
+              "hits@10": 0.14224137931034483
+            },
+            "total_queries": 232,
+            "unscorable_queries": 0
+          },
+          "drug_protein::enzyme": {
+            "raw": {
+              "count": 52,
+              "mrr": 0.08622829784498559,
+              "mean_rank": 200.96153846153845,
+              "hits@1": 0.038461538461538464,
+              "hits@3": 0.057692307692307696,
+              "hits@10": 0.15384615384615385
+            },
+            "filtered": {
+              "count": 52,
+              "mrr": 0.09432367644589651,
+              "mean_rank": 195.8846153846154,
+              "hits@1": 0.038461538461538464,
+              "hits@3": 0.09615384615384616,
+              "hits@10": 0.19230769230769232
+            },
+            "total_queries": 52,
+            "unscorable_queries": 0
+          },
+          "drug_protein::target": {
+            "raw": {
+              "count": 78,
+              "mrr": 0.0486663551666149,
+              "mean_rank": 296.5,
+              "hits@1": 0.02564102564102564,
+              "hits@3": 0.038461538461538464,
+              "hits@10": 0.07692307692307693
+            },
+            "filtered": {
+              "count": 78,
+              "mrr": 0.05086797606423428,
+              "mean_rank": 293.15384615384613,
+              "hits@1": 0.02564102564102564,
+              "hits@3": 0.038461538461538464,
+              "hits@10": 0.08974358974358974
+            },
+            "total_queries": 78,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_positive::phenotype present": {
+            "raw": {
+              "count": 256,
+              "mrr": 0.01100557921693419,
+              "mean_rank": 580.40625,
+              "hits@1": 0.0,
+              "hits@3": 0.00390625,
+              "hits@10": 0.01953125
+            },
+            "filtered": {
+              "count": 256,
+              "mrr": 0.012049344715572265,
+              "mean_rank": 573.9453125,
+              "hits@1": 0.0,
+              "hits@3": 0.00390625,
+              "hits@10": 0.01953125
+            },
+            "total_queries": 256,
+            "unscorable_queries": 0
+          },
+          "disease_disease::parent-child": {
+            "raw": {
+              "count": 64,
+              "mrr": 0.026230198268081546,
+              "mean_rank": 675.015625,
+              "hits@1": 0.015625,
+              "hits@3": 0.015625,
+              "hits@10": 0.03125
+            },
+            "filtered": {
+              "count": 64,
+              "mrr": 0.026437038968792143,
+              "mean_rank": 674.125,
+              "hits@1": 0.015625,
+              "hits@3": 0.015625,
+              "hits@10": 0.046875
+            },
+            "total_queries": 64,
+            "unscorable_queries": 0
+          },
+          "indication::indication": {
+            "raw": {
+              "count": 38,
+              "mrr": 0.011086963544148778,
+              "mean_rank": 422.1842105263158,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 38,
+              "mrr": 0.011259291605535026,
+              "mean_rank": 419.0263157894737,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 38,
+            "unscorable_queries": 0
+          },
+          "drug_protein::transporter": {
+            "raw": {
+              "count": 32,
+              "mrr": 0.14460760745693427,
+              "mean_rank": 163.8125,
+              "hits@1": 0.09375,
+              "hits@3": 0.125,
+              "hits@10": 0.1875
+            },
+            "filtered": {
+              "count": 32,
+              "mrr": 0.151225467262531,
+              "mean_rank": 161.4375,
+              "hits@1": 0.09375,
+              "hits@3": 0.125,
+              "hits@10": 0.25
+            },
+            "total_queries": 32,
+            "unscorable_queries": 0
+          },
+          "phenotype_phenotype::parent-child": {
+            "raw": {
+              "count": 24,
+              "mrr": 0.0009266433659561242,
+              "mean_rank": 1541.2083333333333,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 24,
+              "mrr": 0.0009293429755025422,
+              "mean_rank": 1540.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 24,
+            "unscorable_queries": 0
+          },
+          "phenotype_protein::associated with": {
+            "raw": {
+              "count": 66,
+              "mrr": 0.08917053085567372,
+              "mean_rank": 243.0151515151515,
+              "hits@1": 0.045454545454545456,
+              "hits@3": 0.09090909090909091,
+              "hits@10": 0.12121212121212122
+            },
+            "filtered": {
+              "count": 66,
+              "mrr": 0.10232630133643697,
+              "mean_rank": 239.71212121212122,
+              "hits@1": 0.06060606060606061,
+              "hits@3": 0.10606060606060606,
+              "hits@10": 0.15151515151515152
+            },
+            "total_queries": 66,
+            "unscorable_queries": 0
+          },
+          "off-label use::off-label use": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.001153003221263966,
+              "mean_rank": 1325.75,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.001155662042021317,
+              "mean_rank": 1323.75,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "pathway_pathway::parent-child": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.012302438624514292,
+              "mean_rank": 1062.9166666666667,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.08333333333333333
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.01231570905764795,
+              "mean_rank": 1061.5833333333333,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.08333333333333333
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "drug_protein::carrier": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.0036310728744939273,
+              "mean_rank": 574.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.0036310728744939273,
+              "mean_rank": 574.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_negative::phenotype absent": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.0008790740825234597,
+              "mean_rank": 1156.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.0008796648895658797,
+              "mean_rank": 1155.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          }
+        },
+        "by_side": {
+          "head": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.04549971308316761,
+              "mean_rank": 338.585,
+              "hits@1": 0.012,
+              "hits@3": 0.0305,
+              "hits@10": 0.1045
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.07922877107950246,
+              "mean_rank": 320.77,
+              "hits@1": 0.0325,
+              "hits@3": 0.076,
+              "hits@10": 0.17
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          },
+          "tail": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.040997966212996916,
+              "mean_rank": 374.719,
+              "hits@1": 0.0115,
+              "hits@3": 0.032,
+              "hits@10": 0.081
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.06831845253851443,
+              "mean_rank": 356.926,
+              "hits@1": 0.028,
+              "hits@3": 0.064,
+              "hits@10": 0.1405
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          }
+        },
+        "by_owner": {
+          "non_owner": {
+            "raw": {
+              "count": 2592,
+              "mrr": 0.035809324468842635,
+              "mean_rank": 408.0300925925926,
+              "hits@1": 0.008487654320987654,
+              "hits@3": 0.02507716049382716,
+              "hits@10": 0.0775462962962963
+            },
+            "filtered": {
+              "count": 2592,
+              "mrr": 0.0659015830516742,
+              "mean_rank": 389.358024691358,
+              "hits@1": 0.027777777777777776,
+              "hits@3": 0.06674382716049383,
+              "hits@10": 0.13078703703703703
+            },
+            "total_queries": 2592,
+            "unscorable_queries": 0
+          },
+          "owner_touching": {
+            "raw": {
+              "count": 1408,
+              "mrr": 0.056944310773500637,
+              "mean_rank": 262.06960227272725,
+              "hits@1": 0.01775568181818182,
+              "hits@3": 0.04261363636363636,
+              "hits@10": 0.12073863636363637
+            },
+            "filtered": {
+              "count": 1408,
+              "mrr": 0.08826530111228283,
+              "mean_rank": 245.86363636363637,
+              "hits@1": 0.03480113636363636,
+              "hits@3": 0.07599431818181818,
+              "hits@10": 0.2002840909090909
+            },
+            "total_queries": 1408,
+            "unscorable_queries": 0
+          }
+        }
+      }
+    },
+    "initialization": {
+      "path": "C:\\Users\\richi\\Desktop\\Graph of Graphs\\runs\\structural-real-seed17\\seed_17\\pretraining\\baseline_best.pt",
+      "mode": "baseline_transfer",
+      "entities_copied": 9523,
+      "types_copied": 12,
+      "relations_copied": 33,
+      "source_best_epoch": 80,
+      "optimizer_reset": true
+    },
+    "fingerprints": {
+      "dataset": "4e333278b4de091af2da4b81d0053a6fd2f73c4ab587a160ae87882fba63c19d",
+      "candidates": "6dde2089fef45ae499e7d1414c7b5a56b6203cf73f63bb80166bad1b5d1676ad",
+      "queries": {
+        "train": "d1c94e6a1d38e545b852eb7a7ab7ee5bf2ad230c04725da20b3fc386b6c2978a",
+        "validation": "3117b85dc3f7656622d7250037a0d11f5255309af99f9fa890586ef8e0bb5997",
+        "test": "cf11d8348af927705c6fd7efb6871ada5eb00b97881d84344dd332b42cedab11"
+      }
+    },
+    "negative_sample_fingerprints": [
+      "136a4922d639852415e3d3dc0511f9931c20cbf08dfab1331372c76d4ff6da6e",
+      "47a68c8288627f7ad7bf393bd6e3e631435e4245f6d68af1e4ae1c866d7b3cb7",
+      "9270640c099a1398eb74e75b8b622bddd76ae8fa99d992de8f6f9aa260d4fbf1",
+      "da33510f933a8b309bb78edc0ed262ac92946d99cef37787c24c8b2bbc4d5fb3",
+      "cbfa06d549c42de71268e5203bd33e14c096da9502cde0b2ddbfa4c76dbba877",
+      "e1219c06843cd3d4a43be5a851c0c0bcf85b2a98f6fab34ad13ca9d0fad7be87",
+      "f039434802536981fe0f1cbe37298e19b6732f191627ad59f8c7630438deb282",
+      "0c47888aa981f19692407868203eeb3ab6713b60d74291921627ab7e53bc9cf7",
+      "1e3db3fb8d9baf4b1e7b5128954dcf7eda91ce1023c49779cf015621a564b509",
+      "0acb5920113dd9bd3538a8e946152f41f075b44bfcba31318a0d774d80306ca0",
+      "e2b310ed078ae6de900a26256dc99e33032ecf390502b629c78c819344c06a0f",
+      "680dca8f19f71a592d9ceed26423d1f2fab21e56a83ec4fdf5753b67318d8be9",
+      "47e4c9991bb700d4fb8702ffe208bece726d35897a70d33a5996ff8218d8623d",
+      "ee4dc61aa60feac860e8a8db645e0ca13a6c9306efc5ea7209247ee1105bb8ec",
+      "aac18b8a10df42a45c6ec4a4d9a81edff9482f6f2d0cbe63a43f0572eb948c49",
+      "0ed80005b38a879762bf87d813154581270ad2a3ea6566086e4948d73faf1519",
+      "dc3e36bafee1659b670db3ee4f7e396554933c799beb1946e64ebb1d0538be29",
+      "2466ee80bafa245eb578532498a30094eeb8fd6cbda7b3d02a180ef193fbcaf6",
+      "1de4409395d508d6b3bd999fb10f2b7e4aa5994e1d64e9657c690cea72723a77",
+      "85671029e006de1b2f58d14f1b1d40b2d0ad9d644639ab0e2d1736728465c77e",
+      "1116b2867f7798b1635683fb8ccf0b48a77c3e77b9bdb2dcf1d181535bdd218a",
+      "1b494cd6b8df7227f3d7e4601033db39e9f700670ebcd295bf469cfe89dcbb94",
+      "9b34a4379e507fde24da84c13e2b51ce107fe843d5208017b77fecc5321ca324",
+      "5494c2c2652dd8a62c0c7283a5b7b53056e10755509174308cbd49f58abcf357",
+      "51d7a952be93670cfa90e9c492aa79a8fdfe507ef493df0639e5a5d2ff4b42e0",
+      "dee34105684af81192e451238bb63f2a9962317878be5e6f776d8ace4a3343dc",
+      "24232d84831809628a614b28533352bca4005f2d95c9a2fd14123329d7f1fa92",
+      "1415d46a7b7a6ea5c840eba804d44466ade29579ed7828d1b2089ed622ae2d21",
+      "105628c8c8e8bdc5f41f75679b79b6c9a02c46d786027dc1cd787b591924921d",
+      "4128aef81d5c77e1ef1d3e6e84b5d16d38ef57b6fdf915a3f083aa26784dfa77",
+      "58fe147e3a93bc2aa4509abb12e8977a7db218953c45b050900af7344640aad1",
+      "ee9a5c3b71f2cc5bb5caaa4684126e451eb70e9e40fd7831b421c569694fec52",
+      "827075be432429176de14177ba38dbb884eef83de4a3c855f25261065c4289dd",
+      "4b9c03926859a674a610e0dfd852b6406241b87ae00766a8b75e3b9e8f1ddbfa",
+      "5400bb082213576c13b3ab01b529132ba306801e483d79b553718ea64dfe3a71",
+      "a43856a39a36d58fa91a5de19bb7ae7064a9e8d2cbbd59cb923587a84ebb763f",
+      "cf11608712a7735aa8020662feb8d74565ec0fcfa12f7bc0e9a4668d3d59d0d9",
+      "2f833bdb7c5dc2d5f636b1c4590311611d41c3633756bf8049e270e21a77fdc2",
+      "2ec4e0d9fee736e4e86ddac0c2162877a384661f92f4110d45e456c8d1e3f06b",
+      "e819f3132656c60d07e15630a0c892dd06397264a9e2c5386cb2e7f530310e1a",
+      "4610824d0f6db43afe4c66912baab1920bbbcd2554f9fe5385c06ed0abb07fbe",
+      "ff971810dc5dc66415aebc36e103c58d9af2488c6f0fc6e287c400721eb53c49",
+      "d0fb42f15fa04e00b779bc8f19e2f7b00fc5b90f94531159fa47b92a2facb04b",
+      "b7fab4aa0e4d3356368e7a686eb6c08a22bdfa4c252f5d8082a2eca99cbf1f3e",
+      "b6e6444d34d2af54a0ff500b15e4bc42db593bed3b70521be7a5424b12f64815",
+      "5ca2aa387ba4918575d06f986464096ebee5260197839bf10a972cf1b629a9a8",
+      "29ea507122cad7c4bd8b25de741be8e23da98181f955e34221fdf338acfaa295",
+      "14ad75748c64160cde38e98f1f8a0bff7a07e8757e70c17633a04ad5a33a7749",
+      "dfd5efa3f5b56d9dbf4e6a95aebd94ed96510a99b21d4dcacf91c119c49ac9c7",
+      "831e97fb062815aebccad837ca43ab9a578aa67fd6d6002cb95f27a8258fe5c1",
+      "6f5e582eb608a6e970ce05b8020847117911372f498e009022f0940cabc1bb19",
+      "ba2454f3daaa8c7bcfc9c9ba6c71a045ec65b909ce20a24d8eed054923258748",
+      "addc64714d6b0e317aee4422ed0d2cf30537dfd168ab88e3d242a87a9a701ecf",
+      "4f6ac64437e75ed325c37c2fa20f03e8b6ae05a254a9f1fa2899365eb4b30b78",
+      "dc83a6bb9ef00be9cd55d72e79b0c1b68962d78bfdb7b2fee3050112f36d50ee",
+      "a7ce26271bca56655468f0498f91a712985a41de01efcb8c47f3e6e8c20fe635",
+      "6e1dddd069ae49602f13985e321e1a5deca240dd547186b92c9685fbe939d154",
+      "b3b7142f15df0a731a58f9b68dc722b1d33e11b881c9443f62996cd6d416fc8f",
+      "5dd6f0dc09f7cd4f6574ceaaeb4ab58621afe242c1a31db8aacfd949a3993127",
+      "a06c6c92bf2f7b97e62d77e0f4bc08c92e3ff8dc40d495c65820d305a4d5df01",
+      "fb9a9fb8ff9d5cc3c246121da55d32fe9af4e26b5208fbe7fc68fa5fd3117b9b",
+      "7c78c0b276e223cbcf451d27b9ef2d5407d26edc09155fcc94bd37a30776b6fd",
+      "bce81ed725bb72b223972ca2ccb7229b64e85608aa332de71aaf2fb32220e726",
+      "4b6639e6de8d748229af15731c25780e14c3966de03135798628cbc2fbe80422",
+      "f082ecbd5463fcc3a116ee2a48cd9533508bb7b5bee93fec92502a8ebd191f85",
+      "f56fe0edb992d07e5aa4e6adaf5e692c4b34237c1ea988c58d0acccbd4ff61bf",
+      "19b6eb0f95542ddbab25d6fe9688e70732285555e75743353940a720d26694db",
+      "3d525f9a7d93ae9dc66a0988f71ab82de7d98069a4004c9328060006c23b6dd4",
+      "42a14d1ae769b189389090385b3ca7d6d1208d0def6d074f8a91974a680c4135",
+      "bcfedce6cd2ac50a3464a7379a33eb9c868ec7a3774704538244d0f9fc2f67e5",
+      "c83b9db4c10f33fcfc25732256bd80b6a7cb86a5172e5db60168ddbc6bc6a2f6",
+      "e54361315bfe8863265bf4855a424ed170a5e9e997a47d5ee2eccc4e63813ff5",
+      "5009708e33f0eeb9051f3f49f64bb3d26924e6762e3f25ebdcd30e715cd95be5",
+      "8c2054d5fca7508a549840d95c30c0b74c64a7bc7900cb32c30f8efd3a54c61c",
+      "821407f2e7d6ae38c76e9f0f3c0406a42923628b70c4a684234317e124fc3889",
+      "f57ddbc4d9f48b62555721f72cb760d07e395005beff432c79a56a58b31fbef5",
+      "6600aa90fa0ada0726936431fd3987b357ed29a59112dffb3812b4afcfc27842",
+      "415ccd6bef119329e1b4e2ad013ed053932e19a7f3cd19a7fa90227f30cb00be",
+      "b1ce8446f5caadc7ef95487ad0a1b0979635d4572963bdbe6bb1c08a2cfbb4a4",
+      "6caa0088d804ab086249df7dcf73edc66a2540588d647a7e062daf46e6c5b9be"
+    ],
+    "diagnostics": [
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 8.552727699279785,
+          "conv1": 1.2775840759277344,
+          "conv2": 1.205132246017456,
+          "norm1": 0.4842756986618042,
+          "norm2": 0.5189388990402222,
+          "decoder": 1.7885011434555054
+        },
+        "total_gradient_norm_before_clip": 8.940709114074707,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1398826544265186,
+            "macro_scope_mrr": 0.1398826544265186
+          },
+          "filtered": {
+            "micro": 0.19301639779966445,
+            "macro_scope_mrr": 0.19301639779966445
+          }
+        },
+        "update": 81,
+        "loss": 0.7803628042479678,
+        "validation_filtered_mrr": 0.10917745691083207
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 3.739992618560791,
+          "conv1": 0.5414808988571167,
+          "conv2": 0.5296872854232788,
+          "norm1": 0.22440095245838165,
+          "norm2": 0.26555198431015015,
+          "decoder": 0.7458006739616394
+        },
+        "total_gradient_norm_before_clip": 3.903640031814575,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.15576977394187475,
+            "macro_scope_mrr": 0.15576977394187475
+          },
+          "filtered": {
+            "micro": 0.21920136304434998,
+            "macro_scope_mrr": 0.21920136304434998
+          }
+        },
+        "update": 82,
+        "loss": 0.6127304408055234,
+        "validation_filtered_mrr": 0.1195423652133233
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 3.477445602416992,
+          "conv1": 0.5018761157989502,
+          "conv2": 0.488496869802475,
+          "norm1": 0.21807485818862915,
+          "norm2": 0.26089316606521606,
+          "decoder": 0.7034885287284851
+        },
+        "total_gradient_norm_before_clip": 3.632307291030884,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1609565073348192,
+            "macro_scope_mrr": 0.1609565073348192
+          },
+          "filtered": {
+            "micro": 0.23437479830349184,
+            "macro_scope_mrr": 0.23437479830349184
+          }
+        },
+        "update": 83,
+        "loss": 0.5397673182260975,
+        "validation_filtered_mrr": 0.12040361508337098
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 1.346580147743225,
+          "conv1": 0.2640230655670166,
+          "conv2": 0.24842211604118347,
+          "norm1": 0.1008208841085434,
+          "norm2": 0.12445667386054993,
+          "decoder": 0.36313295364379883
+        },
+        "total_gradient_norm_before_clip": 1.4499032497406006,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.14613118124994423,
+            "macro_scope_mrr": 0.14613118124994423
+          },
+          "filtered": {
+            "micro": 0.21471084614914943,
+            "macro_scope_mrr": 0.21471084614914943
+          }
+        },
+        "update": 84,
+        "loss": 0.40773880693895415,
+        "validation_filtered_mrr": 0.1193541514338718
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 3.81068754196167,
+          "conv1": 0.40424033999443054,
+          "conv2": 0.45084813237190247,
+          "norm1": 0.17119020223617554,
+          "norm2": 0.17683683335781097,
+          "decoder": 0.8550251126289368
+        },
+        "total_gradient_norm_before_clip": 3.9597549438476562,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.15606560725015006,
+            "macro_scope_mrr": 0.15606560725015006
+          },
+          "filtered": {
+            "micro": 0.22183865221519494,
+            "macro_scope_mrr": 0.22183865221519494
+          }
+        },
+        "update": 85,
+        "loss": 0.376405595476696,
+        "validation_filtered_mrr": 0.12093514767447593
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 4.690427780151367,
+          "conv1": 0.6320071816444397,
+          "conv2": 0.666998565196991,
+          "norm1": 0.28474950790405273,
+          "norm2": 0.3227327764034271,
+          "decoder": 1.2738884687423706
+        },
+        "total_gradient_norm_before_clip": 4.965124130249023,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.18168116619575753,
+            "macro_scope_mrr": 0.18168116619575753
+          },
+          "filtered": {
+            "micro": 0.24852385098521879,
+            "macro_scope_mrr": 0.24852385098521879
+          }
+        },
+        "update": 86,
+        "loss": 0.3938387255704268,
+        "validation_filtered_mrr": 0.12741914337905302
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 2.4876046180725098,
+          "conv1": 0.4811263680458069,
+          "conv2": 0.4875545799732208,
+          "norm1": 0.1643606722354889,
+          "norm2": 0.18988004326820374,
+          "decoder": 0.9484198689460754
+        },
+        "total_gradient_norm_before_clip": 2.7604236602783203,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.19077371427915205,
+            "macro_scope_mrr": 0.19077371427915205
+          },
+          "filtered": {
+            "micro": 0.26488859155657657,
+            "macro_scope_mrr": 0.26488859155657657
+          }
+        },
+        "update": 87,
+        "loss": 0.3473536968303616,
+        "validation_filtered_mrr": 0.1378514196350008
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 1.5602093935012817,
+          "conv1": 0.18216943740844727,
+          "conv2": 0.197158545255661,
+          "norm1": 0.055735405534505844,
+          "norm2": 0.06602488458156586,
+          "decoder": 0.37578481435775757
+        },
+        "total_gradient_norm_before_clip": 1.6294140815734863,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1868383674092696,
+            "macro_scope_mrr": 0.1868383674092696
+          },
+          "filtered": {
+            "micro": 0.30703089721172616,
+            "macro_scope_mrr": 0.30703089721172616
+          }
+        },
+        "update": 88,
+        "loss": 0.2868594847100862,
+        "validation_filtered_mrr": 0.14687346107814073
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 1.381272315979004,
+          "conv1": 0.17432843148708344,
+          "conv2": 0.1847141981124878,
+          "norm1": 0.07939697057008743,
+          "norm2": 0.10083574801683426,
+          "decoder": 0.35271310806274414
+        },
+        "total_gradient_norm_before_clip": 1.4537197351455688,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.18119812654903394,
+            "macro_scope_mrr": 0.18119812654903394
+          },
+          "filtered": {
+            "micro": 0.29912104831573416,
+            "macro_scope_mrr": 0.29912104831573416
+          }
+        },
+        "update": 89,
+        "loss": 0.271988163925205,
+        "validation_filtered_mrr": 0.15137331365182194
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.8540660738945007,
+          "conv1": 0.14217783510684967,
+          "conv2": 0.15492507815361023,
+          "norm1": 0.04063017666339874,
+          "norm2": 0.05527208000421524,
+          "decoder": 0.30367663502693176
+        },
+        "total_gradient_norm_before_clip": 0.9330437183380127,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.19403924991877802,
+            "macro_scope_mrr": 0.19403924991877802
+          },
+          "filtered": {
+            "micro": 0.32236853144285454,
+            "macro_scope_mrr": 0.32236853144285454
+          }
+        },
+        "update": 90,
+        "loss": 0.26575275330508175,
+        "validation_filtered_mrr": 0.1551646342083065
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 1.2499101161956787,
+          "conv1": 0.1589684933423996,
+          "conv2": 0.18013295531272888,
+          "norm1": 0.04390623793005943,
+          "norm2": 0.04694158583879471,
+          "decoder": 0.4105997681617737
+        },
+        "total_gradient_norm_before_clip": 1.3389240503311157,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.21353213186767264,
+            "macro_scope_mrr": 0.21353213186767264
+          },
+          "filtered": {
+            "micro": 0.3475363923566061,
+            "macro_scope_mrr": 0.3475363923566061
+          }
+        },
+        "update": 91,
+        "loss": 0.25849135690566155,
+        "validation_filtered_mrr": 0.1594196612877369
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.9067378640174866,
+          "conv1": 0.121224544942379,
+          "conv2": 0.13657246530056,
+          "norm1": 0.03333614394068718,
+          "norm2": 0.03615550696849823,
+          "decoder": 0.34222814440727234
+        },
+        "total_gradient_norm_before_clip": 0.9874510169029236,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2155045286043824,
+            "macro_scope_mrr": 0.2155045286043824
+          },
+          "filtered": {
+            "micro": 0.38196582895194,
+            "macro_scope_mrr": 0.38196582895194
+          }
+        },
+        "update": 92,
+        "loss": 0.2306996967863912,
+        "validation_filtered_mrr": 0.16204558409185688
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.892380952835083,
+          "conv1": 0.09117359668016434,
+          "conv2": 0.09466949850320816,
+          "norm1": 0.04121459648013115,
+          "norm2": 0.052770182490348816,
+          "decoder": 0.2167471945285797
+        },
+        "total_gradient_norm_before_clip": 0.9300974607467651,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22074530914274196,
+            "macro_scope_mrr": 0.22074530914274196
+          },
+          "filtered": {
+            "micro": 0.3858561257731633,
+            "macro_scope_mrr": 0.3858561257731633
+          }
+        },
+        "update": 93,
+        "loss": 0.21232103744220537,
+        "validation_filtered_mrr": 0.16320301552955385
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 1.0104403495788574,
+          "conv1": 0.14993825554847717,
+          "conv2": 0.16745169460773468,
+          "norm1": 0.03867693245410919,
+          "norm2": 0.04322658106684685,
+          "decoder": 0.38973891735076904
+        },
+        "total_gradient_norm_before_clip": 1.1075975894927979,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22745733097818224,
+            "macro_scope_mrr": 0.22745733097818224
+          },
+          "filtered": {
+            "micro": 0.40005984606694706,
+            "macro_scope_mrr": 0.40005984606694706
+          }
+        },
+        "update": 94,
+        "loss": 0.21500707824607332,
+        "validation_filtered_mrr": 0.1637091282766496
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.7074401378631592,
+          "conv1": 0.11335466057062149,
+          "conv2": 0.12066853791475296,
+          "norm1": 0.031792230904102325,
+          "norm2": 0.03550966456532478,
+          "decoder": 0.31740131974220276
+        },
+        "total_gradient_norm_before_clip": 0.7942901849746704,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.25960898926090686,
+            "macro_scope_mrr": 0.25960898926090686
+          },
+          "filtered": {
+            "micro": 0.41007500748998527,
+            "macro_scope_mrr": 0.41007500748998527
+          }
+        },
+        "update": 95,
+        "loss": 0.19998989321310456,
+        "validation_filtered_mrr": 0.16506433620276212
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.43296241760253906,
+          "conv1": 0.07438581436872482,
+          "conv2": 0.08068063110113144,
+          "norm1": 0.026063086465001106,
+          "norm2": 0.028354311361908913,
+          "decoder": 0.18753555417060852
+        },
+        "total_gradient_norm_before_clip": 0.485954612493515,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.269888910641389,
+            "macro_scope_mrr": 0.269888910641389
+          },
+          "filtered": {
+            "micro": 0.43566530769271283,
+            "macro_scope_mrr": 0.43566530769271283
+          }
+        },
+        "update": 96,
+        "loss": 0.1862780105323957,
+        "validation_filtered_mrr": 0.16717177485238374
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.6495797634124756,
+          "conv1": 0.07224103063344955,
+          "conv2": 0.07937276363372803,
+          "norm1": 0.021069183945655823,
+          "norm2": 0.02331671305000782,
+          "decoder": 0.19174174964427948
+        },
+        "total_gradient_norm_before_clip": 0.68645840883255,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2662748433935833,
+            "macro_scope_mrr": 0.2662748433935833
+          },
+          "filtered": {
+            "micro": 0.4329996439176851,
+            "macro_scope_mrr": 0.4329996439176851
+          }
+        },
+        "update": 97,
+        "loss": 0.17968483143574904,
+        "validation_filtered_mrr": 0.16463091730235263
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.5207806825637817,
+          "conv1": 0.08257944136857986,
+          "conv2": 0.08771692961454391,
+          "norm1": 0.027400802820920944,
+          "norm2": 0.038488440215587616,
+          "decoder": 0.22123758494853973
+        },
+        "total_gradient_norm_before_clip": 0.5804346799850464,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26976263346700347,
+            "macro_scope_mrr": 0.26976263346700347
+          },
+          "filtered": {
+            "micro": 0.4398814429386888,
+            "macro_scope_mrr": 0.4398814429386888
+          }
+        },
+        "update": 98,
+        "loss": 0.17706031845879142,
+        "validation_filtered_mrr": 0.16410556656801198
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.7410777807235718,
+          "conv1": 0.08614810556173325,
+          "conv2": 0.08926888555288315,
+          "norm1": 0.03829371929168701,
+          "norm2": 0.05143941566348076,
+          "decoder": 0.2563040852546692
+        },
+        "total_gradient_norm_before_clip": 0.796486496925354,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2697397366731351,
+            "macro_scope_mrr": 0.2697397366731351
+          },
+          "filtered": {
+            "micro": 0.4431074625305176,
+            "macro_scope_mrr": 0.4431074625305176
+          }
+        },
+        "update": 99,
+        "loss": 0.16891849680770113,
+        "validation_filtered_mrr": 0.16127198224319794
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.5197927355766296,
+          "conv1": 0.06614228338003159,
+          "conv2": 0.06916050612926483,
+          "norm1": 0.025839421898126602,
+          "norm2": 0.03691784292459488,
+          "decoder": 0.18567216396331787
+        },
+        "total_gradient_norm_before_clip": 0.5620028376579285,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26947436324401075,
+            "macro_scope_mrr": 0.26947436324401075
+          },
+          "filtered": {
+            "micro": 0.4268752663345805,
+            "macro_scope_mrr": 0.4268752663345805
+          }
+        },
+        "update": 100,
+        "loss": 0.16064670146626817,
+        "validation_filtered_mrr": 0.15976293454463178
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.6291619539260864,
+          "conv1": 0.06882882118225098,
+          "conv2": 0.07583043724298477,
+          "norm1": 0.029416918754577637,
+          "norm2": 0.03067151829600334,
+          "decoder": 0.20043876767158508
+        },
+        "total_gradient_norm_before_clip": 0.6695627570152283,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.27873994645921396,
+            "macro_scope_mrr": 0.27873994645921396
+          },
+          "filtered": {
+            "micro": 0.44086560744356146,
+            "macro_scope_mrr": 0.44086560744356146
+          }
+        },
+        "update": 101,
+        "loss": 0.15348314576175925,
+        "validation_filtered_mrr": 0.160867947318532
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.5722976326942444,
+          "conv1": 0.0723079964518547,
+          "conv2": 0.07727210223674774,
+          "norm1": 0.024639878422021866,
+          "norm2": 0.029148347675800323,
+          "decoder": 0.22775249183177948
+        },
+        "total_gradient_norm_before_clip": 0.6261405348777771,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3233068095801255,
+            "macro_scope_mrr": 0.3233068095801255
+          },
+          "filtered": {
+            "micro": 0.4582810695952869,
+            "macro_scope_mrr": 0.4582810695952869
+          }
+        },
+        "update": 102,
+        "loss": 0.14701247383997545,
+        "validation_filtered_mrr": 0.16136309757478265
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.5233672857284546,
+          "conv1": 0.07638440281152725,
+          "conv2": 0.0840989276766777,
+          "norm1": 0.021460413932800293,
+          "norm2": 0.0270231943577528,
+          "decoder": 0.235589399933815
+        },
+        "total_gradient_norm_before_clip": 0.5861004590988159,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.33091258048440453,
+            "macro_scope_mrr": 0.33091258048440453
+          },
+          "filtered": {
+            "micro": 0.4587473422897995,
+            "macro_scope_mrr": 0.4587473422897995
+          }
+        },
+        "update": 103,
+        "loss": 0.1457228915230238,
+        "validation_filtered_mrr": 0.16203692523182125
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.63831627368927,
+          "conv1": 0.05277450382709503,
+          "conv2": 0.05688469856977463,
+          "norm1": 0.024342648684978485,
+          "norm2": 0.031560029834508896,
+          "decoder": 0.19178776443004608
+        },
+        "total_gradient_norm_before_clip": 0.6721903085708618,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3266178169688687,
+            "macro_scope_mrr": 0.3266178169688687
+          },
+          "filtered": {
+            "micro": 0.4642495406813073,
+            "macro_scope_mrr": 0.4642495406813073
+          }
+        },
+        "update": 104,
+        "loss": 0.13805254456730717,
+        "validation_filtered_mrr": 0.1625324301480291
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.3658788502216339,
+          "conv1": 0.04104146733880043,
+          "conv2": 0.041827280074357986,
+          "norm1": 0.0155978137627244,
+          "norm2": 0.023625407367944717,
+          "decoder": 0.12665797770023346
+        },
+        "total_gradient_norm_before_clip": 0.3926129937171936,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31789094885982233,
+            "macro_scope_mrr": 0.31789094885982233
+          },
+          "filtered": {
+            "micro": 0.4546532005312446,
+            "macro_scope_mrr": 0.4546532005312446
+          }
+        },
+        "update": 105,
+        "loss": 0.13110278253168023,
+        "validation_filtered_mrr": 0.16379995231423713
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.31664803624153137,
+          "conv1": 0.04362870380282402,
+          "conv2": 0.046867210417985916,
+          "norm1": 0.010634406469762325,
+          "norm2": 0.016700811684131622,
+          "decoder": 0.13328061997890472
+        },
+        "total_gradient_norm_before_clip": 0.3500310182571411,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.30715064043907064,
+            "macro_scope_mrr": 0.30715064043907064
+          },
+          "filtered": {
+            "micro": 0.4579525500573064,
+            "macro_scope_mrr": 0.4579525500573064
+          }
+        },
+        "update": 106,
+        "loss": 0.12909729182068452,
+        "validation_filtered_mrr": 0.16466056770675006
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.3843364417552948,
+          "conv1": 0.04379470646381378,
+          "conv2": 0.049532026052474976,
+          "norm1": 0.013184258714318275,
+          "norm2": 0.017302652820944786,
+          "decoder": 0.14937588572502136
+        },
+        "total_gradient_norm_before_clip": 0.4181773066520691,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31456646276606537,
+            "macro_scope_mrr": 0.31456646276606537
+          },
+          "filtered": {
+            "micro": 0.47780252729777706,
+            "macro_scope_mrr": 0.47780252729777706
+          }
+        },
+        "update": 107,
+        "loss": 0.12531442278906724,
+        "validation_filtered_mrr": 0.16603912843976812
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.434283584356308,
+          "conv1": 0.04419960454106331,
+          "conv2": 0.05310129374265671,
+          "norm1": 0.013836584985256195,
+          "norm2": 0.017963316291570663,
+          "decoder": 0.14605918526649475
+        },
+        "total_gradient_norm_before_clip": 0.46392133831977844,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.331466977363893,
+            "macro_scope_mrr": 0.331466977363893
+          },
+          "filtered": {
+            "micro": 0.49453418442510433,
+            "macro_scope_mrr": 0.49453418442510433
+          }
+        },
+        "update": 108,
+        "loss": 0.11950739016710024,
+        "validation_filtered_mrr": 0.16824078289837996
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.16550447046756744,
+          "conv1": 0.028414003551006317,
+          "conv2": 0.029987022280693054,
+          "norm1": 0.006914215162396431,
+          "norm2": 0.013202764093875885,
+          "decoder": 0.06146042048931122
+        },
+        "total_gradient_norm_before_clip": 0.18192803859710693,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3248204711210226,
+            "macro_scope_mrr": 0.3248204711210226
+          },
+          "filtered": {
+            "micro": 0.49213891369101315,
+            "macro_scope_mrr": 0.49213891369101315
+          }
+        },
+        "update": 109,
+        "loss": 0.11465561648262995,
+        "validation_filtered_mrr": 0.17020979013876833
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.40609776973724365,
+          "conv1": 0.03422478958964348,
+          "conv2": 0.03658661991357803,
+          "norm1": 0.013935122638940811,
+          "norm2": 0.020635414868593216,
+          "decoder": 0.12088092416524887
+        },
+        "total_gradient_norm_before_clip": 0.42738449573516846,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.30218171089742274,
+            "macro_scope_mrr": 0.30218171089742274
+          },
+          "filtered": {
+            "micro": 0.4927580562651845,
+            "macro_scope_mrr": 0.4927580562651845
+          }
+        },
+        "update": 110,
+        "loss": 0.11295333030359697,
+        "validation_filtered_mrr": 0.1708283591381104
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.38170453906059265,
+          "conv1": 0.03847099468111992,
+          "conv2": 0.04155564680695534,
+          "norm1": 0.012464068830013275,
+          "norm2": 0.01917748525738716,
+          "decoder": 0.13549113273620605
+        },
+        "total_gradient_norm_before_clip": 0.409617155790329,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2955259910790235,
+            "macro_scope_mrr": 0.2955259910790235
+          },
+          "filtered": {
+            "micro": 0.49337407920045306,
+            "macro_scope_mrr": 0.49337407920045306
+          }
+        },
+        "update": 111,
+        "loss": 0.10967904791397046,
+        "validation_filtered_mrr": 0.17098486722493247
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.22386929392814636,
+          "conv1": 0.030087091028690338,
+          "conv2": 0.031807754188776016,
+          "norm1": 0.00822774413973093,
+          "norm2": 0.01471071969717741,
+          "decoder": 0.09489285945892334
+        },
+        "total_gradient_norm_before_clip": 0.24763517081737518,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.28758515117161276,
+            "macro_scope_mrr": 0.28758515117161276
+          },
+          "filtered": {
+            "micro": 0.4905238786807642,
+            "macro_scope_mrr": 0.4905238786807642
+          }
+        },
+        "update": 112,
+        "loss": 0.1058202298162789,
+        "validation_filtered_mrr": 0.17026069632125265
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.2055397629737854,
+          "conv1": 0.027307327836751938,
+          "conv2": 0.030877137556672096,
+          "norm1": 0.009106531739234924,
+          "norm2": 0.01428135670721531,
+          "decoder": 0.07791339606046677
+        },
+        "total_gradient_norm_before_clip": 0.22428344190120697,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26150681846152923,
+            "macro_scope_mrr": 0.26150681846152923
+          },
+          "filtered": {
+            "micro": 0.4893691825962019,
+            "macro_scope_mrr": 0.4893691825962019
+          }
+        },
+        "update": 113,
+        "loss": 0.10244048323358716,
+        "validation_filtered_mrr": 0.1706423001636219
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.2122342437505722,
+          "conv1": 0.02585023269057274,
+          "conv2": 0.03235127776861191,
+          "norm1": 0.007661610376089811,
+          "norm2": 0.013238023966550827,
+          "decoder": 0.0788605660200119
+        },
+        "total_gradient_norm_before_clip": 0.23067539930343628,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2534605192574126,
+            "macro_scope_mrr": 0.2534605192574126
+          },
+          "filtered": {
+            "micro": 0.4895778191464333,
+            "macro_scope_mrr": 0.4895778191464333
+          }
+        },
+        "update": 114,
+        "loss": 0.10107708481302125,
+        "validation_filtered_mrr": 0.17009219223873684
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.2373783439397812,
+          "conv1": 0.025653477758169174,
+          "conv2": 0.02829190343618393,
+          "norm1": 0.010776294395327568,
+          "norm2": 0.018386581912636757,
+          "decoder": 0.08674544095993042
+        },
+        "total_gradient_norm_before_clip": 0.25648775696754456,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2587900196317067,
+            "macro_scope_mrr": 0.2587900196317067
+          },
+          "filtered": {
+            "micro": 0.5028176106301105,
+            "macro_scope_mrr": 0.5028176106301105
+          }
+        },
+        "update": 115,
+        "loss": 0.09680258647528878,
+        "validation_filtered_mrr": 0.1693194699872636
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.2714039981365204,
+          "conv1": 0.03180228918790817,
+          "conv2": 0.03946058452129364,
+          "norm1": 0.009599774144589901,
+          "norm2": 0.01637653447687626,
+          "decoder": 0.11047787964344025
+        },
+        "total_gradient_norm_before_clip": 0.2979838252067566,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2563636502281526,
+            "macro_scope_mrr": 0.2563636502281526
+          },
+          "filtered": {
+            "micro": 0.5146639384920635,
+            "macro_scope_mrr": 0.5146639384920635
+          }
+        },
+        "update": 116,
+        "loss": 0.09698675503625483,
+        "validation_filtered_mrr": 0.16953635507006382
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.1587451547384262,
+          "conv1": 0.02066219225525856,
+          "conv2": 0.025125818327069283,
+          "norm1": 0.005360189359635115,
+          "norm2": 0.012263293378055096,
+          "decoder": 0.060584161430597305
+        },
+        "total_gradient_norm_before_clip": 0.17351603507995605,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.25932760267288923,
+            "macro_scope_mrr": 0.25932760267288923
+          },
+          "filtered": {
+            "micro": 0.5153043913090058,
+            "macro_scope_mrr": 0.5153043913090058
+          }
+        },
+        "update": 117,
+        "loss": 0.09245351317814206,
+        "validation_filtered_mrr": 0.17042034971753428
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.13569173216819763,
+          "conv1": 0.019547060132026672,
+          "conv2": 0.021418599411845207,
+          "norm1": 0.005471865646541119,
+          "norm2": 0.011354890652000904,
+          "decoder": 0.0468776635825634
+        },
+        "total_gradient_norm_before_clip": 0.14700162410736084,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2556601121807564,
+            "macro_scope_mrr": 0.2556601121807564
+          },
+          "filtered": {
+            "micro": 0.5360953593190435,
+            "macro_scope_mrr": 0.5360953593190435
+          }
+        },
+        "update": 118,
+        "loss": 0.09044041418968407,
+        "validation_filtered_mrr": 0.17046692272331118
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.17198604345321655,
+          "conv1": 0.020253608003258705,
+          "conv2": 0.022964468225836754,
+          "norm1": 0.006492826156318188,
+          "norm2": 0.012534665875136852,
+          "decoder": 0.0723690390586853
+        },
+        "total_gradient_norm_before_clip": 0.18961361050605774,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.24985375833551016,
+            "macro_scope_mrr": 0.24985375833551016
+          },
+          "filtered": {
+            "micro": 0.5385101023793458,
+            "macro_scope_mrr": 0.5385101023793458
+          }
+        },
+        "update": 119,
+        "loss": 0.08791839801903817,
+        "validation_filtered_mrr": 0.17283949390050996
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.2557256519794464,
+          "conv1": 0.031224900856614113,
+          "conv2": 0.03745966777205467,
+          "norm1": 0.012188104912638664,
+          "norm2": 0.015725549310445786,
+          "decoder": 0.10565711557865143
+        },
+        "total_gradient_norm_before_clip": 0.28166133165359497,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2585008938916857,
+            "macro_scope_mrr": 0.2585008938916857
+          },
+          "filtered": {
+            "micro": 0.5362853666666796,
+            "macro_scope_mrr": 0.5362853666666796
+          }
+        },
+        "update": 120,
+        "loss": 0.0876222922094551,
+        "validation_filtered_mrr": 0.17427609583899192
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.20400577783584595,
+          "conv1": 0.022112082690000534,
+          "conv2": 0.027037978172302246,
+          "norm1": 0.00729320989921689,
+          "norm2": 0.01308950874954462,
+          "decoder": 0.0856732726097107
+        },
+        "total_gradient_norm_before_clip": 0.22450564801692963,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.27228778758655114,
+            "macro_scope_mrr": 0.27228778758655114
+          },
+          "filtered": {
+            "micro": 0.5394844398565616,
+            "macro_scope_mrr": 0.5394844398565616
+          }
+        },
+        "update": 121,
+        "loss": 0.08511853349692564,
+        "validation_filtered_mrr": 0.17374367306290361
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.1614559292793274,
+          "conv1": 0.016597921028733253,
+          "conv2": 0.020448466762900352,
+          "norm1": 0.009159114211797714,
+          "norm2": 0.015813974663615227,
+          "decoder": 0.057228367775678635
+        },
+        "total_gradient_norm_before_clip": 0.17427192628383636,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2795967268275461,
+            "macro_scope_mrr": 0.2795967268275461
+          },
+          "filtered": {
+            "micro": 0.5501227057648682,
+            "macro_scope_mrr": 0.5501227057648682
+          }
+        },
+        "update": 122,
+        "loss": 0.0827164701667566,
+        "validation_filtered_mrr": 0.1731480480357534
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.18298372626304626,
+          "conv1": 0.020124949514865875,
+          "conv2": 0.025106064975261688,
+          "norm1": 0.006951238960027695,
+          "norm2": 0.01393070537596941,
+          "decoder": 0.06869648396968842
+        },
+        "total_gradient_norm_before_clip": 0.19869564473628998,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.28636196681634224,
+            "macro_scope_mrr": 0.28636196681634224
+          },
+          "filtered": {
+            "micro": 0.5555085817774427,
+            "macro_scope_mrr": 0.5555085817774427
+          }
+        },
+        "update": 123,
+        "loss": 0.0804915233501512,
+        "validation_filtered_mrr": 0.17452276374175618
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.2497752457857132,
+          "conv1": 0.021884707733988762,
+          "conv2": 0.02795545384287834,
+          "norm1": 0.007608263287693262,
+          "norm2": 0.012111116200685501,
+          "decoder": 0.0939982607960701
+        },
+        "total_gradient_norm_before_clip": 0.2696077823638916,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.293479919669294,
+            "macro_scope_mrr": 0.293479919669294
+          },
+          "filtered": {
+            "micro": 0.5513057376060473,
+            "macro_scope_mrr": 0.5513057376060473
+          }
+        },
+        "update": 124,
+        "loss": 0.07960114991689507,
+        "validation_filtered_mrr": 0.1756176036677557
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.11423128098249435,
+          "conv1": 0.013613220304250717,
+          "conv2": 0.01773494854569435,
+          "norm1": 0.0038405300583690405,
+          "norm2": 0.011289965361356735,
+          "decoder": 0.04488836228847504
+        },
+        "total_gradient_norm_before_clip": 0.1253228336572647,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3168460734371138,
+            "macro_scope_mrr": 0.3168460734371138
+          },
+          "filtered": {
+            "micro": 0.580467251324807,
+            "macro_scope_mrr": 0.580467251324807
+          }
+        },
+        "update": 125,
+        "loss": 0.07674440772315304,
+        "validation_filtered_mrr": 0.1756076371509494
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.11037151515483856,
+          "conv1": 0.015678463503718376,
+          "conv2": 0.017051655799150467,
+          "norm1": 0.0049302526749670506,
+          "norm2": 0.010496414266526699,
+          "decoder": 0.04403092339634895
+        },
+        "total_gradient_norm_before_clip": 0.12162091583013535,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31623683636161176,
+            "macro_scope_mrr": 0.31623683636161176
+          },
+          "filtered": {
+            "micro": 0.5646596013858441,
+            "macro_scope_mrr": 0.5646596013858441
+          }
+        },
+        "update": 126,
+        "loss": 0.07537496505053302,
+        "validation_filtered_mrr": 0.1754883613371132
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.23432670533657074,
+          "conv1": 0.02356095425784588,
+          "conv2": 0.029888775199651718,
+          "norm1": 0.010116166435182095,
+          "norm2": 0.01391831785440445,
+          "decoder": 0.08478879928588867
+        },
+        "total_gradient_norm_before_clip": 0.2526710331439972,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3147782342837848,
+            "macro_scope_mrr": 0.3147782342837848
+          },
+          "filtered": {
+            "micro": 0.5659727858946608,
+            "macro_scope_mrr": 0.5659727858946608
+          }
+        },
+        "update": 127,
+        "loss": 0.07423024401910511,
+        "validation_filtered_mrr": 0.17583076743300216
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.12689034640789032,
+          "conv1": 0.01384497806429863,
+          "conv2": 0.0160226970911026,
+          "norm1": 0.004503244999796152,
+          "norm2": 0.011086991056799889,
+          "decoder": 0.045499660074710846
+        },
+        "total_gradient_norm_before_clip": 0.13697806000709534,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3244080137598472,
+            "macro_scope_mrr": 0.3244080137598472
+          },
+          "filtered": {
+            "micro": 0.5886590034044268,
+            "macro_scope_mrr": 0.5886590034044268
+          }
+        },
+        "update": 128,
+        "loss": 0.07239432047358725,
+        "validation_filtered_mrr": 0.1756807924528391
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.11752691119909286,
+          "conv1": 0.01278991624712944,
+          "conv2": 0.013517064973711967,
+          "norm1": 0.003976623062044382,
+          "norm2": 0.010535815730690956,
+          "decoder": 0.04169167950749397
+        },
+        "total_gradient_norm_before_clip": 0.1265854835510254,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3197744139845869,
+            "macro_scope_mrr": 0.3197744139845869
+          },
+          "filtered": {
+            "micro": 0.5878892655547068,
+            "macro_scope_mrr": 0.5878892655547068
+          }
+        },
+        "update": 129,
+        "loss": 0.07097841955765732,
+        "validation_filtered_mrr": 0.1755760955833577
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.17192022502422333,
+          "conv1": 0.01701979897916317,
+          "conv2": 0.020987821742892265,
+          "norm1": 0.009401075541973114,
+          "norm2": 0.01527282316237688,
+          "decoder": 0.059697698801755905
+        },
+        "total_gradient_norm_before_clip": 0.18485718965530396,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3208810599642321,
+            "macro_scope_mrr": 0.3208810599642321
+          },
+          "filtered": {
+            "micro": 0.5891935538419913,
+            "macro_scope_mrr": 0.5891935538419913
+          }
+        },
+        "update": 130,
+        "loss": 0.07023642723491683,
+        "validation_filtered_mrr": 0.17460437535141646
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.13895712792873383,
+          "conv1": 0.014892307110130787,
+          "conv2": 0.01855013519525528,
+          "norm1": 0.00622679153457284,
+          "norm2": 0.01245329063385725,
+          "decoder": 0.05342015251517296
+        },
+        "total_gradient_norm_before_clip": 0.15140192210674286,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3139790586999247,
+            "macro_scope_mrr": 0.3139790586999247
+          },
+          "filtered": {
+            "micro": 0.5877022997427409,
+            "macro_scope_mrr": 0.5877022997427409
+          }
+        },
+        "update": 131,
+        "loss": 0.06877898596486957,
+        "validation_filtered_mrr": 0.17416970349193697
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.1527947336435318,
+          "conv1": 0.01328176911920309,
+          "conv2": 0.016365211457014084,
+          "norm1": 0.008542660623788834,
+          "norm2": 0.011027820408344269,
+          "decoder": 0.04787271469831467
+        },
+        "total_gradient_norm_before_clip": 0.16210134327411652,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3059140511768944,
+            "macro_scope_mrr": 0.3059140511768944
+          },
+          "filtered": {
+            "micro": 0.5758301811036186,
+            "macro_scope_mrr": 0.5758301811036186
+          }
+        },
+        "update": 132,
+        "loss": 0.06665622273238486,
+        "validation_filtered_mrr": 0.1737105372616272
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.22594165802001953,
+          "conv1": 0.017456961795687675,
+          "conv2": 0.02122368849813938,
+          "norm1": 0.013358280062675476,
+          "norm2": 0.014881259761750698,
+          "decoder": 0.08041992783546448
+        },
+        "total_gradient_norm_before_clip": 0.24222321808338165,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3049894276619582,
+            "macro_scope_mrr": 0.3049894276619582
+          },
+          "filtered": {
+            "micro": 0.5832676796331688,
+            "macro_scope_mrr": 0.5832676796331688
+          }
+        },
+        "update": 133,
+        "loss": 0.065949224164616,
+        "validation_filtered_mrr": 0.17365965253398793
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.13524791598320007,
+          "conv1": 0.010571521706879139,
+          "conv2": 0.01233998965471983,
+          "norm1": 0.0042127883061766624,
+          "norm2": 0.010239687748253345,
+          "decoder": 0.04472553730010986
+        },
+        "total_gradient_norm_before_clip": 0.1438019573688507,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3031389423352817,
+            "macro_scope_mrr": 0.3031389423352817
+          },
+          "filtered": {
+            "micro": 0.5727960407647907,
+            "macro_scope_mrr": 0.5727960407647907
+          }
+        },
+        "update": 134,
+        "loss": 0.0641861419910693,
+        "validation_filtered_mrr": 0.17449591401442133
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.17916925251483917,
+          "conv1": 0.009806880727410316,
+          "conv2": 0.012377642095088959,
+          "norm1": 0.00800925213843584,
+          "norm2": 0.013324976898729801,
+          "decoder": 0.05049798637628555
+        },
+        "total_gradient_norm_before_clip": 0.18746401369571686,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3057347998135998,
+            "macro_scope_mrr": 0.3057347998135998
+          },
+          "filtered": {
+            "micro": 0.5804392222360972,
+            "macro_scope_mrr": 0.5804392222360972
+          }
+        },
+        "update": 135,
+        "loss": 0.06279917536732232,
+        "validation_filtered_mrr": 0.1744435486797949
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.11696536093950272,
+          "conv1": 0.010451128706336021,
+          "conv2": 0.011727701872587204,
+          "norm1": 0.003829820780083537,
+          "norm2": 0.009773273020982742,
+          "decoder": 0.049123842269182205
+        },
+        "total_gradient_norm_before_clip": 0.12826143205165863,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.30359906290812305,
+            "macro_scope_mrr": 0.30359906290812305
+          },
+          "filtered": {
+            "micro": 0.5837814232551075,
+            "macro_scope_mrr": 0.5837814232551075
+          }
+        },
+        "update": 136,
+        "loss": 0.061340525292847656,
+        "validation_filtered_mrr": 0.17465504069921053
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.12332869321107864,
+          "conv1": 0.01110829133540392,
+          "conv2": 0.012623120099306107,
+          "norm1": 0.0038426348473876715,
+          "norm2": 0.00969816092401743,
+          "decoder": 0.05187482759356499
+        },
+        "total_gradient_norm_before_clip": 0.13524985313415527,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3023595620446403,
+            "macro_scope_mrr": 0.3023595620446403
+          },
+          "filtered": {
+            "micro": 0.591537022005772,
+            "macro_scope_mrr": 0.591537022005772
+          }
+        },
+        "update": 137,
+        "loss": 0.061124463350779236,
+        "validation_filtered_mrr": 0.17560846953691095
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.18405361473560333,
+          "conv1": 0.01023369375616312,
+          "conv2": 0.01186604518443346,
+          "norm1": 0.0070596253499388695,
+          "norm2": 0.00998410303145647,
+          "decoder": 0.04883454740047455
+        },
+        "total_gradient_norm_before_clip": 0.19145652651786804,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.30820340498704,
+            "macro_scope_mrr": 0.30820340498704
+          },
+          "filtered": {
+            "micro": 0.5917788374819625,
+            "macro_scope_mrr": 0.5917788374819625
+          }
+        },
+        "update": 138,
+        "loss": 0.05980052831346811,
+        "validation_filtered_mrr": 0.17688034696249752
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.10884591937065125,
+          "conv1": 0.009771287441253662,
+          "conv2": 0.012979940511286259,
+          "norm1": 0.0040807221084833145,
+          "norm2": 0.01003272458910942,
+          "decoder": 0.038359228521585464
+        },
+        "total_gradient_norm_before_clip": 0.11704755574464798,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31432711753841286,
+            "macro_scope_mrr": 0.31432711753841286
+          },
+          "filtered": {
+            "micro": 0.6009645430141755,
+            "macro_scope_mrr": 0.6009645430141755
+          }
+        },
+        "update": 139,
+        "loss": 0.059488003359083094,
+        "validation_filtered_mrr": 0.1770439953109203
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.09145096689462662,
+          "conv1": 0.009333498775959015,
+          "conv2": 0.011121374554932117,
+          "norm1": 0.0028453022241592407,
+          "norm2": 0.008862068876624107,
+          "decoder": 0.03537480905652046
+        },
+        "total_gradient_norm_before_clip": 0.0995594784617424,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31822306791348,
+            "macro_scope_mrr": 0.31822306791348
+          },
+          "filtered": {
+            "micro": 0.6013356715792378,
+            "macro_scope_mrr": 0.6013356715792378
+          }
+        },
+        "update": 140,
+        "loss": 0.0574890458418907,
+        "validation_filtered_mrr": 0.17781285582990203
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.15581341087818146,
+          "conv1": 0.009988444857299328,
+          "conv2": 0.011395672336220741,
+          "norm1": 0.004547716584056616,
+          "norm2": 0.009763054549694061,
+          "decoder": 0.0467505119740963
+        },
+        "total_gradient_norm_before_clip": 0.16373470425605774,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3148410519637037,
+            "macro_scope_mrr": 0.3148410519637037
+          },
+          "filtered": {
+            "micro": 0.6092685156448943,
+            "macro_scope_mrr": 0.6092685156448943
+          }
+        },
+        "update": 141,
+        "loss": 0.05699585060947808,
+        "validation_filtered_mrr": 0.17915431106884072
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.18930724263191223,
+          "conv1": 0.008997809141874313,
+          "conv2": 0.009939372539520264,
+          "norm1": 0.006736796349287033,
+          "norm2": 0.011578397825360298,
+          "decoder": 0.05050331726670265
+        },
+        "total_gradient_norm_before_clip": 0.19684261083602905,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2960316541037161,
+            "macro_scope_mrr": 0.2960316541037161
+          },
+          "filtered": {
+            "micro": 0.6128027418353705,
+            "macro_scope_mrr": 0.6128027418353705
+          }
+        },
+        "update": 142,
+        "loss": 0.05543519836586716,
+        "validation_filtered_mrr": 0.1789247496349907
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.09806191921234131,
+          "conv1": 0.010156377218663692,
+          "conv2": 0.011354904621839523,
+          "norm1": 0.006315435282886028,
+          "norm2": 0.009237086400389671,
+          "decoder": 0.03568773716688156
+        },
+        "total_gradient_norm_before_clip": 0.10605210065841675,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.30034164692367815,
+            "macro_scope_mrr": 0.30034164692367815
+          },
+          "filtered": {
+            "micro": 0.6078632305194805,
+            "macro_scope_mrr": 0.6078632305194805
+          }
+        },
+        "update": 143,
+        "loss": 0.05452308763380242,
+        "validation_filtered_mrr": 0.1773446987513869
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.17465102672576904,
+          "conv1": 0.00949881225824356,
+          "conv2": 0.011121132411062717,
+          "norm1": 0.00807408057153225,
+          "norm2": 0.010065712034702301,
+          "decoder": 0.04377302899956703
+        },
+        "total_gradient_norm_before_clip": 0.18110625445842743,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3110626422262249,
+            "macro_scope_mrr": 0.3110626422262249
+          },
+          "filtered": {
+            "micro": 0.6164637445887445,
+            "macro_scope_mrr": 0.6164637445887445
+          }
+        },
+        "update": 144,
+        "loss": 0.05340521324839153,
+        "validation_filtered_mrr": 0.17787428928738866
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.10707058757543564,
+          "conv1": 0.008296373300254345,
+          "conv2": 0.00972760934382677,
+          "norm1": 0.002857276936993003,
+          "norm2": 0.008549805730581284,
+          "decoder": 0.03398163616657257
+        },
+        "total_gradient_norm_before_clip": 0.11341772973537445,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.32001946202564774,
+            "macro_scope_mrr": 0.32001946202564774
+          },
+          "filtered": {
+            "micro": 0.6167309253246753,
+            "macro_scope_mrr": 0.6167309253246753
+          }
+        },
+        "update": 145,
+        "loss": 0.05287730815157234,
+        "validation_filtered_mrr": 0.17774469449034921
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.10371091961860657,
+          "conv1": 0.008457985706627369,
+          "conv2": 0.00993169192224741,
+          "norm1": 0.004858492873609066,
+          "norm2": 0.01009795255959034,
+          "decoder": 0.03810792788863182
+        },
+        "total_gradient_norm_before_clip": 0.11182091385126114,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.32949413899740393,
+            "macro_scope_mrr": 0.32949413899740393
+          },
+          "filtered": {
+            "micro": 0.6275737283549783,
+            "macro_scope_mrr": 0.6275737283549783
+          }
+        },
+        "update": 146,
+        "loss": 0.052383294191685324,
+        "validation_filtered_mrr": 0.1777908814819868
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.13795024156570435,
+          "conv1": 0.00804803054779768,
+          "conv2": 0.008825648576021194,
+          "norm1": 0.0058741397224366665,
+          "norm2": 0.010679933242499828,
+          "decoder": 0.040289271622896194
+        },
+        "total_gradient_norm_before_clip": 0.14472292363643646,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.33778605198599077,
+            "macro_scope_mrr": 0.33778605198599077
+          },
+          "filtered": {
+            "micro": 0.6153589466089466,
+            "macro_scope_mrr": 0.6153589466089466
+          }
+        },
+        "update": 147,
+        "loss": 0.050963711289976565,
+        "validation_filtered_mrr": 0.178264300741895
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.11669611185789108,
+          "conv1": 0.009462228044867516,
+          "conv2": 0.010756460949778557,
+          "norm1": 0.0034281497355550528,
+          "norm2": 0.008329751901328564,
+          "decoder": 0.03610436990857124
+        },
+        "total_gradient_norm_before_clip": 0.12332024425268173,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.34491876964621215,
+            "macro_scope_mrr": 0.34491876964621215
+          },
+          "filtered": {
+            "micro": 0.6425786886724387,
+            "macro_scope_mrr": 0.6425786886724387
+          }
+        },
+        "update": 148,
+        "loss": 0.05075783568783253,
+        "validation_filtered_mrr": 0.17816246150199858
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.09681722521781921,
+          "conv1": 0.007991163060069084,
+          "conv2": 0.008724422194063663,
+          "norm1": 0.005198761820793152,
+          "norm2": 0.008137150667607784,
+          "decoder": 0.031118949875235558
+        },
+        "total_gradient_norm_before_clip": 0.10283569991588593,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3498299866448324,
+            "macro_scope_mrr": 0.3498299866448324
+          },
+          "filtered": {
+            "micro": 0.6502290244477744,
+            "macro_scope_mrr": 0.6502290244477744
+          }
+        },
+        "update": 149,
+        "loss": 0.049588962861673615,
+        "validation_filtered_mrr": 0.17897996797529975
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.13653843104839325,
+          "conv1": 0.008542794734239578,
+          "conv2": 0.009442048147320747,
+          "norm1": 0.006723626516759396,
+          "norm2": 0.008836974389851093,
+          "decoder": 0.03703843057155609
+        },
+        "total_gradient_norm_before_clip": 0.14247815310955048,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.35983324640975944,
+            "macro_scope_mrr": 0.35983324640975944
+          },
+          "filtered": {
+            "micro": 0.6488835383366633,
+            "macro_scope_mrr": 0.6488835383366633
+          }
+        },
+        "update": 150,
+        "loss": 0.048472247485538945,
+        "validation_filtered_mrr": 0.17952749290849385
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.08115413039922714,
+          "conv1": 0.008395702578127384,
+          "conv2": 0.009354669600725174,
+          "norm1": 0.0028460826724767685,
+          "norm2": 0.008250227198004723,
+          "decoder": 0.029641224071383476
+        },
+        "total_gradient_norm_before_clip": 0.08774256706237793,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.36832219387627596,
+            "macro_scope_mrr": 0.36832219387627596
+          },
+          "filtered": {
+            "micro": 0.6520017742673992,
+            "macro_scope_mrr": 0.6520017742673992
+          }
+        },
+        "update": 151,
+        "loss": 0.048595522430467074,
+        "validation_filtered_mrr": 0.17926044912608224
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.07299626618623734,
+          "conv1": 0.007659811992198229,
+          "conv2": 0.008405543863773346,
+          "norm1": 0.0032225109171122313,
+          "norm2": 0.00859768409281969,
+          "decoder": 0.029372142627835274
+        },
+        "total_gradient_norm_before_clip": 0.08003004640340805,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.37116129624637406,
+            "macro_scope_mrr": 0.37116129624637406
+          },
+          "filtered": {
+            "micro": 0.6526729347041846,
+            "macro_scope_mrr": 0.6526729347041846
+          }
+        },
+        "update": 152,
+        "loss": 0.04753216150878788,
+        "validation_filtered_mrr": 0.18073826804424453
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.08332595229148865,
+          "conv1": 0.007659594994038343,
+          "conv2": 0.008288580924272537,
+          "norm1": 0.002450278028845787,
+          "norm2": 0.007747500203549862,
+          "decoder": 0.03016705811023712
+        },
+        "total_gradient_norm_before_clip": 0.08970319479703903,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.36417789090424424,
+            "macro_scope_mrr": 0.36417789090424424
+          },
+          "filtered": {
+            "micro": 0.6529767541486291,
+            "macro_scope_mrr": 0.6529767541486291
+          }
+        },
+        "update": 153,
+        "loss": 0.04658358309758765,
+        "validation_filtered_mrr": 0.18117583308808355
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.15581683814525604,
+          "conv1": 0.008655845187604427,
+          "conv2": 0.009112459607422352,
+          "norm1": 0.004945870488882065,
+          "norm2": 0.009373958222568035,
+          "decoder": 0.0473051443696022
+        },
+        "total_gradient_norm_before_clip": 0.1636672019958496,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3596855964659753,
+            "macro_scope_mrr": 0.3596855964659753
+          },
+          "filtered": {
+            "micro": 0.6707098890692642,
+            "macro_scope_mrr": 0.6707098890692642
+          }
+        },
+        "update": 154,
+        "loss": 0.04611848034720463,
+        "validation_filtered_mrr": 0.18190400179084654
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.05484854802489281,
+          "conv1": 0.006391760427504778,
+          "conv2": 0.006676575634628534,
+          "norm1": 0.0018863962031900883,
+          "norm2": 0.007656482979655266,
+          "decoder": 0.02239513397216797
+        },
+        "total_gradient_norm_before_clip": 0.06047740951180458,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3431516489580538,
+            "macro_scope_mrr": 0.3431516489580538
+          },
+          "filtered": {
+            "micro": 0.6791170634920636,
+            "macro_scope_mrr": 0.6791170634920636
+          }
+        },
+        "update": 155,
+        "loss": 0.044989232879977026,
+        "validation_filtered_mrr": 0.18211699322693584
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.09679483622312546,
+          "conv1": 0.006499249953776598,
+          "conv2": 0.0079286377876997,
+          "norm1": 0.0030429991893470287,
+          "norm2": 0.007270754314959049,
+          "decoder": 0.029816055670380592
+        },
+        "total_gradient_norm_before_clip": 0.10210517048835754,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.3376510940728409,
+            "macro_scope_mrr": 0.3376510940728409
+          },
+          "filtered": {
+            "micro": 0.6776227678571429,
+            "macro_scope_mrr": 0.6776227678571429
+          }
+        },
+        "update": 156,
+        "loss": 0.044452637078267895,
+        "validation_filtered_mrr": 0.18293630575852313
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.19007959961891174,
+          "conv1": 0.00845493283122778,
+          "conv2": 0.009493901394307613,
+          "norm1": 0.008764148689806461,
+          "norm2": 0.009609472006559372,
+          "decoder": 0.046575117856264114
+        },
+        "total_gradient_norm_before_clip": 0.19654583930969238,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.33744371085531055,
+            "macro_scope_mrr": 0.33744371085531055
+          },
+          "filtered": {
+            "micro": 0.6615389384920636,
+            "macro_scope_mrr": 0.6615389384920636
+          }
+        },
+        "update": 157,
+        "loss": 0.04382071135534636,
+        "validation_filtered_mrr": 0.18275137902480054
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.08822176605463028,
+          "conv1": 0.0072005013935267925,
+          "conv2": 0.007595245726406574,
+          "norm1": 0.0031452905386686325,
+          "norm2": 0.008061565458774567,
+          "decoder": 0.029563885182142258
+        },
+        "total_gradient_norm_before_clip": 0.09402935951948166,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.33023770552539367,
+            "macro_scope_mrr": 0.33023770552539367
+          },
+          "filtered": {
+            "micro": 0.6644903273809524,
+            "macro_scope_mrr": 0.6644903273809524
+          }
+        },
+        "update": 158,
+        "loss": 0.04341526690957874,
+        "validation_filtered_mrr": 0.18323631968838613
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.09889120608568192,
+          "conv1": 0.0059179821982979774,
+          "conv2": 0.006598686799407005,
+          "norm1": 0.004130657762289047,
+          "norm2": 0.008791699074208736,
+          "decoder": 0.028932670131325722
+        },
+        "total_gradient_norm_before_clip": 0.10387247800827026,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.32404503689954245,
+            "macro_scope_mrr": 0.32404503689954245
+          },
+          "filtered": {
+            "micro": 0.6583705357142857,
+            "macro_scope_mrr": 0.6583705357142857
+          }
+        },
+        "update": 159,
+        "loss": 0.04184663059175659,
+        "validation_filtered_mrr": 0.18391008970847963
+      },
+      {
+        "gradient_norms_before_clip": {
+          "initializer": 0.08249182999134064,
+          "conv1": 0.007697415538132191,
+          "conv2": 0.008901624009013176,
+          "norm1": 0.002705850638449192,
+          "norm2": 0.007114018313586712,
+          "decoder": 0.02865692228078842
+        },
+        "total_gradient_norm_before_clip": 0.08844512701034546,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.31763652287839067,
+            "macro_scope_mrr": 0.31763652287839067
+          },
+          "filtered": {
+            "micro": 0.6600446428571428,
+            "macro_scope_mrr": 0.6600446428571428
+          }
+        },
+        "update": 160,
+        "loss": 0.042100945208595066,
+        "validation_filtered_mrr": 0.18399707425612988
+      }
+    ],
+    "effective_rounds": null,
+    "training_target_count": 16462,
+    "elapsed_seconds": 653.535286600003,
+    "software": {
+      "python": "3.12.10",
+      "torch": "2.5.1+cu121"
+    }
+  },
+  "elapsed_seconds": 653.5747044086456
+}

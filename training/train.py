@@ -25,6 +25,8 @@ def add_model_arguments(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--encoder-learning-rate", type=float, default=None)
     parser.add_argument("--decoder-learning-rate", type=float, default=None)
     parser.add_argument("--init-checkpoint", default=None)
+    parser.add_argument("--update-offset", type=int, default=0,
+                        help="completed updates used to offset the negative-sampling schedule")
     parser.add_argument("--sync", action="store_true")
     parser.add_argument("--feedback", action="store_true")
     parser.add_argument("--diagnostic-train-limit", type=int, default=32)
@@ -45,6 +47,7 @@ def model_config_options(args: argparse.Namespace) -> dict:
                 embedding_learning_rate=args.embedding_learning_rate,
                 encoder_learning_rate=args.encoder_learning_rate,
                 decoder_learning_rate=args.decoder_learning_rate, init_checkpoint=args.init_checkpoint,
+                update_offset=args.update_offset,
                 diagnostic_train_limit=args.diagnostic_train_limit)
 
 

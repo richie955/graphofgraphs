@@ -1,0 +1,5061 @@
+{
+  "kind": "gog",
+  "notice": "Initial result on the provided split; compare against a baseline with matching settings.",
+  "dataset_name": "PrimeKG + PubChem/RDKit + Reactome structural GoG",
+  "split_note": "The PrimeKG GoG split is generated and should be treated as an initial pipeline check.",
+  "config": {
+    "hidden_dim": 128,
+    "num_bases": 8,
+    "num_heads": 4,
+    "dropout": 0.2,
+    "num_rounds": 1,
+    "negatives_per_side": 50,
+    "training_batch_size": 4096,
+    "epochs": 80,
+    "patience": 15,
+    "learning_rate": 0.001,
+    "weight_decay": 0.0001,
+    "gradient_clip": 1.0,
+    "seed": 17,
+    "device": "cuda",
+    "show_progress": true,
+    "encoder_profile": "structural",
+    "task_scope": "root",
+    "feature_mode": "categorical",
+    "basis_init": null,
+    "composition": null,
+    "normalization": null,
+    "identity_residual": true,
+    "local_enabled": true,
+    "cross_enabled": true,
+    "fusion_enabled": true,
+    "root_enabled": true,
+    "sync_enabled": false,
+    "feedback_enabled": false,
+    "family_readout": true,
+    "embedding_learning_rate": null,
+    "encoder_learning_rate": null,
+    "decoder_learning_rate": null,
+    "init_checkpoint": null,
+    "early_stopping": false,
+    "update_offset": 0,
+    "evaluate_test": true,
+    "diagnostic_train_limit": 32
+  },
+  "split_counts": {
+    "test": {
+      "root_to_root": 2007,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    },
+    "train": {
+      "root_to_root": 16462,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    },
+    "validation": {
+      "root_to_root": 2000,
+      "same_internal_graph": 0,
+      "root_to_internal": 0,
+      "internal_to_root": 0,
+      "internal_to_different_internal": 0
+    }
+  },
+  "gog": {
+    "kind": "gog",
+    "best_epoch": 80,
+    "best_validation_macro_filtered_mrr": 0.17251835399028104,
+    "loss_first": 1.516673868850404,
+    "loss_last": 0.06531022500566745,
+    "loss_history": [
+      1.516673868850404,
+      1.26082383007691,
+      1.131974847706913,
+      1.0556869848199437,
+      0.99014674738102,
+      0.929043522090817,
+      0.8764669802191479,
+      0.8304753602528655,
+      0.7794640498511224,
+      0.7268836016267404,
+      0.680999970576581,
+      0.6421532450679904,
+      0.6061681740238489,
+      0.5740706652833746,
+      0.546698427999777,
+      0.5179215976019094,
+      0.4945548071184624,
+      0.4757627094375625,
+      0.45534069627403934,
+      0.4396491640756232,
+      0.4213067055718894,
+      0.40508369678730316,
+      0.39251856822142583,
+      0.3784828598763467,
+      0.36817578197452483,
+      0.35412617475826297,
+      0.3417277319501402,
+      0.3304814830279382,
+      0.3202673500246938,
+      0.30920911846901256,
+      0.2978822697977324,
+      0.2886532463948907,
+      0.27996526854960224,
+      0.26993254172151687,
+      0.26056375514836755,
+      0.25279499835340036,
+      0.24300217242326932,
+      0.2354086946961715,
+      0.2276445418295746,
+      0.2193331202543487,
+      0.2123890438001336,
+      0.20517983158946024,
+      0.19864166499654226,
+      0.1916611914667436,
+      0.1851403449781175,
+      0.1790566891667157,
+      0.17336184065370336,
+      0.16778277044828657,
+      0.16198307087312505,
+      0.15745363097813045,
+      0.15261476130730875,
+      0.14772228800125128,
+      0.14300412237789026,
+      0.13798036512569936,
+      0.1336562231231932,
+      0.12925660698182992,
+      0.12603891247236457,
+      0.12162710751425292,
+      0.11851614605408654,
+      0.1149795781483831,
+      0.1114409727917568,
+      0.10775021095403185,
+      0.10532334522037427,
+      0.10212596938287398,
+      0.09843156119787509,
+      0.096731811297496,
+      0.093544266311457,
+      0.090958048661603,
+      0.08894922975516381,
+      0.08619866671422868,
+      0.08380288887162961,
+      0.08118416720354286,
+      0.07901564401759656,
+      0.07695259806028969,
+      0.07509726324404825,
+      0.07307010428132965,
+      0.07101894211955935,
+      0.0691468597405259,
+      0.06745159180565372,
+      0.06531022500566745
+    ],
+    "negative_shortfalls_last_epoch": {
+      "head": 0,
+      "tail": 0,
+      "no_negative_side": 0
+    },
+    "validation": {
+      "root": {
+        "raw": {
+          "count": 4000,
+          "mrr": 0.062040656015299664,
+          "mean_rank": 192.12075,
+          "hits@1": 0.01225,
+          "hits@3": 0.0435,
+          "hits@10": 0.14725
+        },
+        "filtered": {
+          "count": 4000,
+          "mrr": 0.17251835399028104,
+          "mean_rank": 170.67625,
+          "hits@1": 0.08575,
+          "hits@3": 0.18875,
+          "hits@10": 0.35
+        },
+        "total_queries": 4000,
+        "unscorable_queries": 0,
+        "scorable_queries": 4000
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.062040656015299664,
+          "macro_scope_mrr": 0.062040656015299664
+        },
+        "filtered": {
+          "micro": 0.17251835399028104,
+          "macro_scope_mrr": 0.17251835399028104
+        }
+      },
+      "settings": {
+        "split": "validation",
+        "filter_known_splits": [
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+        "task_scope": "root",
+        "fact_limit": null,
+        "root_candidate_count": 2534,
+        "candidates": "all ROOT occurrences"
+      },
+      "breakdowns": {
+        "by_relation": {
+          "disease_protein::associated with": {
+            "raw": {
+              "count": 922,
+              "mrr": 0.0568910943488548,
+              "mean_rank": 123.10520607375271,
+              "hits@1": 0.006507592190889371,
+              "hits@3": 0.039045553145336226,
+              "hits@10": 0.13774403470715835
+            },
+            "filtered": {
+              "count": 922,
+              "mrr": 0.21899783417770102,
+              "mean_rank": 98.19197396963123,
+              "hits@1": 0.113882863340564,
+              "hits@3": 0.2603036876355748,
+              "hits@10": 0.4175704989154013
+            },
+            "total_queries": 922,
+            "unscorable_queries": 0
+          },
+          "contraindication::contraindication": {
+            "raw": {
+              "count": 226,
+              "mrr": 0.08175723815461428,
+              "mean_rank": 162.36283185840708,
+              "hits@1": 0.01327433628318584,
+              "hits@3": 0.084070796460177,
+              "hits@10": 0.19911504424778761
+            },
+            "filtered": {
+              "count": 226,
+              "mrr": 0.17612869497718037,
+              "mean_rank": 141.24778761061947,
+              "hits@1": 0.09292035398230089,
+              "hits@3": 0.17256637168141592,
+              "hits@10": 0.36283185840707965
+            },
+            "total_queries": 226,
+            "unscorable_queries": 0
+          },
+          "protein_protein::ppi": {
+            "raw": {
+              "count": 1236,
+              "mrr": 0.04917223318512965,
+              "mean_rank": 244.04692556634305,
+              "hits@1": 0.013754045307443365,
+              "hits@3": 0.02669902912621359,
+              "hits@10": 0.10841423948220065
+            },
+            "filtered": {
+              "count": 1236,
+              "mrr": 0.13995719320299163,
+              "mean_rank": 218.27508090614887,
+              "hits@1": 0.07605177993527508,
+              "hits@3": 0.14401294498381878,
+              "hits@10": 0.27427184466019416
+            },
+            "total_queries": 1236,
+            "unscorable_queries": 0
+          },
+          "drug_drug::synergistic interaction": {
+            "raw": {
+              "count": 358,
+              "mrr": 0.10008712644732674,
+              "mean_rank": 28.868715083798882,
+              "hits@1": 0.027932960893854747,
+              "hits@3": 0.0670391061452514,
+              "hits@10": 0.24860335195530725
+            },
+            "filtered": {
+              "count": 358,
+              "mrr": 0.2639091714082131,
+              "mean_rank": 13.363128491620111,
+              "hits@1": 0.10614525139664804,
+              "hits@3": 0.3100558659217877,
+              "hits@10": 0.61731843575419
+            },
+            "total_queries": 358,
+            "unscorable_queries": 0
+          },
+          "drug_effect::side effect": {
+            "raw": {
+              "count": 388,
+              "mrr": 0.06136077667934921,
+              "mean_rank": 98.18556701030928,
+              "hits@1": 0.005154639175257732,
+              "hits@3": 0.03865979381443299,
+              "hits@10": 0.14432989690721648
+            },
+            "filtered": {
+              "count": 388,
+              "mrr": 0.18085374740150464,
+              "mean_rank": 60.69845360824742,
+              "hits@1": 0.07731958762886598,
+              "hits@3": 0.17525773195876287,
+              "hits@10": 0.422680412371134
+            },
+            "total_queries": 388,
+            "unscorable_queries": 0
+          },
+          "pathway_protein::interacts with": {
+            "raw": {
+              "count": 232,
+              "mrr": 0.08599018516009829,
+              "mean_rank": 389.2198275862069,
+              "hits@1": 0.017241379310344827,
+              "hits@3": 0.07758620689655173,
+              "hits@10": 0.23275862068965517
+            },
+            "filtered": {
+              "count": 232,
+              "mrr": 0.21517640349212205,
+              "mean_rank": 377.17241379310343,
+              "hits@1": 0.125,
+              "hits@3": 0.25862068965517243,
+              "hits@10": 0.3793103448275862
+            },
+            "total_queries": 232,
+            "unscorable_queries": 0
+          },
+          "drug_protein::enzyme": {
+            "raw": {
+              "count": 52,
+              "mrr": 0.15826767421810617,
+              "mean_rank": 160.23076923076923,
+              "hits@1": 0.057692307692307696,
+              "hits@3": 0.15384615384615385,
+              "hits@10": 0.36538461538461536
+            },
+            "filtered": {
+              "count": 52,
+              "mrr": 0.25696215065911754,
+              "mean_rank": 155.3653846153846,
+              "hits@1": 0.17307692307692307,
+              "hits@3": 0.28846153846153844,
+              "hits@10": 0.4230769230769231
+            },
+            "total_queries": 52,
+            "unscorable_queries": 0
+          },
+          "drug_protein::target": {
+            "raw": {
+              "count": 78,
+              "mrr": 0.07820436049365966,
+              "mean_rank": 206.71794871794873,
+              "hits@1": 0.02564102564102564,
+              "hits@3": 0.0641025641025641,
+              "hits@10": 0.16666666666666666
+            },
+            "filtered": {
+              "count": 78,
+              "mrr": 0.12855406925781393,
+              "mean_rank": 202.47435897435898,
+              "hits@1": 0.0641025641025641,
+              "hits@3": 0.10256410256410256,
+              "hits@10": 0.28205128205128205
+            },
+            "total_queries": 78,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_positive::phenotype present": {
+            "raw": {
+              "count": 256,
+              "mrr": 0.04128536819548484,
+              "mean_rank": 201.88671875,
+              "hits@1": 0.00390625,
+              "hits@3": 0.015625,
+              "hits@10": 0.1015625
+            },
+            "filtered": {
+              "count": 256,
+              "mrr": 0.08441785688962013,
+              "mean_rank": 194.21875,
+              "hits@1": 0.03515625,
+              "hits@3": 0.07421875,
+              "hits@10": 0.17578125
+            },
+            "total_queries": 256,
+            "unscorable_queries": 0
+          },
+          "disease_disease::parent-child": {
+            "raw": {
+              "count": 64,
+              "mrr": 0.028467871944615003,
+              "mean_rank": 407.828125,
+              "hits@1": 0.0,
+              "hits@3": 0.03125,
+              "hits@10": 0.078125
+            },
+            "filtered": {
+              "count": 64,
+              "mrr": 0.03186536739935832,
+              "mean_rank": 406.90625,
+              "hits@1": 0.0,
+              "hits@3": 0.046875,
+              "hits@10": 0.078125
+            },
+            "total_queries": 64,
+            "unscorable_queries": 0
+          },
+          "indication::indication": {
+            "raw": {
+              "count": 38,
+              "mrr": 0.04099730245241206,
+              "mean_rank": 322.39473684210526,
+              "hits@1": 0.0,
+              "hits@3": 0.05263157894736842,
+              "hits@10": 0.10526315789473684
+            },
+            "filtered": {
+              "count": 38,
+              "mrr": 0.04892424957170222,
+              "mean_rank": 318.92105263157896,
+              "hits@1": 0.0,
+              "hits@3": 0.05263157894736842,
+              "hits@10": 0.15789473684210525
+            },
+            "total_queries": 38,
+            "unscorable_queries": 0
+          },
+          "drug_protein::transporter": {
+            "raw": {
+              "count": 32,
+              "mrr": 0.10790414405248247,
+              "mean_rank": 104.21875,
+              "hits@1": 0.0,
+              "hits@3": 0.09375,
+              "hits@10": 0.25
+            },
+            "filtered": {
+              "count": 32,
+              "mrr": 0.1559881091640341,
+              "mean_rank": 100.4375,
+              "hits@1": 0.0,
+              "hits@3": 0.1875,
+              "hits@10": 0.3125
+            },
+            "total_queries": 32,
+            "unscorable_queries": 0
+          },
+          "phenotype_phenotype::parent-child": {
+            "raw": {
+              "count": 24,
+              "mrr": 0.005593827686949354,
+              "mean_rank": 768.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 24,
+              "mrr": 0.005626922726472364,
+              "mean_rank": 767.25,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 24,
+            "unscorable_queries": 0
+          },
+          "phenotype_protein::associated with": {
+            "raw": {
+              "count": 66,
+              "mrr": 0.07301364909846539,
+              "mean_rank": 246.5,
+              "hits@1": 0.015151515151515152,
+              "hits@3": 0.07575757575757576,
+              "hits@10": 0.13636363636363635
+            },
+            "filtered": {
+              "count": 66,
+              "mrr": 0.09977873769453993,
+              "mean_rank": 240.86363636363637,
+              "hits@1": 0.045454545454545456,
+              "hits@3": 0.09090909090909091,
+              "hits@10": 0.16666666666666666
+            },
+            "total_queries": 66,
+            "unscorable_queries": 0
+          },
+          "off-label use::off-label use": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.0019510228978187507,
+              "mean_rank": 1092.4166666666667,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.001953702555058443,
+              "mean_rank": 1090.4166666666667,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "pathway_pathway::parent-child": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.010640009302001827,
+              "mean_rank": 612.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.010759403053073158,
+              "mean_rank": 611.1666666666666,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "drug_protein::carrier": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.00043100799414784246,
+              "mean_rank": 2328.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.00043100799414784246,
+              "mean_rank": 2328.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_negative::phenotype absent": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.014664502164502165,
+              "mean_rank": 135.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.014683406113537118,
+              "mean_rank": 134.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          }
+        },
+        "by_side": {
+          "head": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.06090811577126927,
+              "mean_rank": 191.731,
+              "hits@1": 0.012,
+              "hits@3": 0.042,
+              "hits@10": 0.1345
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.16879637733148967,
+              "mean_rank": 170.4665,
+              "hits@1": 0.0805,
+              "hits@3": 0.181,
+              "hits@10": 0.356
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          },
+          "tail": {
+            "raw": {
+              "count": 2000,
+              "mrr": 0.06317319625933007,
+              "mean_rank": 192.5105,
+              "hits@1": 0.0125,
+              "hits@3": 0.045,
+              "hits@10": 0.16
+            },
+            "filtered": {
+              "count": 2000,
+              "mrr": 0.1762403306490724,
+              "mean_rank": 170.886,
+              "hits@1": 0.091,
+              "hits@3": 0.1965,
+              "hits@10": 0.344
+            },
+            "total_queries": 2000,
+            "unscorable_queries": 0
+          }
+        },
+        "by_owner": {
+          "non_owner": {
+            "raw": {
+              "count": 4000,
+              "mrr": 0.062040656015299664,
+              "mean_rank": 192.12075,
+              "hits@1": 0.01225,
+              "hits@3": 0.0435,
+              "hits@10": 0.14725
+            },
+            "filtered": {
+              "count": 4000,
+              "mrr": 0.17251835399028104,
+              "mean_rank": 170.67625,
+              "hits@1": 0.08575,
+              "hits@3": 0.18875,
+              "hits@10": 0.35
+            },
+            "total_queries": 4000,
+            "unscorable_queries": 0
+          }
+        }
+      }
+    },
+    "test": {
+      "root": {
+        "raw": {
+          "count": 4014,
+          "mrr": 0.06238969662605751,
+          "mean_rank": 191.80866965620328,
+          "hits@1": 0.011709018435475834,
+          "hits@3": 0.0393622321873443,
+          "hits@10": 0.16218236173393125
+        },
+        "filtered": {
+          "count": 4014,
+          "mrr": 0.20485499309683475,
+          "mean_rank": 169.98206278026905,
+          "hits@1": 0.12306925759840558,
+          "hits@3": 0.2127553562531141,
+          "hits@10": 0.3721973094170404
+        },
+        "total_queries": 4014,
+        "unscorable_queries": 0,
+        "scorable_queries": 4014
+      },
+      "internal": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "cross_context": {
+        "raw": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "filtered": {
+          "count": 0,
+          "mrr": null,
+          "mean_rank": null,
+          "hits@1": null,
+          "hits@3": null,
+          "hits@10": null
+        },
+        "total_queries": 0,
+        "unscorable_queries": 0,
+        "scorable_queries": 0
+      },
+      "aggregate": {
+        "raw": {
+          "micro": 0.06238969662605751,
+          "macro_scope_mrr": 0.06238969662605751
+        },
+        "filtered": {
+          "micro": 0.20485499309683475,
+          "macro_scope_mrr": 0.20485499309683475
+        }
+      },
+      "settings": {
+        "split": "test",
+        "filter_known_splits": [
+          "test",
+          "train",
+          "validation"
+        ],
+        "rank_tie_rule": "optimistic (strictly greater scores rank above target)",
+        "task_scope": "root",
+        "fact_limit": null,
+        "root_candidate_count": 2534,
+        "candidates": "all ROOT occurrences"
+      },
+      "breakdowns": {
+        "by_relation": {
+          "drug_drug::synergistic interaction": {
+            "raw": {
+              "count": 360,
+              "mrr": 0.08571575899787771,
+              "mean_rank": 36.71388888888889,
+              "hits@1": 0.019444444444444445,
+              "hits@3": 0.041666666666666664,
+              "hits@10": 0.22777777777777777
+            },
+            "filtered": {
+              "count": 360,
+              "mrr": 0.3074335562718496,
+              "mean_rank": 19.747222222222224,
+              "hits@1": 0.1638888888888889,
+              "hits@3": 0.33055555555555555,
+              "hits@10": 0.6361111111111111
+            },
+            "total_queries": 360,
+            "unscorable_queries": 0
+          },
+          "contraindication::contraindication": {
+            "raw": {
+              "count": 232,
+              "mrr": 0.0766561735082154,
+              "mean_rank": 209.28879310344828,
+              "hits@1": 0.01293103448275862,
+              "hits@3": 0.06465517241379311,
+              "hits@10": 0.2025862068965517
+            },
+            "filtered": {
+              "count": 232,
+              "mrr": 0.1672775069030956,
+              "mean_rank": 189.91810344827587,
+              "hits@1": 0.08620689655172414,
+              "hits@3": 0.17672413793103448,
+              "hits@10": 0.3146551724137931
+            },
+            "total_queries": 232,
+            "unscorable_queries": 0
+          },
+          "disease_protein::associated with": {
+            "raw": {
+              "count": 922,
+              "mrr": 0.05906351504438597,
+              "mean_rank": 129.92516268980478,
+              "hits@1": 0.006507592190889371,
+              "hits@3": 0.033622559652928416,
+              "hits@10": 0.16268980477223427
+            },
+            "filtered": {
+              "count": 922,
+              "mrr": 0.2806744742570049,
+              "mean_rank": 104.75379609544468,
+              "hits@1": 0.19088937093275488,
+              "hits@3": 0.2885032537960954,
+              "hits@10": 0.46746203904555317
+            },
+            "total_queries": 922,
+            "unscorable_queries": 0
+          },
+          "protein_protein::ppi": {
+            "raw": {
+              "count": 1236,
+              "mrr": 0.04951009047698287,
+              "mean_rank": 235.02831715210357,
+              "hits@1": 0.009708737864077669,
+              "hits@3": 0.025889967637540454,
+              "hits@10": 0.12944983818770225
+            },
+            "filtered": {
+              "count": 1236,
+              "mrr": 0.16496248272202713,
+              "mean_rank": 209.73867313915858,
+              "hits@1": 0.10032362459546926,
+              "hits@3": 0.16990291262135923,
+              "hits@10": 0.2872168284789644
+            },
+            "total_queries": 1236,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_positive::phenotype present": {
+            "raw": {
+              "count": 260,
+              "mrr": 0.048452801158188556,
+              "mean_rank": 143.9,
+              "hits@1": 0.007692307692307693,
+              "hits@3": 0.023076923076923078,
+              "hits@10": 0.10384615384615385
+            },
+            "filtered": {
+              "count": 260,
+              "mrr": 0.08682519454079128,
+              "mean_rank": 134.94230769230768,
+              "hits@1": 0.023076923076923078,
+              "hits@3": 0.06923076923076923,
+              "hits@10": 0.21153846153846154
+            },
+            "total_queries": 260,
+            "unscorable_queries": 0
+          },
+          "pathway_protein::interacts with": {
+            "raw": {
+              "count": 236,
+              "mrr": 0.1080343054987257,
+              "mean_rank": 292.83474576271186,
+              "hits@1": 0.03389830508474576,
+              "hits@3": 0.09745762711864407,
+              "hits@10": 0.2923728813559322
+            },
+            "filtered": {
+              "count": 236,
+              "mrr": 0.31923122403979126,
+              "mean_rank": 278.9491525423729,
+              "hits@1": 0.2669491525423729,
+              "hits@3": 0.326271186440678,
+              "hits@10": 0.4279661016949153
+            },
+            "total_queries": 236,
+            "unscorable_queries": 0
+          },
+          "drug_protein::transporter": {
+            "raw": {
+              "count": 22,
+              "mrr": 0.07922853189417807,
+              "mean_rank": 310.90909090909093,
+              "hits@1": 0.0,
+              "hits@3": 0.09090909090909091,
+              "hits@10": 0.22727272727272727
+            },
+            "filtered": {
+              "count": 22,
+              "mrr": 0.1575489321739201,
+              "mean_rank": 306.6818181818182,
+              "hits@1": 0.09090909090909091,
+              "hits@3": 0.13636363636363635,
+              "hits@10": 0.36363636363636365
+            },
+            "total_queries": 22,
+            "unscorable_queries": 0
+          },
+          "drug_effect::side effect": {
+            "raw": {
+              "count": 394,
+              "mrr": 0.059576759050270364,
+              "mean_rank": 110.61421319796955,
+              "hits@1": 0.0025380710659898475,
+              "hits@3": 0.03299492385786802,
+              "hits@10": 0.15736040609137056
+            },
+            "filtered": {
+              "count": 394,
+              "mrr": 0.20473598087558675,
+              "mean_rank": 71.28934010152284,
+              "hits@1": 0.08629441624365482,
+              "hits@3": 0.233502538071066,
+              "hits@10": 0.44923857868020306
+            },
+            "total_queries": 394,
+            "unscorable_queries": 0
+          },
+          "indication::indication": {
+            "raw": {
+              "count": 44,
+              "mrr": 0.07939511802937177,
+              "mean_rank": 187.5681818181818,
+              "hits@1": 0.022727272727272728,
+              "hits@3": 0.06818181818181818,
+              "hits@10": 0.18181818181818182
+            },
+            "filtered": {
+              "count": 44,
+              "mrr": 0.08688110258568932,
+              "mean_rank": 184.95454545454547,
+              "hits@1": 0.022727272727272728,
+              "hits@3": 0.09090909090909091,
+              "hits@10": 0.20454545454545456
+            },
+            "total_queries": 44,
+            "unscorable_queries": 0
+          },
+          "phenotype_protein::associated with": {
+            "raw": {
+              "count": 68,
+              "mrr": 0.03657480622345604,
+              "mean_rank": 400.52941176470586,
+              "hits@1": 0.014705882352941176,
+              "hits@3": 0.014705882352941176,
+              "hits@10": 0.07352941176470588
+            },
+            "filtered": {
+              "count": 68,
+              "mrr": 0.04255040166137239,
+              "mean_rank": 394.02941176470586,
+              "hits@1": 0.014705882352941176,
+              "hits@3": 0.014705882352941176,
+              "hits@10": 0.14705882352941177
+            },
+            "total_queries": 68,
+            "unscorable_queries": 0
+          },
+          "drug_protein::carrier": {
+            "raw": {
+              "count": 6,
+              "mrr": 0.17139423308981225,
+              "mean_rank": 825.3333333333334,
+              "hits@1": 0.16666666666666666,
+              "hits@3": 0.16666666666666666,
+              "hits@10": 0.16666666666666666
+            },
+            "filtered": {
+              "count": 6,
+              "mrr": 0.17272667357194726,
+              "mean_rank": 823.3333333333334,
+              "hits@1": 0.16666666666666666,
+              "hits@3": 0.16666666666666666,
+              "hits@10": 0.16666666666666666
+            },
+            "total_queries": 6,
+            "unscorable_queries": 0
+          },
+          "disease_disease::parent-child": {
+            "raw": {
+              "count": 64,
+              "mrr": 0.041506035297316383,
+              "mean_rank": 613.875,
+              "hits@1": 0.015625,
+              "hits@3": 0.046875,
+              "hits@10": 0.0625
+            },
+            "filtered": {
+              "count": 64,
+              "mrr": 0.041554488913181746,
+              "mean_rank": 613.078125,
+              "hits@1": 0.015625,
+              "hits@3": 0.046875,
+              "hits@10": 0.0625
+            },
+            "total_queries": 64,
+            "unscorable_queries": 0
+          },
+          "off-label use::off-label use": {
+            "raw": {
+              "count": 12,
+              "mrr": 0.008028097784070444,
+              "mean_rank": 780.3333333333334,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 12,
+              "mrr": 0.009068993920658974,
+              "mean_rank": 777.5833333333334,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 12,
+            "unscorable_queries": 0
+          },
+          "drug_protein::enzyme": {
+            "raw": {
+              "count": 54,
+              "mrr": 0.14091102627322274,
+              "mean_rank": 372.72222222222223,
+              "hits@1": 0.05555555555555555,
+              "hits@3": 0.14814814814814814,
+              "hits@10": 0.3333333333333333
+            },
+            "filtered": {
+              "count": 54,
+              "mrr": 0.16780293991574352,
+              "mean_rank": 366.3703703703704,
+              "hits@1": 0.05555555555555555,
+              "hits@3": 0.18518518518518517,
+              "hits@10": 0.3888888888888889
+            },
+            "total_queries": 54,
+            "unscorable_queries": 0
+          },
+          "drug_protein::target": {
+            "raw": {
+              "count": 68,
+              "mrr": 0.06860588774998663,
+              "mean_rank": 254.63235294117646,
+              "hits@1": 0.014705882352941176,
+              "hits@3": 0.058823529411764705,
+              "hits@10": 0.17647058823529413
+            },
+            "filtered": {
+              "count": 68,
+              "mrr": 0.11329628901854766,
+              "mean_rank": 250.13235294117646,
+              "hits@1": 0.04411764705882353,
+              "hits@3": 0.11764705882352941,
+              "hits@10": 0.27941176470588236
+            },
+            "total_queries": 68,
+            "unscorable_queries": 0
+          },
+          "pathway_pathway::parent-child": {
+            "raw": {
+              "count": 10,
+              "mrr": 0.008206314354728243,
+              "mean_rank": 303.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 10,
+              "mrr": 0.00822898765813765,
+              "mean_rank": 301.2,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 10,
+            "unscorable_queries": 0
+          },
+          "phenotype_phenotype::parent-child": {
+            "raw": {
+              "count": 24,
+              "mrr": 0.02546621334615762,
+              "mean_rank": 470.9583333333333,
+              "hits@1": 0.0,
+              "hits@3": 0.041666666666666664,
+              "hits@10": 0.041666666666666664
+            },
+            "filtered": {
+              "count": 24,
+              "mrr": 0.025554432834524268,
+              "mean_rank": 469.7083333333333,
+              "hits@1": 0.0,
+              "hits@3": 0.041666666666666664,
+              "hits@10": 0.041666666666666664
+            },
+            "total_queries": 24,
+            "unscorable_queries": 0
+          },
+          "disease_phenotype_negative::phenotype absent": {
+            "raw": {
+              "count": 2,
+              "mrr": 0.049999999999999996,
+              "mean_rank": 24.5,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "filtered": {
+              "count": 2,
+              "mrr": 0.05042016806722689,
+              "mean_rank": 24.0,
+              "hits@1": 0.0,
+              "hits@3": 0.0,
+              "hits@10": 0.0
+            },
+            "total_queries": 2,
+            "unscorable_queries": 0
+          }
+        },
+        "by_side": {
+          "head": {
+            "raw": {
+              "count": 2007,
+              "mrr": 0.06028257919606293,
+              "mean_rank": 193.65620328849027,
+              "hits@1": 0.009965122072745391,
+              "hits@3": 0.03487792725460887,
+              "hits@10": 0.15396113602391628
+            },
+            "filtered": {
+              "count": 2007,
+              "mrr": 0.2093011658775687,
+              "mean_rank": 171.5600398604883,
+              "hits@1": 0.1290483308420528,
+              "hits@3": 0.21076233183856502,
+              "hits@10": 0.37419033383158945
+            },
+            "total_queries": 2007,
+            "unscorable_queries": 0
+          },
+          "tail": {
+            "raw": {
+              "count": 2007,
+              "mrr": 0.0644968140560521,
+              "mean_rank": 189.96113602391628,
+              "hits@1": 0.013452914798206279,
+              "hits@3": 0.04384653712007972,
+              "hits@10": 0.17040358744394618
+            },
+            "filtered": {
+              "count": 2007,
+              "mrr": 0.2004088203161008,
+              "mean_rank": 168.40408570004982,
+              "hits@1": 0.11709018435475835,
+              "hits@3": 0.2147483806676632,
+              "hits@10": 0.3702042850024913
+            },
+            "total_queries": 2007,
+            "unscorable_queries": 0
+          }
+        },
+        "by_owner": {
+          "non_owner": {
+            "raw": {
+              "count": 4014,
+              "mrr": 0.06238969662605751,
+              "mean_rank": 191.80866965620328,
+              "hits@1": 0.011709018435475834,
+              "hits@3": 0.0393622321873443,
+              "hits@10": 0.16218236173393125
+            },
+            "filtered": {
+              "count": 4014,
+              "mrr": 0.20485499309683475,
+              "mean_rank": 169.98206278026905,
+              "hits@1": 0.12306925759840558,
+              "hits@3": 0.2127553562531141,
+              "hits@10": 0.3721973094170404
+            },
+            "total_queries": 4014,
+            "unscorable_queries": 0
+          }
+        }
+      }
+    },
+    "checkpoint": "/content/drive/MyDrive/gog_runs/rootonly_scratch80_20261126_224539/gog_best.pt",
+    "optimizer_updates": 80,
+    "update_offset": 0,
+    "initial_validation": null,
+    "initialization": {
+      "mode": "random"
+    },
+    "fingerprints": {
+      "dataset": "dd72a42a17d4ab55593714466a82ce19989164bba6aceec6642ad536b0512ba5",
+      "candidates": "6dde2089fef45ae499e7d1414c7b5a56b6203cf73f63bb80166bad1b5d1676ad",
+      "queries": {
+        "train": "d1c94e6a1d38e545b852eb7a7ab7ee5bf2ad230c04725da20b3fc386b6c2978a",
+        "validation": "3117b85dc3f7656622d7250037a0d11f5255309af99f9fa890586ef8e0bb5997",
+        "test": "cf11d8348af927705c6fd7efb6871ada5eb00b97881d84344dd332b42cedab11"
+      }
+    },
+    "negative_sample_fingerprints": [
+      "b1c4e101c329036d8e7d2d82d24982377a52d96f5b605001305f21494fb72784",
+      "b7aab6dd21dfbd6713ce41e0ea442e6e6c50a3d8d344289cf641df8fb31298f0",
+      "d7612e942a865fb032f6b31df05c76695dfa994453dcc7acd76e6620677fbc69",
+      "73b37fea3f25d78d8fc3ca918fdb9729dd866c58b11606cdfdc3f8f42e08c12e",
+      "003afdda811509657495051a5bd762d01f45de8a01a3e3548a510b18f47ec069",
+      "5a33486866ed5f90ed278d0baa11c43467ba54cbea6c168d3578713150f6655c",
+      "8fcec8e10f6f3ff0ec413444d9359947bb946e61d2eb5bae7ed10a4643b770f8",
+      "cfa3854451cf4550f9adf18ee88a6b90d0d29d464795ecffac23f63602ab02ae",
+      "d7f77454570a1f33e99af02ec74dc5c8fb24578ddfd1def75a08cce8d4520e0e",
+      "78b3813d0be0dbcb1c384671b39129b46b2dca8b84f84115f77bcd049ed8c1d0",
+      "a5668f13175d6966649cf3353a611291aea5aa0d7b15e5ba24c01ba4de3ee194",
+      "83449ca334c47e83664544b5a824949371364c7aad4538a8072911b531f21a94",
+      "46212ff3f5d78389361b7a9d4309f954ef48456d32c80cf4937254114b96d0eb",
+      "eecce86a836ecdfe23365394070abc5370994f5a8ef354b360d055f39a763635",
+      "59cca43d8364db77ba1a9092971bd886427a5dd9cab08caa31fb599020b2ab0a",
+      "40b224db606ce3860d3d4cf3f95531403112b0704cd90946a165bb3135af2c32",
+      "1ff9dd663f6fbf0ad015dd796dceeec8ea3212ee455b2b03fdb3ea77e55f5973",
+      "b4d9cba435a01d90e5b135de7821a2d2185598da9567c8cc702f08b917a22e8b",
+      "ab911ffb2bf6a99cbba3bab2dea2e6a832728a12adfe3223260197de17f59960",
+      "7d8662f14c72c705675b93f16921d2efdcf42c46e1f165349065308ebba8e1af",
+      "2f00d8385571e2eac5c38c01213ef9e29caaea84cbd64e90f44890b4f272a63f",
+      "a6f45fbf5e0cbb6479f4898e7dc419f16a4c7bb340d74b4e3534d380af7b0efe",
+      "e226114b284f7c276d354c157b7f8d4942289267a8c7cf0a7c30c7cc5307941b",
+      "f23fe6b752fcd50630e59654e577c8dc6616f1e722dd3c3e7766c69fc55dd072",
+      "6246ab02ff52801b6e73fb8d5d4923c354311e7915b11ccb639c554ff7e9a988",
+      "f55b85e523f2caae0763721c2678092627d79e45d20797c0abdf8522e666ac9b",
+      "e00bfe86058db072f99afaf27da9588d6e1d8c91a687cb03c7588c5a46d20bfb",
+      "6b17ad9bcb05ef765e7f273d2ca4d6b819cd48b50ab8d9b3f2edc1aace4f537e",
+      "2a14084368fe752ce486f117139856bfe4626b929be09e4861616c585f90bd34",
+      "9f8ade235ab3da443aebe32d50f3991f5c41643c8e409e6e27d4c41004725920",
+      "b0627492a39fc6779f01ddd179700a2d335e5b27aac45f28b5f5138aae6f7416",
+      "eebae3d8425f5f721d58ab92c8fe1df97ce785f1f62d5dda1311c0277cc2a675",
+      "49c447f179487d9e3b45a58658ad854ad039db9ac539bb8fde0403f62ac8c064",
+      "46d3f139d6f581fd2ca95647f755fab62f84d1c45fdb3f9fe6b34bbf1d9fde7b",
+      "cf3b640cdcb70841e893d073d317e92c2d46649d9ce302415d2985ce9b7c0155",
+      "ca5d4b7bbac6c514243daf479f581e5ca24f80d9b8bb4fb0696ae754e7d56f05",
+      "5cba131b486594365d4b434ad7e9029182fab61cb69c0ee08dd9c00db025a59b",
+      "c207d59fbb3ccbcbf60e621126ba7005178871610398be7c5aad27ab806d1ac8",
+      "1996a0ed16db32065388ca8b1b2396f7ac07ea32ca623ba8d806efbdb121980c",
+      "13d1b279d9485f873964d5e52636178ee9254fd86a5c56476e8d189859176df1",
+      "273692d78a2d93805e8186a39efc44e27cc159ac10428a20de12bd2191df6b54",
+      "0f5c0f1b859121ac47652afbeccbce8ed23910a042fd0c90fc28b786046ddff4",
+      "9a51eb51e998af621e8ecd924f3852a4b643e8377cc6371df6d0124fd5a72496",
+      "f40916c046544e56c771baf79c67564dae44d397ff4b7b0962dcc28baadfaeab",
+      "92e4269d8756a8091031ec1edc1c66b28dcd6e841e8dec02d611ae7b4f5c895b",
+      "e2abe052dd54c67636ebbb369ade6376fbec2a849b1c63ca7eca3d10c3dbd28b",
+      "3853613334c8402b683661b9d122657309c8ecf72ceb5df6f398f03efb4fac0f",
+      "76602f51c894ac1a0de9e2cc12d6ed4196ba5343b3180c15742303e669c883c8",
+      "db0edf33afcc45f8a117bb60fd1a680bb04a344e8801eeec19753511f0954297",
+      "a62aa72afd1fe7a9c2b37a7ba3ff72e24e43f33fa20106bade1d63f75112b707",
+      "25bace0f6496d765bc706c00a31aef70fe3b4c01acf38f256bc50cfb14a382ed",
+      "da64d2855174ebd7d842ada4f9329cb2a7ed838bc351dd04dfe34071ff990164",
+      "a4d528407f8d3202e63103a4f0323e2c78a3cdbd0d5006f08112c34b1c9ccdae",
+      "1fa5e2940be99c19015b034c47f3edabc6bc07f561725da5428c33e76c130f23",
+      "1ffba962582972c425d4ad87ae19af852fe21c0091047bc8f88dea7a1e80bbc6",
+      "a2d924d4564d57521345357a042db22ef38ecaa0dde7248b1934668474d89e9e",
+      "4cb4009916c7c197377d5e5a70e56fb665a877210678640bcd09d66d0d3dc4bf",
+      "d7e23602ade0629a46ce55bb6630c5e2204601bbe073301308a4c04d030cf0e9",
+      "b22d4528954b8b33892678279a31a761dd2bcc8d8d5cf32749c04ef7eccb5e32",
+      "0ef625014a1f7f9c11b61b386a1807170bb901ba1e88d529f2878d9271252985",
+      "47c6de709244e3a6a8f279b966a3e8664d7f066fe4462ee2c4561c19e7fe4e07",
+      "02843ea984d48ce2109f8db14c9c825bdf0fdc66b832709c8a589f47d4d6a6a9",
+      "5fffe833a5afb623f9c26da96e1e7bbd1c72cac32fbdbb42d75c8c2d400ae756",
+      "44b6dbaec7838fe1eea7068dbe41c6bf3881584909909be66557aedf0fc7a131",
+      "c3da6282ceb316888a22541363fe61fecef6ae414f53848b3d9f0be77ebd8da6",
+      "a1e33590fd34ca1e57a41c1bcfed300654b66600933e0e2beef9aaf2bfa95e6c",
+      "0c9a6f149f4e3a7b0434e0288e4412382c7d031e7547720a75c4a8802ca28cc5",
+      "8456db9f4df3a531c6649658f9790a3826fc599b979e7edca96a974622cd1fc7",
+      "89cdb0084941d81f47ea1e579ae68f03a27f074f6545a0ed737d0ad22d3e1529",
+      "8a205d4ed2dae8ff8f5c1bafacad1e44aea169b3e2408ece4c3227f382358c45",
+      "c0bd0d474dc06769fab585e333286e7b57b5d2a03f211e2cc3122befdcb60720",
+      "073c618ca9ba87c4735b38999bf55fb57a7b5b5cd87a341bae4cc851a8f0fcf8",
+      "a4120c76f595986b5813378db523b34f9f827ca27d4df2d826cdac4ddf1988ac",
+      "d12d22ebe8cd8ac5d2c9c396604443c7ab122db6d2fe8b3eb3f32418eacfc318",
+      "07f2ffda3912c005f00d5ace166fbc79e710c510ae9ca2c232b616f41dc33228",
+      "cfe339a7e172bb672fa6b0d8e80a18a23483ad49de163f6cba6a6b21b3b6fd59",
+      "d78811a39cec7e6fa38e0e79145df9d9af759698d8222a078003484c4182eae7",
+      "58d00061651b83add43eff935318e1bf59111244de27c3c0ad77bc693f17bf44",
+      "9ff0c02d65c997f766eda3cba6c05822400aa8b2cb8bff397914783936f8d8dd",
+      "9fbe47b23b3743252e7dc0c7ec1122d735ffc2036523fbf9fc61b216f03cb7d9"
+    ],
+    "diagnostics": [
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.4781298637390137,
+        "identity_scales": {
+          "disease": 0.0,
+          "drug": 0.0,
+          "effect/phenotype": 0.0,
+          "gene/protein": 0.0,
+          "pathway": 0.0,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.45070743560791,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.12516120076179504,
+          "initializer": 4.452926158905029,
+          "relation_embedding": 0.0,
+          "local": 0.0,
+          "root": 0.0,
+          "chemistry": 0.0,
+          "decoder": 1.8438585996627808
+        },
+        "total_gradient_norm_before_clip": 4.821206569671631,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.008637706868300912,
+            "macro_scope_mrr": 0.008637706868300912
+          },
+          "filtered": {
+            "micro": 0.008794489982348747,
+            "macro_scope_mrr": 0.008794489982348747
+          }
+        },
+        "update": 1,
+        "loss": 1.516673868850404,
+        "validation_filtered_mrr": 0.00847352677553051
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.4813692569732666,
+        "identity_scales": {
+          "disease": 0.000999998301267624,
+          "drug": 0.0009999972535297275,
+          "effect/phenotype": 0.0009999974863603711,
+          "gene/protein": 0.000999999581836164,
+          "pathway": -0.000999984098598361,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.46108341217041,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.01744031347334385,
+          "initializer": 2.268561840057373,
+          "relation_embedding": 2.874210986192338e-05,
+          "local": 0.0,
+          "root": 0.00040022472967393696,
+          "chemistry": 0.0,
+          "decoder": 0.893438458442688
+        },
+        "total_gradient_norm_before_clip": 2.438218593597412,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.016711891726350257,
+            "macro_scope_mrr": 0.016711891726350257
+          },
+          "filtered": {
+            "micro": 0.01742886242752336,
+            "macro_scope_mrr": 0.01742886242752336
+          }
+        },
+        "update": 2,
+        "loss": 1.26082383007691,
+        "validation_filtered_mrr": 0.015957335575503544
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.483262777328491,
+        "identity_scales": {
+          "disease": 0.0019826372154057026,
+          "drug": 0.0008795799221843481,
+          "effect/phenotype": 0.0017658559372648597,
+          "gene/protein": 0.0015707933343946934,
+          "pathway": -0.0019732818473130465,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.482502937316895,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.018255583941936493,
+          "initializer": 1.343605637550354,
+          "relation_embedding": 2.4379602109547704e-05,
+          "local": 0.0,
+          "root": 0.00035127022420056164,
+          "chemistry": 0.0,
+          "decoder": 0.5389077067375183
+        },
+        "total_gradient_norm_before_clip": 1.4477676153182983,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.023511534053944426,
+            "macro_scope_mrr": 0.023511534053944426
+          },
+          "filtered": {
+            "micro": 0.025773847223483894,
+            "macro_scope_mrr": 0.025773847223483894
+          }
+        },
+        "update": 3,
+        "loss": 1.131974847706913,
+        "validation_filtered_mrr": 0.022678369011029927
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.4937329292297363,
+        "identity_scales": {
+          "disease": 0.0029722540639340878,
+          "drug": 0.0003075670974794775,
+          "effect/phenotype": 0.0022945990785956383,
+          "gene/protein": 0.0021484920289367437,
+          "pathway": -0.002914540935307741,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.523295402526855,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028702309355139732,
+          "initializer": 1.441839337348938,
+          "relation_embedding": 2.978481825266499e-05,
+          "local": 0.0,
+          "root": 0.00044462562073022127,
+          "chemistry": 0.0,
+          "decoder": 0.6090295910835266
+        },
+        "total_gradient_norm_before_clip": 1.5654524564743042,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.03304547263628109,
+            "macro_scope_mrr": 0.03304547263628109
+          },
+          "filtered": {
+            "micro": 0.03638885910697029,
+            "macro_scope_mrr": 0.03638885910697029
+          }
+        },
+        "update": 4,
+        "loss": 1.0556869848199437,
+        "validation_filtered_mrr": 0.027319476688346278
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.5154967308044434,
+        "identity_scales": {
+          "disease": 0.0039619021117687225,
+          "drug": -0.00040242905379273,
+          "effect/phenotype": 0.0028277162928134203,
+          "gene/protein": 0.002858757972717285,
+          "pathway": -0.0038765096105635166,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.605257034301758,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02916664630174637,
+          "initializer": 1.3870806694030762,
+          "relation_embedding": 3.496378849376924e-05,
+          "local": 0.0,
+          "root": 0.0005393842584453523,
+          "chemistry": 0.0,
+          "decoder": 0.5828458666801453
+        },
+        "total_gradient_norm_before_clip": 1.5048432350158691,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.05081468958426301,
+            "macro_scope_mrr": 0.05081468958426301
+          },
+          "filtered": {
+            "micro": 0.05589635458691625,
+            "macro_scope_mrr": 0.05589635458691625
+          }
+        },
+        "update": 5,
+        "loss": 0.99014674738102,
+        "validation_filtered_mrr": 0.03191759400144187
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.5481812953948975,
+        "identity_scales": {
+          "disease": 0.004945147316902876,
+          "drug": -0.001182882348075509,
+          "effect/phenotype": 0.0034315730445086956,
+          "gene/protein": 0.0036524899769574404,
+          "pathway": -0.00483115017414093,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.72746467590332,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.009942726232111454,
+          "initializer": 1.0533971786499023,
+          "relation_embedding": 3.361241033417173e-05,
+          "local": 0.0,
+          "root": 0.0005351676372811198,
+          "chemistry": 0.0,
+          "decoder": 0.44359391927719116
+        },
+        "total_gradient_norm_before_clip": 1.1430312395095825,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.06753556610160433,
+            "macro_scope_mrr": 0.06753556610160433
+          },
+          "filtered": {
+            "micro": 0.07488991163361894,
+            "macro_scope_mrr": 0.07488991163361894
+          }
+        },
+        "update": 6,
+        "loss": 0.929043522090817,
+        "validation_filtered_mrr": 0.03654465814239008
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.581848621368408,
+        "identity_scales": {
+          "disease": 0.00591118261218071,
+          "drug": -0.002013503573834896,
+          "effect/phenotype": 0.004148541018366814,
+          "gene/protein": 0.0043762363493442535,
+          "pathway": -0.0058053950779139996,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.7669038772583,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.04178958386182785,
+          "initializer": 0.9006180763244629,
+          "relation_embedding": 4.9843751185107976e-05,
+          "local": 0.0,
+          "root": 0.0007147886208258569,
+          "chemistry": 0.0,
+          "decoder": 0.4023181200027466
+        },
+        "total_gradient_norm_before_clip": 0.987278938293457,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09267215890129482,
+            "macro_scope_mrr": 0.09267215890129482
+          },
+          "filtered": {
+            "micro": 0.10125310389245809,
+            "macro_scope_mrr": 0.10125310389245809
+          }
+        },
+        "update": 7,
+        "loss": 0.8764669802191479,
+        "validation_filtered_mrr": 0.041736337089373715
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.611027956008911,
+        "identity_scales": {
+          "disease": 0.006818320136517286,
+          "drug": -0.002882676897570491,
+          "effect/phenotype": 0.004947151523083448,
+          "gene/protein": 0.004402083810418844,
+          "pathway": -0.006764806341379881,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.732282638549805,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06701818108558655,
+          "initializer": 1.2120229005813599,
+          "relation_embedding": 7.052669388940558e-05,
+          "local": 0.0,
+          "root": 0.0010006201919168234,
+          "chemistry": 0.0,
+          "decoder": 0.5293987393379211
+        },
+        "total_gradient_norm_before_clip": 1.324294090270996,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09848056512208206,
+            "macro_scope_mrr": 0.09848056512208206
+          },
+          "filtered": {
+            "micro": 0.10851690294917407,
+            "macro_scope_mrr": 0.10851690294917407
+          }
+        },
+        "update": 8,
+        "loss": 0.8304753602528655,
+        "validation_filtered_mrr": 0.047274370007611366
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.637699842453003,
+        "identity_scales": {
+          "disease": 0.007605711463838816,
+          "drug": -0.0037691621109843254,
+          "effect/phenotype": 0.005793439690023661,
+          "gene/protein": 0.004081341437995434,
+          "pathway": -0.00772630050778389,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.698138236999512,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.05807269364595413,
+          "initializer": 1.2307029962539673,
+          "relation_embedding": 6.74704133416526e-05,
+          "local": 0.0,
+          "root": 0.0009957734728232026,
+          "chemistry": 0.0,
+          "decoder": 0.5344011187553406
+        },
+        "total_gradient_norm_before_clip": 1.3429774045944214,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.11300649750533853,
+            "macro_scope_mrr": 0.11300649750533853
+          },
+          "filtered": {
+            "micro": 0.13285990523966426,
+            "macro_scope_mrr": 0.13285990523966426
+          }
+        },
+        "update": 9,
+        "loss": 0.7794640498511224,
+        "validation_filtered_mrr": 0.05351847002472399
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.665004253387451,
+        "identity_scales": {
+          "disease": 0.008282779715955257,
+          "drug": -0.0046802423894405365,
+          "effect/phenotype": 0.00667562847957015,
+          "gene/protein": 0.0035909959115087986,
+          "pathway": -0.008691356517374516,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.641227722167969,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.035707391798496246,
+          "initializer": 0.811322808265686,
+          "relation_embedding": 4.760488809552044e-05,
+          "local": 0.0,
+          "root": 0.0007438102038577199,
+          "chemistry": 0.0,
+          "decoder": 0.38576439023017883
+        },
+        "total_gradient_norm_before_clip": 0.899074137210846,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09805630512640065,
+            "macro_scope_mrr": 0.09805630512640065
+          },
+          "filtered": {
+            "micro": 0.1347819508682773,
+            "macro_scope_mrr": 0.1347819508682773
+          }
+        },
+        "update": 10,
+        "loss": 0.7268836016267404,
+        "validation_filtered_mrr": 0.05827736507329288
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.6949830055236816,
+        "identity_scales": {
+          "disease": 0.008920921012759209,
+          "drug": -0.005626353435218334,
+          "effect/phenotype": 0.00759446294978261,
+          "gene/protein": 0.0030089914798736572,
+          "pathway": -0.009653671644628048,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.593254089355469,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.02347831055521965,
+          "initializer": 0.8500786423683167,
+          "relation_embedding": 4.1374052671017125e-05,
+          "local": 0.0,
+          "root": 0.0006485656485892832,
+          "chemistry": 0.0,
+          "decoder": 0.38666847348213196
+        },
+        "total_gradient_norm_before_clip": 0.9341830015182495,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08424347548669181,
+            "macro_scope_mrr": 0.08424347548669181
+          },
+          "filtered": {
+            "micro": 0.11032226916773077,
+            "macro_scope_mrr": 0.11032226916773077
+          }
+        },
+        "update": 11,
+        "loss": 0.680999970576581,
+        "validation_filtered_mrr": 0.062069441174383455
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.726925849914551,
+        "identity_scales": {
+          "disease": 0.009554062969982624,
+          "drug": -0.006597793661057949,
+          "effect/phenotype": 0.008459407836198807,
+          "gene/protein": 0.0024135184939950705,
+          "pathway": -0.010637030005455017,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.548792839050293,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.021213045343756676,
+          "initializer": 1.114828109741211,
+          "relation_embedding": 4.44080178567674e-05,
+          "local": 0.0,
+          "root": 0.0006993954302743077,
+          "chemistry": 0.0,
+          "decoder": 0.46689915657043457
+        },
+        "total_gradient_norm_before_clip": 1.2088370323181152,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.07753920746733096,
+            "macro_scope_mrr": 0.07753920746733096
+          },
+          "filtered": {
+            "micro": 0.09509087052123921,
+            "macro_scope_mrr": 0.09509087052123921
+          }
+        },
+        "update": 12,
+        "loss": 0.6421532450679904,
+        "validation_filtered_mrr": 0.06507926574435348
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.7590503692626953,
+        "identity_scales": {
+          "disease": 0.010169926099479198,
+          "drug": -0.007591376546770334,
+          "effect/phenotype": 0.00897053349763155,
+          "gene/protein": 0.00182497245259583,
+          "pathway": -0.01163538545370102,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.489455223083496,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.025758005678653717,
+          "initializer": 0.79716956615448,
+          "relation_embedding": 5.018341835238971e-05,
+          "local": 0.0,
+          "root": 0.0007710405043326318,
+          "chemistry": 0.0,
+          "decoder": 0.35711929202079773
+        },
+        "total_gradient_norm_before_clip": 0.8738864660263062,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.07502911277110726,
+            "macro_scope_mrr": 0.07502911277110726
+          },
+          "filtered": {
+            "micro": 0.09677548719980514,
+            "macro_scope_mrr": 0.09677548719980514
+          }
+        },
+        "update": 13,
+        "loss": 0.6061681740238489,
+        "validation_filtered_mrr": 0.06803653634678541
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.790395975112915,
+        "identity_scales": {
+          "disease": 0.010635670274496078,
+          "drug": -0.00860060565173626,
+          "effect/phenotype": 0.008875536732375622,
+          "gene/protein": 0.001207386376336217,
+          "pathway": -0.012645826674997807,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.480552673339844,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0309299249202013,
+          "initializer": 0.7080565094947815,
+          "relation_embedding": 5.9988862631144e-05,
+          "local": 0.0,
+          "root": 0.000895255128853023,
+          "chemistry": 0.0,
+          "decoder": 0.333244651556015
+        },
+        "total_gradient_norm_before_clip": 0.7831689119338989,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.0773672761840176,
+            "macro_scope_mrr": 0.0773672761840176
+          },
+          "filtered": {
+            "micro": 0.09859778148368081,
+            "macro_scope_mrr": 0.09859778148368081
+          }
+        },
+        "update": 14,
+        "loss": 0.5740706652833746,
+        "validation_filtered_mrr": 0.07241243116535999
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.8237388134002686,
+        "identity_scales": {
+          "disease": 0.01084410585463047,
+          "drug": -0.00959482416510582,
+          "effect/phenotype": 0.008457529358565807,
+          "gene/protein": 0.0005465905414894223,
+          "pathway": -0.013661688193678856,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.453934669494629,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03234364092350006,
+          "initializer": 1.146794080734253,
+          "relation_embedding": 6.438685522880405e-05,
+          "local": 0.0,
+          "root": 0.0009493492543697357,
+          "chemistry": 0.0,
+          "decoder": 0.4791705310344696
+        },
+        "total_gradient_norm_before_clip": 1.2432972192764282,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.0806287594432232,
+            "macro_scope_mrr": 0.0806287594432232
+          },
+          "filtered": {
+            "micro": 0.10369904749558478,
+            "macro_scope_mrr": 0.10369904749558478
+          }
+        },
+        "update": 15,
+        "loss": 0.546698427999777,
+        "validation_filtered_mrr": 0.07757039675839016
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.8602356910705566,
+        "identity_scales": {
+          "disease": 0.010860709473490715,
+          "drug": -0.010569949634373188,
+          "effect/phenotype": 0.00788937695324421,
+          "gene/protein": -0.00014095254300627857,
+          "pathway": -0.014664349146187305,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.456192970275879,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.028257615864276886,
+          "initializer": 0.6400405764579773,
+          "relation_embedding": 5.5531938414787874e-05,
+          "local": 0.0,
+          "root": 0.0008144107996486127,
+          "chemistry": 0.0,
+          "decoder": 0.2988828420639038
+        },
+        "total_gradient_norm_before_clip": 0.7069526314735413,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.0800192271444535,
+            "macro_scope_mrr": 0.0800192271444535
+          },
+          "filtered": {
+            "micro": 0.09690922729943288,
+            "macro_scope_mrr": 0.09690922729943288
+          }
+        },
+        "update": 16,
+        "loss": 0.5179215976019094,
+        "validation_filtered_mrr": 0.08178400187594316
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.898968458175659,
+        "identity_scales": {
+          "disease": 0.010727638378739357,
+          "drug": -0.011560166254639626,
+          "effect/phenotype": 0.007225549314171076,
+          "gene/protein": -0.0008586450712755322,
+          "pathway": -0.01566731557250023,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.469482421875,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.021720033138990402,
+          "initializer": 0.7252447605133057,
+          "relation_embedding": 4.996870848117396e-05,
+          "local": 0.0,
+          "root": 0.0007390406099148095,
+          "chemistry": 0.0,
+          "decoder": 0.306395947933197
+        },
+        "total_gradient_norm_before_clip": 0.7876108288764954,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.06433540731099399,
+            "macro_scope_mrr": 0.06433540731099399
+          },
+          "filtered": {
+            "micro": 0.09144418646937576,
+            "macro_scope_mrr": 0.09144418646937576
+          }
+        },
+        "update": 17,
+        "loss": 0.4945548071184624,
+        "validation_filtered_mrr": 0.08378940889633152
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.9379701614379883,
+        "identity_scales": {
+          "disease": 0.010503711178898811,
+          "drug": -0.01255980134010315,
+          "effect/phenotype": 0.0065514398738741875,
+          "gene/protein": -0.001585471909493208,
+          "pathway": -0.016663476824760437,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.482415199279785,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.022847918793559074,
+          "initializer": 0.959924042224884,
+          "relation_embedding": 4.9866343033500016e-05,
+          "local": 0.0,
+          "root": 0.0007413719431497157,
+          "chemistry": 0.0,
+          "decoder": 0.3900456726551056
+        },
+        "total_gradient_norm_before_clip": 1.0363938808441162,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.06564592546471379,
+            "macro_scope_mrr": 0.06564592546471379
+          },
+          "filtered": {
+            "micro": 0.09860287254105186,
+            "macro_scope_mrr": 0.09860287254105186
+          }
+        },
+        "update": 18,
+        "loss": 0.4757627094375625,
+        "validation_filtered_mrr": 0.08407504775663983
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 2.9759297370910645,
+        "identity_scales": {
+          "disease": 0.010219098068773746,
+          "drug": -0.013582147657871246,
+          "effect/phenotype": 0.005924563389271498,
+          "gene/protein": -0.0023189913481473923,
+          "pathway": -0.01763882115483284,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.50791072845459,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.03319025784730911,
+          "initializer": 0.3772171437740326,
+          "relation_embedding": 4.363679909147322e-05,
+          "local": 0.0,
+          "root": 0.0006429873174056411,
+          "chemistry": 0.0,
+          "decoder": 0.20828042924404144
+        },
+        "total_gradient_norm_before_clip": 0.43217530846595764,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.06258281495766137,
+            "macro_scope_mrr": 0.06258281495766137
+          },
+          "filtered": {
+            "micro": 0.09334761357996488,
+            "macro_scope_mrr": 0.09334761357996488
+          }
+        },
+        "update": 19,
+        "loss": 0.45534069627403934,
+        "validation_filtered_mrr": 0.08376089703686075
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.0128109455108643,
+        "identity_scales": {
+          "disease": 0.009926050901412964,
+          "drug": -0.014637534506618977,
+          "effect/phenotype": 0.0053557297214865685,
+          "gene/protein": -0.0030894323717802763,
+          "pathway": -0.018620703369379044,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.545971870422363,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.041870616376399994,
+          "initializer": 0.9142093658447266,
+          "relation_embedding": 5.0942329835379496e-05,
+          "local": 0.0,
+          "root": 0.0007302057347260416,
+          "chemistry": 0.0,
+          "decoder": 0.37460997700691223
+        },
+        "total_gradient_norm_before_clip": 0.9888706207275391,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.06823276892231574,
+            "macro_scope_mrr": 0.06823276892231574
+          },
+          "filtered": {
+            "micro": 0.10093791056897998,
+            "macro_scope_mrr": 0.10093791056897998
+          }
+        },
+        "update": 20,
+        "loss": 0.4396491640756232,
+        "validation_filtered_mrr": 0.08456745898785442
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.0479485988616943,
+        "identity_scales": {
+          "disease": 0.009608530439436436,
+          "drug": -0.015722254291176796,
+          "effect/phenotype": 0.0048370989970862865,
+          "gene/protein": -0.003909229300916195,
+          "pathway": -0.01961883343756199,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.589750289916992,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.049364883452653885,
+          "initializer": 0.5955595970153809,
+          "relation_embedding": 4.8406393034383655e-05,
+          "local": 0.0,
+          "root": 0.0006914444384165108,
+          "chemistry": 0.0,
+          "decoder": 0.2512843906879425
+        },
+        "total_gradient_norm_before_clip": 0.6482841968536377,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.07025476498465369,
+            "macro_scope_mrr": 0.07025476498465369
+          },
+          "filtered": {
+            "micro": 0.10416634655831496,
+            "macro_scope_mrr": 0.10416634655831496
+          }
+        },
+        "update": 21,
+        "loss": 0.4213067055718894,
+        "validation_filtered_mrr": 0.08495404496186669
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.080500602722168,
+        "identity_scales": {
+          "disease": 0.009190326556563377,
+          "drug": -0.01683330349624157,
+          "effect/phenotype": 0.004354878794401884,
+          "gene/protein": -0.0047835297882556915,
+          "pathway": -0.02063295617699623,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.649368286132812,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.049560412764549255,
+          "initializer": 0.6232074499130249,
+          "relation_embedding": 4.9850419600261375e-05,
+          "local": 0.0,
+          "root": 0.0007054508314467967,
+          "chemistry": 0.0,
+          "decoder": 0.25686880946159363
+        },
+        "total_gradient_norm_before_clip": 0.6758888959884644,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.0765232681717281,
+            "macro_scope_mrr": 0.0765232681717281
+          },
+          "filtered": {
+            "micro": 0.09978078292187227,
+            "macro_scope_mrr": 0.09978078292187227
+          }
+        },
+        "update": 22,
+        "loss": 0.40508369678730316,
+        "validation_filtered_mrr": 0.08488577176494476
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.1106038093566895,
+        "identity_scales": {
+          "disease": 0.008619713596999645,
+          "drug": -0.017969053238630295,
+          "effect/phenotype": 0.0038906445261090994,
+          "gene/protein": -0.005697979591786861,
+          "pathway": -0.021665386855602264,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.704726219177246,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.048612430691719055,
+          "initializer": 0.7468880414962769,
+          "relation_embedding": 5.1209561206633225e-05,
+          "local": 0.0,
+          "root": 0.0007288336055353284,
+          "chemistry": 0.0,
+          "decoder": 0.302181601524353
+        },
+        "total_gradient_norm_before_clip": 0.8071673512458801,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.08117330404449499,
+            "macro_scope_mrr": 0.08117330404449499
+          },
+          "filtered": {
+            "micro": 0.10864237786791628,
+            "macro_scope_mrr": 0.10864237786791628
+          }
+        },
+        "update": 23,
+        "loss": 0.39251856822142583,
+        "validation_filtered_mrr": 0.08517487055920776
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.1394314765930176,
+        "identity_scales": {
+          "disease": 0.007917883805930614,
+          "drug": -0.019125403836369514,
+          "effect/phenotype": 0.003408830612897873,
+          "gene/protein": -0.0066469586454331875,
+          "pathway": -0.02271992526948452,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.767670631408691,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.054699212312698364,
+          "initializer": 0.3948928117752075,
+          "relation_embedding": 4.466476457309909e-05,
+          "local": 0.0,
+          "root": 0.0005836420459672809,
+          "chemistry": 0.0,
+          "decoder": 0.1759013533592224
+        },
+        "total_gradient_norm_before_clip": 0.4357452988624573,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.09157833464400539,
+            "macro_scope_mrr": 0.09157833464400539
+          },
+          "filtered": {
+            "micro": 0.12011281763573158,
+            "macro_scope_mrr": 0.12011281763573158
+          }
+        },
+        "update": 24,
+        "loss": 0.3784828598763467,
+        "validation_filtered_mrr": 0.08569674163259422
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.1687755584716797,
+        "identity_scales": {
+          "disease": 0.007113434374332428,
+          "drug": -0.02028528042137623,
+          "effect/phenotype": 0.0028681650292128325,
+          "gene/protein": -0.007641098462045193,
+          "pathway": -0.02379390224814415,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.847821235656738,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.060903117060661316,
+          "initializer": 0.8827267289161682,
+          "relation_embedding": 7.016731979092583e-05,
+          "local": 0.0,
+          "root": 0.0009538825252093375,
+          "chemistry": 0.0,
+          "decoder": 0.3601263463497162
+        },
+        "total_gradient_norm_before_clip": 0.9553049802780151,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1056849243877557,
+            "macro_scope_mrr": 0.1056849243877557
+          },
+          "filtered": {
+            "micro": 0.13033468136589502,
+            "macro_scope_mrr": 0.13033468136589502
+          }
+        },
+        "update": 25,
+        "loss": 0.36817578197452483,
+        "validation_filtered_mrr": 0.08655869550448064
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.1984622478485107,
+        "identity_scales": {
+          "disease": 0.0062344749458134174,
+          "drug": -0.02141876518726349,
+          "effect/phenotype": 0.0022606118582189083,
+          "gene/protein": -0.008682328276336193,
+          "pathway": -0.02487764321267605,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 8.930986404418945,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.061827465891838074,
+          "initializer": 0.3299303352832794,
+          "relation_embedding": 4.7535140765830874e-05,
+          "local": 0.0,
+          "root": 0.0006358303944580257,
+          "chemistry": 0.0,
+          "decoder": 0.15749984979629517
+        },
+        "total_gradient_norm_before_clip": 0.3707873523235321,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.10872883640548778,
+            "macro_scope_mrr": 0.10872883640548778
+          },
+          "filtered": {
+            "micro": 0.1392874306696275,
+            "macro_scope_mrr": 0.1392874306696275
+          }
+        },
+        "update": 26,
+        "loss": 0.35412617475826297,
+        "validation_filtered_mrr": 0.0869123483496621
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.2289669513702393,
+        "identity_scales": {
+          "disease": 0.005297931842505932,
+          "drug": -0.022536057978868484,
+          "effect/phenotype": 0.0016253187786787748,
+          "gene/protein": -0.009762370027601719,
+          "pathway": -0.025976601988077164,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.01905345916748,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.05828021839261055,
+          "initializer": 0.7095023989677429,
+          "relation_embedding": 6.155212759040296e-05,
+          "local": 0.0,
+          "root": 0.0008799841161817312,
+          "chemistry": 0.0,
+          "decoder": 0.25740423798561096
+        },
+        "total_gradient_norm_before_clip": 0.7569993138313293,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.12204526712887388,
+            "macro_scope_mrr": 0.12204526712887388
+          },
+          "filtered": {
+            "micro": 0.1599730966938811,
+            "macro_scope_mrr": 0.1599730966938811
+          }
+        },
+        "update": 27,
+        "loss": 0.3417277319501402,
+        "validation_filtered_mrr": 0.08891949581841238
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.25846791267395,
+        "identity_scales": {
+          "disease": 0.004319789819419384,
+          "drug": -0.023659590631723404,
+          "effect/phenotype": 0.0010136514902114868,
+          "gene/protein": -0.010868492536246777,
+          "pathway": -0.02708972617983818,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.101248741149902,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0659661740064621,
+          "initializer": 0.4061298668384552,
+          "relation_embedding": 5.325806705513969e-05,
+          "local": 0.0,
+          "root": 0.0006906713242642581,
+          "chemistry": 0.0,
+          "decoder": 0.16384771466255188
+        },
+        "total_gradient_norm_before_clip": 0.4428764581680298,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1368234321203118,
+            "macro_scope_mrr": 0.1368234321203118
+          },
+          "filtered": {
+            "micro": 0.18332400130910265,
+            "macro_scope_mrr": 0.18332400130910265
+          }
+        },
+        "update": 28,
+        "loss": 0.3304814830279382,
+        "validation_filtered_mrr": 0.08942944226829437
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.2863986492156982,
+        "identity_scales": {
+          "disease": 0.003325672587379813,
+          "drug": -0.024798931553959846,
+          "effect/phenotype": 0.00047119217924773693,
+          "gene/protein": -0.012003953568637371,
+          "pathway": -0.028217706829309464,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.20737075805664,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07828868180513382,
+          "initializer": 0.6207693815231323,
+          "relation_embedding": 7.127651042537764e-05,
+          "local": 0.0,
+          "root": 0.0008892998448573053,
+          "chemistry": 0.0,
+          "decoder": 0.23743703961372375
+        },
+        "total_gradient_norm_before_clip": 0.6692241430282593,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.14951435190009668,
+            "macro_scope_mrr": 0.14951435190009668
+          },
+          "filtered": {
+            "micro": 0.19686950617452126,
+            "macro_scope_mrr": 0.19686950617452126
+          }
+        },
+        "update": 29,
+        "loss": 0.3202673500246938,
+        "validation_filtered_mrr": 0.08895322713725408
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.313028573989868,
+        "identity_scales": {
+          "disease": 0.0023296948056668043,
+          "drug": -0.025956595316529274,
+          "effect/phenotype": -4.20859669247875e-06,
+          "gene/protein": -0.013173505663871765,
+          "pathway": -0.029359444975852966,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.29218578338623,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08245167136192322,
+          "initializer": 0.4806631803512573,
+          "relation_embedding": 6.779537216061726e-05,
+          "local": 0.0,
+          "root": 0.0007934418972581625,
+          "chemistry": 0.0,
+          "decoder": 0.1884438693523407
+        },
+        "total_gradient_norm_before_clip": 0.522826075553894,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.16100141869471546,
+            "macro_scope_mrr": 0.16100141869471546
+          },
+          "filtered": {
+            "micro": 0.2192799153372227,
+            "macro_scope_mrr": 0.2192799153372227
+          }
+        },
+        "update": 30,
+        "loss": 0.30920911846901256,
+        "validation_filtered_mrr": 0.09106223145450446
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.3393187522888184,
+        "identity_scales": {
+          "disease": 0.0013151802122592926,
+          "drug": -0.02712991088628769,
+          "effect/phenotype": -0.0004360606544651091,
+          "gene/protein": -0.014373409561812878,
+          "pathway": -0.03051411733031273,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.39755630493164,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07967592775821686,
+          "initializer": 0.43314072489738464,
+          "relation_embedding": 6.439099524868652e-05,
+          "local": 0.0,
+          "root": 0.0007808447116985917,
+          "chemistry": 0.0,
+          "decoder": 0.1641973853111267
+        },
+        "total_gradient_norm_before_clip": 0.4700218439102173,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.16749977610256667,
+            "macro_scope_mrr": 0.16749977610256667
+          },
+          "filtered": {
+            "micro": 0.22765370508790955,
+            "macro_scope_mrr": 0.22765370508790955
+          }
+        },
+        "update": 31,
+        "loss": 0.2978822697977324,
+        "validation_filtered_mrr": 0.0926692663313373
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.365067720413208,
+        "identity_scales": {
+          "disease": 0.00027755493647418916,
+          "drug": -0.028312038630247116,
+          "effect/phenotype": -0.0008690126123838127,
+          "gene/protein": -0.015596026554703712,
+          "pathway": -0.0316835381090641,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.492650985717773,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07914882898330688,
+          "initializer": 0.5429365634918213,
+          "relation_embedding": 7.73155115894042e-05,
+          "local": 0.0,
+          "root": 0.0009884751634672284,
+          "chemistry": 0.0,
+          "decoder": 0.19242364168167114
+        },
+        "total_gradient_norm_before_clip": 0.5814400315284729,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1628450066628473,
+            "macro_scope_mrr": 0.1628450066628473
+          },
+          "filtered": {
+            "micro": 0.22422242668818707,
+            "macro_scope_mrr": 0.22422242668818707
+          }
+        },
+        "update": 32,
+        "loss": 0.2886532463948907,
+        "validation_filtered_mrr": 0.09279649644690507
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.38983416557312,
+        "identity_scales": {
+          "disease": -0.0007890623528510332,
+          "drug": -0.02949497103691101,
+          "effect/phenotype": -0.0013503126101568341,
+          "gene/protein": -0.016836728900671005,
+          "pathway": -0.032867852598428726,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.615229606628418,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.09013844281435013,
+          "initializer": 0.351604163646698,
+          "relation_embedding": 6.893324461998418e-05,
+          "local": 0.0,
+          "root": 0.0007498071063309908,
+          "chemistry": 0.0,
+          "decoder": 0.13683278858661652
+        },
+        "total_gradient_norm_before_clip": 0.38791003823280334,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1681677434564412,
+            "macro_scope_mrr": 0.1681677434564412
+          },
+          "filtered": {
+            "micro": 0.24201717318359714,
+            "macro_scope_mrr": 0.24201717318359714
+          }
+        },
+        "update": 33,
+        "loss": 0.27996526854960224,
+        "validation_filtered_mrr": 0.09452094577172429
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.414850950241089,
+        "identity_scales": {
+          "disease": -0.001883182325400412,
+          "drug": -0.03067583218216896,
+          "effect/phenotype": -0.001902341260574758,
+          "gene/protein": -0.018100271001458168,
+          "pathway": -0.03406382352113724,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.721685409545898,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0970630869269371,
+          "initializer": 0.560376763343811,
+          "relation_embedding": 7.848330278648064e-05,
+          "local": 0.0,
+          "root": 0.0009128254023380578,
+          "chemistry": 0.0,
+          "decoder": 0.19409021735191345
+        },
+        "total_gradient_norm_before_clip": 0.6009286046028137,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.17448928526940644,
+            "macro_scope_mrr": 0.17448928526940644
+          },
+          "filtered": {
+            "micro": 0.2472435778223327,
+            "macro_scope_mrr": 0.2472435778223327
+          }
+        },
+        "update": 34,
+        "loss": 0.26993254172151687,
+        "validation_filtered_mrr": 0.09804892886690249
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.4398722648620605,
+        "identity_scales": {
+          "disease": -0.003003861289471388,
+          "drug": -0.031855978071689606,
+          "effect/phenotype": -0.002522602677345276,
+          "gene/protein": -0.01938638463616371,
+          "pathway": -0.03527084365487099,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.829843521118164,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.09231909364461899,
+          "initializer": 0.2267179787158966,
+          "relation_embedding": 5.9358379076002166e-05,
+          "local": 0.0,
+          "root": 0.0006555612781085074,
+          "chemistry": 0.0,
+          "decoder": 0.10740460455417633
+        },
+        "total_gradient_norm_before_clip": 0.26732009649276733,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.17841992021791434,
+            "macro_scope_mrr": 0.17841992021791434
+          },
+          "filtered": {
+            "micro": 0.25561153042623525,
+            "macro_scope_mrr": 0.25561153042623525
+          }
+        },
+        "update": 35,
+        "loss": 0.26056375514836755,
+        "validation_filtered_mrr": 0.10057663465054431
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.4625980854034424,
+        "identity_scales": {
+          "disease": -0.004154158290475607,
+          "drug": -0.03304217755794525,
+          "effect/phenotype": -0.003178682178258896,
+          "gene/protein": -0.02068697288632393,
+          "pathway": -0.03648833557963371,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 9.942453384399414,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08722267299890518,
+          "initializer": 0.48745790123939514,
+          "relation_embedding": 7.901679055066779e-05,
+          "local": 0.0,
+          "root": 0.0010892621940001845,
+          "chemistry": 0.0,
+          "decoder": 0.1721409410238266
+        },
+        "total_gradient_norm_before_clip": 0.5242677927017212,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.1817827764636678,
+            "macro_scope_mrr": 0.1817827764636678
+          },
+          "filtered": {
+            "micro": 0.2680268088516635,
+            "macro_scope_mrr": 0.2680268088516635
+          }
+        },
+        "update": 36,
+        "loss": 0.25279499835340036,
+        "validation_filtered_mrr": 0.10235147244786676
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.4807560443878174,
+        "identity_scales": {
+          "disease": -0.005333588924258947,
+          "drug": -0.03423440456390381,
+          "effect/phenotype": -0.0038471107836812735,
+          "gene/protein": -0.02199459820985794,
+          "pathway": -0.03771158680319786,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.075763702392578,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.091695636510849,
+          "initializer": 0.26711398363113403,
+          "relation_embedding": 6.789127655792981e-05,
+          "local": 0.0,
+          "root": 0.0008115484961308539,
+          "chemistry": 0.0,
+          "decoder": 0.12173300236463547
+        },
+        "total_gradient_norm_before_clip": 0.3075346350669861,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.19107325817469495,
+            "macro_scope_mrr": 0.19107325817469495
+          },
+          "filtered": {
+            "micro": 0.26799301797250946,
+            "macro_scope_mrr": 0.26799301797250946
+          }
+        },
+        "update": 37,
+        "loss": 0.24300217242326932,
+        "validation_filtered_mrr": 0.10513909372116917
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.4953548908233643,
+        "identity_scales": {
+          "disease": -0.0065422398038208485,
+          "drug": -0.035428304225206375,
+          "effect/phenotype": -0.004510059952735901,
+          "gene/protein": -0.023311326280236244,
+          "pathway": -0.038937635719776154,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.184184074401855,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.09328321367502213,
+          "initializer": 0.3438560366630554,
+          "relation_embedding": 6.858010601717979e-05,
+          "local": 0.0,
+          "root": 0.000744700082577765,
+          "chemistry": 0.0,
+          "decoder": 0.1291627138853073
+        },
+        "total_gradient_norm_before_clip": 0.3789752721786499,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.19948715276559437,
+            "macro_scope_mrr": 0.19948715276559437
+          },
+          "filtered": {
+            "micro": 0.2799646331380782,
+            "macro_scope_mrr": 0.2799646331380782
+          }
+        },
+        "update": 38,
+        "loss": 0.2354086946961715,
+        "validation_filtered_mrr": 0.10745028588992787
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.509146213531494,
+        "identity_scales": {
+          "disease": -0.007771349977701902,
+          "drug": -0.03660845384001732,
+          "effect/phenotype": -0.005177922081202269,
+          "gene/protein": -0.024636996909976006,
+          "pathway": -0.04016096517443657,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.302698135375977,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.09079360216856003,
+          "initializer": 0.2147330492734909,
+          "relation_embedding": 6.512571417260915e-05,
+          "local": 0.0,
+          "root": 0.0007032410358078778,
+          "chemistry": 0.0,
+          "decoder": 0.10225754976272583
+        },
+        "total_gradient_norm_before_clip": 0.2545797824859619,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2142869236493999,
+            "macro_scope_mrr": 0.2142869236493999
+          },
+          "filtered": {
+            "micro": 0.31600418201579134,
+            "macro_scope_mrr": 0.31600418201579134
+          }
+        },
+        "update": 39,
+        "loss": 0.2276445418295746,
+        "validation_filtered_mrr": 0.10885919865238342
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5222384929656982,
+        "identity_scales": {
+          "disease": -0.009013750590384007,
+          "drug": -0.03776770457625389,
+          "effect/phenotype": -0.005860680714249611,
+          "gene/protein": -0.025967519730329514,
+          "pathway": -0.041385162621736526,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.413086891174316,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08538693189620972,
+          "initializer": 0.3011585772037506,
+          "relation_embedding": 7.431168342009187e-05,
+          "local": 0.0,
+          "root": 0.0009055947884917259,
+          "chemistry": 0.0,
+          "decoder": 0.120975561439991
+        },
+        "total_gradient_norm_before_clip": 0.3355939984321594,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2133682171940696,
+            "macro_scope_mrr": 0.2133682171940696
+          },
+          "filtered": {
+            "micro": 0.3175455727093319,
+            "macro_scope_mrr": 0.3175455727093319
+          }
+        },
+        "update": 40,
+        "loss": 0.2193331202543487,
+        "validation_filtered_mrr": 0.11172772512928976
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5331783294677734,
+        "identity_scales": {
+          "disease": -0.010253170505166054,
+          "drug": -0.038910914212465286,
+          "effect/phenotype": -0.006565489340573549,
+          "gene/protein": -0.027296291664242744,
+          "pathway": -0.04261225461959839,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.535883903503418,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08461146801710129,
+          "initializer": 0.2756670117378235,
+          "relation_embedding": 6.843384471721947e-05,
+          "local": 0.0,
+          "root": 0.0008458059746772051,
+          "chemistry": 0.0,
+          "decoder": 0.1050824522972107
+        },
+        "total_gradient_norm_before_clip": 0.3069111406803131,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2263126802382284,
+            "macro_scope_mrr": 0.2263126802382284
+          },
+          "filtered": {
+            "micro": 0.33153236140960185,
+            "macro_scope_mrr": 0.33153236140960185
+          }
+        },
+        "update": 41,
+        "loss": 0.2123890438001336,
+        "validation_filtered_mrr": 0.11379885596116654
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5420756340026855,
+        "identity_scales": {
+          "disease": -0.011500176042318344,
+          "drug": -0.04005878418684006,
+          "effect/phenotype": -0.007287659682333469,
+          "gene/protein": -0.02862062118947506,
+          "pathway": -0.04384150356054306,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.650468826293945,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08681108802556992,
+          "initializer": 0.18713635206222534,
+          "relation_embedding": 6.341328844428062e-05,
+          "local": 0.0,
+          "root": 0.000724592711776495,
+          "chemistry": 0.0,
+          "decoder": 0.10235154628753662
+        },
+        "total_gradient_norm_before_clip": 0.23028795421123505,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.23367911115525963,
+            "macro_scope_mrr": 0.23367911115525963
+          },
+          "filtered": {
+            "micro": 0.33578729260840023,
+            "macro_scope_mrr": 0.33578729260840023
+          }
+        },
+        "update": 42,
+        "loss": 0.20517983158946024,
+        "validation_filtered_mrr": 0.11601866576665239
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.550294876098633,
+        "identity_scales": {
+          "disease": -0.012762345373630524,
+          "drug": -0.04122134670615196,
+          "effect/phenotype": -0.00801834836602211,
+          "gene/protein": -0.02994154579937458,
+          "pathway": -0.04507093504071236,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.78818416595459,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0880356952548027,
+          "initializer": 0.21276268362998962,
+          "relation_embedding": 6.581049819942564e-05,
+          "local": 0.0,
+          "root": 0.0007466473034583032,
+          "chemistry": 0.0,
+          "decoder": 0.09870845079421997
+        },
+        "total_gradient_norm_before_clip": 0.25052377581596375,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.226649737887072,
+            "macro_scope_mrr": 0.226649737887072
+          },
+          "filtered": {
+            "micro": 0.3369779008103908,
+            "macro_scope_mrr": 0.3369779008103908
+          }
+        },
+        "update": 43,
+        "loss": 0.19864166499654226,
+        "validation_filtered_mrr": 0.11847648171217641
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5582761764526367,
+        "identity_scales": {
+          "disease": -0.014041760936379433,
+          "drug": -0.04239998757839203,
+          "effect/phenotype": -0.008762267418205738,
+          "gene/protein": -0.031259551644325256,
+          "pathway": -0.04629649594426155,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 10.904011726379395,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08619845658540726,
+          "initializer": 0.15979883074760437,
+          "relation_embedding": 6.139319884823635e-05,
+          "local": 0.0,
+          "root": 0.0006952096009626985,
+          "chemistry": 0.0,
+          "decoder": 0.08103085309267044
+        },
+        "total_gradient_norm_before_clip": 0.1988273710012436,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22772821826883227,
+            "macro_scope_mrr": 0.22772821826883227
+          },
+          "filtered": {
+            "micro": 0.34685508246069613,
+            "macro_scope_mrr": 0.34685508246069613
+          }
+        },
+        "update": 44,
+        "loss": 0.1916611914667436,
+        "validation_filtered_mrr": 0.12093292740445757
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.564570903778076,
+        "identity_scales": {
+          "disease": -0.015333003364503384,
+          "drug": -0.04358195140957832,
+          "effect/phenotype": -0.00952296331524849,
+          "gene/protein": -0.03257326781749725,
+          "pathway": -0.04751099273562431,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.054314613342285,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08420602232217789,
+          "initializer": 0.19008372724056244,
+          "relation_embedding": 6.212061998667195e-05,
+          "local": 0.0,
+          "root": 0.0007471303106285632,
+          "chemistry": 0.0,
+          "decoder": 0.0837736427783966
+        },
+        "total_gradient_norm_before_clip": 0.22414515912532806,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22244529812081917,
+            "macro_scope_mrr": 0.22244529812081917
+          },
+          "filtered": {
+            "micro": 0.3327639400567374,
+            "macro_scope_mrr": 0.3327639400567374
+          }
+        },
+        "update": 45,
+        "loss": 0.1851403449781175,
+        "validation_filtered_mrr": 0.12341467436589203
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5688140392303467,
+        "identity_scales": {
+          "disease": -0.016634032130241394,
+          "drug": -0.044749096035957336,
+          "effect/phenotype": -0.010307803750038147,
+          "gene/protein": -0.033881474286317825,
+          "pathway": -0.04871799796819687,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.169295310974121,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0826151892542839,
+          "initializer": 0.1671975702047348,
+          "relation_embedding": 6.442512676585466e-05,
+          "local": 0.0,
+          "root": 0.0007767775095999241,
+          "chemistry": 0.0,
+          "decoder": 0.08337630331516266
+        },
+        "total_gradient_norm_before_clip": 0.2042853683233261,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22243095864625598,
+            "macro_scope_mrr": 0.22243095864625598
+          },
+          "filtered": {
+            "micro": 0.3332369748188093,
+            "macro_scope_mrr": 0.3332369748188093
+          }
+        },
+        "update": 46,
+        "loss": 0.1790566891667157,
+        "validation_filtered_mrr": 0.1247999394561611
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5725553035736084,
+        "identity_scales": {
+          "disease": -0.01794699765741825,
+          "drug": -0.04588034749031067,
+          "effect/phenotype": -0.011114164255559444,
+          "gene/protein": -0.03518345579504967,
+          "pathway": -0.04991549625992775,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.300639152526855,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0831487849354744,
+          "initializer": 0.15165431797504425,
+          "relation_embedding": 6.066675632609986e-05,
+          "local": 0.0,
+          "root": 0.0006982128834351897,
+          "chemistry": 0.0,
+          "decoder": 0.07742535322904587
+        },
+        "total_gradient_norm_before_clip": 0.18949390947818756,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.21454744081325944,
+            "macro_scope_mrr": 0.21454744081325944
+          },
+          "filtered": {
+            "micro": 0.3395346238080311,
+            "macro_scope_mrr": 0.3395346238080311
+          }
+        },
+        "update": 47,
+        "loss": 0.17336184065370336,
+        "validation_filtered_mrr": 0.12678753281170654
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5768678188323975,
+        "identity_scales": {
+          "disease": -0.019274303689599037,
+          "drug": -0.04699314013123512,
+          "effect/phenotype": -0.01194342877715826,
+          "gene/protein": -0.03647908940911293,
+          "pathway": -0.051105860620737076,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.427264213562012,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08366212993860245,
+          "initializer": 0.13705843687057495,
+          "relation_embedding": 6.330341420834884e-05,
+          "local": 0.0,
+          "root": 0.0007613644120283425,
+          "chemistry": 0.0,
+          "decoder": 0.07108695805072784
+        },
+        "total_gradient_norm_before_clip": 0.17560838162899017,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2168776451117089,
+            "macro_scope_mrr": 0.2168776451117089
+          },
+          "filtered": {
+            "micro": 0.3543197641825995,
+            "macro_scope_mrr": 0.3543197641825995
+          }
+        },
+        "update": 48,
+        "loss": 0.16778277044828657,
+        "validation_filtered_mrr": 0.12931713915733606
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5801758766174316,
+        "identity_scales": {
+          "disease": -0.0206181388348341,
+          "drug": -0.04810597002506256,
+          "effect/phenotype": -0.012793420813977718,
+          "gene/protein": -0.037767909467220306,
+          "pathway": -0.05229019373655319,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.551752090454102,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08316244184970856,
+          "initializer": 0.1392219364643097,
+          "relation_embedding": 6.226030382094905e-05,
+          "local": 0.0,
+          "root": 0.0007988068391568959,
+          "chemistry": 0.0,
+          "decoder": 0.0729297399520874
+        },
+        "total_gradient_norm_before_clip": 0.17781487107276917,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.21605001770167984,
+            "macro_scope_mrr": 0.21605001770167984
+          },
+          "filtered": {
+            "micro": 0.3619213778235557,
+            "macro_scope_mrr": 0.3619213778235557
+          }
+        },
+        "update": 49,
+        "loss": 0.16198307087312505,
+        "validation_filtered_mrr": 0.13152087955788966
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.581275463104248,
+        "identity_scales": {
+          "disease": -0.021971479058265686,
+          "drug": -0.04922844469547272,
+          "effect/phenotype": -0.013673480600118637,
+          "gene/protein": -0.03904888033866882,
+          "pathway": -0.05346917361021042,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.686305046081543,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08309327811002731,
+          "initializer": 0.1274527609348297,
+          "relation_embedding": 5.852837421116419e-05,
+          "local": 0.0,
+          "root": 0.000702604535035789,
+          "chemistry": 0.0,
+          "decoder": 0.06844007968902588
+        },
+        "total_gradient_norm_before_clip": 0.16683296859264374,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2164062690969885,
+            "macro_scope_mrr": 0.2164062690969885
+          },
+          "filtered": {
+            "micro": 0.38005541466634485,
+            "macro_scope_mrr": 0.38005541466634485
+          }
+        },
+        "update": 50,
+        "loss": 0.15745363097813045,
+        "validation_filtered_mrr": 0.13414419256606783
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.581223726272583,
+        "identity_scales": {
+          "disease": -0.02333277091383934,
+          "drug": -0.05035846680402756,
+          "effect/phenotype": -0.014578020200133324,
+          "gene/protein": -0.04032237082719803,
+          "pathway": -0.05464078113436699,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.821434020996094,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08213739097118378,
+          "initializer": 0.1378760188817978,
+          "relation_embedding": 6.566091178683564e-05,
+          "local": 0.0,
+          "root": 0.0007398119778372347,
+          "chemistry": 0.0,
+          "decoder": 0.06858590245246887
+        },
+        "total_gradient_norm_before_clip": 0.17453058063983917,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.218653964445923,
+            "macro_scope_mrr": 0.218653964445923
+          },
+          "filtered": {
+            "micro": 0.38021073495726887,
+            "macro_scope_mrr": 0.38021073495726887
+          }
+        },
+        "update": 51,
+        "loss": 0.15261476130730875,
+        "validation_filtered_mrr": 0.13692064496830147
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.582963705062866,
+        "identity_scales": {
+          "disease": -0.024708427488803864,
+          "drug": -0.051485396921634674,
+          "effect/phenotype": -0.015506044030189514,
+          "gene/protein": -0.04158807173371315,
+          "pathway": -0.05579925701022148,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 11.957152366638184,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.08059573918581009,
+          "initializer": 0.14202973246574402,
+          "relation_embedding": 6.969643436605111e-05,
+          "local": 0.0,
+          "root": 0.000814948056358844,
+          "chemistry": 0.0,
+          "decoder": 0.0706373006105423
+        },
+        "total_gradient_norm_before_clip": 0.1779281198978424,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2209610374344011,
+            "macro_scope_mrr": 0.2209610374344011
+          },
+          "filtered": {
+            "micro": 0.38339215233634444,
+            "macro_scope_mrr": 0.38339215233634444
+          }
+        },
+        "update": 52,
+        "loss": 0.14772228800125128,
+        "validation_filtered_mrr": 0.13905620007706307
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5866141319274902,
+        "identity_scales": {
+          "disease": -0.026099078357219696,
+          "drug": -0.05260255187749863,
+          "effect/phenotype": -0.016455331817269325,
+          "gene/protein": -0.042844872921705246,
+          "pathway": -0.05694267526268959,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.088361740112305,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07989898324012756,
+          "initializer": 0.10312380641698837,
+          "relation_embedding": 5.6613040214870125e-05,
+          "local": 0.0,
+          "root": 0.0007077845511958003,
+          "chemistry": 0.0,
+          "decoder": 0.05828068405389786
+        },
+        "total_gradient_norm_before_clip": 0.14288285374641418,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.22399938082498047,
+            "macro_scope_mrr": 0.22399938082498047
+          },
+          "filtered": {
+            "micro": 0.37828064051177557,
+            "macro_scope_mrr": 0.37828064051177557
+          }
+        },
+        "update": 53,
+        "loss": 0.14300412237789026,
+        "validation_filtered_mrr": 0.14153142563155172
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5885658264160156,
+        "identity_scales": {
+          "disease": -0.02750159613788128,
+          "drug": -0.05372505262494087,
+          "effect/phenotype": -0.0174290519207716,
+          "gene/protein": -0.0440913662314415,
+          "pathway": -0.05807153508067131,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.232272148132324,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07990723848342896,
+          "initializer": 0.14582815766334534,
+          "relation_embedding": 6.46208063699305e-05,
+          "local": 0.0,
+          "root": 0.0008781070937402546,
+          "chemistry": 0.0,
+          "decoder": 0.06657394021749496
+        },
+        "total_gradient_norm_before_clip": 0.1791197657585144,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2265495849481776,
+            "macro_scope_mrr": 0.2265495849481776
+          },
+          "filtered": {
+            "micro": 0.38570746450709464,
+            "macro_scope_mrr": 0.38570746450709464
+          }
+        },
+        "update": 54,
+        "loss": 0.13798036512569936,
+        "validation_filtered_mrr": 0.14226520279045354
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.587496757507324,
+        "identity_scales": {
+          "disease": -0.028909889981150627,
+          "drug": -0.05485466495156288,
+          "effect/phenotype": -0.0184310469776392,
+          "gene/protein": -0.045328255742788315,
+          "pathway": -0.059183958917856216,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.366291999816895,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07898503541946411,
+          "initializer": 0.0977543294429779,
+          "relation_embedding": 5.769647759734653e-05,
+          "local": 0.0,
+          "root": 0.0007158779189921916,
+          "chemistry": 0.0,
+          "decoder": 0.058754995465278625
+        },
+        "total_gradient_norm_before_clip": 0.13873431086540222,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2313656718183067,
+            "macro_scope_mrr": 0.2313656718183067
+          },
+          "filtered": {
+            "micro": 0.39312054324396867,
+            "macro_scope_mrr": 0.39312054324396867
+          }
+        },
+        "update": 55,
+        "loss": 0.1336562231231932,
+        "validation_filtered_mrr": 0.14393374479826285
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5848984718322754,
+        "identity_scales": {
+          "disease": -0.03031877800822258,
+          "drug": -0.05597783997654915,
+          "effect/phenotype": -0.01946331560611725,
+          "gene/protein": -0.04655623063445091,
+          "pathway": -0.06028401479125023,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.508639335632324,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0774758905172348,
+          "initializer": 0.14765144884586334,
+          "relation_embedding": 6.005751856719144e-05,
+          "local": 0.0,
+          "root": 0.0007116306223906577,
+          "chemistry": 0.0,
+          "decoder": 0.06542961299419403
+        },
+        "total_gradient_norm_before_clip": 0.1791228950023651,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.23326043862516724,
+            "macro_scope_mrr": 0.23326043862516724
+          },
+          "filtered": {
+            "micro": 0.3881387957535397,
+            "macro_scope_mrr": 0.3881387957535397
+          }
+        },
+        "update": 56,
+        "loss": 0.12925660698182992,
+        "validation_filtered_mrr": 0.14550352964308266
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.58542799949646,
+        "identity_scales": {
+          "disease": -0.03172425925731659,
+          "drug": -0.05708146095275879,
+          "effect/phenotype": -0.020515697076916695,
+          "gene/protein": -0.04777521267533302,
+          "pathway": -0.061369121074676514,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.61488151550293,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0758475661277771,
+          "initializer": 0.12364993244409561,
+          "relation_embedding": 5.916493682889268e-05,
+          "local": 0.0,
+          "root": 0.0006902393652126193,
+          "chemistry": 0.0,
+          "decoder": 0.058958638459444046
+        },
+        "total_gradient_norm_before_clip": 0.15658468008041382,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.23306776292319664,
+            "macro_scope_mrr": 0.23306776292319664
+          },
+          "filtered": {
+            "micro": 0.392652888585886,
+            "macro_scope_mrr": 0.392652888585886
+          }
+        },
+        "update": 57,
+        "loss": 0.12603891247236457,
+        "validation_filtered_mrr": 0.14672344791024797
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.588698387145996,
+        "identity_scales": {
+          "disease": -0.03313401713967323,
+          "drug": -0.058165885508060455,
+          "effect/phenotype": -0.021578969433903694,
+          "gene/protein": -0.04898356646299362,
+          "pathway": -0.06244109198451042,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.74681568145752,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07663263380527496,
+          "initializer": 0.091607004404068,
+          "relation_embedding": 5.528438850888051e-05,
+          "local": 0.0,
+          "root": 0.0007262587896548212,
+          "chemistry": 0.0,
+          "decoder": 0.04997923970222473
+        },
+        "total_gradient_norm_before_clip": 0.12947146594524384,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2381764457179968,
+            "macro_scope_mrr": 0.2381764457179968
+          },
+          "filtered": {
+            "micro": 0.40599884502575667,
+            "macro_scope_mrr": 0.40599884502575667
+          }
+        },
+        "update": 58,
+        "loss": 0.12162710751425292,
+        "validation_filtered_mrr": 0.14755215013947562
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5903923511505127,
+        "identity_scales": {
+          "disease": -0.034555237740278244,
+          "drug": -0.05926227197051048,
+          "effect/phenotype": -0.022672409191727638,
+          "gene/protein": -0.05018017813563347,
+          "pathway": -0.06350192427635193,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 12.879036903381348,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07717468589544296,
+          "initializer": 0.13811317086219788,
+          "relation_embedding": 6.329701136564836e-05,
+          "local": 0.0,
+          "root": 0.0008994895615614951,
+          "chemistry": 0.0,
+          "decoder": 0.06156725063920021
+        },
+        "total_gradient_norm_before_clip": 0.1697719544172287,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2406543063859562,
+            "macro_scope_mrr": 0.2406543063859562
+          },
+          "filtered": {
+            "micro": 0.42182619872478133,
+            "macro_scope_mrr": 0.42182619872478133
+          }
+        },
+        "update": 59,
+        "loss": 0.11851614605408654,
+        "validation_filtered_mrr": 0.14751341508612323
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5896248817443848,
+        "identity_scales": {
+          "disease": -0.035991568118333817,
+          "drug": -0.06037577614188194,
+          "effect/phenotype": -0.023796333000063896,
+          "gene/protein": -0.05136565491557121,
+          "pathway": -0.06454972177743912,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.003786087036133,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07635452598333359,
+          "initializer": 0.07689443230628967,
+          "relation_embedding": 5.437303116195835e-05,
+          "local": 0.0,
+          "root": 0.0006370892515406013,
+          "chemistry": 0.0,
+          "decoder": 0.04822468385100365
+        },
+        "total_gradient_norm_before_clip": 0.11861195415258408,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.25434975296856227,
+            "macro_scope_mrr": 0.25434975296856227
+          },
+          "filtered": {
+            "micro": 0.432910305080555,
+            "macro_scope_mrr": 0.432910305080555
+          }
+        },
+        "update": 60,
+        "loss": 0.1149795781483831,
+        "validation_filtered_mrr": 0.14899096411350454
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.589149236679077,
+        "identity_scales": {
+          "disease": -0.03743689879775047,
+          "drug": -0.0614963099360466,
+          "effect/phenotype": -0.024946995079517365,
+          "gene/protein": -0.05254088342189789,
+          "pathway": -0.06558524072170258,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.129901885986328,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07334702461957932,
+          "initializer": 0.11458191275596619,
+          "relation_embedding": 5.828484063385986e-05,
+          "local": 0.0,
+          "root": 0.0006521934410557151,
+          "chemistry": 0.0,
+          "decoder": 0.04865087941288948
+        },
+        "total_gradient_norm_before_clip": 0.14448577165603638,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.25091943188027155,
+            "macro_scope_mrr": 0.25091943188027155
+          },
+          "filtered": {
+            "micro": 0.4429904760594044,
+            "macro_scope_mrr": 0.4429904760594044
+          }
+        },
+        "update": 61,
+        "loss": 0.1114409727917568,
+        "validation_filtered_mrr": 0.15140568310019234
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5917651653289795,
+        "identity_scales": {
+          "disease": -0.03888440504670143,
+          "drug": -0.06260763853788376,
+          "effect/phenotype": -0.02610790729522705,
+          "gene/protein": -0.05370457470417023,
+          "pathway": -0.06660300493240356,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.265597343444824,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07308890670537949,
+          "initializer": 0.09744662791490555,
+          "relation_embedding": 5.482700726133771e-05,
+          "local": 0.0,
+          "root": 0.0006173552828840911,
+          "chemistry": 0.0,
+          "decoder": 0.04861803725361824
+        },
+        "total_gradient_norm_before_clip": 0.13115613162517548,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2647296832222951,
+            "macro_scope_mrr": 0.2647296832222951
+          },
+          "filtered": {
+            "micro": 0.44634297606752754,
+            "macro_scope_mrr": 0.44634297606752754
+          }
+        },
+        "update": 62,
+        "loss": 0.10775021095403185,
+        "validation_filtered_mrr": 0.15296000920149205
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5956220626831055,
+        "identity_scales": {
+          "disease": -0.04032691568136215,
+          "drug": -0.06370313465595245,
+          "effect/phenotype": -0.02728196606040001,
+          "gene/protein": -0.054858434945344925,
+          "pathway": -0.06759842485189438,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.389608383178711,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07272622734308243,
+          "initializer": 0.1276589334011078,
+          "relation_embedding": 5.578221316682175e-05,
+          "local": 0.0,
+          "root": 0.000777779147028923,
+          "chemistry": 0.0,
+          "decoder": 0.05054512619972229
+        },
+        "total_gradient_norm_before_clip": 0.15537479519844055,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2669768428533594,
+            "macro_scope_mrr": 0.2669768428533594
+          },
+          "filtered": {
+            "micro": 0.45817706216839005,
+            "macro_scope_mrr": 0.45817706216839005
+          }
+        },
+        "update": 63,
+        "loss": 0.10532334522037427,
+        "validation_filtered_mrr": 0.15492396727595395
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5963339805603027,
+        "identity_scales": {
+          "disease": -0.0417640246450901,
+          "drug": -0.06479800492525101,
+          "effect/phenotype": -0.028476860374212265,
+          "gene/protein": -0.05600158870220184,
+          "pathway": -0.0685766339302063,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.502943992614746,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0722971186041832,
+          "initializer": 0.09740343689918518,
+          "relation_embedding": 5.837356366100721e-05,
+          "local": 0.0,
+          "root": 0.0007639596005901694,
+          "chemistry": 0.0,
+          "decoder": 0.04722030833363533
+        },
+        "total_gradient_norm_before_clip": 0.13017161190509796,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26356704454276847,
+            "macro_scope_mrr": 0.26356704454276847
+          },
+          "filtered": {
+            "micro": 0.4606639913012526,
+            "macro_scope_mrr": 0.4606639913012526
+          }
+        },
+        "update": 64,
+        "loss": 0.10212596938287398,
+        "validation_filtered_mrr": 0.15618584822854337
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5955615043640137,
+        "identity_scales": {
+          "disease": -0.043202366679906845,
+          "drug": -0.06589663773775101,
+          "effect/phenotype": -0.029701020568609238,
+          "gene/protein": -0.05713338404893875,
+          "pathway": -0.06953809410333633,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.630630493164062,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.07112595438957214,
+          "initializer": 0.10841972380876541,
+          "relation_embedding": 5.296339440974407e-05,
+          "local": 0.0,
+          "root": 0.0005895026843063533,
+          "chemistry": 0.0,
+          "decoder": 0.04463271051645279
+        },
+        "total_gradient_norm_before_clip": 0.1371355801820755,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2638209066940205,
+            "macro_scope_mrr": 0.2638209066940205
+          },
+          "filtered": {
+            "micro": 0.4628161068608757,
+            "macro_scope_mrr": 0.4628161068608757
+          }
+        },
+        "update": 65,
+        "loss": 0.09843156119787509,
+        "validation_filtered_mrr": 0.1576073296978724
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.5975120067596436,
+        "identity_scales": {
+          "disease": -0.0446411669254303,
+          "drug": -0.0669921264052391,
+          "effect/phenotype": -0.030940262600779533,
+          "gene/protein": -0.05825401470065117,
+          "pathway": -0.0704817846417427,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.752386093139648,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06996653228998184,
+          "initializer": 0.07681725174188614,
+          "relation_embedding": 5.430945384432562e-05,
+          "local": 0.0,
+          "root": 0.0006067498470656574,
+          "chemistry": 0.0,
+          "decoder": 0.04180992767214775
+        },
+        "total_gradient_norm_before_clip": 0.112002894282341,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2697835441261185,
+            "macro_scope_mrr": 0.2697835441261185
+          },
+          "filtered": {
+            "micro": 0.4793731120995976,
+            "macro_scope_mrr": 0.4793731120995976
+          }
+        },
+        "update": 66,
+        "loss": 0.096731811297496,
+        "validation_filtered_mrr": 0.15782875812815422
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6012167930603027,
+        "identity_scales": {
+          "disease": -0.04607940465211868,
+          "drug": -0.06807935982942581,
+          "effect/phenotype": -0.032188158482313156,
+          "gene/protein": -0.05936345085501671,
+          "pathway": -0.07140988111495972,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.8572998046875,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06938224285840988,
+          "initializer": 0.08140265941619873,
+          "relation_embedding": 5.208644506637938e-05,
+          "local": 0.0,
+          "root": 0.0006483124452643096,
+          "chemistry": 0.0,
+          "decoder": 0.04092639312148094
+        },
+        "total_gradient_norm_before_clip": 0.11452371627092361,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26162953531075733,
+            "macro_scope_mrr": 0.26162953531075733
+          },
+          "filtered": {
+            "micro": 0.49530632271302955,
+            "macro_scope_mrr": 0.49530632271302955
+          }
+        },
+        "update": 67,
+        "loss": 0.093544266311457,
+        "validation_filtered_mrr": 0.15852410429806904
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6040797233581543,
+        "identity_scales": {
+          "disease": -0.047515999525785446,
+          "drug": -0.06916765868663788,
+          "effect/phenotype": -0.03344853222370148,
+          "gene/protein": -0.06046106666326523,
+          "pathway": -0.07232282310724258,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 13.960616111755371,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06795615702867508,
+          "initializer": 0.0693240612745285,
+          "relation_embedding": 4.870011980528943e-05,
+          "local": 0.0,
+          "root": 0.0006263082032091916,
+          "chemistry": 0.0,
+          "decoder": 0.03840739652514458
+        },
+        "total_gradient_norm_before_clip": 0.10440012812614441,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.26439592004307855,
+            "macro_scope_mrr": 0.26439592004307855
+          },
+          "filtered": {
+            "micro": 0.5038664876781469,
+            "macro_scope_mrr": 0.5038664876781469
+          }
+        },
+        "update": 68,
+        "loss": 0.090958048661603,
+        "validation_filtered_mrr": 0.15948411030366116
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.606004238128662,
+        "identity_scales": {
+          "disease": -0.04894990473985672,
+          "drug": -0.07025628536939621,
+          "effect/phenotype": -0.034719981253147125,
+          "gene/protein": -0.06154601275920868,
+          "pathway": -0.07322022318840027,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.09211254119873,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0664694756269455,
+          "initializer": 0.0808057188987732,
+          "relation_embedding": 4.7263245505746454e-05,
+          "local": 0.0,
+          "root": 0.0005576541880145669,
+          "chemistry": 0.0,
+          "decoder": 0.0377616323530674
+        },
+        "total_gradient_norm_before_clip": 0.1112385243177414,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2776146876506178,
+            "macro_scope_mrr": 0.2776146876506178
+          },
+          "filtered": {
+            "micro": 0.508906032393655,
+            "macro_scope_mrr": 0.508906032393655
+          }
+        },
+        "update": 69,
+        "loss": 0.08894922975516381,
+        "validation_filtered_mrr": 0.16152507612232003
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6083905696868896,
+        "identity_scales": {
+          "disease": -0.05037945508956909,
+          "drug": -0.0713428258895874,
+          "effect/phenotype": -0.036007411777973175,
+          "gene/protein": -0.06261757016181946,
+          "pathway": -0.07410180568695068,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.187402725219727,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06573668122291565,
+          "initializer": 0.05960185080766678,
+          "relation_embedding": 4.6354016376426443e-05,
+          "local": 0.0,
+          "root": 0.0005231376271694899,
+          "chemistry": 0.0,
+          "decoder": 0.03521176800131798
+        },
+        "total_gradient_norm_before_clip": 0.09546642005443573,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2862210613863092,
+            "macro_scope_mrr": 0.2862210613863092
+          },
+          "filtered": {
+            "micro": 0.5169037996279839,
+            "macro_scope_mrr": 0.5169037996279839
+          }
+        },
+        "update": 70,
+        "loss": 0.08619866671422868,
+        "validation_filtered_mrr": 0.16221864961018245
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6120636463165283,
+        "identity_scales": {
+          "disease": -0.05180106684565544,
+          "drug": -0.07242335379123688,
+          "effect/phenotype": -0.0372963584959507,
+          "gene/protein": -0.06367693096399307,
+          "pathway": -0.07496624439954758,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.303634643554688,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06474637985229492,
+          "initializer": 0.08037487417459488,
+          "relation_embedding": 4.9264184781350195e-05,
+          "local": 0.0,
+          "root": 0.0005610210937447846,
+          "chemistry": 0.0,
+          "decoder": 0.03771254047751427
+        },
+        "total_gradient_norm_before_clip": 0.10988524556159973,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2896245911396567,
+            "macro_scope_mrr": 0.2896245911396567
+          },
+          "filtered": {
+            "micro": 0.5181026676102571,
+            "macro_scope_mrr": 0.5181026676102571
+          }
+        },
+        "update": 71,
+        "loss": 0.08380288887162961,
+        "validation_filtered_mrr": 0.16365835228899686
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6165823936462402,
+        "identity_scales": {
+          "disease": -0.053212545812129974,
+          "drug": -0.07349149882793427,
+          "effect/phenotype": -0.03858478367328644,
+          "gene/protein": -0.06472478061914444,
+          "pathway": -0.0758112370967865,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.414942741394043,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06581311672925949,
+          "initializer": 0.07750120759010315,
+          "relation_embedding": 4.764481127494946e-05,
+          "local": 0.0,
+          "root": 0.0006590009434148669,
+          "chemistry": 0.0,
+          "decoder": 0.03585752099752426
+        },
+        "total_gradient_norm_before_clip": 0.10781466215848923,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2842497535792379,
+            "macro_scope_mrr": 0.2842497535792379
+          },
+          "filtered": {
+            "micro": 0.5218628600323135,
+            "macro_scope_mrr": 0.5218628600323135
+          }
+        },
+        "update": 72,
+        "loss": 0.08118416720354286,
+        "validation_filtered_mrr": 0.1638504026059259
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.618915557861328,
+        "identity_scales": {
+          "disease": -0.054616574198007584,
+          "drug": -0.07455886155366898,
+          "effect/phenotype": -0.0398867130279541,
+          "gene/protein": -0.0657624751329422,
+          "pathway": -0.07663971185684204,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.519814491271973,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0651918426156044,
+          "initializer": 0.06880570203065872,
+          "relation_embedding": 4.668989640776999e-05,
+          "local": 0.0,
+          "root": 0.0005991937941871583,
+          "chemistry": 0.0,
+          "decoder": 0.03529905155301094
+        },
+        "total_gradient_norm_before_clip": 0.10114635527133942,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2862225883110988,
+            "macro_scope_mrr": 0.2862225883110988
+          },
+          "filtered": {
+            "micro": 0.5263801179631772,
+            "macro_scope_mrr": 0.5263801179631772
+          }
+        },
+        "update": 73,
+        "loss": 0.07901564401759656,
+        "validation_filtered_mrr": 0.16507989732773598
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6202967166900635,
+        "identity_scales": {
+          "disease": -0.05601968988776207,
+          "drug": -0.07562776654958725,
+          "effect/phenotype": -0.04120464250445366,
+          "gene/protein": -0.06678926199674606,
+          "pathway": -0.07745057344436646,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.620706558227539,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06335292756557465,
+          "initializer": 0.06635162979364395,
+          "relation_embedding": 4.419992183102295e-05,
+          "local": 0.0,
+          "root": 0.00046536861918866634,
+          "chemistry": 0.0,
+          "decoder": 0.03235434740781784
+        },
+        "total_gradient_norm_before_clip": 0.09727874398231506,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2881893570979946,
+            "macro_scope_mrr": 0.2881893570979946
+          },
+          "filtered": {
+            "micro": 0.5316213907620158,
+            "macro_scope_mrr": 0.5316213907620158
+          }
+        },
+        "update": 74,
+        "loss": 0.07695259806028969,
+        "validation_filtered_mrr": 0.16698917717254927
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6236953735351562,
+        "identity_scales": {
+          "disease": -0.05741574615240097,
+          "drug": -0.07669423520565033,
+          "effect/phenotype": -0.042522016912698746,
+          "gene/protein": -0.06780457496643066,
+          "pathway": -0.07824470847845078,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.721832275390625,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.062115661799907684,
+          "initializer": 0.06269319355487823,
+          "relation_embedding": 4.409819302964024e-05,
+          "local": 0.0,
+          "root": 0.00047065375838428736,
+          "chemistry": 0.0,
+          "decoder": 0.03189672902226448
+        },
+        "total_gradient_norm_before_clip": 0.093842513859272,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2893673663124223,
+            "macro_scope_mrr": 0.2893673663124223
+          },
+          "filtered": {
+            "micro": 0.5453300160687808,
+            "macro_scope_mrr": 0.5453300160687808
+          }
+        },
+        "update": 75,
+        "loss": 0.07509726324404825,
+        "validation_filtered_mrr": 0.16805596255606475
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.628798723220825,
+        "identity_scales": {
+          "disease": -0.058807410299777985,
+          "drug": -0.07775548845529556,
+          "effect/phenotype": -0.04383783042430878,
+          "gene/protein": -0.06880780309438705,
+          "pathway": -0.07902374118566513,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.809709548950195,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06208382174372673,
+          "initializer": 0.051577962934970856,
+          "relation_embedding": 4.221310518914834e-05,
+          "local": 0.0,
+          "root": 0.0005443906993605196,
+          "chemistry": 0.0,
+          "decoder": 0.030734481289982796
+        },
+        "total_gradient_norm_before_clip": 0.08636894077062607,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2921999864055682,
+            "macro_scope_mrr": 0.2921999864055682
+          },
+          "filtered": {
+            "micro": 0.5452193343023934,
+            "macro_scope_mrr": 0.5452193343023934
+          }
+        },
+        "update": 76,
+        "loss": 0.07307010428132965,
+        "validation_filtered_mrr": 0.16936680465712958
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.6328701972961426,
+        "identity_scales": {
+          "disease": -0.06019429862499237,
+          "drug": -0.07881580293178558,
+          "effect/phenotype": -0.045154862105846405,
+          "gene/protein": -0.06979972124099731,
+          "pathway": -0.07978858053684235,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.886629104614258,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.06106378510594368,
+          "initializer": 0.05575505644083023,
+          "relation_embedding": 4.201231058686972e-05,
+          "local": 0.0,
+          "root": 0.0005533025832846761,
+          "chemistry": 0.0,
+          "decoder": 0.030061490833759308
+        },
+        "total_gradient_norm_before_clip": 0.08798529952764511,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.28835769828647795,
+            "macro_scope_mrr": 0.28835769828647795
+          },
+          "filtered": {
+            "micro": 0.5566148853226326,
+            "macro_scope_mrr": 0.5566148853226326
+          }
+        },
+        "update": 77,
+        "loss": 0.07101894211955935,
+        "validation_filtered_mrr": 0.1692344470344294
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.636147975921631,
+        "identity_scales": {
+          "disease": -0.061573632061481476,
+          "drug": -0.07987245917320251,
+          "effect/phenotype": -0.04647190123796463,
+          "gene/protein": -0.07078047096729279,
+          "pathway": -0.08054027706384659,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 14.999670028686523,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.060295891016721725,
+          "initializer": 0.04444983974099159,
+          "relation_embedding": 4.0204937249654904e-05,
+          "local": 0.0,
+          "root": 0.0004776471178047359,
+          "chemistry": 0.0,
+          "decoder": 0.0283710565418005
+        },
+        "total_gradient_norm_before_clip": 0.08010324090719223,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2968967786515192,
+            "macro_scope_mrr": 0.2968967786515192
+          },
+          "filtered": {
+            "micro": 0.5648288616420172,
+            "macro_scope_mrr": 0.5648288616420172
+          }
+        },
+        "update": 78,
+        "loss": 0.0691468597405259,
+        "validation_filtered_mrr": 0.1703728066223244
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.639357328414917,
+        "identity_scales": {
+          "disease": -0.06294231116771698,
+          "drug": -0.08092407137155533,
+          "effect/phenotype": -0.047787200659513474,
+          "gene/protein": -0.07175053656101227,
+          "pathway": -0.08128055930137634,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 15.091958045959473,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.05923409387469292,
+          "initializer": 0.058992404490709305,
+          "relation_embedding": 4.2001604015240446e-05,
+          "local": 0.0,
+          "root": 0.00048434745986014605,
+          "chemistry": 0.0,
+          "decoder": 0.029286770150065422
+        },
+        "total_gradient_norm_before_clip": 0.08858179301023483,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.296911442381834,
+            "macro_scope_mrr": 0.296911442381834
+          },
+          "filtered": {
+            "micro": 0.563963731863548,
+            "macro_scope_mrr": 0.563963731863548
+          }
+        },
+        "update": 79,
+        "loss": 0.06745159180565372,
+        "validation_filtered_mrr": 0.170527888002132
+      },
+      {
+        "local_message_self_ratio": 0.0,
+        "root_message_self_ratio": 3.643484354019165,
+        "identity_scales": {
+          "disease": -0.06430058181285858,
+          "drug": -0.08197419345378876,
+          "effect/phenotype": -0.049110956490039825,
+          "gene/protein": -0.07270883768796921,
+          "pathway": -0.08200379461050034,
+          "UNK": 0.0
+        },
+        "feedback_scale": 0.10000000149011612,
+        "round_changes": [
+          {
+            "local": 0.0,
+            "cross": 0.0,
+            "readout": 0.0,
+            "owner": 0.0,
+            "root": 15.18539047241211,
+            "synchronization": 0.0,
+            "feedback": 0.0
+          }
+        ],
+        "gradient_norms_before_clip": {
+          "identity_scale": 0.0570441409945488,
+          "initializer": 0.06529969722032547,
+          "relation_embedding": 4.101206286577508e-05,
+          "local": 0.0,
+          "root": 0.0004361534083727747,
+          "chemistry": 0.0,
+          "decoder": 0.028188370168209076
+        },
+        "total_gradient_norm_before_clip": 0.0911748930811882,
+        "training_ranking": {
+          "raw": {
+            "micro": 0.2975824895484327,
+            "macro_scope_mrr": 0.2975824895484327
+          },
+          "filtered": {
+            "micro": 0.5676273800239793,
+            "macro_scope_mrr": 0.5676273800239793
+          }
+        },
+        "update": 80,
+        "loss": 0.06531022500566745,
+        "validation_filtered_mrr": 0.17251835399028104
+      }
+    ],
+    "effective_rounds": 1,
+    "training_target_count": 16462,
+    "elapsed_seconds": 501.6726775450006,
+    "software": {
+      "python": "3.13.16",
+      "torch": "2.14.1+cu130"
+    }
+  },
+  "elapsed_seconds": 501.75502014160156
+}

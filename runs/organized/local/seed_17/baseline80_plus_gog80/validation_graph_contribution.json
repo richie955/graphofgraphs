@@ -1,0 +1,45 @@
+{
+  "diagnostic": "validation-only inference ablation; learned embeddings and decoder held fixed",
+  "with_graph": {
+    "raw": {
+      "count": 4000,
+      "mrr": 0.05341673662610534,
+      "mean_rank": 195.198,
+      "hits@1": 0.0065,
+      "hits@3": 0.03425,
+      "hits@10": 0.12825
+    },
+    "filtered": {
+      "count": 4000,
+      "mrr": 0.18962327595970035,
+      "mean_rank": 171.7595,
+      "hits@1": 0.0995,
+      "hits@3": 0.203,
+      "hits@10": 0.3825
+    },
+    "total_queries": 4000,
+    "unscorable_queries": 0,
+    "scorable_queries": 4000
+  },
+  "identity_path_only": {
+    "raw": {
+      "count": 4000,
+      "mrr": 0.052103856627412286,
+      "mean_rank": 201.02825,
+      "hits@1": 0.00625,
+      "hits@3": 0.0325,
+      "hits@10": 0.12325
+    },
+    "filtered": {
+      "count": 4000,
+      "mrr": 0.18601293691284126,
+      "mean_rank": 177.5785,
+      "hits@1": 0.09575,
+      "hits@3": 0.201,
+      "hits@10": 0.377
+    },
+    "total_queries": 4000,
+    "unscorable_queries": 0,
+    "scorable_queries": 4000
+  }
+}
