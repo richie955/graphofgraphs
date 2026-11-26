@@ -1,21 +1,28 @@
 # Graph of Graphs
 
-This repository contains the Graph of Graphs model, PrimeKG preprocessing and training code, notebooks, test fixtures, and experiment reports.
+This repository contains a staged GoG data pipeline, the GoG embedding model, training code, and experiment artifacts.
 
-## Directory map
+## Where things live
 
-| Path | Contents |
+| Path | Purpose |
 | --- | --- |
-| `gog_model/` | Model stages and decoder |
-| `gog_data/` | Graph preprocessing and PrimeKG split packaging |
-| `training/` | Training and covered pilot evaluation |
+| `data_pipeline/preprocessing/` | PrimeKG fact splitting and GoG input validation |
+| `data_pipeline/construction/` | Build GoG structures from the frozen training split |
+| `data/raw/` | Original source datasets |
+| `data/splits/` | Train, validation, and test facts |
+| `data/processed/` | Constructed GoG model inputs |
+| `gog_embedding/` | GoG embedding model stages |
+| `training/` | Training entry points and shared loops |
 | `baselines/` | Baseline models |
 | `tests/` | Unit and integration tests |
-| `notebooks/` | Colab and data preparation notebooks |
-| `facts/` | PrimeKG train, validation, and test source facts |
-| `docs/` | Design notes and graph fixtures |
-| `runs/` | JSON reports from experiments; model checkpoints are ignored |
+| `notebooks/` | Colab workflows and notebook generator |
+| `docs/` | Data contracts and model architecture notes |
+| `runs/` | Experiment reports |
 
-`prime_kg_gog_from_training.json` is the training graph used with the source facts in `facts/`. Run commands from the repository root so Python can import the packages above. See [COLAB.md](COLAB.md) for the Colab workflow.
+## Data pipeline files
 
-The reports in `runs/primekg-covered-pilot-interrupted-2026-11-12/` came from a local pilot stopped before its final summary was written. The completed covered pilot reports are in `runs/primekg-covered-pilot/`.
+- `preprocessing/prepare_primekg_splits.py` selects a PrimeKG subset, deduplicates facts, and assigns leakage-safe train/validation/test splits.
+- `preprocessing/validate_gog_data.py` validates and indexes constructed GoG JSON for the model.
+- `construction/build_gog_from_split.py` is the source for the Colab builder that creates GoG data from the frozen training split.
+
+The flow is **split facts → construct GoG → validate model input → train/embed**. Run commands from the repository root. See [COLAB.md](COLAB.md) for the Colab workflow.

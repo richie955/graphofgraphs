@@ -14,10 +14,10 @@ import torch
 from torch import Tensor, nn
 from torch.nn import functional as F
 
-from gog_model import ComplExDecoder, GoGEncoder
+from gog_embedding import ComplExDecoder, GoGEncoder
 from baselines.rgcn import RGCNBaseline
-from gog_model.stage1 import Stage1Initializer
-from gog_data.preprocessing import PreprocessedGoG
+from gog_embedding.stage1 import Stage1Initializer
+from data_pipeline.preprocessing import PreprocessedGoG
 
 
 @dataclass(frozen=True)

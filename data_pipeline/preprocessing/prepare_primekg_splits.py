@@ -20,7 +20,7 @@ import pandas as pd
 
 OWNER_TYPES = ("drug", "gene/protein", "pathway")
 FACT_COLUMNS = ("x_index", "x_type", "x_name", "y_index", "y_type", "y_name", "relation")
-FACT_KEY = ("x_index", "relation", "display_relation", "y_index")
+FACT_KEY = ("x_index", "relation", "y_index")
 
 
 @dataclass(frozen=True)
@@ -56,7 +56,7 @@ def _sha256_file(path: Path) -> str:
     return digest.hexdigest()
 
 
-def _stable_fact_id(row: tuple[str, str, str, str]) -> str:
+def _stable_fact_id(row: tuple[str, str, str]) -> str:
     return hashlib.sha256(json.dumps(row, ensure_ascii=False, separators=(",", ":")).encode()).hexdigest()
 
 
@@ -77,7 +77,8 @@ def _read_source(path: Path) -> tuple[pd.DataFrame, pd.DataFrame, pd.DataFrame, 
     invalid_count = int(invalid.sum())
     facts = facts.loc[~invalid].copy()
 
-    duplicates = facts.loc[facts.duplicated(list(FACT_KEY), keep="first"), ["source_row", *FACT_KEY]].copy()
+    duplicate_columns = ["source_row", *FACT_KEY, "display_relation"]
+    duplicates = facts.loc[facts.duplicated(list(FACT_KEY), keep="first"), duplicate_columns].copy()
     facts = facts.drop_duplicates(list(FACT_KEY), keep="first").reset_index(drop=True)
     facts.insert(1, "fact_id", [_stable_fact_id(values) for values in facts[list(FACT_KEY)].itertuples(index=False, name=None)])
     duplicates.insert(1, "fact_id", [_stable_fact_id(values) for values in duplicates[list(FACT_KEY)].itertuples(index=False, name=None)])

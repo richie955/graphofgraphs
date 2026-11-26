@@ -6,7 +6,7 @@ from pathlib import Path
 import torch
 
 from baselines.rgcn import RGCNBaseline, training_channels
-from gog_data.preprocessing import load_gog
+from data_pipeline.preprocessing import load_gog
 from training.link_prediction import TrainingConfig, run_rgcn
 
 

@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-module_source = (ROOT / "gog_data" / "primekg_split_package.py").read_text(encoding="utf-8")
+module_source = (ROOT / "data_pipeline" / "preprocessing" / "prepare_primekg_splits.py").read_text(encoding="utf-8")
 
 
 def cell(kind: str, source: str) -> dict:
@@ -97,7 +97,7 @@ print(destination)
 
 # Keep the adapted LLM builder executable as separate Colab cells. Its raw
 # source is retained beside this generator for review and ordinary diffing.
-builder_source = (ROOT / "notebooks" / "primekg_llm_gog_split_safe_source.py").read_text(encoding="utf-8")
+builder_source = (ROOT / "data_pipeline" / "construction" / "build_gog_from_split.py").read_text(encoding="utf-8")
 builder_parts = [part for part in re.split(r"(?=^# CELL \d+:)", builder_source, flags=re.MULTILINE)
                  if part.strip()]
 builder_notebook = {

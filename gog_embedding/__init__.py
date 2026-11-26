@@ -6,7 +6,7 @@ from typing import Any
 import torch
 from torch import Tensor, nn
 
-from gog_data.preprocessing import PreprocessedGoG
+from data_pipeline.preprocessing import PreprocessedGoG
 from .stage1 import Stage1Initializer
 from .stage2 import Stage2LocalCompGCN
 from .stage3 import Stage3CrossGraphAttention

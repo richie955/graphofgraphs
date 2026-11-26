@@ -6,8 +6,8 @@ import torch
 from torch import Tensor, nn
 from torch.nn import functional as F
 
-from gog_data.preprocessing import PreprocessedGoG, SCOPES
-from gog_model.stage1 import Stage1Initializer
+from data_pipeline.preprocessing import PreprocessedGoG, SCOPES
+from gog_embedding.stage1 import Stage1Initializer
 
 
 def training_channels(data: PreprocessedGoG, device: torch.device) -> tuple[Tensor, Tensor]:

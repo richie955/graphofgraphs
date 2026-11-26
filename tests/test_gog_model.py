@@ -3,12 +3,12 @@ from pathlib import Path
 
 import torch
 
-from gog_model import (GoGEncoder, GoGEncoderStages1To3, Stage4GraphReadout,
+from gog_embedding import (GoGEncoder, GoGEncoderStages1To3, Stage4GraphReadout,
                        Stage5GraphEntityFusion, Stage6RootCompGCN,
                        Stage7IdentitySync, Stage8ContextFeedback)
-from gog_model.stage1 import Stage1Initializer
-from gog_model.stage3 import Stage3CrossGraphAttention
-from gog_data.preprocessing import load_gog
+from gog_embedding.stage1 import Stage1Initializer
+from gog_embedding.stage3 import Stage3CrossGraphAttention
+from data_pipeline.preprocessing import load_gog
 
 
 FIXTURE = Path(__file__).parent.parent / "docs" / "synthetic_gog_fixture.json"

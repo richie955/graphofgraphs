@@ -5,8 +5,8 @@ from pathlib import Path
 
 import torch
 
-from gog_model.stage9 import ComplExDecoder
-from gog_data.preprocessing import load_gog
+from gog_embedding.stage9 import ComplExDecoder
+from data_pipeline.preprocessing import load_gog
 from training.link_prediction import TrainingConfig, known_fact_keys, run_comparison, sample_training_negatives, valid_candidate_nodes
 
 

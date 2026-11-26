@@ -1,6 +1,6 @@
 # GoG builder and evaluation handoff
 
-This handoff concerns `primekg_llm_gog_colab_code_updated.py` (the Colab export supplied by the project owner), the current GoG model in `gog_model/`, and the training code in `training/`. The objective is a leakage-audited comparison of a flat KG, a flat context-aware model, and the GoG encoder. The existing MRR reports are development results, not the benchmark for this comparison.
+This handoff concerns `primekg_llm_gog_colab_code_updated.py` (the Colab export supplied by the project owner), the current GoG model in `gog_embedding/`, and the training code in `training/`. The objective is a leakage-audited comparison of a flat KG, a flat context-aware model, and the GoG encoder. The existing MRR reports are development results, not the benchmark for this comparison.
 
 ## 1. What the current builder actually does
 

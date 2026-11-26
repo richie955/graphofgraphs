@@ -10,7 +10,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from gog_data.primekg_split_package import SplitParameters, build_split_package
+from data_pipeline.preprocessing.prepare_primekg_splits import SplitParameters, build_split_package
 
 
 class PrimeKGSplitPackageTests(unittest.TestCase):
@@ -33,6 +33,8 @@ class PrimeKGSplitPackageTests(unittest.TestCase):
                         writer.writerow(row)
                         if (i + j) % 11 == 0:
                             writer.writerow(row)  # an exact source duplicate
+                        if (i + j) % 13 == 0:
+                            writer.writerow({**row, "display_relation": f"display variant: {relation}"})
                         if (i + j) % 7 == 0:
                             writer.writerow({**row, "x_index": right, "x_type": right_type,
                                              "x_name": right, "y_index": left,

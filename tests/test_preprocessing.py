@@ -3,7 +3,7 @@ import json
 import unittest
 from pathlib import Path
 
-from gog_data.preprocessing import GoGValidationError, load_gog, preprocess_data
+from data_pipeline.preprocessing import GoGValidationError, load_gog, preprocess_data
 
 
 FIXTURE = Path(__file__).parent.parent / "docs" / "synthetic_gog_fixture.json"
